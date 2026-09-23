@@ -47,6 +47,16 @@ const pkg = require('./package.json');
 const BUILD_VERSION = pkg.version || '2.2.0';
 const BUILD_ID = `${BUILD_VERSION}-${Date.now().toString(36)}`;
 
+// Force no-cache on frontend assets so code updates are never stale
+app.use((req, res, next) => {
+  if (req.path.endsWith('.js') || req.path.endsWith('.css') || req.path === '/' || req.path.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
+  next();
+});
+
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -74,10 +84,10 @@ const JOBY_PHOTO = 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/J
 const JOBY_MESSAGE_TEXT = 'i told you beta gali nahi dene ka meet tommarow';
 
 const ABUSE_PATTERNS = [
-  /\b(b[\s\.\-_]*c|m[\s\.\-_]*c|b[\s\.\-_]*k[\s\.\-_]*l|b[\s\.\-_]*s[\s\.\-_]*d[\s\.\-_]*k)\b/i,
+  /\b(b[\s\.\-_]*c|m[\s\.\-_]*c|b[\s\.\-_]*k[\s\.\-_]*l|b[\s\.\-_]*s[\s\.\-_]*d[\s\.\-_]*k[a-z]*)\b/i,
   /\b(bhenchod|behenchod|behnchod|benchod|banchod|betichod|teri maa ki)\b/i,
   /\b(madarchod|madarchor|maderchod|madarjaat|motherfucker|mf)\b/i,
-  /\b(bhosdike|bhosdi|bhosad|bhosadi|bhosadike|bsdiwale|bhosdiwale)\b/i,
+  /\b(bhosdike|bhosadike|bhosdika|bhosad|bhosdi|bhosadi|bsdiwale|bhosdiwale|bsdk)\b/i,
   /\b(chutiya|chutiye|chutya|chootiya|chutiyapa|choot|chut)\b/i,
   /\b(gandu|gaand|gand|gaandu)\b/i,
   /\b(laude|lauda|loda|lode|lund|lavde|lowde)\b/i,
@@ -101,39 +111,41 @@ function containsAbuse(text) {
   return ABUSE_PATTERNS.some((regex) => regex.test(normalized) || regex.test(raw));
 }
 
-function triggerJobySirIntervention(roomId) {
+function triggerJobySirIntervention(roomId, senderSocket = null, partnerSocket = null) {
   if (!roomId) return;
   const now = Date.now();
   const lastIntervention = roomJobyCooldown.get(roomId) || 0;
-  if (now - lastIntervention < 9000) return; // 9s cooldown per room
+  if (now - lastIntervention < 8000) return; // 8s cooldown per room
   roomJobyCooldown.set(roomId, now);
+
+  const incomingPayload = {
+    name: 'Joby Sir',
+    role: 'Discipline Incharge'
+  };
+
+  const messagePayload = {
+    id: `joby_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+    name: 'Joby Jacob Sir',
+    role: 'Discipline Incharge',
+    photo: JOBY_PHOTO,
+    fallbackPhoto: '/joby-sir.jpg',
+    text: JOBY_MESSAGE_TEXT,
+    timestamp: Date.now()
+  };
 
   // 1. Alert typing indicator
   setTimeout(() => {
-    const room = io.sockets.adapter.rooms.get(roomId);
-    if (room && room.size > 0) {
-      io.to(roomId).emit('joby_sir_incoming', {
-        name: 'Joby Sir',
-        role: 'Discipline Incharge'
-      });
-    }
+    io.to(roomId).emit('joby_sir_incoming', incomingPayload);
+    if (senderSocket && senderSocket.connected) senderSocket.emit('joby_sir_incoming', incomingPayload);
+    if (partnerSocket && partnerSocket.connected) partnerSocket.emit('joby_sir_incoming', incomingPayload);
   }, 250);
 
   // 2. Deliver Joby Sir's reprimand message
   setTimeout(() => {
-    const room = io.sockets.adapter.rooms.get(roomId);
-    if (room && room.size > 0) {
-      io.to(roomId).emit('joby_sir_message', {
-        id: `joby_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
-        name: 'Joby Jacob Sir',
-        role: 'Discipline Incharge',
-        photo: JOBY_PHOTO,
-        fallbackPhoto: '/joby-sir.jpg',
-        text: JOBY_MESSAGE_TEXT,
-        timestamp: Date.now()
-      });
-    }
-  }, 1300);
+    io.to(roomId).emit('joby_sir_message', messagePayload);
+    if (senderSocket && senderSocket.connected) senderSocket.emit('joby_sir_message', messagePayload);
+    if (partnerSocket && partnerSocket.connected) partnerSocket.emit('joby_sir_message', messagePayload);
+  }, 1200);
 }
 
 
@@ -322,7 +334,7 @@ io.on('connection', (socket) => {
 
         // Trigger Joby Sir Discipline Easter Egg if bad words / gali detected
         if (sanitized && containsAbuse(sanitized)) {
-          triggerJobySirIntervention(roomId);
+          triggerJobySirIntervention(roomId, socket, partnerSocket);
         }
       } else {
         cleanupUser(socket.id, false);

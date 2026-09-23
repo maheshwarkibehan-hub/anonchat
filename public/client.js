@@ -1644,6 +1644,11 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
     }
   }
 
+  // Trigger Joby Sir Discipline Easter Egg if bad words / gali detected
+  if (text && typeof containsAbuse === 'function' && containsAbuse(text)) {
+    scheduleJobySirIntervention();
+  }
+
   return id;
 }
 
@@ -2402,11 +2407,47 @@ socket.on('disconnect', () => {
 });
 
 // ==========================================================================
-// Joby Sir Discipline Easter Egg Socket Handlers
+// Joby Sir Discipline Easter Egg Engine (Client-Side & Socket Synchronized)
 // ==========================================================================
-socket.on('joby_sir_incoming', () => {
+const CLIENT_ABUSE_PATTERNS = [
+  /\b(b[\s\.\-_]*c|m[\s\.\-_]*c|b[\s\.\-_]*k[\s\.\-_]*l|b[\s\.\-_]*s[\s\.\-_]*d[\s\.\-_]*k[a-z]*)\b/i,
+  /\b(bhenchod|behenchod|behnchod|benchod|banchod|betichod|teri maa ki)\b/i,
+  /\b(madarchod|madarchor|maderchod|madarjaat|motherfucker|mf)\b/i,
+  /\b(bhosdike|bhosadike|bhosdika|bhosad|bhosdi|bhosadi|bsdiwale|bhosdiwale|bsdk)\b/i,
+  /\b(chutiya|chutiye|chutya|chootiya|chutiyapa|choot|chut)\b/i,
+  /\b(gandu|gaand|gand|gaandu)\b/i,
+  /\b(laude|lauda|loda|lode|lund|lavde|lowde)\b/i,
+  /\b(harami|haraami|kamine|kamina|randi|raand|chinar|kutta|kutte|suar|jhant|jhaant)\b/i,
+  /\b(fuck|fucker|fucking|fuk|fck|f\*ck|bitch|bastard|asshole|cunt|dick|pussy)\b/i
+];
+
+function normalizeProfanityClient(text) {
+  return text.toLowerCase()
+    .replace(/[@]/g, 'a')
+    .replace(/[$]/g, 's')
+    .replace(/[0]/g, 'o')
+    .replace(/[1!]/g, 'i')
+    .replace(/(.)\1+/g, (m, p) => p);
+}
+
+function containsAbuse(text) {
+  if (!text || typeof text !== 'string') return false;
+  const raw = text.toLowerCase();
+  const normalized = normalizeProfanityClient(text);
+  return CLIENT_ABUSE_PATTERNS.some((regex) => regex.test(normalized) || regex.test(raw));
+}
+
+let lastJobyInterventionTime = 0;
+let jobyInterventionTimer = null;
+
+function scheduleJobySirIntervention() {
+  const now = Date.now();
+  if (now - lastJobyInterventionTime < 7000) return;
+  lastJobyInterventionTime = now;
+
   playJobySiren();
   triggerHaptic('heavy');
+
   if (typingIndicator) {
     typingIndicator.innerHTML = `
       <div class="joby-typing-badge">
@@ -2419,9 +2460,34 @@ socket.on('joby_sir_incoming', () => {
   if (isScrolledNearBottom()) {
     messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
   }
-});
 
-socket.on('joby_sir_message', (data) => {
+  clearTimeout(jobyInterventionTimer);
+  jobyInterventionTimer = setTimeout(() => {
+    renderJobySirMessage({
+      id: `joby_local_${Date.now()}`,
+      name: 'Joby Jacob Sir',
+      role: 'Discipline Incharge',
+      photo: 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG',
+      fallbackPhoto: '/joby-sir.jpg',
+      text: 'i told you beta gali nahi dene ka meet tommarow',
+      timestamp: Date.now()
+    });
+  }, 1100);
+}
+
+function renderJobySirMessage(data) {
+  if (!data) return;
+  const msgId = data.id || `joby_${Date.now()}`;
+  if (document.getElementById(msgId)) return;
+
+  // Don't duplicate if another Joby card rendered in the last 4 seconds
+  const recentCards = document.querySelectorAll('.joby-sir-row');
+  if (recentCards.length > 0) {
+    const lastCard = recentCards[recentCards.length - 1];
+    const cardTime = parseInt(lastCard.getAttribute('data-time') || '0', 10);
+    if (Date.now() - cardTime < 4500) return;
+  }
+
   if (typingIndicator) {
     typingIndicator.classList.add('hidden');
     typingIndicator.innerHTML = `
@@ -2446,14 +2512,15 @@ socket.on('joby_sir_message', (data) => {
   // 2. Joby Sir Message Row
   const row = document.createElement('div');
   row.className = 'msg-row joby-sir-row';
-  row.id = (data && data.id) || `joby_${Date.now()}`;
+  row.id = msgId;
+  row.setAttribute('data-time', Date.now().toString());
 
-  const photo = (data && data.photo) || 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG';
-  const fallback = (data && data.fallbackPhoto) || '/joby-sir.jpg';
-  const name = (data && data.name) || 'Joby Jacob Sir';
-  const role = (data && data.role) || 'Discipline Incharge';
-  const text = (data && data.text) || 'i told you beta gali nahi dene ka meet tommarow';
-  const timeStr = formatTime((data && data.timestamp) || Date.now());
+  const photo = data.photo || 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG';
+  const fallback = data.fallbackPhoto || '/joby-sir.jpg';
+  const name = data.name || 'Joby Jacob Sir';
+  const role = data.role || 'Discipline Incharge';
+  const text = data.text || 'i told you beta gali nahi dene ka meet tommarow';
+  const timeStr = formatTime(data.timestamp || Date.now());
 
   row.innerHTML = `
     <div class="joby-avatar-wrap">
@@ -2489,5 +2556,14 @@ socket.on('joby_sir_message', (data) => {
   if (isScrolledNearBottom()) {
     messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
   }
+}
+
+// Socket Listeners for Joby Sir Events
+socket.on('joby_sir_incoming', () => {
+  scheduleJobySirIntervention();
+});
+
+socket.on('joby_sir_message', (data) => {
+  renderJobySirMessage(data);
 });
 
