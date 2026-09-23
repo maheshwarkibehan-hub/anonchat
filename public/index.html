@@ -246,8 +246,52 @@
             <span>Stranger is typing...</span>
           </div>
 
+          <!-- Floating Scroll-To-Bottom & New Message Pill -->
+          <button id="newMsgPill" class="new-msg-pill hidden" aria-label="Scroll to newest message">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <polyline points="19 12 12 19 5 12"/>
+            </svg>
+            <span id="newMsgPillText">New message</span>
+          </button>
+
+          <!-- Accidental Skip 3s Grace Toast -->
+          <div id="skipGraceBar" class="skip-grace-bar hidden">
+            <div class="skip-grace-info">
+              <div class="skip-timer-badge">
+                <span id="skipCountdownText">3</span>
+              </div>
+              <span class="skip-grace-text">Skipping to next stranger...</span>
+            </div>
+            <div class="skip-grace-actions">
+              <button type="button" id="cancelSkipBtn" class="skip-cancel-btn">Cancel</button>
+              <button type="button" id="confirmSkipBtn" class="skip-now-btn">Skip now</button>
+            </div>
+          </div>
+
           <!-- Bottom Input Bar (ChatGPT / Apple Messages Style) -->
           <div class="chat-input-bar">
+            <!-- Quoted Reply Preview Bar -->
+            <div id="replyPreviewBar" class="reply-preview-bar hidden">
+              <div class="reply-preview-accent"></div>
+              <div class="reply-preview-body">
+                <div class="reply-preview-author-line">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 17 4 12 9 7"/>
+                    <path d="M20 18v-2a4 4 0 0 0-4-4H4"/>
+                  </svg>
+                  <span id="replyPreviewAuthor">Replying to Stranger</span>
+                </div>
+                <div id="replyPreviewSnippet" class="reply-preview-snippet"></div>
+              </div>
+              <button type="button" id="cancelReplyBtn" class="reply-dismiss-btn" aria-label="Cancel reply">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
             <form id="chatForm" class="input-form" autocomplete="off">
               <input
                 type="text"

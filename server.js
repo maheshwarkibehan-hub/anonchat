@@ -169,12 +169,25 @@ io.on('connection', (socket) => {
     const sanitized = data.text.trim().replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n');
     if (!sanitized || sanitized.length > 1500) return;
 
+    let replyTo = null;
+    if (data.replyTo && typeof data.replyTo.text === 'string') {
+      const trimmedQuote = data.replyTo.text.trim().slice(0, 150);
+      if (trimmedQuote) {
+        replyTo = {
+          id: typeof data.replyTo.id === 'string' ? data.replyTo.id.slice(0, 64) : null,
+          text: trimmedQuote,
+          author: data.replyTo.author === 'self' ? 'self' : 'partner'
+        };
+      }
+    }
+
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
       const partnerSocket = io.sockets.sockets.get(partnerId);
       if (partnerSocket) {
         partnerSocket.emit('receive_message', {
           text: sanitized,
+          replyTo: replyTo,
           timestamp: Date.now()
         });
       }

@@ -23,6 +23,17 @@ const messageInput = document.getElementById('messageInput');
 const typingIndicator = document.getElementById('typingIndicator');
 const strangerSubstatus = document.getElementById('strangerSubstatus');
 
+const newMsgPill = document.getElementById('newMsgPill');
+const newMsgPillText = document.getElementById('newMsgPillText');
+const skipGraceBar = document.getElementById('skipGraceBar');
+const skipCountdownText = document.getElementById('skipCountdownText');
+const cancelSkipBtn = document.getElementById('cancelSkipBtn');
+const confirmSkipBtn = document.getElementById('confirmSkipBtn');
+const replyPreviewBar = document.getElementById('replyPreviewBar');
+const replyPreviewAuthor = document.getElementById('replyPreviewAuthor');
+const replyPreviewSnippet = document.getElementById('replyPreviewSnippet');
+const cancelReplyBtn = document.getElementById('cancelReplyBtn');
+
 const soundToggleBtn = document.getElementById('soundToggleBtn');
 const soundOnIcon = document.getElementById('soundOnIcon');
 const soundOffIcon = document.getElementById('soundOffIcon');
@@ -584,23 +595,250 @@ function formatTime(timestamp = Date.now()) {
   return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
-function appendMessage(text, sender = 'me', timestamp = Date.now()) {
+// Mobile Haptic Vibration API
+function triggerHaptic(type = 'light') {
+  if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+    try {
+      if (type === 'light') {
+        navigator.vibrate(15);
+      } else if (type === 'connected') {
+        navigator.vibrate([25, 45, 25]);
+      } else if (type === 'disconnected') {
+        navigator.vibrate([35, 30]);
+      }
+    } catch (e) {
+      // Audio or vibration disallowed
+    }
+  }
+}
+
+// ==========================================================================
+// Smart Auto-Scroll & Floating New Message Pill
+// ==========================================================================
+let unreadCount = 0;
+
+function isScrolledNearBottom() {
+  if (!messagesContainer) return true;
+  const threshold = 85;
+  return messagesContainer.scrollHeight - messagesContainer.scrollTop - messagesContainer.clientHeight <= threshold;
+}
+
+function updateNewMsgPill() {
+  if (!newMsgPill || !newMsgPillText) return;
+  if (unreadCount > 0) {
+    newMsgPillText.textContent = unreadCount === 1 ? '↓ New message' : `↓ ${unreadCount} new messages`;
+    newMsgPill.classList.remove('hidden');
+  } else {
+    newMsgPill.classList.add('hidden');
+  }
+}
+
+function clearUnreadPill() {
+  unreadCount = 0;
+  updateNewMsgPill();
+}
+
+if (messagesContainer) {
+  messagesContainer.addEventListener('scroll', () => {
+    if (isScrolledNearBottom()) {
+      clearUnreadPill();
+    }
+  }, { passive: true });
+}
+
+if (newMsgPill) {
+  newMsgPill.addEventListener('click', () => {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+    clearUnreadPill();
+  });
+}
+
+// ==========================================================================
+// Quoted Reply System
+// ==========================================================================
+let activeReply = null; // { id, text, author: 'self' | 'partner' }
+
+function setReply(msgId, text, author) {
+  activeReply = { id: msgId, text: text, author: author };
+  if (replyPreviewAuthor && replyPreviewSnippet && replyPreviewBar) {
+    replyPreviewAuthor.textContent = author === 'self' ? 'Replying to You' : 'Replying to Stranger';
+    replyPreviewSnippet.textContent = text;
+    replyPreviewBar.classList.remove('hidden');
+  }
+  if (messageInput) messageInput.focus();
+}
+
+function clearReply() {
+  activeReply = null;
+  if (replyPreviewBar) {
+    replyPreviewBar.classList.add('hidden');
+  }
+}
+
+if (cancelReplyBtn) {
+  cancelReplyBtn.addEventListener('click', clearReply);
+}
+
+// ==========================================================================
+// Accidental Skip Protection (3-Second Grace Countdown)
+// ==========================================================================
+let skipTimer = null;
+let skipInterval = null;
+let skipSecondsLeft = 3;
+
+function cancelSkipGrace() {
+  if (skipTimer) {
+    clearTimeout(skipTimer);
+    skipTimer = null;
+  }
+  if (skipInterval) {
+    clearInterval(skipInterval);
+    skipInterval = null;
+  }
+  if (skipGraceBar) {
+    skipGraceBar.classList.add('hidden');
+  }
+}
+
+function triggerNextWithGrace() {
+  if (!isPartnerConnected) {
+    nextPartner();
+    return;
+  }
+  if (skipTimer) {
+    cancelSkipGrace();
+    nextPartner();
+    return;
+  }
+
+  skipSecondsLeft = 3;
+  if (skipCountdownText) skipCountdownText.textContent = skipSecondsLeft;
+  if (skipGraceBar) skipGraceBar.classList.remove('hidden');
+
+  skipInterval = setInterval(() => {
+    skipSecondsLeft--;
+    if (skipCountdownText) {
+      skipCountdownText.textContent = Math.max(1, skipSecondsLeft);
+    }
+  }, 1000);
+
+  skipTimer = setTimeout(() => {
+    cancelSkipGrace();
+    nextPartner();
+  }, 3000);
+}
+
+if (cancelSkipBtn) cancelSkipBtn.addEventListener('click', cancelSkipGrace);
+if (confirmSkipBtn) {
+  confirmSkipBtn.addEventListener('click', () => {
+    cancelSkipGrace();
+    nextPartner();
+  });
+}
+
+function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = null, msgId = null) {
+  const id = msgId || 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
   const row = document.createElement('div');
   row.className = `msg-row ${sender}`;
+  row.id = id;
+
+  const bubbleWrap = document.createElement('div');
+  bubbleWrap.className = 'msg-bubble-wrap';
 
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble';
-  bubble.textContent = text;
+
+  // If message has quoted reply
+  if (replyTo && replyTo.text) {
+    const quoteCard = document.createElement('div');
+    quoteCard.className = 'quoted-card';
+
+    const quoteBar = document.createElement('div');
+    quoteBar.className = 'quoted-bar';
+
+    const quoteContent = document.createElement('div');
+    quoteContent.className = 'quoted-content';
+
+    let displayAuthor = 'Stranger';
+    if (sender === 'me') {
+      displayAuthor = replyTo.author === 'partner' ? 'Stranger' : 'You';
+    } else {
+      displayAuthor = replyTo.author === 'partner' ? 'You' : 'Stranger';
+    }
+
+    const quoteAuthorEl = document.createElement('span');
+    quoteAuthorEl.className = 'quoted-author';
+    quoteAuthorEl.textContent = displayAuthor;
+
+    const quoteTextEl = document.createElement('span');
+    quoteTextEl.className = 'quoted-text';
+    quoteTextEl.textContent = replyTo.text;
+
+    quoteContent.appendChild(quoteAuthorEl);
+    quoteContent.appendChild(quoteTextEl);
+    quoteCard.appendChild(quoteBar);
+    quoteCard.appendChild(quoteContent);
+
+    if (replyTo.id) {
+      quoteCard.addEventListener('click', () => {
+        const target = document.getElementById(replyTo.id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.remove('msg-highlight');
+          void target.offsetWidth;
+          target.classList.add('msg-highlight');
+          setTimeout(() => target.classList.remove('msg-highlight'), 1500);
+        }
+      });
+    }
+
+    bubble.appendChild(quoteCard);
+  }
+
+  const textEl = document.createElement('div');
+  textEl.className = 'msg-text';
+  textEl.textContent = text;
+  bubble.appendChild(textEl);
+
+  // Micro-action reply button on bubble
+  const replyBtn = document.createElement('button');
+  replyBtn.type = 'button';
+  replyBtn.className = 'msg-reply-btn';
+  replyBtn.setAttribute('title', 'Reply to message');
+  replyBtn.setAttribute('aria-label', 'Reply to message');
+  replyBtn.innerHTML = `
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 17 4 12 9 7"/>
+      <path d="M20 18v-2a4 4 0 0 0-4-4H4"/>
+    </svg>
+  `;
+  replyBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setReply(id, text, sender === 'me' ? 'self' : 'partner');
+  });
+
+  bubbleWrap.appendChild(bubble);
+  bubbleWrap.appendChild(replyBtn);
 
   const time = document.createElement('div');
   time.className = 'msg-timestamp';
   time.textContent = formatTime(timestamp);
 
-  row.appendChild(bubble);
+  row.appendChild(bubbleWrap);
   row.appendChild(time);
+
+  const nearBottom = isScrolledNearBottom();
   messagesContainer.appendChild(row);
 
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  if (sender === 'me' || nearBottom) {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+    clearUnreadPill();
+  } else {
+    unreadCount++;
+    updateNewMsgPill();
+  }
+
+  return id;
 }
 
 function appendDisconnectBanner() {
@@ -628,7 +866,9 @@ function appendDisconnectBanner() {
     </button>
   `;
   messagesContainer.appendChild(banner);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  if (isScrolledNearBottom()) {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+  }
 
   document.getElementById('findNewBtn').addEventListener('click', () => {
     startSearch();
@@ -636,6 +876,9 @@ function appendDisconnectBanner() {
 }
 
 function resetChatUI() {
+  clearReply();
+  cancelSkipGrace();
+  clearUnreadPill();
   messagesContainer.innerHTML = `
     <div class="system-chip">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -657,6 +900,9 @@ function resetChatUI() {
 }
 
 function startSearch() {
+  cancelSkipGrace();
+  clearReply();
+  clearUnreadPill();
   triggerDimensionalWarp(900);
   showScreen(searchingScreen);
   socket.emit('find_partner');
@@ -668,12 +914,18 @@ function cancelSearch() {
 }
 
 function nextPartner() {
+  cancelSkipGrace();
+  clearReply();
+  clearUnreadPill();
   triggerDimensionalWarp(900);
   socket.emit('next_partner');
   showScreen(searchingScreen);
 }
 
 function endChat() {
+  cancelSkipGrace();
+  clearReply();
+  clearUnreadPill();
   socket.emit('leave_chat');
   showScreen(landingScreen);
 }
@@ -681,7 +933,7 @@ function endChat() {
 // Event Bindings
 startChatBtn.addEventListener('click', startSearch);
 cancelSearchBtn.addEventListener('click', cancelSearch);
-nextChatBtn.addEventListener('click', nextPartner);
+nextChatBtn.addEventListener('click', triggerNextWithGrace);
 endChatBtn.addEventListener('click', endChat);
 
 // Chat Input Form
@@ -690,10 +942,17 @@ chatForm.addEventListener('submit', (e) => {
   const text = messageInput.value.trim();
   if (!text || !isPartnerConnected) return;
 
-  socket.emit('send_message', { text });
-  appendMessage(text, 'me');
+  const replyPayload = activeReply ? {
+    id: activeReply.id,
+    text: activeReply.text,
+    author: activeReply.author
+  } : null;
+
+  socket.emit('send_message', { text, replyTo: replyPayload });
+  appendMessage(text, 'me', Date.now(), replyPayload);
   playChime('sent');
 
+  clearReply();
   socket.emit('stop_typing');
   clearTimeout(typingTimeout);
 
@@ -715,7 +974,11 @@ messageInput.addEventListener('input', () => {
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && chatScreen.classList.contains('active')) {
     e.preventDefault();
-    nextPartner();
+    if (skipTimer) {
+      cancelSkipGrace();
+    } else {
+      triggerNextWithGrace();
+    }
   }
 });
 
@@ -746,17 +1009,21 @@ socket.on('chat_start', () => {
   resetChatUI();
   showScreen(chatScreen);
   playChime('connected');
+  triggerHaptic('connected');
 });
 
 socket.on('receive_message', (data) => {
-  appendMessage(data.text, 'stranger', data.timestamp);
+  appendMessage(data.text, 'stranger', data.timestamp, data.replyTo);
   playChime('received');
+  triggerHaptic('light');
   typingIndicator.classList.add('hidden');
 });
 
 socket.on('partner_typing', () => {
   typingIndicator.classList.remove('hidden');
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  if (isScrolledNearBottom()) {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+  }
 });
 
 socket.on('partner_stop_typing', () => {
@@ -765,6 +1032,8 @@ socket.on('partner_stop_typing', () => {
 
 socket.on('partner_disconnected', () => {
   isPartnerConnected = false;
+  cancelSkipGrace();
+  clearReply();
   strangerSubstatus.innerHTML = `
     <span class="active-dot" style="background-color: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
     <span style="color: #ef4444;">Disconnected</span>
@@ -773,9 +1042,13 @@ socket.on('partner_disconnected', () => {
   typingIndicator.classList.add('hidden');
   appendDisconnectBanner();
   playChime('disconnected');
+  triggerHaptic('disconnected');
 });
 
 socket.on('chat_ended', () => {
   isPartnerConnected = false;
+  cancelSkipGrace();
+  clearReply();
+  clearUnreadPill();
   showScreen(landingScreen);
 });
