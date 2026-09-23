@@ -1417,6 +1417,46 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
     bubble.appendChild(quoteCard);
   }
 
+  // Render Body: Image Attachments & View Once
+  if (extra && extra.image) {
+    if (extra.viewOnce) {
+      if (sender !== 'me') {
+        const viewOnceCard = document.createElement('div');
+        viewOnceCard.className = 'view-once-card';
+        viewOnceCard.id = `view_once_${id}`;
+        viewOnceCard.innerHTML = `
+          <div class="view-once-badge">1</div>
+          <span>🔒 Photo (Tap to view once)</span>
+        `;
+        viewOnceCard.addEventListener('click', () => {
+          openMediaModal(extra.image, true, id);
+        });
+        bubble.appendChild(viewOnceCard);
+      } else {
+        const imgWrap = document.createElement('div');
+        imgWrap.className = 'msg-image-wrap';
+        imgWrap.style.position = 'relative';
+        imgWrap.innerHTML = `
+          <img src="${extra.image}" class="msg-image" alt="View Once photo" />
+          <div class="view-once-badge" style="position:absolute; bottom:6px; right:6px; background:rgba(0,0,0,0.85); box-shadow:0 0 8px rgba(56,189,248,0.6);">1</div>
+        `;
+        imgWrap.addEventListener('click', () => openMediaModal(extra.image, false));
+        bubble.appendChild(imgWrap);
+      }
+    } else {
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'msg-image-wrap';
+      const img = document.createElement('img');
+      img.className = 'msg-image';
+      img.src = extra.image;
+      img.alt = 'Shared photo';
+      img.loading = 'lazy';
+      imgWrap.appendChild(img);
+      imgWrap.addEventListener('click', () => openMediaModal(extra.image, false));
+      bubble.appendChild(imgWrap);
+    }
+  }
+
   // Render Body: Audio Voice Note or Text with Safe Links
   if (extra && extra.audio && extra.audio.data) {
     const player = createVoicePlayer(extra.audio, sender);
@@ -1540,7 +1580,7 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
     time.appendChild(tick);
   }
 
-  // Stranger avatar circle (Mockup 2: silhouette left of bubble)
+  // Stranger avatar circle strictly on the left of content
   if (sender !== 'me') {
     const avatar = document.createElement('div');
     avatar.className = 'msg-avatar';
@@ -1548,8 +1588,12 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
     row.appendChild(avatar);
   }
 
-  row.appendChild(bubbleWrap);
-  row.appendChild(time);
+  const contentCol = document.createElement('div');
+  contentCol.className = 'msg-content-col';
+  contentCol.appendChild(bubbleWrap);
+  contentCol.appendChild(time);
+
+  row.appendChild(contentCol);
 
   const nearBottom = isScrolledNearBottom();
   messagesContainer.appendChild(row);
@@ -1621,6 +1665,8 @@ function stopActiveMediaAndTimers() {
 
 function resetChatUI() {
   clearReply();
+  clearAttachment();
+  closeMediaModal();
   cancelSkipGrace();
   clearUnreadPill();
   unpinMessage(false);
@@ -1757,17 +1803,215 @@ if (emojiToggleBtn && quickEmojiSheet) {
   });
 }
 
-// Clip button: prompt for link and insert
+// Photo Attachment & View Once Manager
 const clipBtn = document.getElementById('clipBtn');
-if (clipBtn) {
-  clipBtn.addEventListener('click', () => {
-    const url = prompt('Paste a link to share:');
-    if (url && url.trim()) {
-      messageInput.value += (messageInput.value ? ' ' : '') + url.trim();
-      messageInput.focus();
+const mediaFileInput = document.getElementById('mediaFileInput');
+const attachmentPreview = document.getElementById('attachmentPreview');
+const attachmentPreviewImg = document.getElementById('attachmentPreviewImg');
+const viewOnceToggleBtn = document.getElementById('viewOnceToggleBtn');
+const viewOnceStatusText = document.getElementById('viewOnceStatusText');
+const removeAttachmentBtn = document.getElementById('removeAttachmentBtn');
+
+let pendingAttachment = null; // { dataUrl, isViewOnce: boolean }
+
+function compressImage(dataUrl, callback) {
+  const img = new Image();
+  img.onload = () => {
+    const maxDim = 1200;
+    let width = img.width;
+    let height = img.height;
+    if (width > maxDim || height > maxDim) {
+      if (width > height) {
+        height = Math.round((height * maxDim) / width);
+        width = maxDim;
+      } else {
+        width = Math.round((width * maxDim) / height);
+        height = maxDim;
+      }
     }
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, width, height);
+    callback(canvas.toDataURL('image/jpeg', 0.72));
+  };
+  img.src = dataUrl;
+}
+
+function clearAttachment() {
+  pendingAttachment = null;
+  if (attachmentPreview) attachmentPreview.classList.add('hidden');
+  if (attachmentPreviewImg) attachmentPreviewImg.src = '';
+  if (viewOnceToggleBtn) viewOnceToggleBtn.classList.remove('active');
+  if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
+  if (mediaFileInput) mediaFileInput.value = '';
+}
+
+if (clipBtn && mediaFileInput) {
+  clipBtn.addEventListener('click', () => {
+    mediaFileInput.click();
+  });
+
+  mediaFileInput.addEventListener('change', (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      alert('Please select an image file (JPEG, PNG, WebP).');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      compressImage(ev.target.result, (compressedDataUrl) => {
+        pendingAttachment = {
+          dataUrl: compressedDataUrl,
+          isViewOnce: false
+        };
+        if (attachmentPreviewImg) attachmentPreviewImg.src = compressedDataUrl;
+        if (attachmentPreview) attachmentPreview.classList.remove('hidden');
+        if (viewOnceToggleBtn) viewOnceToggleBtn.classList.remove('active');
+        if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
+        messageInput.focus();
+        triggerHaptic('light');
+      });
+    };
+    reader.readAsDataURL(file);
   });
 }
+
+if (viewOnceToggleBtn) {
+  viewOnceToggleBtn.addEventListener('click', () => {
+    if (!pendingAttachment) return;
+    pendingAttachment.isViewOnce = !pendingAttachment.isViewOnce;
+    if (pendingAttachment.isViewOnce) {
+      viewOnceToggleBtn.classList.add('active');
+      if (viewOnceStatusText) viewOnceStatusText.textContent = '🔒 View Once Active (1 time seen)';
+    } else {
+      viewOnceToggleBtn.classList.remove('active');
+      if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
+    }
+    triggerHaptic('light');
+  });
+}
+
+if (removeAttachmentBtn) {
+  removeAttachmentBtn.addEventListener('click', clearAttachment);
+}
+
+// Fullscreen Media Modal & View Once Auto-Destruct
+let activeViewOnceMsgId = null;
+let viewOnceTimerInterval = null;
+
+function openMediaModal(src, isViewOnce = false, msgId = null) {
+  const modal = document.getElementById('mediaModal');
+  const img = document.getElementById('mediaModalImg');
+  const timerWrap = document.getElementById('viewOnceModalTimer');
+  const secEl = document.getElementById('viewOnceSec');
+
+  if (!modal || !img) return;
+
+  img.src = src;
+  modal.classList.remove('hidden');
+
+  if (isViewOnce && msgId) {
+    activeViewOnceMsgId = msgId;
+    if (timerWrap) timerWrap.classList.remove('hidden');
+    let timeLeft = 8;
+    if (secEl) secEl.textContent = timeLeft;
+
+    if (viewOnceTimerInterval) clearInterval(viewOnceTimerInterval);
+    viewOnceTimerInterval = setInterval(() => {
+      timeLeft--;
+      if (secEl) secEl.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(viewOnceTimerInterval);
+        closeMediaModal();
+      }
+    }, 1000);
+  } else {
+    activeViewOnceMsgId = null;
+    if (timerWrap) timerWrap.classList.add('hidden');
+  }
+}
+
+function closeMediaModal() {
+  const modal = document.getElementById('mediaModal');
+  if (!modal || modal.classList.contains('hidden')) return;
+
+  if (viewOnceTimerInterval) {
+    clearInterval(viewOnceTimerInterval);
+    viewOnceTimerInterval = null;
+  }
+
+  modal.classList.add('hidden');
+
+  if (activeViewOnceMsgId) {
+    const targetId = activeViewOnceMsgId;
+    activeViewOnceMsgId = null;
+    triggerMessageDestruction(targetId, true);
+    socket.emit('message_destruct', { msgId: targetId });
+  }
+}
+
+const closeMediaModalBtn = document.getElementById('closeMediaModalBtn');
+const mediaModalBackdrop = document.getElementById('mediaModalBackdrop');
+if (closeMediaModalBtn) closeMediaModalBtn.addEventListener('click', closeMediaModal);
+if (mediaModalBackdrop) mediaModalBackdrop.addEventListener('click', closeMediaModal);
+
+// Live Render Build Auto-Update Detection & 5-Second Grace Countdown
+let currentBuildId = null;
+let updateCountdownInterval = null;
+
+function handleServerBuild(data) {
+  if (!data || !data.buildId) return;
+  if (!currentBuildId) {
+    currentBuildId = data.buildId;
+    return;
+  }
+  if (data.buildId !== currentBuildId) {
+    triggerUpdateBanner();
+  }
+}
+
+function triggerUpdateBanner() {
+  const banner = document.getElementById('updateBanner');
+  const countdownEl = document.getElementById('updateCountdown');
+  if (!banner || !banner.classList.contains('hidden')) return;
+
+  banner.classList.remove('hidden');
+  playChime('connected');
+  triggerHaptic('connected');
+
+  let seconds = 5;
+  if (countdownEl) countdownEl.textContent = seconds;
+
+  if (updateCountdownInterval) clearInterval(updateCountdownInterval);
+  updateCountdownInterval = setInterval(() => {
+    seconds--;
+    if (countdownEl) countdownEl.textContent = seconds;
+    if (seconds <= 0) {
+      clearInterval(updateCountdownInterval);
+      window.location.reload(true);
+    }
+  }, 1000);
+}
+
+const updateNowBtn = document.getElementById('updateNowBtn');
+if (updateNowBtn) {
+  updateNowBtn.addEventListener('click', () => {
+    window.location.reload(true);
+  });
+}
+
+// Background poll every 25 seconds against /api/version
+setInterval(() => {
+  fetch('/api/version')
+    .then((r) => r.json())
+    .then((data) => {
+      if (data && data.buildId) handleServerBuild(data);
+    })
+    .catch(() => {});
+}, 25000);
 
 // Navigation Capsule Buttons & Modals
 const navGetStartedBtn = document.getElementById('navGetStartedBtn');
@@ -1882,7 +2126,7 @@ if (navHomeBtn) {
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const text = messageInput.value.trim();
-  if (!text || !isPartnerConnected) return;
+  if ((!text && !pendingAttachment) || !isPartnerConnected) return;
 
   const replyPayload = activeReply ? {
     id: activeReply.id,
@@ -1891,9 +2135,24 @@ chatForm.addEventListener('submit', (e) => {
   } : null;
 
   const willBeEphemeral = isBombActive;
+  const imagePayload = pendingAttachment ? pendingAttachment.dataUrl : null;
+  const isViewOnce = pendingAttachment ? pendingAttachment.isViewOnce : false;
   const msgId = generateMsgId();
-  socket.emit('send_message', { msgId, text, replyTo: replyPayload, ephemeral: willBeEphemeral });
-  appendMessage(text, 'me', Date.now(), replyPayload, msgId, { ephemeral: willBeEphemeral });
+
+  socket.emit('send_message', {
+    msgId,
+    text,
+    image: imagePayload,
+    viewOnce: isViewOnce,
+    replyTo: replyPayload,
+    ephemeral: willBeEphemeral
+  });
+
+  appendMessage(text, 'me', Date.now(), replyPayload, msgId, {
+    ephemeral: willBeEphemeral,
+    image: imagePayload,
+    viewOnce: isViewOnce
+  });
   playChime('sent');
 
   if (willBeEphemeral) {
@@ -1902,6 +2161,7 @@ chatForm.addEventListener('submit', (e) => {
     messageInput?.setAttribute('placeholder', 'Type a message...');
   }
 
+  clearAttachment();
   clearReply();
   isTypingSent = false;
   socket.emit('stop_typing');
@@ -1977,10 +2237,14 @@ socket.on('chat_start', () => {
   triggerHaptic('connected');
 });
 
+socket.on('server_build', handleServerBuild);
+
 socket.on('receive_message', (data) => {
   appendMessage(data.text, 'stranger', data.timestamp, data.replyTo, data.msgId, {
     ephemeral: data.ephemeral,
-    audio: data.audio
+    audio: data.audio,
+    image: data.image,
+    viewOnce: data.viewOnce
   });
   playChime('received');
   triggerHaptic('light');

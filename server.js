@@ -42,6 +42,11 @@ io.use((socket, next) => {
   next();
 });
 
+// Build version & timestamp tracking for zero-downtime auto-updates
+const pkg = require('./package.json');
+const BUILD_VERSION = pkg.version || '2.2.0';
+const BUILD_ID = `${BUILD_VERSION}-${Date.now().toString(36)}`;
+
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -50,9 +55,87 @@ app.get('/privacy', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
 });
 
+// Live version endpoint for client auto-update checks
+app.get('/api/version', (req, res) => {
+  res.json({
+    version: BUILD_VERSION,
+    buildId: BUILD_ID,
+    timestamp: Date.now()
+  });
+});
+
 // Matchmaking state (In-Memory / Zero DB)
 let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
+
+// Joby Sir Discipline Easter Egg State
+const roomJobyCooldown = new Map(); // roomId -> timestamp of last intervention
+const JOBY_PHOTO = 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG';
+const JOBY_MESSAGE_TEXT = 'i told you beta gali nahi dene ka meet tommarow';
+
+const ABUSE_PATTERNS = [
+  /\b(b[\s\.\-_]*c|m[\s\.\-_]*c|b[\s\.\-_]*k[\s\.\-_]*l|b[\s\.\-_]*s[\s\.\-_]*d[\s\.\-_]*k)\b/i,
+  /\b(bhenchod|behenchod|behnchod|benchod|banchod|betichod|teri maa ki)\b/i,
+  /\b(madarchod|madarchor|maderchod|madarjaat|motherfucker|mf)\b/i,
+  /\b(bhosdike|bhosdi|bhosad|bhosadi|bhosadike|bsdiwale|bhosdiwale)\b/i,
+  /\b(chutiya|chutiye|chutya|chootiya|chutiyapa|choot|chut)\b/i,
+  /\b(gandu|gaand|gand|gaandu)\b/i,
+  /\b(laude|lauda|loda|lode|lund|lavde|lowde)\b/i,
+  /\b(harami|haraami|kamine|kamina|randi|raand|chinar|kutta|kutte|suar|jhant|jhaant)\b/i,
+  /\b(fuck|fucker|fucking|fuk|fck|f\*ck|bitch|bastard|asshole|cunt|dick|pussy)\b/i
+];
+
+function normalizeProfanity(text) {
+  return text.toLowerCase()
+    .replace(/[@]/g, 'a')
+    .replace(/[$]/g, 's')
+    .replace(/[0]/g, 'o')
+    .replace(/[1!]/g, 'i')
+    .replace(/(.)\1+/g, (m, p) => p);
+}
+
+function containsAbuse(text) {
+  if (!text || typeof text !== 'string') return false;
+  const raw = text.toLowerCase();
+  const normalized = normalizeProfanity(text);
+  return ABUSE_PATTERNS.some((regex) => regex.test(normalized) || regex.test(raw));
+}
+
+function triggerJobySirIntervention(roomId) {
+  if (!roomId) return;
+  const now = Date.now();
+  const lastIntervention = roomJobyCooldown.get(roomId) || 0;
+  if (now - lastIntervention < 9000) return; // 9s cooldown per room
+  roomJobyCooldown.set(roomId, now);
+
+  // 1. Alert typing indicator
+  setTimeout(() => {
+    const room = io.sockets.adapter.rooms.get(roomId);
+    if (room && room.size > 0) {
+      io.to(roomId).emit('joby_sir_incoming', {
+        name: 'Joby Sir',
+        role: 'Discipline Incharge'
+      });
+    }
+  }, 250);
+
+  // 2. Deliver Joby Sir's reprimand message
+  setTimeout(() => {
+    const room = io.sockets.adapter.rooms.get(roomId);
+    if (room && room.size > 0) {
+      io.to(roomId).emit('joby_sir_message', {
+        id: `joby_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        name: 'Joby Jacob Sir',
+        role: 'Discipline Incharge',
+        photo: JOBY_PHOTO,
+        fallbackPhoto: '/joby-sir.jpg',
+        text: JOBY_MESSAGE_TEXT,
+        timestamp: Date.now()
+      });
+    }
+  }, 1300);
+}
+
 
 // Rate limiting & DoS guards (Sliding window on socket.data, 0 extra deps)
 function isRateLimited(socket, limit = 20, windowMs = 2000, key = 'msgTimestamps') {
@@ -95,6 +178,7 @@ function cleanupUser(socketId, notifyPartner = true) {
 
     // Remove current user
     activeRooms.delete(socketId);
+    roomJobyCooldown.delete(roomId);
 
     // FIX: Leave room for initiating socket (eliminates ghost room leak)
     const currentSocket = io.sockets.sockets.get(socketId);
@@ -153,7 +237,8 @@ io.on('connection', (socket) => {
   socket.data = { msgTimestamps: [], lastAction: 0 };
   broadcastOnlineCount();
 
-  // Send current online count immediately to newly connected client
+  // Send current online count and server build info to newly connected client
+  socket.emit('server_build', { buildId: BUILD_ID, version: BUILD_VERSION });
   socket.emit('online_count', { count: io.engine.clientsCount });
 
   // Start searching for a partner (throttled to prevent click spam)
@@ -190,7 +275,17 @@ io.on('connection', (socket) => {
       }
     }
 
-    if (!sanitized && !audioPayload) return;
+    // Image attachment validation (ephemeral Base64 JPEG/PNG/WebP, max 950KB)
+    let imagePayload = null;
+    if (data.image && typeof data.image === 'string' && (data.image.startsWith('data:image/') || data.image.startsWith('https://'))) {
+      if (data.image.length <= 950000) {
+        imagePayload = data.image;
+      }
+    }
+
+    const viewOnce = !!data.viewOnce;
+
+    if (!sanitized && !audioPayload && !imagePayload) return;
 
     let replyTo = null;
     if (data.replyTo && typeof data.replyTo.text === 'string') {
@@ -218,10 +313,17 @@ io.on('connection', (socket) => {
           msgId,
           text: sanitized,
           audio: audioPayload,
+          image: imagePayload,
+          viewOnce: viewOnce,
           replyTo: replyTo,
           ephemeral: ephemeral,
           timestamp: Date.now()
         });
+
+        // Trigger Joby Sir Discipline Easter Egg if bad words / gali detected
+        if (sanitized && containsAbuse(sanitized)) {
+          triggerJobySirIntervention(roomId);
+        }
       } else {
         cleanupUser(socket.id, false);
         socket.emit('partner_disconnected', { message: 'Stranger has disconnected.' });

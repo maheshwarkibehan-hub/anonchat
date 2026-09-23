@@ -1033,20 +1033,58 @@ body {
 
 .msg-row {
   display: flex;
-  flex-direction: column;
-  max-width: 76%;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 82%;
   position: relative;
   transition: transform 0.2s var(--ease-spring);
+  margin-bottom: 6px;
 }
 
 .msg-row.me {
   align-self: flex-end;
-  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .msg-row.stranger {
   align-self: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.msg-content-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.msg-row.me .msg-content-col {
+  align-items: flex-end;
+}
+
+.msg-row.stranger .msg-content-col {
   align-items: flex-start;
+}
+
+.msg-avatar {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background: #181c2e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #818cf8;
+  flex-shrink: 0;
+  margin-bottom: 18px; /* sits right beside bubble, above timestamp */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.msg-row.me .msg-avatar {
+  display: none !important;
 }
 
 .msg-bubble-wrap {
@@ -2505,21 +2543,6 @@ body {
   user-select: none;
 }
 
-.msg-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #181c2e;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #818cf8;
-  flex-shrink: 0;
-  align-self: flex-end;
-  margin-bottom: 2px;
-}
-
 .capsule-dock {
   display: flex;
   align-items: center;
@@ -2665,4 +2688,488 @@ body {
 .github-link svg {
   display: block;
 }
+
+/* ==========================================================================
+   Photo Attachments, View Once Cards & Fullscreen Media Lightbox
+   ========================================================================== */
+.attachment-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(18, 22, 38, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  animation: replySlideUp 0.2s var(--ease-spring);
+}
+
+.attachment-thumb-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.attachment-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.view-once-pill-btn {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-once-pill-btn.active {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  color: #040914;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+  transform: scale(1.1);
+}
+
+.attachment-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.attachment-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.attachment-sub {
+  font-size: 0.72rem;
+  color: var(--text-slate-400);
+}
+
+.attachment-remove-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.attachment-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Chat Bubble Image Renderings */
+.msg-image-wrap {
+  margin-top: 4px;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 240px;
+  max-height: 260px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.msg-image-wrap:hover {
+  transform: scale(1.02);
+}
+
+.msg-image {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* View Once (1 Time Seen) Chat Card */
+.view-once-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(24, 27, 44, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #f8fafc;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s var(--ease-spring);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.view-once-card:hover {
+  background: rgba(30, 36, 60, 0.95);
+  border-color: #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+  transform: translateY(-1px);
+}
+
+.view-once-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px dashed #38bdf8;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.view-once-card.expired {
+  opacity: 0.55;
+  border-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.view-once-card.expired .view-once-badge {
+  border-color: #64748b;
+  color: #64748b;
+  border-style: solid;
+}
+
+/* Fullscreen Media Modal Lightbox */
+.media-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.media-modal.hidden {
+  display: none !important;
+}
+
+.media-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 8, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.media-modal-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.media-modal-content img {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  object-fit: contain;
+}
+
+.media-modal-close {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.media-modal-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+}
+
+.view-once-modal-timer {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  animation: pulse 1s infinite alternate;
+}
+
+/* Live Render Build Update Alert Banner */
+.update-banner {
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  width: calc(100% - 24px);
+  max-width: 680px;
+  margin: 0 auto 12px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.25);
+  animation: replySlideUp 0.3s var(--ease-spring);
+}
+
+.update-banner.hidden {
+  display: none !important;
+}
+
+.update-banner-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.update-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 1.2s infinite;
+}
+
+.update-text {
+  font-size: 0.82rem;
+  color: #f1f5f9;
+}
+
+.update-text strong {
+  color: #38bdf8;
+}
+
+.update-now-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--accent-indigo);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.update-now-btn:hover {
+  background: var(--accent-indigo-hover);
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   Joby Sir Discipline Easter Egg (School Discipline Incharge)
+   ========================================================================== */
+.joby-entrance-chip {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(220, 38, 38, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  color: #fca5a5;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+  margin: 10px 0;
+  animation: jobySirenPulse 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes jobySirenPulse {
+  0% {
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+  }
+  100% {
+    border-color: rgba(239, 68, 68, 0.9);
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.5);
+  }
+}
+
+.joby-siren-dot {
+  font-size: 1rem;
+  display: inline-block;
+  animation: jobySirenShake 0.6s infinite ease-in-out;
+}
+
+@keyframes jobySirenShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-12deg) scale(1.1); }
+  75% { transform: rotate(12deg) scale(1.1); }
+}
+
+.msg-row.joby-sir-row {
+  align-self: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 88%;
+  margin-bottom: 12px;
+  animation: jobySlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes jobySlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.joby-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.joby-avatar-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+  background: #1e1b4b;
+}
+
+.joby-badge-dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  font-size: 11px;
+  background: #7f1d1d;
+  border: 1px solid #ef4444;
+  border-radius: 50%;
+  padding: 1px;
+  line-height: 1;
+}
+
+.joby-bubble {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.16) 0%, rgba(17, 24, 39, 0.95) 100%) !important;
+  border: 1px solid rgba(239, 68, 68, 0.45) !important;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.22), 0 0 15px rgba(239, 68, 68, 0.1) !important;
+  border-bottom-left-radius: 4px !important;
+  padding: 12px 16px !important;
+}
+
+.joby-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.joby-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fca5a5;
+  letter-spacing: 0.02em;
+}
+
+.joby-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(239, 68, 68, 0.25);
+  color: #fee2e2;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+.joby-text {
+  font-size: 0.96rem !important;
+  font-weight: 600 !important;
+  color: #fef08a !important;
+  font-style: italic;
+  line-height: 1.45;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(254, 240, 138, 0.2);
+}
+
+.joby-warning-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.70rem;
+  color: #f87171;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.joby-typing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fca5a5;
+  font-weight: 600;
+  animation: jobySirenPulse 1.2s infinite alternate ease-in-out;
+}
+
+.joby-siren-icon {
+  animation: jobySirenShake 0.5s infinite ease-in-out;
+}
+
 
