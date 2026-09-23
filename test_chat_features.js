@@ -73,6 +73,12 @@ assert(clientJs.includes('formatMessageTextWithSafeLinks'), 'client.js has safe 
 assert(clientJs.includes('message_delivered') && clientJs.includes('message_seen'), 'client.js supports delivery and seen tick relays');
 assert(clientJs.includes('document.hidden'), 'client.js checks document.hidden to save battery and throttle rAF');
 
+// Senior Dev Audit Fix Checks (Ponytail Core Directives)
+assert(clientJs.includes('generateMsgId') && clientJs.includes('msgId, text,'), 'client.js: msgId generated upfront on sender to synchronize DOM ticks & relays');
+assert(clientJs.includes('activeBombTimers') && clientJs.includes('stopActiveMediaAndTimers'), 'client.js: activeBombTimers Map cleans up intervals to prevent memory leaks');
+assert(clientJs.includes('currentPlayingAudio') && clientJs.includes('currentPlayingAudio.pause()'), 'client.js: audio singleton prevents overlapping concurrent voice note playback');
+assert(clientJs.includes('shouldSendAudio'), 'client.js: shouldSendAudio guard prevents canceled audio recording race condition');
+
 // Server.js Checks
 assert(serverJs.includes('replyTo = {'), 'server.js sanitizes and constructs replyTo object');
 assert(serverJs.includes('slice(0, 150)'), 'server.js caps quoted text to 150 chars max');
@@ -84,6 +90,7 @@ assert(serverJs.includes('message_delivered'), 'server.js relays delivery ticks'
 assert(serverJs.includes('message_seen'), 'server.js relays seen ticks');
 assert(serverJs.includes('message_destruct'), 'server.js relays bomb destruction events');
 assert(serverJs.includes('partner_focus'), 'server.js relays partner focus states');
+assert(serverJs.includes("key = 'msgTimestamps'") && serverJs.includes("'relayTimestamps'"), 'server.js: isolated rate-limiting per channel prevents DoS attacks without blocking chat');
 
 console.log(`\n--- Finished: ${passed} Passed, ${failed} Failed ---`);
 process.exit(failed === 0 ? 0 : 1);

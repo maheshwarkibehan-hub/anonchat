@@ -904,6 +904,12 @@ function renderReactionBadges(msgId) {
 
 // 3. Ephemeral Bomb Self-Destruction
 let isBombActive = false;
+const activeBombTimers = new Map(); // msgId -> intervalId
+
+function generateMsgId() {
+  return 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+}
+
 if (bombToggleBtn) {
   bombToggleBtn.addEventListener('click', () => {
     isBombActive = !isBombActive;
@@ -919,6 +925,10 @@ if (bombToggleBtn) {
 }
 
 function triggerMessageDestruction(msgId) {
+  if (activeBombTimers.has(msgId)) {
+    clearInterval(activeBombTimers.get(msgId));
+    activeBombTimers.delete(msgId);
+  }
   const row = document.getElementById(msgId);
   if (!row) return;
   row.classList.add('destructing');
@@ -937,6 +947,7 @@ let voiceTimerInterval = null;
 let voiceDurationSeconds = 0;
 let isRecordingVoice = false;
 let audioStream = null;
+let shouldSendAudio = true;
 
 async function startVoiceRecording() {
   if (isRecordingVoice) return;
@@ -948,6 +959,7 @@ async function startVoiceRecording() {
     audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
     audioChunks = [];
     voiceDurationSeconds = 0;
+    shouldSendAudio = true;
 
     const mimeType = (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('audio/webm;codecs=opus'))
       ? 'audio/webm;codecs=opus'
@@ -966,20 +978,22 @@ async function startVoiceRecording() {
         audioStream.getTracks().forEach((t) => t.stop());
         audioStream = null;
       }
-      if (audioChunks.length > 0 && voiceDurationSeconds > 0) {
+      if (shouldSendAudio && audioChunks.length > 0 && voiceDurationSeconds > 0) {
         const audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
         const reader = new FileReader();
         reader.onloadend = () => {
           const base64Audio = reader.result;
           const duration = Math.min(Math.max(1, voiceDurationSeconds), 10);
           const replyPayload = activeReply ? { id: activeReply.id, text: activeReply.text, author: activeReply.author } : null;
+          const msgId = generateMsgId();
 
           socket.emit('send_message', {
+            msgId: msgId,
             audio: { data: base64Audio, duration: duration },
             replyTo: replyPayload,
             ephemeral: isBombActive
           });
-          appendMessage('', 'me', Date.now(), replyPayload, null, {
+          appendMessage('', 'me', Date.now(), replyPayload, msgId, {
             audio: { data: base64Audio, duration: duration },
             ephemeral: isBombActive
           });
@@ -993,6 +1007,9 @@ async function startVoiceRecording() {
         };
         reader.readAsDataURL(audioBlob);
       }
+      audioChunks = [];
+      voiceDurationSeconds = 0;
+      shouldSendAudio = true;
     };
 
     mediaRecorder.start(200);
@@ -1020,6 +1037,8 @@ async function startVoiceRecording() {
 function stopVoiceRecording(send = true) {
   if (!isRecordingVoice) return;
   isRecordingVoice = false;
+  shouldSendAudio = send;
+
   if (voiceTimerInterval) {
     clearInterval(voiceTimerInterval);
     voiceTimerInterval = null;
@@ -1101,6 +1120,9 @@ function formatMessageTextWithSafeLinks(container, text) {
 }
 
 // 6. Custom Voice Note Player
+let currentPlayingAudio = null;
+let currentPlayingPlayer = null;
+
 function createVoicePlayer(audioPayload, sender) {
   const player = document.createElement('div');
   player.className = 'voice-player';
@@ -1150,6 +1172,10 @@ function createVoicePlayer(audioPayload, sender) {
       });
       audioObj.addEventListener('ended', () => {
         isPlaying = false;
+        if (currentPlayingAudio === audioObj) {
+          currentPlayingAudio = null;
+          currentPlayingPlayer = null;
+        }
         player.classList.remove('playing');
         playBtn.querySelector('.play-icon').classList.remove('hidden');
         playBtn.querySelector('.pause-icon').classList.add('hidden');
@@ -1157,6 +1183,10 @@ function createVoicePlayer(audioPayload, sender) {
       });
       audioObj.addEventListener('pause', () => {
         isPlaying = false;
+        if (currentPlayingAudio === audioObj) {
+          currentPlayingAudio = null;
+          currentPlayingPlayer = null;
+        }
         player.classList.remove('playing');
         playBtn.querySelector('.play-icon').classList.remove('hidden');
         playBtn.querySelector('.pause-icon').classList.add('hidden');
@@ -1166,6 +1196,11 @@ function createVoicePlayer(audioPayload, sender) {
     if (isPlaying) {
       audioObj.pause();
     } else {
+      if (currentPlayingAudio && currentPlayingAudio !== audioObj) {
+        currentPlayingAudio.pause();
+      }
+      currentPlayingAudio = audioObj;
+      currentPlayingPlayer = player;
       audioObj.play().then(() => {
         isPlaying = true;
         player.classList.add('playing');
@@ -1205,7 +1240,7 @@ document.addEventListener('visibilitychange', () => {
 // Master Message Appender with Full Feature Suite
 // ==========================================================================
 function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = null, msgId = null, extra = {}) {
-  const id = msgId || 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+  const id = msgId || generateMsgId();
   const row = document.createElement('div');
   row.className = `msg-row ${sender}`;
   row.id = id;
@@ -1313,10 +1348,12 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
       if (countEl) countEl.textContent = `${secondsLeft}s`;
       if (secondsLeft <= 0) {
         clearInterval(bombInterval);
+        activeBombTimers.delete(id);
         triggerMessageDestruction(id);
         socket.emit('message_destruct', { msgId: id });
       }
     }, 1000);
+    activeBombTimers.set(id, bombInterval);
   }
 
   // Quoted Reply Card
@@ -1550,6 +1587,16 @@ function appendDisconnectBanner() {
   });
 }
 
+function stopActiveMediaAndTimers() {
+  activeBombTimers.forEach((timer) => clearInterval(timer));
+  activeBombTimers.clear();
+  if (currentPlayingAudio) {
+    currentPlayingAudio.pause();
+    currentPlayingAudio = null;
+    currentPlayingPlayer = null;
+  }
+}
+
 function resetChatUI() {
   clearReply();
   cancelSkipGrace();
@@ -1559,6 +1606,7 @@ function resetChatUI() {
   messageReactions.clear();
   unseenStrangerMsgs.clear();
   stopVoiceRecording(false);
+  stopActiveMediaAndTimers();
   isBombActive = false;
   if (bombToggleBtn) bombToggleBtn.classList.remove('active');
   if (messageInput) messageInput.setAttribute('placeholder', 'Type a message...');
@@ -1590,6 +1638,7 @@ function startSearch() {
   unpinMessage(false);
   closeReactionDock();
   stopVoiceRecording(false);
+  stopActiveMediaAndTimers();
   triggerDimensionalWarp(900);
   showScreen(searchingScreen);
   socket.emit('find_partner');
@@ -1607,6 +1656,7 @@ function nextPartner() {
   unpinMessage(false);
   closeReactionDock();
   stopVoiceRecording(false);
+  stopActiveMediaAndTimers();
   triggerDimensionalWarp(900);
   socket.emit('next_partner');
   showScreen(searchingScreen);
@@ -1619,6 +1669,7 @@ function endChat() {
   unpinMessage(false);
   closeReactionDock();
   stopVoiceRecording(false);
+  stopActiveMediaAndTimers();
   socket.emit('leave_chat');
   showScreen(landingScreen);
 }
@@ -1642,8 +1693,9 @@ chatForm.addEventListener('submit', (e) => {
   } : null;
 
   const willBeEphemeral = isBombActive;
-  socket.emit('send_message', { text, replyTo: replyPayload, ephemeral: willBeEphemeral });
-  appendMessage(text, 'me', Date.now(), replyPayload, null, { ephemeral: willBeEphemeral });
+  const msgId = generateMsgId();
+  socket.emit('send_message', { msgId, text, replyTo: replyPayload, ephemeral: willBeEphemeral });
+  appendMessage(text, 'me', Date.now(), replyPayload, msgId, { ephemeral: willBeEphemeral });
   playChime('sent');
 
   if (willBeEphemeral) {
@@ -1798,6 +1850,7 @@ socket.on('partner_disconnected', () => {
   unpinMessage(false);
   closeReactionDock();
   stopVoiceRecording(false);
+  stopActiveMediaAndTimers();
   strangerSubstatus.innerHTML = `
     <span class="active-dot" style="background-color: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
     <span style="color: #ef4444;">Disconnected</span>
@@ -1817,5 +1870,6 @@ socket.on('chat_ended', () => {
   unpinMessage(false);
   closeReactionDock();
   stopVoiceRecording(false);
+  stopActiveMediaAndTimers();
   showScreen(landingScreen);
 });

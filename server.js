@@ -50,12 +50,12 @@ let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
 
 // Rate limiting & DoS guards (Sliding window on socket.data, 0 extra deps)
-function isRateLimited(socket, limit = 6, windowMs = 2000) {
+function isRateLimited(socket, limit = 8, windowMs = 2000, key = 'msgTimestamps') {
   const now = Date.now();
-  if (!socket.data.msgTimestamps) socket.data.msgTimestamps = [];
-  socket.data.msgTimestamps = socket.data.msgTimestamps.filter((t) => now - t < windowMs);
-  if (socket.data.msgTimestamps.length >= limit) return true;
-  socket.data.msgTimestamps.push(now);
+  if (!socket.data[key]) socket.data[key] = [];
+  socket.data[key] = socket.data[key].filter((t) => now - t < windowMs);
+  if (socket.data[key].length >= limit) return true;
+  socket.data[key].push(now);
   return false;
 }
 
@@ -164,10 +164,12 @@ io.on('connection', (socket) => {
 
   // Sending a message with rate limiting and newline normalization
   socket.on('send_message', (data) => {
-    if (isRateLimited(socket, 8, 2000)) return; // Max 8 messages per 2s
+    if (isRateLimited(socket, 8, 2000, 'msgTimestamps')) return; // Max 8 messages per 2s
     if (!data) return;
 
-    const msgId = typeof data.msgId === 'string' ? data.msgId.slice(0, 64) : `msg_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+    const msgId = typeof data.msgId === 'string' && data.msgId.trim()
+      ? data.msgId.trim().slice(0, 64)
+      : `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
     const textRaw = typeof data.text === 'string' ? data.text : '';
     const sanitized = textRaw.trim().replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').slice(0, 1500);
 
@@ -217,8 +219,9 @@ io.on('connection', (socket) => {
     }
   });
 
-  // Relay Emoji Reactions
+  // Relay Emoji Reactions (Rate limited)
   socket.on('message_reaction', (data) => {
+    if (isRateLimited(socket, 15, 2000, 'relayTimestamps')) return;
     if (!data || typeof data.msgId !== 'string' || typeof data.reaction !== 'string') return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
@@ -232,8 +235,9 @@ io.on('connection', (socket) => {
     }
   });
 
-  // Relay Pinned Messages
+  // Relay Pinned Messages (Rate limited)
   socket.on('pin_message', (data) => {
+    if (isRateLimited(socket, 10, 2000, 'relayTimestamps')) return;
     if (!data || typeof data.msgId !== 'string') return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
@@ -248,6 +252,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('unpin_message', () => {
+    if (isRateLimited(socket, 10, 2000, 'relayTimestamps')) return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
       const partnerSocket = io.sockets.sockets.get(partnerId);
@@ -257,8 +262,9 @@ io.on('connection', (socket) => {
     }
   });
 
-  // Relay Delivery & Seen Ticks
+  // Relay Delivery & Seen Ticks (Rate limited)
   socket.on('message_delivered', (data) => {
+    if (isRateLimited(socket, 20, 2000, 'tickTimestamps')) return;
     if (!data || typeof data.msgId !== 'string') return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
@@ -270,6 +276,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('message_seen', (data) => {
+    if (isRateLimited(socket, 20, 2000, 'tickTimestamps')) return;
     if (!data || typeof data.msgId !== 'string') return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
@@ -280,8 +287,9 @@ io.on('connection', (socket) => {
     }
   });
 
-  // Relay Ephemeral Bomb Destruct Event
+  // Relay Ephemeral Bomb Destruct Event (Rate limited)
   socket.on('message_destruct', (data) => {
+    if (isRateLimited(socket, 10, 2000, 'relayTimestamps')) return;
     if (!data || typeof data.msgId !== 'string') return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
@@ -294,6 +302,7 @@ io.on('connection', (socket) => {
 
   // Relay Tab Focus State (for real-time seen indicators)
   socket.on('partner_focus', (data) => {
+    if (isRateLimited(socket, 10, 2000, 'relayTimestamps')) return;
     if (!data) return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
