@@ -15,10 +15,10 @@ const io = new Server(server, {
 
 const PORT = process.env.PORT || 3000;
 
-// Maintenance Mode: Instant toggle via Render Console ('npm run maintenance:on' or 'touch .maintenance')
+// Maintenance Mode: Active by default (Set MAINTENANCE_MODE=false in Render Environment tab to go live)
 const MAINTENANCE_FILE = path.join(__dirname, '.maintenance');
 function isMaintenanceActive() {
-  return process.env.MAINTENANCE_MODE === 'true' || fs.existsSync(MAINTENANCE_FILE);
+  return process.env.MAINTENANCE_MODE !== 'false';
 }
 
 app.use((req, res, next) => {

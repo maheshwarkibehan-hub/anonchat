@@ -5,6 +5,7 @@ const WebSocket = require('ws');
 
 // Import server
 process.env.PORT = 3009;
+process.env.MAINTENANCE_MODE = 'false';
 const server = require('./server');
 
 async function runTests() {
