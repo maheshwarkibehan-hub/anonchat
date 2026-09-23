@@ -4,7 +4,18 @@ const path = require('path');
 const indexHtml = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf-8');
 const styleCss = fs.readFileSync(path.join(__dirname, 'public', 'style.css'), 'utf-8');
 const clientJs = fs.readFileSync(path.join(__dirname, 'public', 'client.js'), 'utf-8');
-const previewHtml = fs.readFileSync(path.join(__dirname, '..', '..', 'brain', 'c8a04669-7f36-4352-8da0-49f55be181e0', 'ui_preview.html'), 'utf-8');
+const userHome = process.env.USERPROFILE || process.env.HOME || '';
+let previewHtml = '';
+const candidatePaths = [
+  path.join(userHome, '.gemini', 'antigravity', 'brain', 'c8a04669-7f36-4352-8da0-49f55be181e0', 'ui_preview.html'),
+  path.join(__dirname, '..', '..', 'brain', 'c8a04669-7f36-4352-8da0-49f55be181e0', 'ui_preview.html')
+];
+for (const p of candidatePaths) {
+  if (fs.existsSync(p)) {
+    previewHtml = fs.readFileSync(p, 'utf-8');
+    break;
+  }
+}
 
 let passed = 0;
 let failed = 0;
