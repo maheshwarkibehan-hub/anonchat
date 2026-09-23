@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test": "node test_suite.js"
+    "test": "node test_suite.js",
+    "maintenance:on": "node -e \"require('fs').writeFileSync('.maintenance', 'true'); console.log('>>> Maintenance Mode: ENABLED')\"",
+    "maintenance:off": "node -e \"try{require('fs').unlinkSync('.maintenance')}catch(e){}; console.log('>>> Maintenance Mode: DISABLED')\"",
+    "maintenance:status": "node -e \"console.log(require('fs').existsSync('.maintenance') ? 'STATUS: Maintenance is ACTIVE' : 'STATUS: App is LIVE')\""
   },
   "keywords": ["chat", "anonymous", "omegle-clone", "socketio", "realtime"],
   "author": "",

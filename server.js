@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const server = http.createServer(app);
@@ -13,6 +14,33 @@ const io = new Server(server, {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// Maintenance Mode: Instant toggle via Render Console ('npm run maintenance:on' or 'touch .maintenance')
+const MAINTENANCE_FILE = path.join(__dirname, '.maintenance');
+function isMaintenanceActive() {
+  return process.env.MAINTENANCE_MODE === 'true' || fs.existsSync(MAINTENANCE_FILE);
+}
+
+app.use((req, res, next) => {
+  if (isMaintenanceActive()) {
+    if (req.path.startsWith('/socket.io/')) {
+      return res.status(503).json({ error: 'Maintenance mode active' });
+    }
+    if (req.path === '/' || req.path.endsWith('.html') || !path.extname(req.path)) {
+      res.status(503);
+      return res.sendFile(path.join(__dirname, 'public', 'maintenance.html'));
+    }
+  }
+  next();
+});
+
+// Reject Socket.io connections while maintenance is enabled
+io.use((socket, next) => {
+  if (isMaintenanceActive()) {
+    return next(new Error('MAINTENANCE_MODE'));
+  }
+  next();
+});
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
