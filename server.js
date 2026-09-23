@@ -164,10 +164,25 @@ io.on('connection', (socket) => {
 
   // Sending a message with rate limiting and newline normalization
   socket.on('send_message', (data) => {
-    if (isRateLimited(socket, 6, 2000)) return; // Max 6 messages per 2s
-    if (!data || typeof data.text !== 'string') return;
-    const sanitized = data.text.trim().replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n');
-    if (!sanitized || sanitized.length > 1500) return;
+    if (isRateLimited(socket, 8, 2000)) return; // Max 8 messages per 2s
+    if (!data) return;
+
+    const msgId = typeof data.msgId === 'string' ? data.msgId.slice(0, 64) : `msg_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+    const textRaw = typeof data.text === 'string' ? data.text : '';
+    const sanitized = textRaw.trim().replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').slice(0, 1500);
+
+    // Audio voice note validation (ephemeral Base64 WebM/Opus, max 200KB, max 15s)
+    let audioPayload = null;
+    if (data.audio && typeof data.audio.data === 'string' && data.audio.data.startsWith('data:audio/')) {
+      if (data.audio.data.length <= 250000) {
+        audioPayload = {
+          data: data.audio.data,
+          duration: typeof data.audio.duration === 'number' ? Math.min(Math.max(1, data.audio.duration), 15) : 5
+        };
+      }
+    }
+
+    if (!sanitized && !audioPayload) return;
 
     let replyTo = null;
     if (data.replyTo && typeof data.replyTo.text === 'string') {
@@ -181,15 +196,110 @@ io.on('connection', (socket) => {
       }
     }
 
+    const ephemeral = !!data.ephemeral;
+
+    // Acknowledge back to sender
+    socket.emit('message_sent_ack', { msgId });
+
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
       const partnerSocket = io.sockets.sockets.get(partnerId);
       if (partnerSocket) {
         partnerSocket.emit('receive_message', {
+          msgId,
           text: sanitized,
+          audio: audioPayload,
           replyTo: replyTo,
+          ephemeral: ephemeral,
           timestamp: Date.now()
         });
+      }
+    }
+  });
+
+  // Relay Emoji Reactions
+  socket.on('message_reaction', (data) => {
+    if (!data || typeof data.msgId !== 'string' || typeof data.reaction !== 'string') return;
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('message_reaction', {
+          msgId: data.msgId.slice(0, 64),
+          reaction: data.reaction.slice(0, 8)
+        });
+      }
+    }
+  });
+
+  // Relay Pinned Messages
+  socket.on('pin_message', (data) => {
+    if (!data || typeof data.msgId !== 'string') return;
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('pin_message', {
+          msgId: data.msgId.slice(0, 64),
+          text: typeof data.text === 'string' ? data.text.slice(0, 200) : ''
+        });
+      }
+    }
+  });
+
+  socket.on('unpin_message', () => {
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('unpin_message');
+      }
+    }
+  });
+
+  // Relay Delivery & Seen Ticks
+  socket.on('message_delivered', (data) => {
+    if (!data || typeof data.msgId !== 'string') return;
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('message_delivered', { msgId: data.msgId.slice(0, 64) });
+      }
+    }
+  });
+
+  socket.on('message_seen', (data) => {
+    if (!data || typeof data.msgId !== 'string') return;
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('message_seen', { msgId: data.msgId.slice(0, 64) });
+      }
+    }
+  });
+
+  // Relay Ephemeral Bomb Destruct Event
+  socket.on('message_destruct', (data) => {
+    if (!data || typeof data.msgId !== 'string') return;
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('message_destruct', { msgId: data.msgId.slice(0, 64) });
+      }
+    }
+  });
+
+  // Relay Tab Focus State (for real-time seen indicators)
+  socket.on('partner_focus', (data) => {
+    if (!data) return;
+    if (activeRooms.has(socket.id)) {
+      const { partnerId } = activeRooms.get(socket.id);
+      const partnerSocket = io.sockets.sockets.get(partnerId);
+      if (partnerSocket) {
+        partnerSocket.emit('partner_focus', { focused: !!data.focused });
       }
     }
   });

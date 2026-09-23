@@ -34,6 +34,17 @@ const replyPreviewAuthor = document.getElementById('replyPreviewAuthor');
 const replyPreviewSnippet = document.getElementById('replyPreviewSnippet');
 const cancelReplyBtn = document.getElementById('cancelReplyBtn');
 
+// 8 Modern Chat Feature Bindings
+const pinnedMessageBar = document.getElementById('pinnedMessageBar');
+const pinnedText = document.getElementById('pinnedText');
+const unpinBtn = document.getElementById('unpinBtn');
+
+const bombToggleBtn = document.getElementById('bombToggleBtn');
+const micBtn = document.getElementById('micBtn');
+const voiceRecordBar = document.getElementById('voiceRecordBar');
+const recordingTimer = document.getElementById('recordingTimer');
+const cancelVoiceBtn = document.getElementById('cancelVoiceBtn');
+
 const soundToggleBtn = document.getElementById('soundToggleBtn');
 const soundOnIcon = document.getElementById('soundOnIcon');
 const soundOffIcon = document.getElementById('soundOffIcon');
@@ -252,13 +263,22 @@ function resizeCanvas() {
   targetCenterX = canvasWidth / 2;
   targetCenterY = canvasHeight / 2;
 }
-window.addEventListener('resize', resizeCanvas);
+let resizeRaf = null;
+window.addEventListener('resize', () => {
+  if (resizeRaf) cancelAnimationFrame(resizeRaf);
+  resizeRaf = requestAnimationFrame(resizeCanvas);
+}, { passive: true });
 resizeCanvas();
 
+let mouseMoveRaf = null;
 window.addEventListener('mousemove', (e) => {
-  targetCenterX = canvasWidth / 2 + (e.clientX - canvasWidth / 2) * 0.08;
-  targetCenterY = canvasHeight / 2 + (e.clientY - canvasHeight / 2) * 0.08;
-});
+  if (mouseMoveRaf) return;
+  mouseMoveRaf = requestAnimationFrame(() => {
+    targetCenterX = canvasWidth / 2 + (e.clientX - canvasWidth / 2) * 0.08;
+    targetCenterY = canvasHeight / 2 + (e.clientY - canvasHeight / 2) * 0.08;
+    mouseMoveRaf = null;
+  });
+}, { passive: true });
 
 // Trigger a Dimensional Warp Jump (with timer collision protection)
 function triggerDimensionalWarp(durationMs = 900) {
@@ -285,8 +305,13 @@ function triggerDimensionalWarp(durationMs = 900) {
   }, durationMs);
 }
 
-// Animation Loop (Three.js WebGL with 2D Canvas Fallback)
+// Animation Loop (Three.js WebGL with 2D Canvas Fallback & Battery Saver)
 function animateStars() {
+  if (document.hidden) {
+    requestAnimationFrame(animateStars);
+    return;
+  }
+
   mouseX += (targetCenterX - mouseX) * 0.05;
   mouseY += (targetCenterY - mouseY) * 0.05;
   currentSpeed += (targetSpeed - currentSpeed) * 0.12;
@@ -736,11 +761,504 @@ if (confirmSkipBtn) {
   });
 }
 
-function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = null, msgId = null) {
+// ==========================================================================
+// 8 Modern Chat Interaction Engine (Sept 2026 Standards)
+// ==========================================================================
+
+// 1. Pinned Message Real-Time State
+let activePinnedMsgId = null;
+
+function setPinnedMessage(msgId, text, notifyServer = false) {
+  activePinnedMsgId = msgId;
+  if (pinnedText && pinnedMessageBar) {
+    pinnedText.textContent = text;
+    pinnedMessageBar.classList.remove('hidden');
+  }
+  document.querySelectorAll('.msg-pin-btn').forEach((btn) => {
+    const isThis = btn.closest('.msg-row')?.id === msgId;
+    btn.classList.toggle('pinned', isThis);
+  });
+  if (notifyServer && socket && isPartnerConnected) {
+    socket.emit('pin_message', { msgId, text });
+  }
+}
+
+function unpinMessage(notifyServer = false) {
+  activePinnedMsgId = null;
+  if (pinnedMessageBar) {
+    pinnedMessageBar.classList.add('hidden');
+  }
+  document.querySelectorAll('.msg-pin-btn.pinned').forEach((btn) => btn.classList.remove('pinned'));
+  if (notifyServer && socket && isPartnerConnected) {
+    socket.emit('unpin_message');
+  }
+}
+
+if (pinnedMessageBar) {
+  pinnedMessageBar.addEventListener('click', (e) => {
+    if (e.target.closest('#unpinBtn')) return;
+    if (activePinnedMsgId) {
+      const target = document.getElementById(activePinnedMsgId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.remove('msg-highlight');
+        void target.offsetWidth;
+        target.classList.add('msg-highlight');
+        setTimeout(() => target.classList.remove('msg-highlight'), 1500);
+      }
+    }
+  });
+}
+
+if (unpinBtn) {
+  unpinBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    unpinMessage(true);
+  });
+}
+
+// 2. Double-Tap / Quick Emoji Reaction Dock & Badges
+const messageReactions = new Map(); // msgId -> Map(emoji -> count)
+let activeReactionDock = null;
+
+function closeReactionDock() {
+  if (activeReactionDock) {
+    activeReactionDock.remove();
+    activeReactionDock = null;
+  }
+}
+
+document.addEventListener('click', (e) => {
+  if (activeReactionDock && !activeReactionDock.contains(e.target)) {
+    closeReactionDock();
+  }
+});
+
+function openReactionDock(row, bubble, msgId) {
+  closeReactionDock();
+  const dock = document.createElement('div');
+  dock.className = 'reaction-dock';
+  const emojis = ['❤️', '😂', '🔥', '👍', '😮'];
+  emojis.forEach((emoji) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'reaction-btn';
+    btn.textContent = emoji;
+    btn.setAttribute('aria-label', `React with ${emoji}`);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      addOrUpdateReactionBadge(msgId, emoji);
+      socket.emit('message_reaction', { msgId, reaction: emoji });
+      playChime('sent');
+      triggerHaptic('light');
+      closeReactionDock();
+    });
+    dock.appendChild(btn);
+  });
+  bubble.appendChild(dock);
+  activeReactionDock = dock;
+}
+
+function addOrUpdateReactionBadge(msgId, emoji) {
+  if (!messageReactions.has(msgId)) {
+    messageReactions.set(msgId, new Map());
+  }
+  const emojiMap = messageReactions.get(msgId);
+  emojiMap.set(emoji, (emojiMap.get(emoji) || 0) + 1);
+  renderReactionBadges(msgId);
+}
+
+function renderReactionBadges(msgId) {
+  const row = document.getElementById(msgId);
+  if (!row) return;
+  let badgesRow = row.querySelector('.reaction-badges-row');
+  const emojiMap = messageReactions.get(msgId);
+  if (!emojiMap || emojiMap.size === 0) {
+    if (badgesRow) badgesRow.remove();
+    return;
+  }
+  if (!badgesRow) {
+    badgesRow = document.createElement('div');
+    badgesRow.className = 'reaction-badges-row';
+    const bubbleWrap = row.querySelector('.msg-bubble-wrap');
+    if (bubbleWrap) {
+      row.insertBefore(badgesRow, row.querySelector('.msg-timestamp'));
+    }
+  }
+  badgesRow.innerHTML = '';
+  emojiMap.forEach((count, emoji) => {
+    const badge = document.createElement('button');
+    badge.type = 'button';
+    badge.className = 'reaction-badge';
+    badge.textContent = `${emoji} ${count}`;
+    badge.addEventListener('click', (e) => {
+      e.stopPropagation();
+      addOrUpdateReactionBadge(msgId, emoji);
+      socket.emit('message_reaction', { msgId, reaction: emoji });
+      playChime('sent');
+      triggerHaptic('light');
+    });
+    badgesRow.appendChild(badge);
+  });
+}
+
+// 3. Ephemeral Bomb Self-Destruction
+let isBombActive = false;
+if (bombToggleBtn) {
+  bombToggleBtn.addEventListener('click', () => {
+    isBombActive = !isBombActive;
+    bombToggleBtn.classList.toggle('active', isBombActive);
+    if (messageInput) {
+      if (isBombActive) {
+        messageInput.setAttribute('placeholder', '💣 Self-destruct message (5s)...');
+      } else {
+        messageInput.setAttribute('placeholder', 'Type a message...');
+      }
+    }
+  });
+}
+
+function triggerMessageDestruction(msgId) {
+  const row = document.getElementById(msgId);
+  if (!row) return;
+  row.classList.add('destructing');
+  setTimeout(() => {
+    row.remove();
+    if (activePinnedMsgId === msgId) {
+      unpinMessage(false);
+    }
+  }, 800);
+}
+
+// 4. Native MediaRecorder API: 10-Second Voice Notes
+let mediaRecorder = null;
+let audioChunks = [];
+let voiceTimerInterval = null;
+let voiceDurationSeconds = 0;
+let isRecordingVoice = false;
+let audioStream = null;
+
+async function startVoiceRecording() {
+  if (isRecordingVoice) return;
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    alert('Audio recording is not supported on this device/browser.');
+    return;
+  }
+  try {
+    audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    audioChunks = [];
+    voiceDurationSeconds = 0;
+
+    const mimeType = (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('audio/webm;codecs=opus'))
+      ? 'audio/webm;codecs=opus'
+      : (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('audio/ogg;codecs=opus') ? 'audio/ogg;codecs=opus' : '');
+
+    mediaRecorder = mimeType ? new MediaRecorder(audioStream, { mimeType }) : new MediaRecorder(audioStream);
+
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data && e.data.size > 0) {
+        audioChunks.push(e.data);
+      }
+    };
+
+    mediaRecorder.onstop = () => {
+      if (audioStream) {
+        audioStream.getTracks().forEach((t) => t.stop());
+        audioStream = null;
+      }
+      if (audioChunks.length > 0 && voiceDurationSeconds > 0) {
+        const audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64Audio = reader.result;
+          const duration = Math.min(Math.max(1, voiceDurationSeconds), 10);
+          const replyPayload = activeReply ? { id: activeReply.id, text: activeReply.text, author: activeReply.author } : null;
+
+          socket.emit('send_message', {
+            audio: { data: base64Audio, duration: duration },
+            replyTo: replyPayload,
+            ephemeral: isBombActive
+          });
+          appendMessage('', 'me', Date.now(), replyPayload, null, {
+            audio: { data: base64Audio, duration: duration },
+            ephemeral: isBombActive
+          });
+          playChime('sent');
+          clearReply();
+          if (isBombActive) {
+            isBombActive = false;
+            bombToggleBtn?.classList.remove('active');
+            messageInput?.setAttribute('placeholder', 'Type a message...');
+          }
+        };
+        reader.readAsDataURL(audioBlob);
+      }
+    };
+
+    mediaRecorder.start(200);
+    isRecordingVoice = true;
+    if (voiceRecordBar) voiceRecordBar.classList.remove('hidden');
+    if (recordingTimer) recordingTimer.textContent = '0:00';
+    if (micBtn) micBtn.classList.add('recording');
+
+    voiceTimerInterval = setInterval(() => {
+      voiceDurationSeconds++;
+      if (recordingTimer) {
+        recordingTimer.textContent = `0:${String(voiceDurationSeconds).padStart(2, '0')}`;
+      }
+      if (voiceDurationSeconds >= 10) {
+        stopVoiceRecording(true);
+      }
+    }, 1000);
+  } catch (err) {
+    console.warn('Microphone access error:', err);
+    alert('Microphone permission required for voice notes.');
+    cancelVoiceRecording();
+  }
+}
+
+function stopVoiceRecording(send = true) {
+  if (!isRecordingVoice) return;
+  isRecordingVoice = false;
+  if (voiceTimerInterval) {
+    clearInterval(voiceTimerInterval);
+    voiceTimerInterval = null;
+  }
+  if (voiceRecordBar) voiceRecordBar.classList.add('hidden');
+  if (micBtn) micBtn.classList.remove('recording');
+
+  if (!send) {
+    audioChunks = [];
+    voiceDurationSeconds = 0;
+  }
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  } else if (audioStream) {
+    audioStream.getTracks().forEach((t) => t.stop());
+    audioStream = null;
+  }
+}
+
+function cancelVoiceRecording() {
+  stopVoiceRecording(false);
+}
+
+if (micBtn) {
+  micBtn.addEventListener('click', () => {
+    if (isRecordingVoice) {
+      stopVoiceRecording(true);
+    } else {
+      startVoiceRecording();
+    }
+  });
+}
+if (cancelVoiceBtn) {
+  cancelVoiceBtn.addEventListener('click', cancelVoiceRecording);
+}
+
+// 5. Smart Link Preview & Safety Shield Formatter
+function formatMessageTextWithSafeLinks(container, text) {
+  const urlRegex = /(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = urlRegex.exec(text)) !== null) {
+    const plainPart = text.substring(lastIndex, match.index);
+    if (plainPart) {
+      container.appendChild(document.createTextNode(plainPart));
+    }
+    const fullUrl = match[0];
+    try {
+      const parsed = new URL(fullUrl);
+      const linkChip = document.createElement('a');
+      linkChip.href = fullUrl;
+      linkChip.target = '_blank';
+      linkChip.rel = 'noopener noreferrer';
+      linkChip.className = 'safe-link-chip';
+      linkChip.title = `Verified Safe Link: ${parsed.hostname}`;
+      linkChip.innerHTML = `
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        <span>${parsed.hostname}</span>
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"/>
+          <polyline points="7 7 17 7 17 17"/>
+        </svg>
+      `;
+      container.appendChild(linkChip);
+    } catch (e) {
+      container.appendChild(document.createTextNode(fullUrl));
+    }
+    lastIndex = match.index + fullUrl.length;
+  }
+
+  const remaining = text.substring(lastIndex);
+  if (remaining) {
+    container.appendChild(document.createTextNode(remaining));
+  }
+}
+
+// 6. Custom Voice Note Player
+function createVoicePlayer(audioPayload, sender) {
+  const player = document.createElement('div');
+  player.className = 'voice-player';
+
+  const playBtn = document.createElement('button');
+  playBtn.type = 'button';
+  playBtn.className = 'voice-play-btn';
+  playBtn.setAttribute('title', 'Play voice note');
+  playBtn.setAttribute('aria-label', 'Play voice note');
+  playBtn.innerHTML = `
+    <svg class="play-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="6 4 20 12 6 20 6 4"/>
+    </svg>
+    <svg class="pause-icon hidden" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+      <rect x="6" y="4" width="4" height="16"/>
+      <rect x="14" y="4" width="4" height="16"/>
+    </svg>
+  `;
+
+  const waveform = document.createElement('div');
+  waveform.className = 'voice-waveform';
+  for (let i = 0; i < 5; i++) {
+    const bar = document.createElement('span');
+    bar.className = 'wave-bar';
+    waveform.appendChild(bar);
+  }
+
+  const durationSec = Math.round(audioPayload.duration || 5);
+  const durationEl = document.createElement('span');
+  durationEl.className = 'voice-duration';
+  durationEl.textContent = `0:${String(durationSec).padStart(2, '0')}`;
+
+  player.appendChild(playBtn);
+  player.appendChild(waveform);
+  player.appendChild(durationEl);
+
+  let audioObj = null;
+  let isPlaying = false;
+
+  playBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!audioObj) {
+      audioObj = new Audio(audioPayload.data);
+      audioObj.addEventListener('timeupdate', () => {
+        const cur = Math.floor(audioObj.currentTime);
+        durationEl.textContent = `0:${String(cur).padStart(2, '0')} / 0:${String(durationSec).padStart(2, '0')}`;
+      });
+      audioObj.addEventListener('ended', () => {
+        isPlaying = false;
+        player.classList.remove('playing');
+        playBtn.querySelector('.play-icon').classList.remove('hidden');
+        playBtn.querySelector('.pause-icon').classList.add('hidden');
+        durationEl.textContent = `0:${String(durationSec).padStart(2, '0')}`;
+      });
+      audioObj.addEventListener('pause', () => {
+        isPlaying = false;
+        player.classList.remove('playing');
+        playBtn.querySelector('.play-icon').classList.remove('hidden');
+        playBtn.querySelector('.pause-icon').classList.add('hidden');
+      });
+    }
+
+    if (isPlaying) {
+      audioObj.pause();
+    } else {
+      audioObj.play().then(() => {
+        isPlaying = true;
+        player.classList.add('playing');
+        playBtn.querySelector('.play-icon').classList.add('hidden');
+        playBtn.querySelector('.pause-icon').classList.remove('hidden');
+      }).catch((err) => {
+        console.warn('Audio playback error:', err);
+      });
+    }
+  });
+
+  return player;
+}
+
+// 7. Delivery & Seen Tick Tracking
+const unseenStrangerMsgs = new Set();
+
+function markVisibleStrangerMsgsAsSeen() {
+  if (document.hidden || !isPartnerConnected) return;
+  unseenStrangerMsgs.forEach((msgId) => {
+    socket.emit('message_seen', { msgId });
+  });
+  unseenStrangerMsgs.clear();
+}
+
+window.addEventListener('focus', markVisibleStrangerMsgsAsSeen);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) {
+    markVisibleStrangerMsgsAsSeen();
+  }
+  if (isPartnerConnected) {
+    socket.emit('partner_focus', { focused: !document.hidden });
+  }
+});
+
+// ==========================================================================
+// Master Message Appender with Full Feature Suite
+// ==========================================================================
+function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = null, msgId = null, extra = {}) {
   const id = msgId || 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
   const row = document.createElement('div');
   row.className = `msg-row ${sender}`;
   row.id = id;
+
+  // Swipe-to-Reply mobile touch gesture
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isSwiping = false;
+
+  const swipeIndicator = document.createElement('div');
+  swipeIndicator.className = 'msg-swipe-indicator';
+  swipeIndicator.innerHTML = `
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="9 17 4 12 9 7"/>
+      <path d="M20 18v-2a4 4 0 0 0-4-4H4"/>
+    </svg>
+  `;
+  row.appendChild(swipeIndicator);
+
+  row.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isSwiping = false;
+    }
+  }, { passive: true });
+
+  row.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 1) {
+      const diffX = e.touches[0].clientX - touchStartX;
+      const diffY = e.touches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && diffX > 10) {
+        isSwiping = true;
+        const transX = Math.min(diffX * 0.6, 60);
+        row.style.transform = `translateX(${transX}px)`;
+        row.classList.add('swiping');
+      }
+    }
+  }, { passive: true });
+
+  row.addEventListener('touchend', (e) => {
+    if (isSwiping) {
+      const diffX = (e.changedTouches[0]?.clientX || 0) - touchStartX;
+      if (diffX > 40) {
+        triggerHaptic('light');
+        const quoteText = text || (extra.audio ? '🎙️ Voice note' : 'Message');
+        setReply(id, quoteText, sender === 'me' ? 'self' : 'partner');
+      }
+      row.style.transform = '';
+      row.classList.remove('swiping');
+      isSwiping = false;
+    }
+  });
 
   const bubbleWrap = document.createElement('div');
   bubbleWrap.className = 'msg-bubble-wrap';
@@ -748,7 +1266,60 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
   const bubble = document.createElement('div');
   bubble.className = 'msg-bubble';
 
-  // If message has quoted reply
+  // Double-Tap and Long-Press for Emoji Reaction Dock
+  let lastTapTime = 0;
+  let longPressTimeout = null;
+
+  bubble.addEventListener('dblclick', (e) => {
+    e.stopPropagation();
+    openReactionDock(row, bubble, id);
+  });
+
+  bubble.addEventListener('touchstart', (e) => {
+    longPressTimeout = setTimeout(() => {
+      openReactionDock(row, bubble, id);
+      triggerHaptic('light');
+    }, 480);
+  }, { passive: true });
+
+  bubble.addEventListener('touchend', (e) => {
+    clearTimeout(longPressTimeout);
+    const now = Date.now();
+    if (now - lastTapTime < 300) {
+      openReactionDock(row, bubble, id);
+      triggerHaptic('light');
+      lastTapTime = 0;
+    } else {
+      lastTapTime = now;
+    }
+  });
+
+  bubble.addEventListener('touchmove', () => {
+    clearTimeout(longPressTimeout);
+  }, { passive: true });
+
+  // Ephemeral Bomb Self-Destruct Handling
+  if (extra && extra.ephemeral) {
+    row.classList.add('ephemeral-msg');
+    const badge = document.createElement('div');
+    badge.className = 'ephemeral-badge';
+    badge.innerHTML = `💣 <span class="bomb-count" id="bomb_count_${id}">5s</span>`;
+    bubble.appendChild(badge);
+
+    let secondsLeft = 5;
+    const countEl = badge.querySelector('.bomb-count');
+    const bombInterval = setInterval(() => {
+      secondsLeft--;
+      if (countEl) countEl.textContent = `${secondsLeft}s`;
+      if (secondsLeft <= 0) {
+        clearInterval(bombInterval);
+        triggerMessageDestruction(id);
+        socket.emit('message_destruct', { msgId: id });
+      }
+    }, 1000);
+  }
+
+  // Quoted Reply Card
   if (replyTo && replyTo.text) {
     const quoteCard = document.createElement('div');
     quoteCard.className = 'quoted-card';
@@ -795,12 +1366,22 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
     bubble.appendChild(quoteCard);
   }
 
-  const textEl = document.createElement('div');
-  textEl.className = 'msg-text';
-  textEl.textContent = text;
-  bubble.appendChild(textEl);
+  // Render Body: Audio Voice Note or Text with Safe Links
+  if (extra && extra.audio && extra.audio.data) {
+    const player = createVoicePlayer(extra.audio, sender);
+    bubble.appendChild(player);
+  } else if (text) {
+    const textEl = document.createElement('div');
+    textEl.className = 'msg-text';
+    formatMessageTextWithSafeLinks(textEl, text);
+    bubble.appendChild(textEl);
+  }
 
-  // Micro-action reply button on bubble
+  // Action Buttons Group (Reply, 1-Click Copy, Pin)
+  const actionsWrap = document.createElement('div');
+  actionsWrap.className = 'msg-actions';
+
+  // Reply Button
   const replyBtn = document.createElement('button');
   replyBtn.type = 'button';
   replyBtn.className = 'msg-reply-btn';
@@ -814,15 +1395,99 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
   `;
   replyBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    setReply(id, text, sender === 'me' ? 'self' : 'partner');
+    const quoteText = text || (extra.audio ? '🎙️ Voice note' : 'Message');
+    setReply(id, quoteText, sender === 'me' ? 'self' : 'partner');
   });
+  actionsWrap.appendChild(replyBtn);
+
+  // 1-Click Copy Button
+  if (text) {
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.className = 'msg-copy-btn';
+    copyBtn.setAttribute('title', 'Copy text');
+    copyBtn.setAttribute('aria-label', 'Copy message text');
+    copyBtn.innerHTML = `
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    `;
+    copyBtn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const temp = document.createElement('textarea');
+          temp.value = text;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          temp.remove();
+        }
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = `
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        `;
+        triggerHaptic('light');
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          `;
+        }, 1200);
+      } catch (err) {
+        console.warn('Copy error:', err);
+      }
+    });
+    actionsWrap.appendChild(copyBtn);
+  }
+
+  // Pin Button
+  const pinBtn = document.createElement('button');
+  pinBtn.type = 'button';
+  pinBtn.className = 'msg-pin-btn';
+  pinBtn.setAttribute('title', 'Pin message');
+  pinBtn.setAttribute('aria-label', 'Pin message to session top');
+  pinBtn.innerHTML = `
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/>
+    </svg>
+  `;
+  pinBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const pinContent = text || (extra.audio ? '🎙️ Voice note' : 'Message');
+    if (activePinnedMsgId === id) {
+      unpinMessage(true);
+    } else {
+      setPinnedMessage(id, pinContent, true);
+      triggerHaptic('light');
+    }
+  });
+  actionsWrap.appendChild(pinBtn);
 
   bubbleWrap.appendChild(bubble);
-  bubbleWrap.appendChild(replyBtn);
+  bubbleWrap.appendChild(actionsWrap);
 
+  // Timestamp & Delivery/Seen Status Tick
   const time = document.createElement('div');
   time.className = 'msg-timestamp';
   time.textContent = formatTime(timestamp);
+
+  if (sender === 'me') {
+    const tick = document.createElement('span');
+    tick.className = 'msg-status-tick tick-single';
+    tick.id = `tick_${id}`;
+    tick.title = 'Sent';
+    tick.textContent = '✓';
+    time.appendChild(tick);
+  }
 
   row.appendChild(bubbleWrap);
   row.appendChild(time);
@@ -836,6 +1501,16 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
   } else {
     unreadCount++;
     updateNewMsgPill();
+  }
+
+  // Stranger message delivery & seen reporting
+  if (sender === 'stranger') {
+    socket.emit('message_delivered', { msgId: id });
+    if (!document.hidden) {
+      socket.emit('message_seen', { msgId: id });
+    } else {
+      unseenStrangerMsgs.add(id);
+    }
   }
 
   return id;
@@ -879,6 +1554,15 @@ function resetChatUI() {
   clearReply();
   cancelSkipGrace();
   clearUnreadPill();
+  unpinMessage(false);
+  closeReactionDock();
+  messageReactions.clear();
+  unseenStrangerMsgs.clear();
+  stopVoiceRecording(false);
+  isBombActive = false;
+  if (bombToggleBtn) bombToggleBtn.classList.remove('active');
+  if (messageInput) messageInput.setAttribute('placeholder', 'Type a message...');
+
   messagesContainer.innerHTML = `
     <div class="system-chip">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -903,6 +1587,9 @@ function startSearch() {
   cancelSkipGrace();
   clearReply();
   clearUnreadPill();
+  unpinMessage(false);
+  closeReactionDock();
+  stopVoiceRecording(false);
   triggerDimensionalWarp(900);
   showScreen(searchingScreen);
   socket.emit('find_partner');
@@ -917,6 +1604,9 @@ function nextPartner() {
   cancelSkipGrace();
   clearReply();
   clearUnreadPill();
+  unpinMessage(false);
+  closeReactionDock();
+  stopVoiceRecording(false);
   triggerDimensionalWarp(900);
   socket.emit('next_partner');
   showScreen(searchingScreen);
@@ -926,6 +1616,9 @@ function endChat() {
   cancelSkipGrace();
   clearReply();
   clearUnreadPill();
+  unpinMessage(false);
+  closeReactionDock();
+  stopVoiceRecording(false);
   socket.emit('leave_chat');
   showScreen(landingScreen);
 }
@@ -948,9 +1641,16 @@ chatForm.addEventListener('submit', (e) => {
     author: activeReply.author
   } : null;
 
-  socket.emit('send_message', { text, replyTo: replyPayload });
-  appendMessage(text, 'me', Date.now(), replyPayload);
+  const willBeEphemeral = isBombActive;
+  socket.emit('send_message', { text, replyTo: replyPayload, ephemeral: willBeEphemeral });
+  appendMessage(text, 'me', Date.now(), replyPayload, null, { ephemeral: willBeEphemeral });
   playChime('sent');
+
+  if (willBeEphemeral) {
+    isBombActive = false;
+    bombToggleBtn?.classList.remove('active');
+    messageInput?.setAttribute('placeholder', 'Type a message...');
+  }
 
   clearReply();
   socket.emit('stop_typing');
@@ -1013,10 +1713,71 @@ socket.on('chat_start', () => {
 });
 
 socket.on('receive_message', (data) => {
-  appendMessage(data.text, 'stranger', data.timestamp, data.replyTo);
+  appendMessage(data.text, 'stranger', data.timestamp, data.replyTo, data.msgId, {
+    ephemeral: data.ephemeral,
+    audio: data.audio
+  });
   playChime('received');
   triggerHaptic('light');
   typingIndicator.classList.add('hidden');
+});
+
+socket.on('message_sent_ack', (data) => {
+  if (data && data.msgId) {
+    const tick = document.getElementById('tick_' + data.msgId);
+    if (tick) {
+      tick.textContent = '✓';
+      tick.className = 'msg-status-tick tick-single';
+      tick.title = 'Sent';
+    }
+  }
+});
+
+socket.on('message_delivered', (data) => {
+  if (data && data.msgId) {
+    const tick = document.getElementById('tick_' + data.msgId);
+    if (tick && !tick.classList.contains('tick-seen')) {
+      tick.textContent = '✓✓';
+      tick.className = 'msg-status-tick tick-double';
+      tick.title = 'Delivered';
+    }
+  }
+});
+
+socket.on('message_seen', (data) => {
+  if (data && data.msgId) {
+    const tick = document.getElementById('tick_' + data.msgId);
+    if (tick) {
+      tick.textContent = '✓✓';
+      tick.className = 'msg-status-tick tick-seen';
+      tick.title = 'Seen';
+    }
+  }
+});
+
+socket.on('message_reaction', (data) => {
+  if (data && data.msgId && data.reaction) {
+    addOrUpdateReactionBadge(data.msgId, data.reaction);
+    playChime('received');
+    triggerHaptic('light');
+  }
+});
+
+socket.on('pin_message', (data) => {
+  if (data && data.msgId) {
+    setPinnedMessage(data.msgId, data.text || '', false);
+    triggerHaptic('light');
+  }
+});
+
+socket.on('unpin_message', () => {
+  unpinMessage(false);
+});
+
+socket.on('message_destruct', (data) => {
+  if (data && data.msgId) {
+    triggerMessageDestruction(data.msgId);
+  }
 });
 
 socket.on('partner_typing', () => {
@@ -1034,6 +1795,9 @@ socket.on('partner_disconnected', () => {
   isPartnerConnected = false;
   cancelSkipGrace();
   clearReply();
+  unpinMessage(false);
+  closeReactionDock();
+  stopVoiceRecording(false);
   strangerSubstatus.innerHTML = `
     <span class="active-dot" style="background-color: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
     <span style="color: #ef4444;">Disconnected</span>
@@ -1050,5 +1814,8 @@ socket.on('chat_ended', () => {
   cancelSkipGrace();
   clearReply();
   clearUnreadPill();
+  unpinMessage(false);
+  closeReactionDock();
+  stopVoiceRecording(false);
   showScreen(landingScreen);
 });

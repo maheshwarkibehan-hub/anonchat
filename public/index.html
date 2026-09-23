@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content" />
   <title>AnonChat - Pure Anonymous Realtime Chat</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
@@ -224,6 +224,23 @@
             </div>
           </div>
 
+          <!-- Pinned Message Banner -->
+          <div id="pinnedMessageBar" class="pinned-message-bar hidden">
+            <div class="pinned-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/>
+              </svg>
+              <span>Pinned</span>
+            </div>
+            <div class="pinned-text" id="pinnedText"></div>
+            <button type="button" id="unpinBtn" class="unpin-btn" title="Unpin message" aria-label="Unpin message">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+
           <!-- Messages Stream -->
           <div class="messages-viewport" id="messagesContainer">
             <div class="system-chip">
@@ -292,7 +309,25 @@
               </button>
             </div>
 
+            <!-- Voice Recording Indicator Bar -->
+            <div id="voiceRecordBar" class="voice-record-bar hidden">
+              <div class="recording-pulse"></div>
+              <span id="recordingTimer" class="recording-timer">0:00</span>
+              <span class="recording-label">Recording audio... (max 10s)</span>
+              <button type="button" id="cancelVoiceBtn" class="cancel-voice-btn">Cancel</button>
+            </div>
+
             <form id="chatForm" class="input-form" autocomplete="off">
+              <!-- Self-destruct Bomb Toggle -->
+              <button type="button" id="bombToggleBtn" class="input-tool-btn" title="Toggle 5s Self-Destruct Bomb" aria-label="Toggle 5s Self-Destruct Bomb">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="13" r="8"/>
+                  <path d="M12 9V5"/>
+                  <path d="M15 2l-3 3-3-3"/>
+                  <path d="M16 9l2-2"/>
+                </svg>
+              </button>
+
               <input
                 type="text"
                 id="messageInput"
@@ -300,6 +335,17 @@
                 maxlength="1500"
                 autocomplete="off"
               />
+
+              <!-- Voice Note Record Button -->
+              <button type="button" id="micBtn" class="input-tool-btn mic-action" title="Hold to record voice note (up to 10s)" aria-label="Record voice note">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </button>
+
               <button type="submit" id="sendBtn" class="send-action" aria-label="Send message">
                 <!-- Arrow Up (ChatGPT style) -->
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
