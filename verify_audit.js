@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const indexHtml = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf-8');
-const styleCss = fs.readFileSync(path.join(__dirname, 'public', 'style.css'), 'utf-8');
-const clientJs = fs.readFileSync(path.join(__dirname, 'public', 'client.js'), 'utf-8');
+const indexHtml = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf-8').replace(/\r\n/g, '\n');
+const styleCss = fs.readFileSync(path.join(__dirname, 'public', 'style.css'), 'utf-8').replace(/\r\n/g, '\n');
+const clientJs = fs.readFileSync(path.join(__dirname, 'public', 'client.js'), 'utf-8').replace(/\r\n/g, '\n');
 const userHome = process.env.USERPROFILE || process.env.HOME || '';
 let previewHtml = '';
 const candidatePaths = [
