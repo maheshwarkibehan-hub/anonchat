@@ -1892,12 +1892,68 @@ body {
     padding-bottom: 56px;
   }
 
+  .app-shell:has(#chatScreen.active) {
+    padding-bottom: 8px;
+  }
+
+  .app-shell:has(#chatScreen.active) .app-footer {
+    display: none !important;
+  }
+
+  .navbar {
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-badge {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-title {
+    font-size: 0.92rem;
+  }
+
+  .brand-tag {
+    font-size: 0.65rem;
+    padding: 2px 7px;
+  }
+
+  .status-pill {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 0.72rem;
+    gap: 6px;
+  }
+
+  .nav-icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+
   .landing-card {
     padding: 32px 16px; /* Strict 8px grid: 32px top/bottom, 16px left/right */
   }
 
   .hero-headline {
     font-size: 1.75rem;
+  }
+
+  .hero-sub {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .primary-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 13px 24px;
+    min-height: 48px;
   }
 
   .features-grid {
@@ -1921,8 +1977,144 @@ body {
     display: none;
   }
 
+  /* Mobile Active Chat Refinements */
+  .chat-navbar {
+    padding: 10px 12px;
+  }
+
+  .partner-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .partner-name {
+    font-size: 0.86rem;
+  }
+
+  .partner-status {
+    font-size: 0.7rem;
+  }
+
+  .chat-controls {
+    gap: 6px;
+  }
+
+  .control-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    min-height: 34px;
+  }
+
+  .messages-viewport {
+    padding: 12px 10px;
+    gap: 10px;
+  }
+
   .msg-row {
-    max-width: 86%;
+    max-width: 88%;
+  }
+
+  .msg-bubble {
+    padding: 8px 13px;
+    font-size: 0.88rem;
+    line-height: 1.42;
+  }
+
+  .quoted-card {
+    padding: 5px 8px;
+    margin-bottom: 5px;
+  }
+
+  .quoted-text {
+    max-width: 200px;
+    font-size: 0.74rem;
+  }
+
+  .chat-input-bar {
+    padding: 8px 10px;
+  }
+
+  .input-form {
+    padding: 4px 6px 4px 12px;
+    gap: 6px;
+  }
+
+  /* 16px font-size prevents auto-zoom on iOS Safari on input focus */
+  .input-form input {
+    font-size: 16px;
+  }
+
+  .input-tool-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .send-action {
+    width: 34px;
+    height: 34px;
+  }
+
+  .reaction-dock {
+    top: -42px;
+    padding: 4px 6px;
+    gap: 4px;
+  }
+
+  .reaction-btn {
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 1.15rem;
+    padding: 3px 5px;
+  }
+
+  .pinned-message-bar {
+    padding: 6px 12px;
+  }
+
+  .pinned-text {
+    font-size: 0.76rem;
+    max-width: 190px;
+  }
+
+  .voice-record-bar {
+    padding: 6px 12px;
+  }
+
+  .voice-player {
+    min-width: 150px;
+  }
+
+  .skip-grace-bar {
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+
+  .reply-preview-bar {
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-headline {
+    font-size: 1.45rem;
+  }
+
+  .brand-title {
+    font-size: 0.84rem;
+  }
+
+  .status-pill {
+    padding: 0 8px;
+    font-size: 0.68rem;
+  }
+
+  .control-btn {
+    padding: 5px 8px;
+    font-size: 0.74rem;
+  }
+
+  .msg-row {
+    max-width: 92%;
   }
 }
 

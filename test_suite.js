@@ -86,6 +86,11 @@ async function runTests() {
   const resSocketClient = await fetchUrl('/socket.io/socket.io.js');
   assert(resSocketClient.status === 200, 'GET /socket.io/socket.io.js serves official socket.io client bundle');
 
+  const resPrivacy = await fetchUrl('/privacy');
+  assert(resPrivacy.status === 200, 'GET /privacy returns 200 OK');
+  assert(resPrivacy.data.includes('Privacy & Transparency Manifesto'), 'GET /privacy serves Privacy Policy page');
+  assert(resIndex.data.includes('v2.0'), 'index.html displays upgraded v2.0 version badge');
+
   // 3. Socket.io Engine Handshake Check
   console.log('\n3. Testing Socket.io Engine Handshake & Protocol...');
   const resHandshake = await fetchUrl('/socket.io/?EIO=4&transport=polling');

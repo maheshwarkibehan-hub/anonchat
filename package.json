@@ -1,6 +1,6 @@
 {
   "name": "anon-chat",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "100% Free, minimalist, anonymous 1-on-1 random chat web app",
   "main": "server.js",
   "scripts": {

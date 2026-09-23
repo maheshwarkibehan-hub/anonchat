@@ -45,6 +45,11 @@ io.use((socket, next) => {
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Clean route for privacy policy page
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
+});
+
 // Matchmaking state (In-Memory / Zero DB)
 let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
