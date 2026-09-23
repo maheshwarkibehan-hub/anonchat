@@ -147,10 +147,29 @@
 
 ---
 
+### 📍 Phase 8: Joby Sir Discipline Easter Egg ("Gali Mat Do" Intervention)
+- **Concept & Lore**:
+  - When students use abusive words (*gali*) in Hindi, Hinglish, or English, **Joby Sir** (Discipline Incharge at SJS Kaushambi) dramatically raids the chat.
+- **Server Profanity Engine**:
+  - Comprehensive regex dictionary catching Hindi/Hinglish/English swear words (`bc`, `mc`, `bkl`, `bsdk`, `bhenchod`, `madarchod`, `chutiya`, `gandu`, `laude`, `fuck`, `bitch`, etc.).
+  - Leetspeak normalization and duplicate letter collapsing (`chuuuuutiya` -> `chutiya`, `bheeeeenchod` -> `bhenchod`).
+  - 9-second room-level cooldown preventing notification spam.
+- **Synchronized Live Intervention**:
+  - `joby_sir_incoming`: Triggers Web Audio two-tone siren warble and typing alert (`🚨 Joby Sir is typing...`) on both devices.
+  - `joby_sir_message`: Delivers Joby Sir's official avatar photo, name, badge, and quote:
+    `"i told you beta gali nahi dene ka meet tommarow"`.
+  - Disciplinary warning footer badge (`⚠️ SJS Discipline Department • Meet in Office Tomorrow`).
+- **Resilience**:
+  - Fallback local image `public/joby-sir.jpg` ensures 100% offline/firewall reliability.
+
+---
+
 ## 4. 🔌 Socket.io Event Protocol Reference
 
 | Event Name | Direction | Payload | Description |
 |---|---|---|---|
+| `joby_sir_incoming` | S → C | `{ name, role }` | Joby Sir typing & siren alert on detected gali |
+| `joby_sir_message` | S → C | `{ id, name, role, photo, fallbackPhoto, text, timestamp }` | Joby Sir reprimand message delivery |
 | `online_count` | S → C | `{ count: number }` | Live number of connected socket clients |
 | `find_partner` | C → S | `none` | Requests matchmaking pairing |
 | `cancel_search` | C → S | `none` | Cancels matchmaking queue |

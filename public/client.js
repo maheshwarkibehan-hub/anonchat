@@ -137,6 +137,34 @@ function playChime(type) {
   }
 }
 
+function playJobySiren() {
+  if (!soundEnabled) return;
+  try {
+    if (!audioCtx) audioCtx = new AudioContext();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(580, now);
+    osc.frequency.linearRampToValueAtTime(880, now + 0.15);
+    osc.frequency.linearRampToValueAtTime(580, now + 0.30);
+    osc.frequency.linearRampToValueAtTime(880, now + 0.45);
+
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+
+    osc.start(now);
+    osc.stop(now + 0.55);
+  } catch (e) {
+    // Audio context may be restricted before user interaction
+  }
+}
+
 // ==========================================================================
 // 3D Dimensional Warp & Starfield Engine (Three.js WebGL + 2D Canvas Fallback)
 // ==========================================================================
@@ -1695,6 +1723,14 @@ function resetChatUI() {
   messageInput.value = '';
   messageInput.disabled = false;
   messageInput.focus();
+  typingIndicator.innerHTML = `
+    <div class="typing-wave">
+      <span class="wave-dot"></span>
+      <span class="wave-dot"></span>
+      <span class="wave-dot"></span>
+    </div>
+    <span>Stranger is typing...</span>
+  `;
   typingIndicator.classList.add('hidden');
   strangerSubstatus.innerHTML = `
     <span class="active-dot"></span>
@@ -2364,3 +2400,94 @@ socket.on('disconnect', () => {
     appendDisconnectBanner();
   }
 });
+
+// ==========================================================================
+// Joby Sir Discipline Easter Egg Socket Handlers
+// ==========================================================================
+socket.on('joby_sir_incoming', () => {
+  playJobySiren();
+  triggerHaptic('heavy');
+  if (typingIndicator) {
+    typingIndicator.innerHTML = `
+      <div class="joby-typing-badge">
+        <span class="joby-siren-icon">🚨</span>
+        <span><strong>Joby Sir</strong> is typing...</span>
+      </div>
+    `;
+    typingIndicator.classList.remove('hidden');
+  }
+  if (isScrolledNearBottom()) {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+  }
+});
+
+socket.on('joby_sir_message', (data) => {
+  if (typingIndicator) {
+    typingIndicator.classList.add('hidden');
+    typingIndicator.innerHTML = `
+      <div class="typing-wave">
+        <span class="wave-dot"></span>
+        <span class="wave-dot"></span>
+        <span class="wave-dot"></span>
+      </div>
+      <span>Stranger is typing...</span>
+    `;
+  }
+
+  // 1. Entrance Chip
+  const entranceChip = document.createElement('div');
+  entranceChip.className = 'system-chip joby-entrance-chip';
+  entranceChip.innerHTML = `
+    <span class="joby-siren-dot">🚨</span>
+    <span><strong>DISCIPLINE INCHARGE ALERT:</strong> Joby Sir joined the chat!</span>
+  `;
+  messagesContainer.appendChild(entranceChip);
+
+  // 2. Joby Sir Message Row
+  const row = document.createElement('div');
+  row.className = 'msg-row joby-sir-row';
+  row.id = (data && data.id) || `joby_${Date.now()}`;
+
+  const photo = (data && data.photo) || 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG';
+  const fallback = (data && data.fallbackPhoto) || '/joby-sir.jpg';
+  const name = (data && data.name) || 'Joby Jacob Sir';
+  const role = (data && data.role) || 'Discipline Incharge';
+  const text = (data && data.text) || 'i told you beta gali nahi dene ka meet tommarow';
+  const timeStr = formatTime((data && data.timestamp) || Date.now());
+
+  row.innerHTML = `
+    <div class="joby-avatar-wrap">
+      <img src="${photo}" onerror="this.onerror=null; this.src='${fallback}'" alt="Joby Sir" class="joby-avatar-img" />
+      <span class="joby-badge-dot">🚨</span>
+    </div>
+    <div class="msg-bubble-wrap">
+      <div class="msg-bubble joby-bubble">
+        <div class="joby-header">
+          <span class="joby-name">${name}</span>
+          <span class="joby-tag">${role}</span>
+        </div>
+        <div class="msg-text joby-text">
+          "${text}"
+        </div>
+        <div class="joby-warning-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span>Staff Room / Discipline Alert • SJS Kaushambi</span>
+        </div>
+      </div>
+      <div class="msg-timestamp">${timeStr}</div>
+    </div>
+  `;
+
+  messagesContainer.appendChild(row);
+  playChime('received');
+  triggerHaptic('heavy');
+
+  if (isScrolledNearBottom()) {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+  }
+});
+
