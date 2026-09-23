@@ -91,6 +91,9 @@ assert(serverJs.includes('message_seen'), 'server.js relays seen ticks');
 assert(serverJs.includes('message_destruct'), 'server.js relays bomb destruction events');
 assert(serverJs.includes('partner_focus'), 'server.js relays partner focus states');
 assert(serverJs.includes("key = 'msgTimestamps'") && serverJs.includes("'relayTimestamps'"), 'server.js: isolated rate-limiting per channel prevents DoS attacks without blocking chat');
+assert(serverJs.includes("'typingTimestamps'"), "server.js: typing rate limiter uses isolated 'typingTimestamps' bucket");
+assert(clientJs.includes('isTypingSent'), "client.js: typing events debounced via isTypingSent guard");
+assert(clientJs.includes("socket.on('disconnect'"), "client.js: socket disconnect handler disables inputs and presents disconnect state");
 
 console.log(`\n--- Finished: ${passed} Passed, ${failed} Failed ---`);
 process.exit(failed === 0 ? 0 : 1);

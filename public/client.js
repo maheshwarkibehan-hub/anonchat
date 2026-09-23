@@ -52,6 +52,7 @@ const soundOffIcon = document.getElementById('soundOffIcon');
 // Sound State
 let soundEnabled = localStorage.getItem('anonchat_sound') !== 'false';
 let typingTimeout = null;
+let isTypingSent = false;
 let isPartnerConnected = false;
 
 function updateSoundUI() {
@@ -1608,6 +1609,8 @@ function resetChatUI() {
   stopVoiceRecording(false);
   stopActiveMediaAndTimers();
   isBombActive = false;
+  isTypingSent = false;
+  clearTimeout(typingTimeout);
   if (bombToggleBtn) bombToggleBtn.classList.remove('active');
   if (messageInput) messageInput.setAttribute('placeholder', 'Type a message...');
 
@@ -1705,6 +1708,7 @@ chatForm.addEventListener('submit', (e) => {
   }
 
   clearReply();
+  isTypingSent = false;
   socket.emit('stop_typing');
   clearTimeout(typingTimeout);
 
@@ -1715,11 +1719,15 @@ chatForm.addEventListener('submit', (e) => {
 messageInput.addEventListener('input', () => {
   if (!isPartnerConnected) return;
 
-  socket.emit('typing');
+  if (!isTypingSent) {
+    isTypingSent = true;
+    socket.emit('typing');
+  }
   clearTimeout(typingTimeout);
   typingTimeout = setTimeout(() => {
+    isTypingSent = false;
     socket.emit('stop_typing');
-  }, 1200);
+  }, 1400);
 });
 
 // Shortcuts
@@ -1872,4 +1880,18 @@ socket.on('chat_ended', () => {
   stopVoiceRecording(false);
   stopActiveMediaAndTimers();
   showScreen(landingScreen);
+});
+
+socket.on('disconnect', () => {
+  isPartnerConnected = false;
+  isTypingSent = false;
+  clearTimeout(typingTimeout);
+  if (chatScreen.classList.contains('active')) {
+    messageInput.disabled = true;
+    strangerSubstatus.innerHTML = `
+      <span class="active-dot" style="background-color: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+      <span style="color: #ef4444;">Disconnected</span>
+    `;
+    appendDisconnectBanner();
+  }
 });

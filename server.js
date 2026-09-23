@@ -55,8 +55,9 @@ let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
 
 // Rate limiting & DoS guards (Sliding window on socket.data, 0 extra deps)
-function isRateLimited(socket, limit = 8, windowMs = 2000, key = 'msgTimestamps') {
+function isRateLimited(socket, limit = 20, windowMs = 2000, key = 'msgTimestamps') {
   const now = Date.now();
+  if (!socket.data) socket.data = {};
   if (!socket.data[key]) socket.data[key] = [];
   socket.data[key] = socket.data[key].filter((t) => now - t < windowMs);
   if (socket.data[key].length >= limit) return true;
@@ -169,7 +170,7 @@ io.on('connection', (socket) => {
 
   // Sending a message with rate limiting and newline normalization
   socket.on('send_message', (data) => {
-    if (isRateLimited(socket, 8, 2000, 'msgTimestamps')) return; // Max 8 messages per 2s
+    if (isRateLimited(socket, 20, 2000, 'msgTimestamps')) return; // Generous 20 msgs/2s limit
     if (!data) return;
 
     const msgId = typeof data.msgId === 'string' && data.msgId.trim()
@@ -178,10 +179,10 @@ io.on('connection', (socket) => {
     const textRaw = typeof data.text === 'string' ? data.text : '';
     const sanitized = textRaw.trim().replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').slice(0, 1500);
 
-    // Audio voice note validation (ephemeral Base64 WebM/Opus, max 200KB, max 15s)
+    // Audio voice note validation (ephemeral Base64 WebM/Opus, max 400KB, max 15s)
     let audioPayload = null;
     if (data.audio && typeof data.audio.data === 'string' && data.audio.data.startsWith('data:audio/')) {
-      if (data.audio.data.length <= 250000) {
+      if (data.audio.data.length <= 400000) {
         audioPayload = {
           data: data.audio.data,
           duration: typeof data.audio.duration === 'number' ? Math.min(Math.max(1, data.audio.duration), 15) : 5
@@ -205,13 +206,14 @@ io.on('connection', (socket) => {
 
     const ephemeral = !!data.ephemeral;
 
-    // Acknowledge back to sender
-    socket.emit('message_sent_ack', { msgId });
-
+    // Verify active room connection
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
       const partnerSocket = io.sockets.sockets.get(partnerId);
       if (partnerSocket) {
+        // Acknowledge back to sender
+        socket.emit('message_sent_ack', { msgId });
+
         partnerSocket.emit('receive_message', {
           msgId,
           text: sanitized,
@@ -220,7 +222,12 @@ io.on('connection', (socket) => {
           ephemeral: ephemeral,
           timestamp: Date.now()
         });
+      } else {
+        cleanupUser(socket.id, false);
+        socket.emit('partner_disconnected', { message: 'Stranger has disconnected.' });
       }
+    } else {
+      socket.emit('partner_disconnected', { message: 'Stranger has disconnected.' });
     }
   });
 
@@ -320,7 +327,7 @@ io.on('connection', (socket) => {
 
   // Typing indicators
   socket.on('typing', () => {
-    if (isRateLimited(socket, 15, 3000)) return;
+    if (isRateLimited(socket, 25, 2000, 'typingTimestamps')) return;
     if (activeRooms.has(socket.id)) {
       const { partnerId } = activeRooms.get(socket.id);
       const partnerSocket = io.sockets.sockets.get(partnerId);
