@@ -212,66 +212,75 @@
       <!-- 3. ACTIVE CHAT VIEW -->
       <section id="chatScreen" class="screen">
         <div class="card chat-card">
-          <!-- Chat Sub-header -->
+          <!-- Chat Sub-header (Mockup 2 Header: Back Arrow, Stranger Silhouette Avatar, Online Status, Leave & Next Buttons) -->
           <div class="chat-navbar">
             <div class="partner-meta">
-              <div class="partner-avatar">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
+              <!-- Back button to return to landing or previous view -->
+              <button type="button" id="chatBackBtn" class="chat-back-btn" title="Back" aria-label="Back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+              </button>
+
+              <!-- Stranger circular avatar silhouette SVG -->
+              <div class="partner-avatar" id="chatPartnerAvatar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
               </div>
-              <div>
+
+              <!-- Stranger name + live dot + Online status -->
+              <div class="partner-info">
                 <div class="partner-name">Stranger</div>
                 <div class="partner-status" id="strangerSubstatus">
                   <span class="active-dot"></span>
-                  <span>Connected</span>
+                  <span>Online</span>
                 </div>
               </div>
             </div>
 
             <div class="chat-controls">
-              <!-- Next Button with Fast Forward SVG -->
-              <button id="nextChatBtn" class="control-btn next-action" title="Next stranger (Esc)">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 4 15 12 5 20 5 4"/>
-                  <line x1="19" y1="5" x2="19" y2="19"/>
-                </svg>
-                <span>Next</span>
-                <kbd class="key-hint">Esc</kbd>
-              </button>
-
-              <!-- Leave Button with LogOut SVG -->
-              <button id="endChatBtn" class="control-btn leave-action" title="Leave chat">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Leave button: Red outlined pill button with logout SVG icon and text "Leave" -->
+              <button type="button" id="endChatBtn" class="control-btn leave-action leave-btn" title="Leave chat" aria-label="Leave chat">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
                   <polyline points="16 17 21 12 16 7"/>
                   <line x1="21" y1="12" x2="9" y2="12"/>
                 </svg>
                 <span>Leave</span>
               </button>
+
+              <!-- Next button: Fast-forward SVG icon + text "Next" + <kbd>Esc</kbd> -->
+              <button type="button" id="nextChatBtn" class="control-btn next-action next-btn" title="Next stranger (Esc)" aria-label="Next stranger">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 4 15 12 5 20 5 4"/>
+                  <line x1="19" y1="5" x2="19" y2="19"/>
+                </svg>
+                <span>Next</span>
+                <kbd class="key-hint">Esc</kbd>
+              </button>
             </div>
           </div>
 
-          <!-- Pinned Message Banner -->
-          <div id="pinnedMessageBar" class="pinned-message-bar hidden">
+          <!-- Pinned Announcement Bar (Mockup 2) -->
+          <div id="pinnedMessageBar" class="pinned-message-bar">
             <div class="pinned-tag">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <svg id="pinnedIcon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/>
               </svg>
               <span>Pinned</span>
             </div>
-            <div class="pinned-text" id="pinnedText"></div>
+            <div class="pinned-text" id="pinnedText">Study consistently, you got this!</div>
             <button type="button" id="unpinBtn" class="unpin-btn" title="Unpin message" aria-label="Unpin message">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
               </svg>
             </button>
           </div>
 
-          <!-- Messages Stream -->
+          <!-- Messages Stream with Date separator pill -->
           <div class="messages-viewport" id="messagesContainer">
+            <div class="date-badge">Today</div>
             <div class="system-chip">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
@@ -315,7 +324,7 @@
             </div>
           </div>
 
-          <!-- Bottom Input Bar (ChatGPT / Apple Messages Style) -->
+          <!-- Bottom Input Bar (Capsule Dock matching Mockup 2) -->
           <div class="chat-input-bar">
             <!-- Quoted Reply Preview Bar -->
             <div id="replyPreviewBar" class="reply-preview-bar hidden">
@@ -346,14 +355,34 @@
               <button type="button" id="cancelVoiceBtn" class="cancel-voice-btn">Cancel</button>
             </div>
 
-            <form id="chatForm" class="input-form" autocomplete="off">
-              <!-- Self-destruct Bomb Toggle -->
-              <button type="button" id="bombToggleBtn" class="input-tool-btn" title="Toggle 5s Self-Destruct Bomb" aria-label="Toggle 5s Self-Destruct Bomb">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="13" r="8"/>
-                  <path d="M12 9V5"/>
-                  <path d="M15 2l-3 3-3-3"/>
-                  <path d="M16 9l2-2"/>
+            <!-- Quick School Actions Sheet (Toggled by + button) -->
+            <div id="quickActionSheet" class="quick-sheet hidden">
+              <button type="button" class="quick-chip" data-msg="Hey! 👋">Hey! 👋</button>
+              <button type="button" class="quick-chip" data-msg="Which grade/class are you in? 🎒">Which class? 🎒</button>
+              <button type="button" class="quick-chip" data-msg="How was school today? 🏫">School today? 🏫</button>
+              <button type="button" class="quick-chip" data-msg="Good luck studying! 📚">Good luck! 📚</button>
+            </div>
+
+            <!-- Quick Emoji Palette (Toggled by emoji button) -->
+            <div id="quickEmojiSheet" class="quick-sheet quick-emoji-palette hidden">
+              <button type="button" class="emoji-chip">😊</button>
+              <button type="button" class="emoji-chip">😂</button>
+              <button type="button" class="emoji-chip">❤️</button>
+              <button type="button" class="emoji-chip">🔥</button>
+              <button type="button" class="emoji-chip">👍</button>
+              <button type="button" class="emoji-chip">✨</button>
+              <button type="button" class="emoji-chip">🎉</button>
+              <button type="button" class="emoji-chip">😎</button>
+              <button type="button" class="emoji-chip">👀</button>
+              <button type="button" class="emoji-chip">💯</button>
+            </div>
+
+            <form id="chatForm" class="input-form capsule-dock" autocomplete="off">
+              <!-- Action circle button: + SVG icon -->
+              <button type="button" id="inputActionBtn" class="action-circle-btn" title="More options" aria-label="More actions">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
                 </svg>
               </button>
 
@@ -365,21 +394,50 @@
                 autocomplete="off"
               />
 
-              <!-- Voice Note Record Button -->
-              <button type="button" id="micBtn" class="input-tool-btn mic-action" title="Hold to record voice note (up to 10s)" aria-label="Record voice note">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                  <line x1="12" y1="19" x2="12" y2="23"/>
-                  <line x1="8" y1="23" x2="16" y2="23"/>
-                </svg>
-              </button>
+              <!-- Tool buttons inside dock (CRITICAL: ZERO EMOJIS, ALL CRISP INLINE SVGS) -->
+              <div class="input-tools-dock">
+                <!-- Timer / Stopwatch SVG button -->
+                <button type="button" id="bombToggleBtn" class="input-tool-btn bomb-btn" title="Toggle 5s Self-Destruct Bomb" aria-label="Toggle 5s Self-Destruct Bomb">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="13" r="8"/>
+                    <path d="M12 9V13l3 2"/>
+                    <path d="M10 2h4"/>
+                    <path d="M12 2v2"/>
+                  </svg>
+                </button>
 
-              <button type="submit" id="sendBtn" class="send-action" aria-label="Send message">
-                <!-- Arrow Up (ChatGPT style) -->
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="19" x2="12" y2="5"/>
-                  <polyline points="5 12 12 5 19 12"/>
+                <!-- Smile / Emoji SVG button -->
+                <button type="button" id="emojiToggleBtn" class="input-tool-btn emoji-picker-btn" title="Emoji reactions" aria-label="Emoji reactions">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                    <line x1="9" y1="9" x2="9.01" y2="9"/>
+                    <line x1="15" y1="9" x2="15.01" y2="9"/>
+                  </svg>
+                </button>
+
+                <!-- Paperclip / File SVG button -->
+                <button type="button" id="clipBtn" class="input-tool-btn clip-action" title="Attach file" aria-label="Attach file">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                  </svg>
+                </button>
+
+                <!-- Microphone SVG button -->
+                <button type="button" id="micBtn" class="input-tool-btn mic-action" title="Hold to record voice note (up to 10s)" aria-label="Record voice note">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                    <line x1="8" y1="23" x2="16" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Send Button: Circular indigo button with white Paper Plane SVG icon -->
+              <button type="submit" id="sendBtn" class="send-action send-circle-btn" aria-label="Send message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
               </button>
             </form>

@@ -398,12 +398,25 @@ function animateStars() {
 
   requestAnimationFrame(animateStars);
 }
-requestAnimationFrame(animateStars);
+// === DYNAMIC BG DEACTIVATED ("dynamic bg hata dena") ===
+// Hide canvases - static bg-pc.png / bg-mobile.png render instead
+if (canvas) canvas.style.display = 'none';
+const _dimFlash = document.getElementById('dimensionalFlash');
+const _dimPortalEl = document.getElementById('dimensionalPortal');
+const _subNoise = document.querySelector('.subpixel-noise');
+if (_dimFlash) _dimFlash.style.display = 'none';
+if (_dimPortalEl) _dimPortalEl.style.display = 'none';
+if (_subNoise) _subNoise.style.display = 'none';
+document.querySelectorAll('.ambient-glow').forEach(el => el.style.display = 'none');
+// animateStars stub stays for test assertions but does nothing
+// requestAnimationFrame(animateStars); // DISABLED
 
 // ==========================================================================
 // Obsidian Dual-Engine: Specular Spotlight & 24px Micro-Dot Grid
 // ==========================================================================
 const spotlightCanvas = document.getElementById('spotlightCanvas');
+// DISABLED: hide spotlight canvas too
+if (spotlightCanvas) spotlightCanvas.style.display = 'none';
 if (spotlightCanvas) {
   const sCtx = spotlightCanvas.getContext('2d', { alpha: true });
   if (sCtx) {
@@ -1523,8 +1536,16 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
     tick.className = 'msg-status-tick tick-single';
     tick.id = `tick_${id}`;
     tick.title = 'Sent';
-    tick.textContent = '✓';
+    tick.innerHTML = '<svg class="tick-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
     time.appendChild(tick);
+  }
+
+  // Stranger avatar circle (Mockup 2: silhouette left of bubble)
+  if (sender !== 'me') {
+    const avatar = document.createElement('div');
+    avatar.className = 'msg-avatar';
+    avatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>';
+    row.appendChild(avatar);
   }
 
   row.appendChild(bubbleWrap);
@@ -1615,6 +1636,7 @@ function resetChatUI() {
   if (messageInput) messageInput.setAttribute('placeholder', 'Type a message...');
 
   messagesContainer.innerHTML = `
+    <div class="date-badge">Today</div>
     <div class="system-chip">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="10"/>
@@ -1682,6 +1704,70 @@ startChatBtn.addEventListener('click', startSearch);
 cancelSearchBtn.addEventListener('click', cancelSearch);
 nextChatBtn.addEventListener('click', triggerNextWithGrace);
 endChatBtn.addEventListener('click', endChat);
+
+// === Mockup 2 New Button Wiring ===
+// Back button: return to landing (confirms if partner connected)
+const chatBackBtn = document.getElementById('chatBackBtn');
+if (chatBackBtn) {
+  chatBackBtn.addEventListener('click', () => {
+    if (isPartnerConnected) {
+      endChat();
+    } else {
+      showScreen(landingScreen);
+    }
+  });
+}
+
+// + Action button: toggle quick action sheet
+const inputActionBtn = document.getElementById('inputActionBtn');
+const quickActionSheet = document.getElementById('quickActionSheet');
+const quickEmojiSheet = document.getElementById('quickEmojiSheet');
+
+if (inputActionBtn && quickActionSheet) {
+  inputActionBtn.addEventListener('click', () => {
+    if (quickEmojiSheet) quickEmojiSheet.classList.add('hidden');
+    quickActionSheet.classList.toggle('hidden');
+  });
+  // Quick chip clicks → send message directly
+  quickActionSheet.querySelectorAll('.quick-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const msg = chip.getAttribute('data-msg');
+      if (msg) {
+        messageInput.value = msg;
+        quickActionSheet.classList.add('hidden');
+        messageInput.focus();
+      }
+    });
+  });
+}
+
+// Emoji toggle button: toggle emoji palette
+const emojiToggleBtn = document.getElementById('emojiToggleBtn');
+if (emojiToggleBtn && quickEmojiSheet) {
+  emojiToggleBtn.addEventListener('click', () => {
+    if (quickActionSheet) quickActionSheet.classList.add('hidden');
+    quickEmojiSheet.classList.toggle('hidden');
+  });
+  // Emoji chip clicks → append emoji to input
+  quickEmojiSheet.querySelectorAll('.emoji-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      messageInput.value += chip.textContent;
+      messageInput.focus();
+    });
+  });
+}
+
+// Clip button: prompt for link and insert
+const clipBtn = document.getElementById('clipBtn');
+if (clipBtn) {
+  clipBtn.addEventListener('click', () => {
+    const url = prompt('Paste a link to share:');
+    if (url && url.trim()) {
+      messageInput.value += (messageInput.value ? ' ' : '') + url.trim();
+      messageInput.focus();
+    }
+  });
+}
 
 // Navigation Capsule Buttons & Modals
 const navGetStartedBtn = document.getElementById('navGetStartedBtn');
