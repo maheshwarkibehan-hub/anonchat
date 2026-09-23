@@ -127,6 +127,26 @@
 
 ---
 
+### 📍 Phase 7: School-Themed Landing Page Redesign & Custom Backgrounds
+- **Custom Desktop & Mobile Backgrounds**:
+  - Integrated `bg-pc.png` (desktop, fixed cover) and `bg-mobile.png` (mobile `< 768px`) with desk, books, and moody purple lighting.
+- **Floating Capsule Navbar**:
+  - Speech bubble brand icon with 3 dots.
+  - Links: `Home`, `How it works`, `Safety`, `About` with active underline glow.
+  - Status pill (`• 1 online`), dark mode moon button, and glowing `Get Started` button.
+- **Hero & Landing Section (1:1 Mockup Match)**:
+  - `🎓 For Our School` tag badge.
+  - Headline: `Talk to classmates, <span class="gradient-headline">completely anonymously.</span>`.
+  - Subtitle: `Same school. Real conversations. No names. No judgment.<br />Just students being real.`.
+  - Primary Button: `Start Chat →` pill button with glowing drop shadow.
+  - Subtext: `• 1 student online right now` reactive to live sockets.
+  - 3 Translucent Feature Cards: `No Identities (100% anonymous)`, `Instant Match (Chat with a random classmate)`, `Safe & Friendly (Built for our school)`.
+  - Motto Divider: `────── Better Conversations • Brighter School Days ──────`.
+- **Informational Modals**:
+  - Added lightweight glassmorphic popups for `How it works`, `Safety`, and `About`.
+
+---
+
 ## 4. 🔌 Socket.io Event Protocol Reference
 
 | Event Name | Direction | Payload | Description |
