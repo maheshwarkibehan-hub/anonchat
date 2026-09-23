@@ -1683,6 +1683,115 @@ cancelSearchBtn.addEventListener('click', cancelSearch);
 nextChatBtn.addEventListener('click', triggerNextWithGrace);
 endChatBtn.addEventListener('click', endChat);
 
+// Navigation Capsule Buttons & Modals
+const navGetStartedBtn = document.getElementById('navGetStartedBtn');
+if (navGetStartedBtn) {
+  navGetStartedBtn.addEventListener('click', startSearch);
+}
+
+const infoModalOverlay = document.getElementById('infoModalOverlay');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+const navHowBtn = document.getElementById('navHowBtn');
+const navSafetyBtn = document.getElementById('navSafetyBtn');
+const navAboutBtn = document.getElementById('navAboutBtn');
+const navHomeBtn = document.getElementById('navHomeBtn');
+
+const modalContents = {
+  how: {
+    title: 'How AnonChat Works',
+    html: `
+      <div class="modal-step">
+        <strong>1. One-Click Ingress</strong>
+        Hit "Start Chat" to immediately enter the peer matchmaking pool.
+      </div>
+      <div class="modal-step">
+        <strong>2. Random Classmate Pairing</strong>
+        You are paired 1-on-1 with another student from our school currently online.
+      </div>
+      <div class="modal-step">
+        <strong>3. Express Freely</strong>
+        Chat with text, quoted replies, emoji reactions, voice memos, and self-destructing bombs.
+      </div>
+      <div class="modal-step">
+        <strong>4. 100% RAM State & Ephemeral</strong>
+        Zero chat history is saved. When either student leaves, the room and messages dissolve from server memory instantly.
+      </div>
+    `
+  },
+  safety: {
+    title: 'Student Safety & Privacy',
+    html: `
+      <div class="modal-step">
+        <strong>🛡️ Identity Shield</strong>
+        No real names, student roll numbers, or accounts. You are completely anonymous.
+      </div>
+      <div class="modal-step">
+        <strong>⚡ Zero Data Retention</strong>
+        We don't maintain a database. Everything exists strictly in temporary server RAM.
+      </div>
+      <div class="modal-step">
+        <strong>💣 5-Second Ephemeral Bombs</strong>
+        Send self-destruct messages that smoke away 5 seconds after your partner reads them.
+      </div>
+      <div class="modal-step">
+        <strong>🛑 1-Tap Skip & Disconnect</strong>
+        If a conversation ever feels uncomfortable, press "Next" or "Leave" at any time.
+      </div>
+    `
+  },
+  about: {
+    title: 'About AnonChat',
+    html: `
+      <div class="modal-step">
+        <strong>Same School. Real Conversations.</strong>
+        AnonChat was created for our student community to break social barriers, talk honestly about school life, collaborate on thoughts, and make genuine friends without fear of social judgment.
+      </div>
+      <div class="modal-step" style="text-align: center; margin-top: 20px; color: #818cf8; font-weight: 600;">
+        Better Conversations &nbsp;•&nbsp; Brighter School Days :)
+      </div>
+    `
+  }
+};
+
+function openInfoModal(type) {
+  if (!modalContents[type] || !infoModalOverlay) return;
+  modalTitle.textContent = modalContents[type].title;
+  modalBody.innerHTML = modalContents[type].html;
+  infoModalOverlay.classList.remove('hidden');
+  infoModalOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeInfoModal() {
+  if (!infoModalOverlay) return;
+  infoModalOverlay.classList.add('hidden');
+  infoModalOverlay.setAttribute('aria-hidden', 'true');
+}
+
+if (navHowBtn) navHowBtn.addEventListener('click', () => openInfoModal('how'));
+if (navSafetyBtn) navSafetyBtn.addEventListener('click', () => openInfoModal('safety'));
+if (navAboutBtn) navAboutBtn.addEventListener('click', () => openInfoModal('about'));
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeInfoModal);
+
+if (infoModalOverlay) {
+  infoModalOverlay.addEventListener('click', (e) => {
+    if (e.target === infoModalOverlay) closeInfoModal();
+  });
+}
+
+if (navHomeBtn) {
+  navHomeBtn.addEventListener('click', () => {
+    if (chatScreen.classList.contains('active')) {
+      if (confirm('Leave current chat and return home?')) {
+        endChat();
+      }
+    } else {
+      showScreen(landingScreen);
+    }
+  });
+}
+
 // Chat Input Form
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -1732,12 +1841,18 @@ messageInput.addEventListener('input', () => {
 
 // Shortcuts
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && chatScreen.classList.contains('active')) {
-    e.preventDefault();
-    if (skipTimer) {
-      cancelSkipGrace();
-    } else {
-      triggerNextWithGrace();
+  if (e.key === 'Escape') {
+    if (infoModalOverlay && !infoModalOverlay.classList.contains('hidden')) {
+      closeInfoModal();
+      return;
+    }
+    if (chatScreen.classList.contains('active')) {
+      e.preventDefault();
+      if (skipTimer) {
+        cancelSkipGrace();
+      } else {
+        triggerNextWithGrace();
+      }
     }
   }
 });
@@ -1746,6 +1861,10 @@ window.addEventListener('keydown', (e) => {
 socket.on('online_count', (data) => {
   if (data && typeof data.count === 'number') {
     onlineCountText.textContent = `${data.count} online`;
+    const studentOnlineText = document.getElementById('studentOnlineText');
+    if (studentOnlineText) {
+      studentOnlineText.textContent = `${data.count} student${data.count === 1 ? '' : 's'} online right now`;
+    }
     const pill = document.getElementById('onlinePill');
     if (pill) {
       pill.style.borderColor = 'rgba(34, 197, 94, 0.6)';

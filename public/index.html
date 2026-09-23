@@ -28,14 +28,14 @@
   <div class="ambient-glow center-ambient"></div>
 
   <div class="app-shell">
-    <!-- Navigation Bar: Glassmorphic Floating Header -->
+    <!-- Navigation Bar: Glassmorphic Floating Capsule Header -->
     <header class="navbar">
       <div class="brand">
         <div class="brand-badge">
-          <!-- Minimalist Geometric P2P Secure Node SVG -->
+          <!-- Speech bubble with dots SVG matching mockup -->
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10a9.96 9.96 0 0 1-4.87-1.27L2 22l1.27-5.13A9.96 9.96 0 0 1 2 12 10 10 0 0 1 12 2z"/>
-            <path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01" stroke-width="2.5"/>
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            <path d="M8 12h.01M12 12h.01M16 12h.01" stroke-width="2.5"/>
           </svg>
         </div>
         <div class="brand-text">
@@ -44,11 +44,26 @@
         </div>
       </div>
 
+      <!-- Navigation Center Links -->
+      <nav class="nav-menu" id="navMenu">
+        <button type="button" class="nav-link active" id="navHomeBtn">Home</button>
+        <button type="button" class="nav-link" id="navHowBtn">How it works</button>
+        <button type="button" class="nav-link" id="navSafetyBtn">Safety</button>
+        <button type="button" class="nav-link" id="navAboutBtn">About</button>
+      </nav>
+
       <div class="nav-controls">
         <div class="status-pill" id="onlinePill">
           <span class="status-dot"></span>
           <span id="onlineCountText">1 online</span>
         </div>
+
+        <button class="nav-icon-btn" id="themeToggleBtn" aria-label="Dark mode atmosphere" title="Dark mode atmosphere">
+          <!-- Moon SVG -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
 
         <button class="nav-icon-btn" id="soundToggleBtn" aria-label="Toggle sound alerts" title="Sound notifications">
           <!-- Volume 2 SVG -->
@@ -64,6 +79,10 @@
             <line x1="16" y1="9" x2="22" y2="15"/>
           </svg>
         </button>
+
+        <button type="button" class="nav-cta-btn" id="navGetStartedBtn">
+          Get Started
+        </button>
       </div>
     </header>
 
@@ -72,25 +91,26 @@
       <!-- 1. LANDING VIEW -->
       <section id="landingScreen" class="screen active">
         <div class="card landing-card">
-          <!-- Status Tag with Sparkles SVG -->
-          <div class="tag-pill">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tag-icon">
-              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+          <!-- School Badge Tag -->
+          <div class="tag-pill school-tag-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tag-icon">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
             </svg>
-            <span>Instant & Ephemeral</span>
+            <span>For Our School</span>
           </div>
 
           <h1 class="hero-headline">
-            Talk to strangers,<br />
+            Talk to classmates,<br />
             <span class="gradient-headline">completely anonymously.</span>
           </h1>
 
           <p class="hero-subtext">
-            Zero telemetry. Zero registration. Ephemeral WebSockets.<br />
-            Connect with peers across the web in 1-click.
+            Same school. Real conversations. No names. No judgment.<br />
+            Just students being real.
           </p>
 
-          <button id="startChatBtn" class="primary-btn">
+          <button id="startChatBtn" class="primary-btn hero-cta-btn">
             <span>Start Chat</span>
             <!-- Arrow Right SVG -->
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -99,54 +119,63 @@
             </svg>
           </button>
 
-          <!-- Feature Grid with Refined Line SVGs and WCAG Slate-400 Typography -->
+          <!-- Student Online Sub-indicator -->
+          <div class="online-subtext">
+            <span class="status-dot"></span>
+            <span id="studentOnlineText">1 student online right now</span>
+          </div>
+
+          <!-- Feature Grid with 3 Translucent School Cards -->
           <div class="features-grid">
             <div class="feature-card">
               <div class="feature-icon-wrapper">
                 <!-- Shield Check SVG -->
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   <path d="m9 12 2 2 4-4"/>
                 </svg>
               </div>
               <div class="feature-text">
-                <span class="feature-title">Zero Logs</span>
-                <span class="feature-sub">RAM-only state</span>
+                <span class="feature-title">No Identities</span>
+                <span class="feature-sub">100% anonymous</span>
               </div>
             </div>
 
             <div class="feature-card">
               <div class="feature-icon-wrapper">
                 <!-- Zap / Bolt SVG -->
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                 </svg>
               </div>
               <div class="feature-text">
-                <span class="feature-title">Real-Time</span>
-                <span class="feature-sub">Low-latency sockets</span>
+                <span class="feature-title">Instant Match</span>
+                <span class="feature-sub">Chat with a random classmate</span>
               </div>
             </div>
 
             <div class="feature-card">
               <div class="feature-icon-wrapper">
-                <!-- Fingerprint SVG -->
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/>
-                  <path d="M14 13.12c0 2.38 0 6.38-1 8.88"/>
-                  <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/>
-                  <path d="M2 12a10 10 0 0 1 18-6"/>
-                  <path d="M2 16h.01"/>
-                  <path d="M21.8 16c.2-2 .131-5.354 0-6"/>
-                  <path d="M9 6.8a6 6 0 0 1 9 5.2v2"/>
-                  <path d="M5.8 9.5a8 8 0 0 1 12.4 0"/>
+                <!-- Users / School Classmates SVG -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
               </div>
               <div class="feature-text">
-                <span class="feature-title">Identity Shield</span>
-                <span class="feature-sub">100% Anonymous</span>
+                <span class="feature-title">Safe & Friendly</span>
+                <span class="feature-sub">Built for our school</span>
               </div>
             </div>
+          </div>
+
+          <!-- Bottom Motto Divider -->
+          <div class="motto-divider">
+            <span class="motto-line"></span>
+            <span class="motto-text">Better Conversations &nbsp;•&nbsp; Brighter School Days</span>
+            <span class="motto-line"></span>
           </div>
         </div>
       </section>
@@ -374,6 +403,24 @@
         </a>
       </div>
     </footer>
+  </div>
+
+  <!-- Informational Modal Backdrop & Dialogs -->
+  <div id="infoModalOverlay" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+    <div class="modal-dialog card" id="modalDialog">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">How It Works</h3>
+        <button type="button" id="modalCloseBtn" class="modal-close-btn" aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Content injected via client.js -->
+      </div>
+    </div>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>

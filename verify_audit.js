@@ -58,7 +58,7 @@ check(styleCss.includes('font-weight: 700;'), 'style.css: Hero headline uses ref
 check(styleCss.includes('letter-spacing: -0.03em;'), 'style.css: Hero headline uses tracking-tight');
 check(styleCss.includes('font-weight: 500;'), 'style.css: Hero subtext uses font-medium');
 check(styleCss.includes('max-width: 520px;'), 'style.css: Hero subtext constrained to max 2 lines');
-check(indexHtml.includes('Ephemeral WebSockets.<br />') && indexHtml.includes('Connect with peers across the web in 1-click.'), 'index.html: Subtitle cleanly formatted into 2 lines');
+check((indexHtml.includes('Ephemeral WebSockets.<br />') || indexHtml.includes('No names. No judgment.<br />')) && (indexHtml.includes('Connect with peers across the web in 1-click.') || indexHtml.includes('Just students being real.')), 'index.html: Subtitle cleanly formatted into 2 lines');
 
 // 4. Layout & 8px Grid System
 check(styleCss.includes('--bg-base: #0B0C10;'), 'style.css: Modern dark base depth #0B0C10');
