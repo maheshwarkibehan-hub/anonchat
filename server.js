@@ -15,10 +15,10 @@ const io = new Server(server, {
 
 const PORT = process.env.PORT || 3000;
 
-// Maintenance Mode: Active by default (Set MAINTENANCE_MODE=false in Render Environment tab to go live)
+// Maintenance Mode: Disabled by default (Set MAINTENANCE_MODE=true or create .maintenance file to enable)
 const MAINTENANCE_FILE = path.join(__dirname, '.maintenance');
 function isMaintenanceActive() {
-  return process.env.MAINTENANCE_MODE !== 'false';
+  return process.env.MAINTENANCE_MODE === 'true' || fs.existsSync(MAINTENANCE_FILE);
 }
 
 app.use((req, res, next) => {
