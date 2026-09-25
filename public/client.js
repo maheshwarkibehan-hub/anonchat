@@ -77,7 +77,7 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
 
 function playChime(type) {
-  if (!soundEnabled) return;
+  if (!soundEnabled || (typeof isStealthActive !== 'undefined' && isStealthActive)) return;
   try {
     if (!audioCtx) audioCtx = new AudioContext();
     if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -138,7 +138,7 @@ function playChime(type) {
 }
 
 function playJobySiren() {
-  if (!soundEnabled) return;
+  if (!soundEnabled || (typeof isStealthActive !== 'undefined' && isStealthActive)) return;
   try {
     if (!audioCtx) audioCtx = new AudioContext();
     if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -336,6 +336,7 @@ function triggerDimensionalWarp(durationMs = 900) {
 
 // Animation Loop (Three.js WebGL with 2D Canvas Fallback & Battery Saver)
 function animateStars() {
+  if (!canvas || canvas.offsetParent === null) return;
   if (document.hidden) {
     requestAnimationFrame(animateStars);
     return;
@@ -1753,7 +1754,7 @@ function startSearch() {
   stopActiveMediaAndTimers();
   triggerDimensionalWarp(900);
   showScreen(searchingScreen);
-  socket.emit('find_partner');
+  socket.emit('find_partner', { vibe: selectedBenchVibe });
 }
 
 function cancelSearch() {
@@ -1770,7 +1771,7 @@ function nextPartner() {
   stopVoiceRecording(false);
   stopActiveMediaAndTimers();
   triggerDimensionalWarp(900);
-  socket.emit('next_partner');
+  socket.emit('next_partner', { vibe: selectedBenchVibe });
   showScreen(searchingScreen);
 }
 
@@ -1889,6 +1890,30 @@ function clearAttachment() {
   if (mediaFileInput) mediaFileInput.value = '';
 }
 
+function handleImageFile(file) {
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    alert('Bhai sirf photo ya image file (JPEG, PNG, WebP) attach ho sakti hai.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    compressImage(ev.target.result, (compressedDataUrl) => {
+      pendingAttachment = {
+        dataUrl: compressedDataUrl,
+        isViewOnce: false
+      };
+      if (attachmentPreviewImg) attachmentPreviewImg.src = compressedDataUrl;
+      if (attachmentPreview) attachmentPreview.classList.remove('hidden');
+      if (viewOnceToggleBtn) viewOnceToggleBtn.classList.remove('active');
+      if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
+      if (messageInput) messageInput.focus();
+      triggerHaptic('light');
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
 if (clipBtn && mediaFileInput) {
   clipBtn.addEventListener('click', () => {
     mediaFileInput.click();
@@ -1896,29 +1921,79 @@ if (clipBtn && mediaFileInput) {
 
   mediaFileInput.addEventListener('change', (e) => {
     const file = e.target.files?.[0];
-    if (!file) return;
-    if (!file.type.startsWith('image/')) {
-      alert('Please select an image file (JPEG, PNG, WebP).');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      compressImage(ev.target.result, (compressedDataUrl) => {
-        pendingAttachment = {
-          dataUrl: compressedDataUrl,
-          isViewOnce: false
-        };
-        if (attachmentPreviewImg) attachmentPreviewImg.src = compressedDataUrl;
-        if (attachmentPreview) attachmentPreview.classList.remove('hidden');
-        if (viewOnceToggleBtn) viewOnceToggleBtn.classList.remove('active');
-        if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
-        messageInput.focus();
-        triggerHaptic('light');
-      });
-    };
-    reader.readAsDataURL(file);
+    handleImageFile(file);
   });
 }
+
+// Drag & Drop File Upload on Chat Screen
+const chatCard = document.getElementById('chatCard');
+const chatDropOverlay = document.getElementById('chatDropOverlay');
+let dragCounter = 0;
+
+if (chatCard) {
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
+    chatCard.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }, false);
+  });
+
+  chatCard.addEventListener('dragenter', (e) => {
+    if (e.dataTransfer && e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files')) {
+      dragCounter++;
+      if (chatDropOverlay) chatDropOverlay.classList.remove('hidden');
+    }
+  });
+
+  chatCard.addEventListener('dragover', (e) => {
+    if (chatDropOverlay && chatDropOverlay.classList.contains('hidden')) {
+      chatDropOverlay.classList.remove('hidden');
+    }
+  });
+
+  chatCard.addEventListener('dragleave', (e) => {
+    dragCounter = Math.max(0, dragCounter - 1);
+    if (dragCounter === 0 && chatDropOverlay) {
+      chatDropOverlay.classList.add('hidden');
+    }
+  });
+
+  chatCard.addEventListener('drop', (e) => {
+    dragCounter = 0;
+    if (chatDropOverlay) chatDropOverlay.classList.add('hidden');
+    const dt = e.dataTransfer;
+    if (dt && dt.files && dt.files.length > 0) {
+      const file = Array.from(dt.files).find((f) => f.type.startsWith('image/'));
+      if (file) {
+        handleImageFile(file);
+      } else {
+        alert('Bhai sirf photos (images) drop kar sakte ho!');
+      }
+    }
+  });
+}
+
+// Windows / System Clipboard Paste (Ctrl+V Screenshot paste)
+window.addEventListener('paste', (e) => {
+  // Only process if user is in chatScreen or has focus in chat
+  if (!chatScreen || !chatScreen.classList.contains('active')) return;
+  const clipboardData = e.clipboardData || window.clipboardData;
+  if (!clipboardData) return;
+
+  const items = clipboardData.items;
+  if (!items) return;
+
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].type.indexOf('image') !== -1) {
+      const file = items[i].getAsFile();
+      if (file) {
+        e.preventDefault(); // Don't paste text/binary junk into input
+        handleImageFile(file);
+        break;
+      }
+    }
+  }
+});
 
 if (viewOnceToggleBtn) {
   viewOnceToggleBtn.addEventListener('click', () => {
@@ -2270,12 +2345,23 @@ socket.on('search_cancelled', () => {
   showScreen(landingScreen);
 });
 
-socket.on('chat_start', () => {
+socket.on('chat_start', (data) => {
   isPartnerConnected = true;
   resetChatUI();
   showScreen(chatScreen);
   playChime('connected');
   triggerHaptic('connected');
+
+  const vibeBadge = document.getElementById('chatVibeBadge');
+  if (vibeBadge) {
+    if (data && data.vibe) {
+      const vibeText = data.vibe.includes('Vibe:') ? data.vibe : `[Vibe: ${data.vibe}]`;
+      vibeBadge.textContent = vibeText;
+      vibeBadge.classList.remove('hidden');
+    } else {
+      vibeBadge.classList.add('hidden');
+    }
+  }
 });
 
 socket.on('server_build', handleServerBuild);
@@ -2566,4 +2652,564 @@ socket.on('joby_sir_incoming', () => {
 socket.on('joby_sir_message', (data) => {
   renderJobySirMessage(data);
 });
+
+// ==========================================================================
+// 🎒 The Digital Last Bench: Real Student Life & Reddit-Inspired Architecture
+// ==========================================================================
+
+function escapeHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// --- 1. Anonymous Device Voter Token (RAM & LocalStorage) ---
+function getAnonVoterToken() {
+  let token = null;
+  try {
+    token = localStorage.getItem('anon_voter_token');
+    if (!token) {
+      token = `voter_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+      localStorage.setItem('anon_voter_token', token);
+    }
+  } catch (e) {
+    token = `voter_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+  }
+  return token;
+}
+const anonVoterToken = getAnonVoterToken();
+
+// --- 2. Bench Vibe Selection ---
+let selectedBenchVibe = 'any';
+const vibeChipsContainer = document.getElementById('vibeChips');
+if (vibeChipsContainer) {
+  vibeChipsContainer.addEventListener('click', (e) => {
+    const chip = e.target.closest('.vibe-chip');
+    if (!chip) return;
+    vibeChipsContainer.querySelectorAll('.vibe-chip').forEach((c) => c.classList.remove('active'));
+    chip.classList.add('active');
+    selectedBenchVibe = chip.dataset.vibe || 'any';
+    triggerHaptic('light');
+  });
+}
+
+// --- 3. Daily Last-Bench Dilemma (12-Hour Reddit Poll) ---
+const dilemmaQuestionEl = document.getElementById('dilemmaQuestion');
+const dilemmaBtnA = document.getElementById('dilemmaBtnA');
+const dilemmaBtnB = document.getElementById('dilemmaBtnB');
+const dilemmaTextA = document.getElementById('dilemmaTextA');
+const dilemmaTextB = document.getElementById('dilemmaTextB');
+const dilemmaFillA = document.getElementById('dilemmaFillA');
+const dilemmaFillB = document.getElementById('dilemmaFillB');
+const dilemmaPctA = document.getElementById('dilemmaPctA');
+const dilemmaPctB = document.getElementById('dilemmaPctB');
+const dilemmaTotalVotesEl = document.getElementById('dilemmaTotalVotes');
+
+let currentDilemmaId = null;
+
+function getLocalPollChoice(dilemmaId) {
+  try {
+    return localStorage.getItem(`dilemma_choice_${dilemmaId}`);
+  } catch (e) {
+    return null;
+  }
+}
+
+function setLocalPollChoice(dilemmaId, choice) {
+  try {
+    if (dilemmaId) {
+      localStorage.setItem(`dilemma_choice_${dilemmaId}`, choice);
+    }
+  } catch (e) {}
+}
+
+function updateDilemmaUI(poll) {
+  if (!poll) return;
+  currentDilemmaId = poll.id;
+  if (dilemmaQuestionEl) dilemmaQuestionEl.textContent = poll.question;
+  if (dilemmaTextA) dilemmaTextA.textContent = poll.optionA;
+  if (dilemmaTextB) dilemmaTextB.textContent = poll.optionB;
+  if (dilemmaFillA) dilemmaFillA.style.width = `${poll.percentA}%`;
+  if (dilemmaFillB) dilemmaFillB.style.width = `${poll.percentB}%`;
+  if (dilemmaPctA) dilemmaPctA.textContent = `${poll.percentA}%`;
+  if (dilemmaPctB) dilemmaPctB.textContent = `${poll.percentB}%`;
+  if (dilemmaTotalVotesEl) dilemmaTotalVotesEl.textContent = `${poll.totalVotes} student votes cast`;
+
+  if (poll.userChoice) {
+    setLocalPollChoice(poll.id, poll.userChoice);
+  }
+  const effectiveChoice = poll.userChoice || getLocalPollChoice(poll.id);
+
+  if (effectiveChoice) {
+    if (dilemmaPctA) dilemmaPctA.classList.remove('hidden');
+    if (dilemmaPctB) dilemmaPctB.classList.remove('hidden');
+    if (effectiveChoice === 'optionA') {
+      dilemmaBtnA?.classList.add('voted');
+      dilemmaBtnB?.classList.remove('voted');
+    } else if (effectiveChoice === 'optionB') {
+      dilemmaBtnB?.classList.add('voted');
+      dilemmaBtnA?.classList.remove('voted');
+    }
+  }
+}
+
+socket.on('poll_sync', (poll) => {
+  updateDilemmaUI(poll);
+});
+
+if (dilemmaBtnA) {
+  dilemmaBtnA.addEventListener('click', () => {
+    const dId = currentDilemmaId || 'dilemma_1';
+    setLocalPollChoice(dId, 'optionA');
+    dilemmaBtnA.classList.add('voted');
+    dilemmaBtnB?.classList.remove('voted');
+    dilemmaPctA?.classList.remove('hidden');
+    dilemmaPctB?.classList.remove('hidden');
+    socket.emit('vote_poll', { voterToken: anonVoterToken, choice: 'optionA' });
+    triggerHaptic('light');
+  });
+}
+if (dilemmaBtnB) {
+  dilemmaBtnB.addEventListener('click', () => {
+    const dId = currentDilemmaId || 'dilemma_1';
+    setLocalPollChoice(dId, 'optionB');
+    dilemmaBtnB.classList.add('voted');
+    dilemmaBtnA?.classList.remove('voted');
+    dilemmaPctA?.classList.remove('hidden');
+    dilemmaPctB?.classList.remove('hidden');
+    socket.emit('vote_poll', { voterToken: anonVoterToken, choice: 'optionB' });
+    triggerHaptic('light');
+  });
+}
+
+// Request initial poll and bench posts on load / socket connect
+socket.on('connect', () => {
+  socket.emit('get_poll', { voterToken: anonVoterToken });
+  socket.emit('get_bench_posts', { voterToken: anonVoterToken });
+});
+if (socket.connected) {
+  socket.emit('get_poll', { voterToken: anonVoterToken });
+  socket.emit('get_bench_posts', { voterToken: anonVoterToken });
+}
+
+// --- 4. The Last Bench Wall (Ephemeral Reddit-style Campus Feed in RAM) ---
+const benchFeedEl = document.getElementById('benchFeed');
+const dropChitModal = document.getElementById('dropChitModal');
+const openDropChitModalBtn = document.getElementById('openDropChitModalBtn');
+const closeDropChitModalBtn = document.getElementById('closeDropChitModalBtn');
+const cancelDropChitBtn = document.getElementById('cancelDropChitBtn');
+const dropChitForm = document.getElementById('dropChitForm');
+const benchPostInput = document.getElementById('benchPostInput');
+const benchCharCount = document.getElementById('benchCharCount');
+const flairPicker = document.getElementById('flairPicker');
+
+let selectedFlair = '[📚 Exam Panic]';
+
+function getLocalBenchVotes() {
+  try {
+    return JSON.parse(localStorage.getItem('anon_bench_votes') || '{}');
+  } catch (e) {
+    return {};
+  }
+}
+
+function setLocalBenchVote(postId, dir) {
+  try {
+    const votes = getLocalBenchVotes();
+    if (dir === 0) {
+      delete votes[postId];
+    } else {
+      votes[postId] = dir;
+    }
+    localStorage.setItem('anon_bench_votes', JSON.stringify(votes));
+  } catch (e) {}
+}
+
+function getFlairClass(flair) {
+  if (!flair) return 'flair-exam';
+  if (flair.includes('Exam')) return 'flair-exam';
+  if (flair.includes('Tea')) return 'flair-tea';
+  if (flair.includes('Confession')) return 'flair-confession';
+  if (flair.includes('Hot')) return 'flair-take';
+  if (flair.includes('Canteen')) return 'flair-canteen';
+  if (flair.includes('SOS')) return 'flair-sos';
+  return 'flair-exam';
+}
+
+function formatBenchTime(ts) {
+  const diffSec = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+  if (diffSec < 60) return 'Just now';
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `${diffMin}m ago`;
+  const diffHrs = Math.floor(diffMin / 60);
+  if (diffHrs < 24) return `${diffHrs}h ago`;
+  return `${Math.floor(diffHrs / 24)}d ago`;
+}
+
+function renderBenchWall(posts) {
+  if (!benchFeedEl) return;
+  if (!Array.isArray(posts) || posts.length === 0) {
+    benchFeedEl.innerHTML = `
+      <div class="bench-empty-feed">
+        <span>No chits on the desk yet. Be the first to drop one! 📝</span>
+      </div>
+    `;
+    return;
+  }
+
+  const localVotes = getLocalBenchVotes();
+
+  benchFeedEl.innerHTML = posts.map((post) => {
+    const flairCls = getFlairClass(post.flair);
+    const timeAgo = formatBenchTime(post.timestamp);
+
+    // If server provided explicit userVote, update our local store
+    if (typeof post.userVote === 'number' && post.userVote !== 0) {
+      localVotes[post.id] = post.userVote;
+      setLocalBenchVote(post.id, post.userVote);
+    }
+    const effectiveVote = (typeof post.userVote === 'number' && post.userVote !== 0)
+      ? post.userVote
+      : (localVotes[post.id] || 0);
+
+    const upvotedCls = effectiveVote === 1 ? 'active-upvote' : '';
+    const downvotedCls = effectiveVote === -1 ? 'active-downvote' : '';
+    const safeContent = escapeHtml(post.content);
+
+    return `
+      <div class="bench-post-card" data-post-id="${post.id}">
+        <div class="bench-post-vote-col">
+          <button type="button" class="bench-vote-btn upvote ${upvotedCls}" data-post-id="${post.id}" data-dir="1" title="Upvote" aria-label="Upvote">
+            ▲
+          </button>
+          <span class="bench-vote-score">${post.score}</span>
+          <button type="button" class="bench-vote-btn downvote ${downvotedCls}" data-post-id="${post.id}" data-dir="-1" title="Downvote" aria-label="Downvote">
+            ▼
+          </button>
+        </div>
+        <div class="bench-post-content-col">
+          <div class="bench-post-meta">
+            <span class="bench-desk-alias">${escapeHtml(post.deskCodename || 'Backbencher')}</span>
+            <span class="bench-flair-tag ${flairCls}">${escapeHtml(post.flair)}</span>
+            <span class="bench-post-time">• ${timeAgo}</span>
+          </div>
+          <div class="bench-post-text">${safeContent}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Delegated voting on bench wall posts
+if (benchFeedEl) {
+  benchFeedEl.addEventListener('click', (e) => {
+    const voteBtn = e.target.closest('.bench-vote-btn');
+    if (!voteBtn) return;
+    const postId = voteBtn.dataset.postId;
+    const dir = parseInt(voteBtn.dataset.dir, 10);
+    if (postId && (dir === 1 || dir === -1)) {
+      const localVotes = getLocalBenchVotes();
+      const currentVote = localVotes[postId] || 0;
+      const nextVote = currentVote === dir ? 0 : dir;
+      setLocalBenchVote(postId, nextVote);
+
+      socket.emit('vote_bench_post', { postId, dir, voterToken: anonVoterToken });
+      triggerHaptic('light');
+    }
+  });
+}
+
+socket.on('bench_posts_sync', (posts) => {
+  renderBenchWall(posts);
+});
+
+// Joby Sir disciplinary alert when abusive post is submitted
+function showJobyDisciplinaryToast(reason) {
+  const toast = document.createElement('div');
+  toast.className = 'joby-toast-alert';
+  toast.innerHTML = `
+    <span class="joby-toast-siren">🚨</span>
+    <div class="joby-toast-body">
+      <strong>JOBY SIR DISCIPLINE ALERT</strong>
+      <span>${escapeHtml(reason || 'i told you beta gali nahi dene ka meet tommarow')}</span>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  playJobySiren();
+  triggerHaptic('heavy');
+  setTimeout(() => {
+    toast.classList.add('fade-out');
+    setTimeout(() => toast.remove(), 400);
+  }, 4500);
+}
+
+socket.on('bench_post_rejected', (data) => {
+  showJobyDisciplinaryToast(data?.reason);
+});
+
+// Drop a Chit Modal handling
+if (openDropChitModalBtn && dropChitModal) {
+  openDropChitModalBtn.addEventListener('click', () => {
+    dropChitModal.classList.remove('hidden');
+    dropChitModal.setAttribute('aria-hidden', 'false');
+    benchPostInput?.focus();
+  });
+}
+
+function closeDropChitModal() {
+  if (!dropChitModal) return;
+  dropChitModal.classList.add('hidden');
+  dropChitModal.setAttribute('aria-hidden', 'true');
+  if (benchPostInput) benchPostInput.value = '';
+  if (benchCharCount) benchCharCount.textContent = '0';
+}
+
+if (closeDropChitModalBtn) closeDropChitModalBtn.addEventListener('click', closeDropChitModal);
+if (cancelDropChitBtn) cancelDropChitBtn.addEventListener('click', closeDropChitModal);
+
+if (dropChitModal) {
+  dropChitModal.addEventListener('click', (e) => {
+    if (e.target === dropChitModal) closeDropChitModal();
+  });
+}
+
+if (flairPicker) {
+  flairPicker.addEventListener('click', (e) => {
+    const btn = e.target.closest('.flair-opt');
+    if (!btn) return;
+    flairPicker.querySelectorAll('.flair-opt').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedFlair = btn.dataset.flair || '[📚 Exam Panic]';
+    triggerHaptic('light');
+  });
+}
+
+if (benchPostInput && benchCharCount) {
+  benchPostInput.addEventListener('input', () => {
+    benchCharCount.textContent = benchPostInput.value.length;
+  });
+}
+
+if (dropChitForm) {
+  dropChitForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!benchPostInput) return;
+    const content = benchPostInput.value.trim();
+    if (!content) return;
+    socket.emit('submit_bench_post', {
+      content: content,
+      flair: selectedFlair,
+      voterToken: anonVoterToken
+    });
+    closeDropChitModal();
+    triggerHaptic('light');
+  });
+}
+
+// --- 5. Bench Chits ("Parchi Pass Karo") & Overhauled Quick Actions ---
+const headerChitBtn = document.getElementById('headerChitBtn');
+const quickPassChitBtn = document.getElementById('quickPassChitBtn');
+
+function triggerChitPass() {
+  if (!isPartnerConnected) return;
+  socket.emit('draw_bench_chit');
+  if (quickActionSheet) quickActionSheet.classList.add('hidden');
+  triggerHaptic('light');
+}
+
+if (headerChitBtn) headerChitBtn.addEventListener('click', triggerChitPass);
+if (quickPassChitBtn) quickPassChitBtn.addEventListener('click', triggerChitPass);
+
+socket.on('receive_bench_chit', (data) => {
+  if (!data || !data.text) return;
+  const chitRow = document.createElement('div');
+  chitRow.className = 'msg-row bench-chit-row';
+  chitRow.setAttribute('data-msg-id', data.id || `chit_${Date.now()}`);
+
+  chitRow.innerHTML = `
+    <div class="bench-chit-card">
+      <div class="bench-chit-header">
+        <span class="chit-pin-badge">📌</span>
+        <span class="chit-card-title">Bench Chit (Parchi Pass)</span>
+        <span class="chit-card-author">${data.fromSelf ? 'Passed by You' : 'Passed by Desk-mate'}</span>
+      </div>
+      <div class="bench-chit-body">
+        "${escapeHtml(data.text)}"
+      </div>
+      <div class="bench-chit-actions">
+        <button type="button" class="bench-chit-reply-btn" data-chit-id="${data.id}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 17 4 12 9 7"/>
+            <path d="M20 18v-2a4 4 0 0 0-4-4H4"/>
+          </svg>
+          <span>Tap to Reply</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Attach reply handler
+  const replyBtn = chitRow.querySelector('.bench-chit-reply-btn');
+  if (replyBtn) {
+    replyBtn.addEventListener('click', () => {
+      setReply(data.id, data.text, data.fromSelf ? 'self' : 'partner');
+      messageInput?.focus();
+    });
+  }
+
+  messagesContainer.appendChild(chitRow);
+  playChime('received');
+  triggerHaptic('light');
+
+  if (isScrolledNearBottom()) {
+    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+  }
+});
+
+// --- 6. "Teacher Aaya! / Boss Key" (Stealth Emergency Study Screen) ---
+const stealthScreen = document.getElementById('stealthScreen');
+const stealthNavBtn = document.getElementById('stealthNavBtn');
+const exitStealthBtn = document.getElementById('exitStealthBtn');
+const ORIGINAL_PAGE_TITLE = 'AnonChat - Pure Anonymous Realtime Chat';
+let isStealthActive = false;
+
+function enterStealthMode() {
+  if (isStealthActive || !stealthScreen) return;
+  isStealthActive = true;
+  document.title = 'NCERT e-Pathshala - Class 12 Physics';
+  stealthScreen.classList.remove('hidden');
+  stealthScreen.setAttribute('aria-hidden', 'false');
+}
+
+function exitStealthMode() {
+  if (!isStealthActive || !stealthScreen) return;
+  isStealthActive = false;
+  document.title = ORIGINAL_PAGE_TITLE;
+  stealthScreen.classList.add('hidden');
+  stealthScreen.setAttribute('aria-hidden', 'true');
+}
+
+function toggleStealthMode() {
+  if (isStealthActive) {
+    exitStealthMode();
+  } else {
+    enterStealthMode();
+  }
+}
+
+if (stealthNavBtn) stealthNavBtn.addEventListener('click', toggleStealthMode);
+if (exitStealthBtn) exitStealthBtn.addEventListener('click', exitStealthMode);
+
+// Double-tap on brand title in navbar
+const brandTitleEl = document.querySelector('.brand');
+let lastBrandTap = 0;
+if (brandTitleEl) {
+  brandTitleEl.addEventListener('click', () => {
+    const now = Date.now();
+    if (now - lastBrandTap < 400) {
+      toggleStealthMode();
+      lastBrandTap = 0;
+    } else {
+      lastBrandTap = now;
+    }
+  });
+}
+
+// Hotkey listener: Double-tap Escape or Ctrl+B / Cmd+B
+let lastEscKeyTime = 0;
+window.addEventListener('keydown', (e) => {
+  // If modals are open, Escape should close them
+  if (e.key === 'Escape') {
+    if (dropChitModal && !dropChitModal.classList.contains('hidden')) {
+      e.preventDefault();
+      closeDropChitModal();
+      return;
+    }
+    if (whatsNewModal && !whatsNewModal.classList.contains('hidden')) {
+      e.preventDefault();
+      closeWhatsNewModal();
+      return;
+    }
+  }
+
+  // Strict activeElement check so typing normal words in messageInput or textareas NEVER triggers stealth
+  if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName) && e.key !== 'Escape') {
+    return;
+  }
+
+  if (e.key === 'Escape') {
+    const now = Date.now();
+    if (now - lastEscKeyTime < 450) {
+      e.preventDefault();
+      toggleStealthMode();
+      lastEscKeyTime = 0;
+    } else {
+      lastEscKeyTime = now;
+    }
+  } else if ((e.ctrlKey || e.metaKey) && (e.key === 'b' || e.key === 'B')) {
+    e.preventDefault();
+    toggleStealthMode();
+  }
+});
+
+// What's New Modal Logic (1-Time per IP)
+const whatsNewModal = document.getElementById('whatsNewModal');
+const closeWhatsNewModalBtn = document.getElementById('closeWhatsNewModalBtn');
+const ackWhatsNewBtn = document.getElementById('ackWhatsNewBtn');
+
+function openWhatsNewModal() {
+  if (whatsNewModal) {
+    whatsNewModal.classList.remove('hidden');
+    whatsNewModal.setAttribute('aria-hidden', 'false');
+  }
+}
+
+function closeWhatsNewModal() {
+  if (whatsNewModal) {
+    whatsNewModal.classList.add('hidden');
+    whatsNewModal.setAttribute('aria-hidden', 'true');
+  }
+  // Acknowledge to server for this client IP
+  fetch('/api/whats-new/ack', { method: 'POST' }).catch(() => {});
+  // Also store in localStorage as instant client-side cache
+  try {
+    localStorage.setItem('anon_wn_2_3_0_seen', 'true');
+  } catch (err) {}
+}
+
+if (closeWhatsNewModalBtn) {
+  closeWhatsNewModalBtn.addEventListener('click', closeWhatsNewModal);
+}
+
+if (ackWhatsNewBtn) {
+  ackWhatsNewBtn.addEventListener('click', () => {
+    closeWhatsNewModal();
+    triggerHaptic('light');
+  });
+}
+
+// Check IP status for What's New on initial load
+async function checkWhatsNewStatus() {
+  try {
+    const localSeen = localStorage.getItem('anon_wn_2_3_0_seen');
+    if (localSeen === 'true') return; // Fast-path: already acknowledged locally
+
+    const res = await fetch('/api/version');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && data.shouldShowWhatsNew) {
+      setTimeout(() => {
+        openWhatsNewModal();
+      }, 700);
+    }
+  } catch (e) {
+    // Silent failover
+  }
+}
+
+checkWhatsNewStatus();
 

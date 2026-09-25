@@ -93,6 +93,14 @@
           </svg>
         </button>
 
+        <button class="nav-icon-btn stealth-nav-btn" id="stealthNavBtn" aria-label="Stealth Mode / Teacher Aaya" title="Teacher Aaya! (Double-tap Esc or Ctrl+B)">
+          <!-- Book SVG for Stealth Mode -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </button>
+
         <button type="button" class="nav-cta-btn" id="navGetStartedBtn">
           Get Started
         </button>
@@ -122,6 +130,29 @@
             Same school. Real conversations. No names. No judgment.<br />
             Just students being real.
           </p>
+
+          <!-- Bench Vibe Selector Chips -->
+          <div class="vibe-selector-wrap">
+            <span class="vibe-label">Choose Bench Vibe:</span>
+            <div class="vibe-chips" id="vibeChips">
+              <button type="button" class="vibe-chip active" data-vibe="any" title="Any Bench (Random Classmate)">
+                <span class="vibe-icon">🎒</span>
+                <span class="vibe-text">Any Bench</span>
+              </button>
+              <button type="button" class="vibe-chip" data-vibe="exam" title="Exam Panic & Study Vent">
+                <span class="vibe-icon">📚</span>
+                <span class="vibe-text">Exam Panic</span>
+              </button>
+              <button type="button" class="vibe-chip" data-vibe="tea" title="School Tea & Gossip">
+                <span class="vibe-icon">☕</span>
+                <span class="vibe-text">School Tea</span>
+              </button>
+              <button type="button" class="vibe-chip" data-vibe="canteen" title="Canteen & Bakchodi">
+                <span class="vibe-icon">🥪</span>
+                <span class="vibe-text">Canteen & Bakchodi</span>
+              </button>
+            </div>
+          </div>
 
           <button id="startChatBtn" class="primary-btn hero-cta-btn">
             <span>Start Chat</span>
@@ -184,6 +215,63 @@
             </div>
           </div>
 
+          <!-- Daily Last-Bench Dilemma (12-Hour Reddit-style Poll) -->
+          <div class="dilemma-card" id="dilemmaCard">
+            <div class="dilemma-header">
+              <div class="dilemma-badge">
+                <span class="dilemma-pulse-dot"></span>
+                <span>📊 Daily Last-Bench Dilemma</span>
+              </div>
+              <span class="dilemma-timer-tag">12h Reddit Poll</span>
+            </div>
+            <h3 class="dilemma-question" id="dilemmaQuestion">Loading daily dilemma...</h3>
+            <div class="dilemma-options" id="dilemmaOptions">
+              <button type="button" class="dilemma-btn" id="dilemmaBtnA" data-option="optionA">
+                <div class="dilemma-btn-fill" id="dilemmaFillA"></div>
+                <div class="dilemma-btn-content">
+                  <span class="dilemma-btn-text" id="dilemmaTextA">Option A</span>
+                  <span class="dilemma-btn-pct hidden" id="dilemmaPctA">0%</span>
+                </div>
+              </button>
+              <button type="button" class="dilemma-btn" id="dilemmaBtnB" data-option="optionB">
+                <div class="dilemma-btn-fill" id="dilemmaFillB"></div>
+                <div class="dilemma-btn-content">
+                  <span class="dilemma-btn-text" id="dilemmaTextB">Option B</span>
+                  <span class="dilemma-btn-pct hidden" id="dilemmaPctB">0%</span>
+                </div>
+              </button>
+            </div>
+            <div class="dilemma-footer">
+              <span id="dilemmaTotalVotes">0 votes cast</span>
+              <span class="dilemma-subnote">12h rotation • Pure RAM</span>
+            </div>
+          </div>
+
+          <!-- The Last Bench Wall (Ephemeral Reddit-style Campus Feed in RAM) -->
+          <div class="bench-wall-section" id="benchWallSection">
+            <div class="bench-wall-header">
+              <div class="bench-wall-title-wrap">
+                <div class="bench-icon-badge">🎒</div>
+                <div class="bench-wall-titles">
+                  <h2 class="bench-wall-title">The Last Bench Wall</h2>
+                  <p class="bench-wall-subtitle">Anonymous campus rants, teacher tea & desk confessions</p>
+                </div>
+              </div>
+              <button type="button" class="drop-chit-cta-btn" id="openDropChitModalBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                <span>Drop a Chit</span>
+              </button>
+            </div>
+
+            <!-- Feed list of post cards -->
+            <div class="bench-feed" id="benchFeed">
+              <!-- Injected by client.js -->
+            </div>
+          </div>
+
           <!-- Bottom Motto Divider -->
           <div class="motto-divider">
             <span class="motto-line"></span>
@@ -224,7 +312,20 @@
 
       <!-- 3. ACTIVE CHAT VIEW -->
       <section id="chatScreen" class="screen">
-        <div class="card chat-card">
+        <div class="card chat-card" id="chatCard">
+          <!-- Drag & Drop Photo Upload Overlay -->
+          <div id="chatDropOverlay" class="chat-drop-overlay hidden">
+            <div class="drop-overlay-box">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <div class="drop-overlay-title">Drop Photo Here</div>
+              <div class="drop-overlay-sub">Screenshot ya Image drop karke chat me attach karein</div>
+            </div>
+          </div>
+
           <!-- Chat Sub-header (Mockup 2 Header: Back Arrow, Stranger Silhouette Avatar, Online Status, Leave & Next Buttons) -->
           <div class="chat-navbar">
             <div class="partner-meta">
@@ -242,9 +343,12 @@
                 </svg>
               </div>
 
-              <!-- Stranger name + live dot + Online status -->
+              <!-- Stranger name + vibe badge + live dot + Online status -->
               <div class="partner-info">
-                <div class="partner-name">Stranger</div>
+                <div class="partner-name-row">
+                  <span class="partner-name">Stranger</span>
+                  <span class="chat-vibe-badge hidden" id="chatVibeBadge">Any Bench 🎒</span>
+                </div>
                 <div class="partner-status" id="strangerSubstatus">
                   <span class="active-dot"></span>
                   <span>Online</span>
@@ -253,6 +357,11 @@
             </div>
 
             <div class="chat-controls">
+              <!-- Pass Chit button in header -->
+              <button type="button" id="headerChitBtn" class="control-btn chit-header-btn" title="Pass a Bench Chit (🎲 Chit Pass Karo)" aria-label="Pass Chit">
+                <span>🎲 Chit</span>
+              </button>
+
               <!-- Leave button: Red outlined pill button with logout SVG icon and text "Leave" -->
               <button type="button" id="endChatBtn" class="control-btn leave-action leave-btn" title="Leave chat" aria-label="Leave chat">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -390,10 +499,12 @@
 
             <!-- Quick School Actions Sheet (Toggled by + button) -->
             <div id="quickActionSheet" class="quick-sheet hidden">
-              <button type="button" class="quick-chip" data-msg="Hey! 👋">Hey! 👋</button>
-              <button type="button" class="quick-chip" data-msg="Which grade/class are you in? 🎒">Which class? 🎒</button>
-              <button type="button" class="quick-chip" data-msg="How was school today? 🏫">School today? 🏫</button>
-              <button type="button" class="quick-chip" data-msg="Good luck studying! 📚">Good luck! 📚</button>
+              <button type="button" id="quickPassChitBtn" class="quick-chip chit-action-chip">🎲 Chit Pass Karo</button>
+              <button type="button" class="quick-chip" data-msg="Kal ka homework kiya kya? 📝">Kal ka homework kiya kya? 📝</button>
+              <button type="button" class="quick-chip" data-msg="Next period bunk maar rahe ho kya? 🏃">Next period bunk maar rahe ho kya? 🏃</button>
+              <button type="button" class="quick-chip" data-msg="Joby Sir ka chakkar lag raha hai corridor me... 🚨">Joby Sir corridor me hai... 🚨</button>
+              <button type="button" class="quick-chip" data-msg="Notes bhej do yaar practical ke! 🆘">Notes bhej do yaar practical ke! 🆘</button>
+              <button type="button" class="quick-chip" data-msg="Canteen me kya khayein aaj? 🥪">Canteen me kya khayein aaj? 🥪</button>
             </div>
 
             <!-- Quick Emoji Palette (Toggled by emoji button) -->
@@ -528,6 +639,167 @@
       <img id="mediaModalImg" src="" alt="Fullscreen view" />
       <div id="viewOnceModalTimer" class="view-once-modal-timer hidden">
         <span>⏱️ View Once: Disappearing in <strong id="viewOnceSec">8</strong>s</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- What's New Modal (Hinglish, 1-Time per IP) -->
+  <div id="whatsNewModal" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+    <div class="modal-dialog card whats-new-dialog" id="whatsNewDialog">
+      <div class="modal-header">
+        <div class="modal-title-with-badge">
+          <span class="wn-badge-icon">🚀</span>
+          <div>
+            <h3 class="modal-title">What's New in AnonChat!</h3>
+            <span class="wn-version-tag">Version 2.3.0 Update</span>
+          </div>
+        </div>
+        <button type="button" id="closeWhatsNewModalBtn" class="modal-close-btn" aria-label="Close modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="whats-new-content">
+        <p class="wn-intro">Bhai tumhare liye naye solid features live ho chuke hain, check out karo:</p>
+
+        <div class="wn-feature-list">
+          <div class="wn-item">
+            <div class="wn-icon-box">📸</div>
+            <div class="wn-item-text">
+              <h4>Photo Attachments &amp; Screenshots</h4>
+              <p>Chat me direct photos share karo! Clip icon par click karke JPEG/PNG attach ho jayegi.</p>
+            </div>
+          </div>
+
+          <div class="wn-item">
+            <div class="wn-icon-box">📋</div>
+            <div class="wn-item-text">
+              <h4>Windows Clipboard Paste (Ctrl+V)</h4>
+              <p>Windows ya Mac par Snipping Tool / Screenshot copy karo aur chat me direct <strong>Ctrl + V</strong> daba ke paste kardo.</p>
+            </div>
+          </div>
+
+          <div class="wn-item">
+            <div class="wn-icon-box">🖱️</div>
+            <div class="wn-item-text">
+              <h4>Drag &amp; Drop Images</h4>
+              <p>File manager ya desktop se photo seedha chat window me drag &amp; drop karke send karo.</p>
+            </div>
+          </div>
+
+          <div class="wn-item">
+            <div class="wn-icon-box">🔒</div>
+            <div class="wn-item-text">
+              <h4>View Once (1-Time Seen) &amp; Zero Storage</h4>
+              <p>Photo bhejne se pehle '1' button daba kar <strong>View Once</strong> laga sakte ho. Photos server par store nahi hoti!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="wn-footer-action">
+          <button type="button" id="ackWhatsNewBtn" class="primary-btn wn-cta-btn">
+            <span>Mast Hai, Chalo Chat Karein! 🚀</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drop a Chit on the Bench Modal -->
+  <div id="dropChitModal" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+    <div class="modal-dialog card drop-chit-dialog" id="dropChitDialog">
+      <div class="modal-header">
+        <div class="modal-title-with-badge">
+          <span class="chit-pencil-badge">✏️</span>
+          <h3 class="modal-title">Drop a Chit on the Desk</h3>
+        </div>
+        <button type="button" id="closeDropChitModalBtn" class="modal-close-btn" aria-label="Close dialog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <form id="dropChitForm" class="drop-chit-form">
+        <div class="flair-select-group">
+          <label class="flair-select-label">Choose Reddit-style Flair:</label>
+          <div class="flair-picker" id="flairPicker">
+            <button type="button" class="flair-opt active" data-flair="[📚 Exam Panic]">[📚 Exam Panic]</button>
+            <button type="button" class="flair-opt" data-flair="[☕ Campus Tea]">[☕ Campus Tea]</button>
+            <button type="button" class="flair-opt" data-flair="[🤫 Desk Confession]">[🤫 Desk Confession]</button>
+            <button type="button" class="flair-opt" data-flair="[🔥 Hot Take]">[🔥 Hot Take]</button>
+            <button type="button" class="flair-opt" data-flair="[🥪 Canteen & Bunk]">[🥪 Canteen & Bunk]</button>
+            <button type="button" class="flair-opt" data-flair="[🆘 Notes SOS]">[🆘 Notes SOS]</button>
+          </div>
+        </div>
+        <div class="chit-textarea-wrap">
+          <textarea id="benchPostInput" class="chit-textarea" rows="4" maxlength="280" placeholder="Write your anonymous confession, teacher tea, or exam panic rant... (Abuse/slurs strictly blocked by Joby Sir)"></textarea>
+          <div class="chit-char-count"><span id="benchCharCount">0</span>/280</div>
+        </div>
+        <div class="drop-chit-actions">
+          <button type="button" id="cancelDropChitBtn" class="secondary-btn">Cancel</button>
+          <button type="submit" id="submitDropChitBtn" class="primary-btn">
+            <span>Post to Wall</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Stealth Emergency Study Screen (Teacher Aaya! / Boss Key) -->
+  <div id="stealthScreen" class="stealth-screen hidden" aria-hidden="true">
+    <div class="ncert-top-banner">
+      <div class="ncert-portal-brand">
+        <div class="ncert-emblem">NCERT</div>
+        <div class="ncert-portal-text">
+          <span class="ncert-title">e-Pathshala Digital Textbook Portal</span>
+          <span class="ncert-sub">National Council of Educational Research and Training • Ministry of Education</span>
+        </div>
+      </div>
+      <button type="button" id="exitStealthBtn" class="ncert-resume-btn" title="Return to Notes (Esc)" aria-label="Return to Notes">
+        <span>Return to Notes</span>
+        <kbd class="ncert-kbd">Esc</kbd>
+      </button>
+    </div>
+    <div class="ncert-container">
+      <div class="ncert-doc-header">
+        <span class="ncert-badge">Class XII • Physics (Part I)</span>
+        <h1 class="ncert-chapter-title">Chapter 3: Current Electricity</h1>
+        <div class="ncert-meta">Section 3.1 to 3.4 • National Curriculum Framework</div>
+      </div>
+      <div class="ncert-body">
+        <h3>3.1 Electric Current &amp; Current Density</h3>
+        <p>Charges in motion constitute an electric current. Such currents occur naturally in many situations. Lightning is one such phenomenon in which charges flow from the clouds to the earth through the atmosphere, sometimes with disastrous results.</p>
+        <div class="ncert-formula-box">
+          <strong>Current Equation:</strong>
+          <div class="ncert-math">I = &Delta;Q / &Delta;t = n &middot; A &middot; e &middot; v<sub>d</sub></div>
+          <p class="ncert-note">Where <em>n</em> is electron density, <em>A</em> is cross-sectional area, <em>e</em> is elementary charge (1.6 &times; 10<sup>-19</sup> C), and <em>v<sub>d</sub></em> is electron drift velocity.</p>
+        </div>
+        <h3>3.2 Ohm's Law and Resistivity</h3>
+        <p>A basic law regarding the flow of currents was discovered by G.S. Ohm in 1828. Imagine a conductor through which a current <em>I</em> is flowing and let <em>V</em> be the potential difference across the ends of the conductor. Then Ohm's law states that at constant temperature:</p>
+        <div class="ncert-formula-box">
+          <strong>Ohm's Relation:</strong>
+          <div class="ncert-math">V &prop; I &implies; V = I &middot; R &emsp; where R = &rho; &middot; (l / A)</div>
+        </div>
+        <h3>3.3 Kirchhoff's Rules</h3>
+        <p>Electric circuits generally consist of a number of electrical components which are connected in non-simple ways. The general rules for analyzing such networks were formulated by Gustav Kirchhoff:</p>
+        <ul class="ncert-list">
+          <li><strong>Junction Rule (Kirchhoff's First Law):</strong> At any junction, the sum of the currents entering the junction is equal to the sum of currents leaving the junction: &sum; I = 0. This follows from conservation of electric charge.</li>
+          <li><strong>Loop Rule (Kirchhoff's Second Law):</strong> The algebraic sum of changes in potential encountered in a complete traversal of any closed loop is zero: &sum; &Delta;V = 0. This is based on the law of conservation of energy.</li>
+        </ul>
+        <h3>3.4 Wheatstone Bridge Principle</h3>
+        <p>An application of Kirchhoff's rules is the Wheatstone bridge, an arrangement of four resistances R<sub>1</sub>, R<sub>2</sub>, R<sub>3</sub>, and R<sub>4</sub>. When the bridge is balanced, no current flows through the galvanometer (I<sub>g</sub> = 0):</p>
+        <div class="ncert-formula-box">
+          <strong>Balance Condition:</strong>
+          <div class="ncert-math">R<sub>1</sub> / R<sub>2</sub> = R<sub>3</sub> / R<sub>4</sub></div>
+        </div>
       </div>
     </div>
   </div>
