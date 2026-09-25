@@ -5,6 +5,24 @@ const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
 
+// Load local .env variables if file exists (Zero dependencies)
+const ENV_FILE = path.join(__dirname, '.env');
+if (fs.existsSync(ENV_FILE)) {
+  try {
+    const envLines = fs.readFileSync(ENV_FILE, 'utf8').split('\n');
+    for (const rawLine of envLines) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+      const eqIdx = line.indexOf('=');
+      if (eqIdx !== -1) {
+        const key = line.slice(0, eqIdx).trim();
+        const val = line.slice(eqIdx + 1).trim().replace(/^['"](.*)['"]$/, '$1');
+        if (!process.env[key]) process.env[key] = val;
+      }
+    }
+  } catch (e) {}
+}
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
