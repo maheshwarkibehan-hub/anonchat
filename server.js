@@ -105,6 +105,177 @@ app.post('/api/whats-new/ack', (req, res) => {
 let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
 
+// --- Private Chat Session Logger (Structured for AI Training Datasets) ---
+const CHAT_LOG_DIR = path.join(__dirname, 'chat');
+const chatSessions = new Map(); // roomId -> session object
+
+function getLocalDateFolder() {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function getLocalTimePrefix() {
+  const d = new Date();
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  const seconds = String(d.getSeconds()).padStart(2, '0');
+  return `${hours}-${minutes}-${seconds}`;
+}
+
+function initChatSession(roomId, socketAId, socketBId, vibeLabel) {
+  const dateFolder = getLocalDateFolder();
+  const timePrefix = getLocalTimePrefix();
+  const dayDir = path.join(CHAT_LOG_DIR, dateFolder);
+  const fileName = `chat_${timePrefix}_${roomId}.json`;
+  const filePath = path.join(dayDir, fileName);
+
+  chatSessions.set(roomId, {
+    roomId,
+    vibe: vibeLabel || 'Any Bench 🎒',
+    dayFolder,
+    fileName,
+    filePath,
+    dayDir,
+    startTime: new Date().toISOString(),
+    endTime: null,
+    durationSeconds: 0,
+    userAliases: {
+      [socketAId]: 'Student_1',
+      [socketBId]: 'Student_2'
+    },
+    messages: [],
+    openai_format: [],
+    sharegpt_format: [],
+    writeTimer: null
+  });
+}
+
+async function flushSessionToFile(session) {
+  if (!session || !session.filePath) return;
+  try {
+    if (!fs.existsSync(session.dayDir)) {
+      fs.mkdirSync(session.dayDir, { recursive: true });
+    }
+
+    const payload = {
+      metadata: {
+        roomId: session.roomId,
+        vibe: session.vibe,
+        date: session.dayFolder,
+        startTime: session.startTime,
+        endTime: session.endTime,
+        durationSeconds: session.durationSeconds,
+        totalMessages: session.messages.length,
+        aiTrainingReady: session.openai_format.length >= 2
+      },
+      messages: session.messages,
+      ai_dataset: {
+        openai_format: session.openai_format,
+        sharegpt_format: session.sharegpt_format
+      }
+    };
+
+    await fs.promises.writeFile(session.filePath, JSON.stringify(payload, null, 2), 'utf8');
+  } catch (err) {
+    // Non-blocking error containment so real-time socket delivery is never disrupted
+  }
+}
+
+function scheduleSessionFlush(session) {
+  if (!session) return;
+  if (session.writeTimer) clearTimeout(session.writeTimer);
+  session.writeTimer = setTimeout(() => {
+    flushSessionToFile(session);
+  }, 100);
+}
+
+function recordChatMessage(roomId, socketId, msgData) {
+  const session = chatSessions.get(roomId);
+  if (!session) return;
+
+  const sender = session.userAliases[socketId] || 'Student_1';
+  const role = sender === 'Student_1' ? 'user' : 'assistant';
+  const shareGptRole = sender === 'Student_1' ? 'human' : 'gpt';
+
+  const text = typeof msgData.text === 'string' ? msgData.text.trim() : '';
+
+  let msgType = 'text';
+  if (msgData.audio) msgType = 'voice_note';
+  else if (msgData.image) msgType = 'image';
+
+  const entry = {
+    turn: session.messages.length + 1,
+    msgId: msgData.msgId || `msg_${Date.now()}`,
+    sender,
+    role,
+    timestamp: Date.now(),
+    isoTime: new Date().toISOString(),
+    type: msgType,
+    text: text,
+    ephemeral: !!msgData.ephemeral,
+    replyTo: msgData.replyTo ? { text: msgData.replyTo.text, author: msgData.replyTo.author } : null
+  };
+
+  session.messages.push(entry);
+
+  if (text) {
+    session.openai_format.push({
+      role,
+      content: text
+    });
+    session.sharegpt_format.push({
+      from: shareGptRole,
+      value: text
+    });
+  }
+
+  scheduleSessionFlush(session);
+}
+
+function recordChatSystemEvent(roomId, eventType, text) {
+  const session = chatSessions.get(roomId);
+  if (!session) return;
+
+  const entry = {
+    turn: session.messages.length + 1,
+    msgId: `event_${Date.now()}`,
+    sender: 'System',
+    role: 'system',
+    timestamp: Date.now(),
+    isoTime: new Date().toISOString(),
+    type: eventType,
+    text: text
+  };
+
+  session.messages.push(entry);
+  scheduleSessionFlush(session);
+}
+
+function finishChatSession(roomId) {
+  const session = chatSessions.get(roomId);
+  if (!session) return;
+
+  if (session.writeTimer) clearTimeout(session.writeTimer);
+  session.endTime = new Date().toISOString();
+  session.durationSeconds = Math.max(0, Math.round((Date.now() - new Date(session.startTime).getTime()) / 1000));
+
+  // Only keep conversation logs that have at least 1 user message
+  if (session.messages.length > 0) {
+    flushSessionToFile(session);
+  } else {
+    try {
+      if (fs.existsSync(session.filePath)) {
+        fs.unlinkSync(session.filePath);
+      }
+    } catch (e) {}
+  }
+
+  chatSessions.delete(roomId);
+}
+
 // Joby Sir Discipline Easter Egg State
 const roomJobyCooldown = new Map(); // roomId -> timestamp of last intervention
 const JOBY_PHOTO = 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG';
@@ -172,6 +343,7 @@ function triggerJobySirIntervention(roomId, senderSocket = null, partnerSocket =
     io.to(roomId).emit('joby_sir_message', messagePayload);
     if (senderSocket && senderSocket.connected) senderSocket.emit('joby_sir_message', messagePayload);
     if (partnerSocket && partnerSocket.connected) partnerSocket.emit('joby_sir_message', messagePayload);
+    recordChatSystemEvent(roomId, 'teacher_intervention', `Joby Sir: ${JOBY_MESSAGE_TEXT}`);
   }, 1200);
 }
 
@@ -459,6 +631,9 @@ function pairUsers(socketA, socketB, vibeLabel = 'Any Bench 🎒') {
   activeRooms.set(socketA.id, { partnerId: socketB.id, roomId, vibe: vibeLabel });
   activeRooms.set(socketB.id, { partnerId: socketA.id, roomId, vibe: vibeLabel });
 
+  // Initialize private structured chat logger
+  initChatSession(roomId, socketA.id, socketB.id, vibeLabel);
+
   socketA.emit('chat_start', { roomId, vibe: vibeLabel });
   socketB.emit('chat_start', { roomId, vibe: vibeLabel });
 }
@@ -476,6 +651,9 @@ function cleanupUser(socketId, notifyPartner = true) {
   // Check if user was in an active room
   if (activeRooms.has(socketId)) {
     const { partnerId, roomId } = activeRooms.get(socketId);
+
+    // Finalize chat session & flush AI training dataset
+    finishChatSession(roomId);
 
     // Remove current user
     activeRooms.delete(socketId);
@@ -721,6 +899,16 @@ io.on('connection', (socket) => {
           timestamp: Date.now()
         });
 
+        // Record message in private AI dataset JSON
+        recordChatMessage(roomId, socket.id, {
+          msgId,
+          text: sanitized,
+          audio: audioPayload,
+          image: imagePayload,
+          replyTo: replyTo,
+          ephemeral: ephemeral
+        });
+
         // Trigger Joby Sir Discipline Easter Egg if bad words / gali detected
         if (sanitized && containsAbuse(sanitized)) {
           triggerJobySirIntervention(roomId, socket, partnerSocket);
@@ -949,6 +1137,7 @@ io.on('connection', (socket) => {
         };
         socket.emit('receive_bench_chit', { ...payload, fromSelf: true });
         partnerSocket.emit('receive_bench_chit', { ...payload, fromSelf: false });
+        recordChatSystemEvent(roomId, 'bench_chit', `Parchi Pass: ${chitText}`);
       } else {
         cleanupUser(socket.id, false);
         socket.emit('partner_disconnected', { message: 'Stranger has disconnected.' });

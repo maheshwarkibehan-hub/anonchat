@@ -5,3 +5,7 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 *.log
+
+# Stored chat archives (Private AI training data - Never push to GitHub)
+chat/
+chats/
