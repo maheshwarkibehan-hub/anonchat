@@ -145,9 +145,9 @@ function getLocalTimePrefix() {
 }
 
 function initChatSession(roomId, socketAId, socketBId, vibeLabel) {
-  const dateFolder = getLocalDateFolder();
+  const dayFolder = getLocalDateFolder();
   const timePrefix = getLocalTimePrefix();
-  const dayDir = path.join(CHAT_LOG_DIR, dateFolder);
+  const dayDir = path.join(CHAT_LOG_DIR, dayFolder);
   const fileName = `chat_${timePrefix}_${roomId}.json`;
   const filePath = path.join(dayDir, fileName);
 
@@ -744,8 +744,12 @@ function pairUsers(socketA, socketB, vibeLabel = 'Any Bench 🎒') {
   activeRooms.set(socketA.id, { partnerId: socketB.id, roomId, vibe: vibeLabel });
   activeRooms.set(socketB.id, { partnerId: socketA.id, roomId, vibe: vibeLabel });
 
-  // Initialize private structured chat logger
-  initChatSession(roomId, socketA.id, socketB.id, vibeLabel);
+  // Initialize private structured chat logger safely
+  try {
+    initChatSession(roomId, socketA.id, socketB.id, vibeLabel);
+  } catch (err) {
+    console.error('[Chat Logger Init Error]', err.message);
+  }
 
   socketA.emit('chat_start', { roomId, vibe: vibeLabel });
   socketB.emit('chat_start', { roomId, vibe: vibeLabel });
@@ -765,8 +769,12 @@ function cleanupUser(socketId, notifyPartner = true) {
   if (activeRooms.has(socketId)) {
     const { partnerId, roomId } = activeRooms.get(socketId);
 
-    // Finalize chat session & flush AI training dataset
-    finishChatSession(roomId);
+    // Finalize chat session & flush AI training dataset safely
+    try {
+      finishChatSession(roomId);
+    } catch (err) {
+      console.error('[Chat Logger Finish Error]', err.message);
+    }
 
     // Remove current user
     activeRooms.delete(socketId);
