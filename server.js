@@ -82,11 +82,15 @@ function getClientIp(req) {
 // Live version & what's new check endpoint
 app.get('/api/version', (req, res) => {
   const ip = getClientIp(req);
+  const shouldShow = !seenWhatsNewIPs.has(ip);
+  if (shouldShow) {
+    seenWhatsNewIPs.add(ip);
+  }
   res.json({
     version: BUILD_VERSION,
     buildId: BUILD_ID,
     timestamp: Date.now(),
-    shouldShowWhatsNew: !seenWhatsNewIPs.has(ip)
+    shouldShowWhatsNew: shouldShow
   });
 });
 
@@ -610,6 +614,29 @@ function matchUser(socket, requestedVibe = 'any') {
 io.on('connection', (socket) => {
   socket.data = { msgTimestamps: [], lastAction: 0 };
   broadcastOnlineCount();
+
+  const clientIp = (socket.handshake.headers && socket.handshake.headers['x-forwarded-for']
+    ? socket.handshake.headers['x-forwarded-for'].split(',')[0].trim()
+    : socket.handshake.address) || '127.0.0.1';
+
+  // Check What's New v3 modal eligibility (1-time per IP)
+  const shouldShowWhatsNew = !seenWhatsNewIPs.has(clientIp);
+  if (shouldShowWhatsNew) {
+    seenWhatsNewIPs.add(clientIp);
+  }
+  socket.emit('whats_new_status', { show: shouldShowWhatsNew });
+
+  socket.on('check_whats_new', () => {
+    const show = !seenWhatsNewIPs.has(clientIp);
+    if (show) {
+      seenWhatsNewIPs.add(clientIp);
+    }
+    socket.emit('whats_new_status', { show });
+  });
+
+  socket.on('ack_whats_new', () => {
+    seenWhatsNewIPs.add(clientIp);
+  });
 
   // Send current online count and server build info to newly connected client
   socket.emit('server_build', { buildId: BUILD_ID, version: BUILD_VERSION });

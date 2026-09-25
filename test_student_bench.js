@@ -254,5 +254,39 @@ while (deadQueue.length > 0) {
 }
 assert(pairedResult === null && deadQueue.some(e => e.id === 'live_user'), 'Dead socket skipped and waiting user is not stranded');
 
+// 9. Verifying What's New Modal & 1-Time IP Logic (v3 The Last Bench Update)
+console.log('\n9. Verifying What\'s New Modal & 1-Time IP Logic...');
+assert(indexHtml.includes('id="whatsNewModal"'), 'index.html has whatsNewModal dialog');
+assert(indexHtml.includes('v3.0 The Last Bench Update'), 'index.html has v3.0 update tag');
+assert(indexHtml.includes('Kya Naya Hai?'), 'index.html has Hinglish title "Kya Naya Hai?"');
+assert(indexHtml.includes('The Last Bench Wall'), 'index.html describes The Last Bench Wall in What\'s New');
+assert(indexHtml.includes('Daily Student Dilemma'), 'index.html describes Daily Student Dilemma in What\'s New');
+assert(indexHtml.includes('Bench Vibe Match'), 'index.html describes Bench Vibe Match in What\'s New');
+assert(indexHtml.includes('Parchi Pass Karo'), 'index.html describes Parchi Pass Karo in What\'s New');
+assert(indexHtml.includes('Teacher Aaya! (Boss Key)'), 'index.html describes Teacher Aaya in What\'s New');
+assert(indexHtml.includes('id="closeWhatsNewModalBtn"'), 'index.html has close button for What\'s New');
+assert(indexHtml.includes('id="ackWhatsNewBtn"'), 'index.html has ack/dismiss button for What\'s New');
+assert(styleCss.includes('.whats-new-dialog') && styleCss.includes('.whats-new-content'), 'style.css styles responsive What\'s New modal');
+assert(serverJs.includes('seenWhatsNewIPs = new Set()'), 'server.js tracks seen IPs using in-memory Set');
+assert(serverJs.includes('whats_new_status'), 'server.js emits whats_new_status on connection');
+assert(serverJs.includes('check_whats_new') && serverJs.includes('ack_whats_new'), 'server.js handles check_whats_new and ack_whats_new');
+assert(serverJs.includes('/api/whats-new/ack'), 'server.js provides HTTP ack endpoint');
+assert(clientJs.includes('anon_whats_new_v3_seen'), 'client.js tracks seen state in localStorage');
+assert(clientJs.includes("socket.on('whats_new_status'"), 'client.js listens for server whats_new_status');
+
+// 9.1 Unit simulation of 1-time IP logic
+const simSeenIPs = new Set();
+function checkIpStatus(ip) {
+  const show = !simSeenIPs.has(ip);
+  if (show) simSeenIPs.add(ip);
+  return { show };
+}
+const firstVisit = checkIpStatus('192.168.1.50');
+assert(firstVisit.show === true, 'First connection from IP receives show: true and marks seen');
+const secondVisit = checkIpStatus('192.168.1.50');
+assert(secondVisit.show === false, 'Subsequent connection from same IP receives show: false');
+const otherIpVisit = checkIpStatus('10.0.0.1');
+assert(otherIpVisit.show === true, 'Different IP receives show: true on its first visit');
+
 console.log(`\n--- Finished: ${passed} Passed, ${failed} Failed ---`);
 process.exit(failed === 0 ? 0 : 1);

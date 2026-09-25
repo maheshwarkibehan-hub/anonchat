@@ -3123,17 +3123,15 @@ if (brandTitleEl) {
 let lastEscKeyTime = 0;
 window.addEventListener('keydown', (e) => {
   // If modals are open, Escape should close them
-  if (e.key === 'Escape') {
-    if (dropChitModal && !dropChitModal.classList.contains('hidden')) {
-      e.preventDefault();
-      closeDropChitModal();
-      return;
-    }
-    if (whatsNewModal && !whatsNewModal.classList.contains('hidden')) {
-      e.preventDefault();
-      closeWhatsNewModal();
-      return;
-    }
+  if (e.key === 'Escape' && dropChitModal && !dropChitModal.classList.contains('hidden')) {
+    e.preventDefault();
+    closeDropChitModal();
+    return;
+  }
+  if (e.key === 'Escape' && whatsNewModal && !whatsNewModal.classList.contains('hidden')) {
+    e.preventDefault();
+    closeWhatsNewModal();
+    return;
   }
 
   // Strict activeElement check so typing normal words in messageInput or textareas NEVER triggers stealth
@@ -3156,7 +3154,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// What's New Modal Logic (1-Time per IP)
+// What's New Modal Logic (1-Time per IP & LocalStorage check)
 const whatsNewModal = document.getElementById('whatsNewModal');
 const closeWhatsNewModalBtn = document.getElementById('closeWhatsNewModalBtn');
 const ackWhatsNewBtn = document.getElementById('ackWhatsNewBtn');
@@ -3173,12 +3171,15 @@ function closeWhatsNewModal() {
     whatsNewModal.classList.add('hidden');
     whatsNewModal.setAttribute('aria-hidden', 'true');
   }
-  // Acknowledge to server for this client IP
-  fetch('/api/whats-new/ack', { method: 'POST' }).catch(() => {});
-  // Also store in localStorage as instant client-side cache
+  // Mark as seen locally so student is never bothered again on this device
   try {
-    localStorage.setItem('anon_wn_2_3_0_seen', 'true');
+    localStorage.setItem('anon_whats_new_v3_seen', 'true');
   } catch (err) {}
+  // Acknowledge to server for this client IP via both socket and API
+  if (typeof socket !== 'undefined' && socket && socket.connected) {
+    socket.emit('ack_whats_new');
+  }
+  fetch('/api/whats-new/ack', { method: 'POST' }).catch(() => {});
 }
 
 if (closeWhatsNewModalBtn) {
@@ -3192,19 +3193,44 @@ if (ackWhatsNewBtn) {
   });
 }
 
-// Check IP status for What's New on initial load
+function handleWhatsNewStatus(show) {
+  try {
+    if (localStorage.getItem('anon_whats_new_v3_seen') === 'true') {
+      return;
+    }
+  } catch (e) {}
+
+  if (show) {
+    setTimeout(() => {
+      openWhatsNewModal();
+    }, 700);
+  }
+}
+
+// Socket listener for 1-time per IP What's New status
+if (typeof socket !== 'undefined' && socket) {
+  socket.on('whats_new_status', (data) => {
+    if (data && data.show) {
+      handleWhatsNewStatus(true);
+    }
+  });
+}
+
+// Fallback check on initial load (HTTP version check and socket emit)
 async function checkWhatsNewStatus() {
   try {
-    const localSeen = localStorage.getItem('anon_wn_2_3_0_seen');
+    const localSeen = localStorage.getItem('anon_whats_new_v3_seen');
     if (localSeen === 'true') return; // Fast-path: already acknowledged locally
+
+    if (typeof socket !== 'undefined' && socket && socket.connected) {
+      socket.emit('check_whats_new');
+    }
 
     const res = await fetch('/api/version');
     if (!res.ok) return;
     const data = await res.json();
     if (data && data.shouldShowWhatsNew) {
-      setTimeout(() => {
-        openWhatsNewModal();
-      }, 700);
+      handleWhatsNewStatus(true);
     }
   } catch (e) {
     // Silent failover
