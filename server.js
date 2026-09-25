@@ -153,7 +153,7 @@ function initChatSession(roomId, socketAId, socketBId, vibeLabel) {
 
   chatSessions.set(roomId, {
     roomId,
-    vibe: vibeLabel || 'Any Bench 🎒',
+    vibe: vibeLabel || 'Direct',
     dayFolder,
     fileName,
     filePath,
@@ -488,261 +488,14 @@ function broadcastOnlineCount(delay = 1500) {
   }, delay);
 }
 
-// ==========================================================================
-// The Digital Last Bench: Real Student Life & Reddit-Inspired Architecture
-// Pure RAM / Zero DB state
-// ==========================================================================
-
-// 1. The Last Bench Wall (Ephemeral Reddit-style Campus Feed in RAM, Max 40)
-const BENCH_WALL_MAX = 40;
-const DESK_CODENAMES = [
-  'Backbencher #42', 'Physics Sufferer #09', 'Canteen Samosa King', 'Proxy Master #17',
-  'Notes Beggar #03', 'Joby Sir Radar #88', 'Section D Rebel #12', 'Viva Survivor #21',
-  'Sleep Deprived #01', 'Front Bencher Traitor #99', 'Formula Sheet Ninja #33',
-  'Corridor Wanderer #07', 'Defaulter List #05', 'Tiffin Box Raider #14'
-];
-
-function getRandomDeskCodename() {
-  const base = DESK_CODENAMES[Math.floor(Math.random() * DESK_CODENAMES.length)];
-  const num = Math.floor(10 + Math.random() * 90);
-  return base.includes('#') ? base.replace(/#\d+/, `#${num}`) : `${base} #${num}`;
-}
-
-const VALID_FLAIRS = [
-  '[📚 Exam Panic]',
-  '[☕ Campus Tea]',
-  '[🤫 Desk Confession]',
-  '[🔥 Hot Take]',
-  '[🥪 Canteen & Bunk]',
-  '[🆘 Notes SOS]'
-];
-
-let benchWallPosts = [
-  {
-    id: 'bench_seed_1',
-    deskCodename: 'Backbencher #42',
-    flair: '[📚 Exam Panic]',
-    content: "Physics practical viva me examiner ne pucha galvanometer ka use, maine bola 'sir Joby Sir ki entry detect karne ke liye' 😭",
-    timestamp: Date.now() - 3600000,
-    score: 18,
-    baseKarma: 18,
-    upvoters: new Set(),
-    downvoters: new Set()
-  },
-  {
-    id: 'bench_seed_2',
-    deskCodename: 'Section D Rebel #12',
-    flair: '[☕ Campus Tea]',
-    content: "Corridor me Joby Sir ka round chal raha hai, washroom bunk karne wale sabhi legends alert ho jao! 🚨",
-    timestamp: Date.now() - 7200000,
-    score: 24,
-    baseKarma: 24,
-    upvoters: new Set(),
-    downvoters: new Set()
-  },
-  {
-    id: 'bench_seed_3',
-    deskCodename: 'Canteen Samosa King #09',
-    flair: '[🥪 Canteen & Bunk]',
-    content: "3rd period English bunk karke garam samosa + red chutney khane ka ghamand hai 🥟🔥",
-    timestamp: Date.now() - 10800000,
-    score: 31,
-    baseKarma: 31,
-    upvoters: new Set(),
-    downvoters: new Set()
-  },
-  {
-    id: 'bench_seed_4',
-    deskCodename: 'Notes Beggar #03',
-    flair: '[🆘 Notes SOS]',
-    content: "Class 12 Current Electricity ke short formula sheet de do koi, kal test me pass hona hai bhai! 🆘",
-    timestamp: Date.now() - 14400000,
-    score: 12,
-    baseKarma: 12,
-    upvoters: new Set(),
-    downvoters: new Set()
-  }
-];
-
-function sanitizeBenchPostForClient(post, voterToken) {
-  return {
-    id: post.id,
-    deskCodename: post.deskCodename,
-    flair: post.flair,
-    content: post.content,
-    timestamp: post.timestamp,
-    score: post.score,
-    userVote: voterToken && post.upvoters.has(voterToken) ? 1 : (voterToken && post.downvoters.has(voterToken) ? -1 : 0)
-  };
-}
-
-function getBenchPostsPayload(voterToken = null) {
-  return benchWallPosts
-    .slice()
-    .sort((a, b) => b.score - a.score || b.timestamp - a.timestamp)
-    .map((p) => sanitizeBenchPostForClient(p, voterToken));
-}
-
-function broadcastBenchPostsSync() {
-  for (const [id, s] of io.sockets.sockets) {
-    s.emit('bench_posts_sync', getBenchPostsPayload(s.data?.voterToken));
-  }
-}
-
-function addBenchPost(post) {
-  benchWallPosts.unshift(post);
-  if (benchWallPosts.length > BENCH_WALL_MAX) {
-    // Preserve top 3 highest karma posts, evict oldest of the rest
-    const sorted = [...benchWallPosts].sort((a, b) => b.score - a.score);
-    const protectedIds = new Set(sorted.slice(0, 3).map((p) => p.id));
-    let oldestIdx = -1;
-    let oldestTime = Infinity;
-    for (let i = 0; i < benchWallPosts.length; i++) {
-      if (!protectedIds.has(benchWallPosts[i].id) && benchWallPosts[i].timestamp < oldestTime) {
-        oldestTime = benchWallPosts[i].timestamp;
-        oldestIdx = i;
-      }
-    }
-    if (oldestIdx !== -1) {
-      benchWallPosts.splice(oldestIdx, 1);
-    } else {
-      benchWallPosts.pop();
-    }
-  }
-}
-
-function handleBenchVote(postId, dir, voterToken) {
-  if (!voterToken || (dir !== 1 && dir !== -1)) return false;
-  const post = benchWallPosts.find((p) => p.id === postId);
-  if (!post) return false;
-
-  const hasUpvoted = post.upvoters.has(voterToken);
-  const hasDownvoted = post.downvoters.has(voterToken);
-
-  if (dir === 1) {
-    if (hasUpvoted) {
-      post.upvoters.delete(voterToken);
-    } else {
-      post.upvoters.add(voterToken);
-      post.downvoters.delete(voterToken);
-    }
-  } else if (dir === -1) {
-    if (hasDownvoted) {
-      post.downvoters.delete(voterToken);
-    } else {
-      post.downvoters.add(voterToken);
-      post.upvoters.delete(voterToken);
-    }
-  }
-
-  post.score = (post.baseKarma || 0) + (post.upvoters.size - post.downvoters.size);
-  return true;
-}
-
-// 2. Daily Last-Bench Dilemma (Deterministic 12-Hour Reddit-style Poll)
-const DILEMMA_BANK = [
-  {
-    id: 'dilemma_1',
-    question: "Kal subah 8 AM exam hai. Strategy:",
-    optionA: "Raat bhar one-shot video (Hero banenge) ⚡",
-    optionB: "So jao, jo hoga kal dekha jayega 😴"
-  },
-  {
-    id: 'dilemma_2',
-    question: "School canteen ka undisputed king:",
-    optionA: "Garam Samosa + Red Chutney 🥟",
-    optionB: "Crispy Cheese Patties 🥐"
-  },
-  {
-    id: 'dilemma_3',
-    question: "Teacher ne sudden copy check mang li aur homework incomplete hai:",
-    optionA: "'Copy ghar pe bhul gaya' acting 🎭",
-    optionB: "Washroom jane ka emergency excuse 🏃"
-  },
-  {
-    id: 'dilemma_4',
-    question: "Zindagi ka sabse bada scam:",
-    optionA: "'10th ke baad aish hi aish hai' 🤡",
-    optionB: "'College me attendance koi nahi dekhta' 💀"
-  }
-];
-
-const dilemmaVotes = new Map();
-
-function getActiveDilemma() {
-  const index = Math.floor(Date.now() / (12 * 60 * 60 * 1000)) % DILEMMA_BANK.length;
-  const dilemma = DILEMMA_BANK[index];
-  if (!dilemmaVotes.has(dilemma.id)) {
-    dilemmaVotes.set(dilemma.id, {
-      optionA: new Set(),
-      optionB: new Set(),
-      baseA: 38 + (index * 7) % 20,
-      baseB: 29 + (index * 11) % 20
-    });
-  }
-  return dilemma;
-}
-
-function getPollPayload(voterToken = null) {
-  const dilemma = getActiveDilemma();
-  const votes = dilemmaVotes.get(dilemma.id);
-  const countA = votes.baseA + votes.optionA.size;
-  const countB = votes.baseB + votes.optionB.size;
-  const total = countA + countB;
-  let userChoice = null;
-  if (voterToken) {
-    if (votes.optionA.has(voterToken)) userChoice = 'optionA';
-    else if (votes.optionB.has(voterToken)) userChoice = 'optionB';
-  }
-  return {
-    id: dilemma.id,
-    question: dilemma.question,
-    optionA: dilemma.optionA,
-    optionB: dilemma.optionB,
-    votesA: countA,
-    votesB: countB,
-    totalVotes: total,
-    percentA: Math.round((countA / (total || 1)) * 100),
-    percentB: Math.round((countB / (total || 1)) * 100),
-    userChoice: userChoice
-  };
-}
-
-function broadcastPollSync() {
-  for (const [id, s] of io.sockets.sockets) {
-    s.emit('poll_sync', getPollPayload(s.data?.voterToken));
-  }
-}
-
-// 3. Bench Chits ("Parchi Pass Karo") Bank
-const BENCH_CHITS = [
-  "Agar Joby Sir ne corridor me bina pass ke pakad liya, toh pehla bahana kya hoga? 🚨",
-  "Kal ka homework kiya kya sach batao? 📝",
-  "Next period bunk maar rahe ho kya? 🏃",
-  "Joby Sir ka chakkar lag raha hai corridor me... 🚨",
-  "Notes bhej do yaar practical ke! 🆘",
-  "Canteen me kya khayein aaj? 🥪",
-  "Last bench pe baith ke lunch box kis period me khate ho? 🍱",
-  "Practical viva me sabse bekaar answer kya diya tha? 💀",
-  "Class test me cheat code pass karne ka best tareeka? 📄",
-  "Coaching vs School: Sabse bada scam kaunsa laga? 🤡"
-];
-
-const VIBE_LABELS = {
-  any: 'Any Bench 🎒',
-  exam: 'Exam Panic 📚',
-  tea: 'School Tea ☕',
-  canteen: 'Canteen & Bakchodi 🥪'
-};
-
-function pairUsers(socketA, socketB, vibeLabel = 'Any Bench 🎒') {
+function pairUsers(socketA, socketB, vibeLabel = 'Direct') {
   const roomId = `room_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
 
   socketA.join(roomId);
   socketB.join(roomId);
 
-  activeRooms.set(socketA.id, { partnerId: socketB.id, roomId, vibe: vibeLabel });
-  activeRooms.set(socketB.id, { partnerId: socketA.id, roomId, vibe: vibeLabel });
+  activeRooms.set(socketA.id, { partnerId: socketB.id, roomId });
+  activeRooms.set(socketB.id, { partnerId: socketA.id, roomId });
 
   // Initialize private structured chat logger safely
   try {
@@ -751,14 +504,12 @@ function pairUsers(socketA, socketB, vibeLabel = 'Any Bench 🎒') {
     console.error('[Chat Logger Init Error]', err.message);
   }
 
-  socketA.emit('chat_start', { roomId, vibe: vibeLabel });
-  socketB.emit('chat_start', { roomId, vibe: vibeLabel });
+  socketA.emit('chat_start', { roomId });
+  socketB.emit('chat_start', { roomId });
 }
 
 function removeFromQueue(socketId) {
-  const item = waitingQueue.find((entry) => (typeof entry === 'object' ? entry.socketId === socketId : entry === socketId));
-  if (item && item.timer) clearTimeout(item.timer);
-  waitingQueue = waitingQueue.filter((entry) => (typeof entry === 'object' ? entry.socketId !== socketId : entry !== socketId));
+  waitingQueue = waitingQueue.filter((id) => id !== socketId);
 }
 
 function cleanupUser(socketId, notifyPartner = true) {
@@ -800,114 +551,29 @@ function cleanupUser(socketId, notifyPartner = true) {
   }
 }
 
-function matchUser(socket, requestedVibe = 'any') {
+function matchUser(socket) {
   // First clean up any existing room or queue status
   cleanupUser(socket.id, true);
 
-  const vibe = ['exam', 'tea', 'canteen'].includes(requestedVibe) ? requestedVibe : 'any';
-
   // Purge any stale disconnected sockets from waitingQueue
-  waitingQueue = waitingQueue.filter((entry) => {
-    const sId = typeof entry === 'object' ? entry.socketId : entry;
-    const s = io.sockets.sockets.get(sId);
-    const valid = s && s.connected && sId !== socket.id;
-    if (!valid && typeof entry === 'object' && entry.timer) clearTimeout(entry.timer);
-    return valid;
+  waitingQueue = waitingQueue.filter((id) => {
+    const s = io.sockets.sockets.get(id);
+    return s && s.connected && id !== socket.id;
   });
 
-  // Soft-matching algorithm:
-  // 1. If newcomer requested a specific vibe, look for a matching vibe first
-  if (vibe !== 'any') {
-    const matchIndex = waitingQueue.findIndex((entry) => (typeof entry === 'object' ? entry.vibe === vibe : false));
-    if (matchIndex !== -1) {
-      const matched = waitingQueue.splice(matchIndex, 1)[0];
-      if (matched.timer) clearTimeout(matched.timer);
-      const partnerSocket = io.sockets.sockets.get(typeof matched === 'object' ? matched.socketId : matched);
-      if (partnerSocket && partnerSocket.connected) {
-        pairUsers(socket, partnerSocket, VIBE_LABELS[vibe]);
-        return;
-      }
-    }
+  if (waitingQueue.length > 0) {
+    const partnerId = waitingQueue.shift();
+    const partnerSocket = io.sockets.sockets.get(partnerId);
 
-    // 1b. If no exact vibe match, check if someone waiting chose 'any'
-    const anyIndex = waitingQueue.findIndex((entry) => (typeof entry === 'object' ? entry.vibe === 'any' : true));
-    if (anyIndex !== -1) {
-      const matched = waitingQueue.splice(anyIndex, 1)[0];
-      if (matched.timer) clearTimeout(matched.timer);
-      const partnerSocket = io.sockets.sockets.get(typeof matched === 'object' ? matched.socketId : matched);
-      if (partnerSocket && partnerSocket.connected) {
-        pairUsers(socket, partnerSocket, VIBE_LABELS[vibe]);
-        return;
-      }
-    }
-  }
-
-  // 2. If newcomer requested 'any', or if queue has someone waiting >= 2.5s
-  if (vibe === 'any' && waitingQueue.length > 0) {
-    const matched = waitingQueue.shift();
-    if (typeof matched === 'object' && matched.timer) clearTimeout(matched.timer);
-    const sId = typeof matched === 'object' ? matched.socketId : matched;
-    const partnerSocket = io.sockets.sockets.get(sId);
     if (partnerSocket && partnerSocket.connected) {
-      const pairedVibe = (typeof matched === 'object' && matched.vibe && matched.vibe !== 'any')
-        ? VIBE_LABELS[matched.vibe]
-        : VIBE_LABELS.any;
-      pairUsers(socket, partnerSocket, pairedVibe);
-      return;
+      pairUsers(socket, partnerSocket);
+    } else {
+      matchUser(socket);
     }
+  } else {
+    waitingQueue.push(socket.id);
+    socket.emit('waiting_for_partner');
   }
-
-  // 3. If queue has someone who has been waiting >= 2500ms, pair with them regardless of vibe
-  const expiredIdx = waitingQueue.findIndex((entry) => typeof entry === 'object' && (Date.now() - entry.joinedAt >= 2500));
-  if (expiredIdx !== -1) {
-    const matched = waitingQueue.splice(expiredIdx, 1)[0];
-    if (matched.timer) clearTimeout(matched.timer);
-    const partnerSocket = io.sockets.sockets.get(matched.socketId);
-    if (partnerSocket && partnerSocket.connected) {
-      const pairedVibe = VIBE_LABELS[vibe] || VIBE_LABELS.any;
-      pairUsers(socket, partnerSocket, pairedVibe);
-      return;
-    }
-  }
-
-  // 4. Otherwise, place user into waitingQueue with 2.5s soft-match timer
-  const queueEntry = {
-    socketId: socket.id,
-    vibe: vibe,
-    joinedAt: Date.now(),
-    timer: null
-  };
-
-  // If not matched within 2.5s, pair with the next available waiting student so liquidity is never fragmented
-  queueEntry.timer = setTimeout(() => {
-    const selfIdx = waitingQueue.findIndex((entry) => (typeof entry === 'object' ? entry.socketId === socket.id : entry === socket.id));
-    if (selfIdx === -1) return;
-
-    // Find any other valid connected waiting student
-    let partnerSocket = null;
-    while (waitingQueue.length > 0) {
-      const otherIdx = waitingQueue.findIndex((entry) => (typeof entry === 'object' ? entry.socketId !== socket.id : entry !== socket.id));
-      if (otherIdx === -1) break;
-      const partnerEntry = waitingQueue.splice(otherIdx, 1)[0];
-      if (typeof partnerEntry === 'object' && partnerEntry.timer) clearTimeout(partnerEntry.timer);
-      const pId = typeof partnerEntry === 'object' ? partnerEntry.socketId : partnerEntry;
-      const ps = io.sockets.sockets.get(pId);
-      if (ps && ps.connected) {
-        partnerSocket = ps;
-        break;
-      }
-    }
-
-    if (partnerSocket && socket.connected) {
-      const curSelfIdx = waitingQueue.findIndex((entry) => (typeof entry === 'object' ? entry.socketId === socket.id : entry === socket.id));
-      if (curSelfIdx !== -1) waitingQueue.splice(curSelfIdx, 1);
-      const pairedVibe = VIBE_LABELS[queueEntry.vibe] || VIBE_LABELS.any;
-      pairUsers(socket, partnerSocket, pairedVibe);
-    }
-  }, 2500);
-
-  waitingQueue.push(queueEntry);
-  socket.emit('waiting_for_partner');
 }
 
 io.on('connection', (socket) => {
@@ -942,9 +608,9 @@ io.on('connection', (socket) => {
   socket.emit('online_count', { count: io.engine.clientsCount });
 
   // Start searching for a partner (throttled to prevent click spam)
-  socket.on('find_partner', (data) => {
+  socket.on('find_partner', () => {
     if (isActionThrottled(socket, 400)) return;
-    matchUser(socket, data && data.vibe);
+    matchUser(socket);
   });
 
   // Cancel search
@@ -1160,110 +826,9 @@ io.on('connection', (socket) => {
   });
 
   // Next / Skip partner (throttled)
-  socket.on('next_partner', (data) => {
+  socket.on('next_partner', () => {
     if (isActionThrottled(socket, 400)) return;
-    matchUser(socket, data && data.vibe);
-  });
-
-  // --- The Last Bench Wall Socket Events ---
-  socket.on('get_bench_posts', (data) => {
-    const voterToken = data && typeof data.voterToken === 'string' ? data.voterToken.slice(0, 64) : null;
-    if (voterToken) socket.data.voterToken = voterToken;
-    socket.emit('bench_posts_sync', getBenchPostsPayload(voterToken));
-  });
-
-  socket.on('submit_bench_post', (data) => {
-    if (isRateLimited(socket, 6, 4000, 'postTimestamps')) return;
-    if (!data || typeof data.content !== 'string') return;
-    const rawContent = data.content.trim().slice(0, 280);
-    if (!rawContent) return;
-
-    if (containsAbuse(rawContent)) {
-      socket.emit('bench_post_rejected', {
-        reason: 'Joby Sir Disciplinary Alert: i told you beta gali nahi dene ka meet tommarow'
-      });
-      return;
-    }
-
-    const voterToken = typeof data.voterToken === 'string' ? data.voterToken.slice(0, 64) : `anon_${Date.now()}`;
-    socket.data.voterToken = voterToken;
-    const flair = VALID_FLAIRS.includes(data.flair) ? data.flair : '[📚 Exam Panic]';
-
-    const newPost = {
-      id: `post_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
-      deskCodename: getRandomDeskCodename(),
-      flair: flair,
-      content: rawContent,
-      timestamp: Date.now(),
-      score: 1,
-      baseKarma: 0,
-      upvoters: new Set([voterToken]),
-      downvoters: new Set()
-    };
-
-    addBenchPost(newPost);
-    broadcastBenchPostsSync();
-  });
-
-  socket.on('vote_bench_post', (data) => {
-    if (isRateLimited(socket, 20, 2000, 'voteTimestamps')) return;
-    if (!data || typeof data.postId !== 'string' || typeof data.dir !== 'number') return;
-    const voterToken = typeof data.voterToken === 'string' ? data.voterToken.slice(0, 64) : null;
-    if (!voterToken) return;
-    socket.data.voterToken = voterToken;
-
-    const success = handleBenchVote(data.postId, data.dir, voterToken);
-    if (success) {
-      broadcastBenchPostsSync();
-    }
-  });
-
-  // --- Daily Last-Bench Dilemma Socket Events ---
-  socket.on('get_poll', (data) => {
-    const voterToken = data && typeof data.voterToken === 'string' ? data.voterToken.slice(0, 64) : null;
-    if (voterToken) socket.data.voterToken = voterToken;
-    socket.emit('poll_sync', getPollPayload(voterToken));
-  });
-
-  socket.on('vote_poll', (data) => {
-    if (isRateLimited(socket, 10, 2000, 'pollVoteTimestamps')) return;
-    if (!data || typeof data.voterToken !== 'string' || !['optionA', 'optionB'].includes(data.choice)) return;
-    const voterToken = data.voterToken.slice(0, 64);
-    socket.data.voterToken = voterToken;
-    const dilemma = getActiveDilemma();
-    const votes = dilemmaVotes.get(dilemma.id);
-    if (data.choice === 'optionA') {
-      votes.optionA.add(voterToken);
-      votes.optionB.delete(voterToken);
-    } else {
-      votes.optionB.add(voterToken);
-      votes.optionA.delete(voterToken);
-    }
-    broadcastPollSync();
-  });
-
-  // --- Bench Chits ("Parchi Pass Karo") Socket Event ---
-  socket.on('draw_bench_chit', () => {
-    if (isRateLimited(socket, 8, 2000, 'relayTimestamps')) return;
-    if (activeRooms.has(socket.id)) {
-      const { partnerId } = activeRooms.get(socket.id);
-      const partnerSocket = io.sockets.sockets.get(partnerId);
-      if (partnerSocket && partnerSocket.connected) {
-        const chitText = BENCH_CHITS[Math.floor(Math.random() * BENCH_CHITS.length)];
-        const chitId = `chit_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
-        const payload = {
-          id: chitId,
-          text: chitText,
-          timestamp: Date.now()
-        };
-        socket.emit('receive_bench_chit', { ...payload, fromSelf: true });
-        partnerSocket.emit('receive_bench_chit', { ...payload, fromSelf: false });
-        recordChatSystemEvent(roomId, 'bench_chit', `Parchi Pass: ${chitText}`);
-      } else {
-        cleanupUser(socket.id, false);
-        socket.emit('partner_disconnected', { message: 'Stranger has disconnected.' });
-      }
-    }
+    matchUser(socket);
   });
 
   // Disconnect / Leave chat
