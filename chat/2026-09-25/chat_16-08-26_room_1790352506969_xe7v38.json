@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "roomId": "room_1790352506969_xe7v38",
+    "vibe": "Any Bench 🎒",
+    "date": "2026-09-25",
+    "startTime": "2026-09-25T16:08:26.969Z",
+    "endTime": "2026-09-25T16:08:52.154Z",
+    "durationSeconds": 25,
+    "totalMessages": 1,
+    "aiTrainingReady": false
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790352510442_12tfqh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790352510622,
+      "isoTime": "2026-09-25T16:08:30.622Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      }
+    ]
+  }
+}
