@@ -3,6 +3,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
 const fs = require('fs');
+const { exec } = require('child_process');
 
 const app = express();
 const server = http.createServer(app);
@@ -254,6 +255,97 @@ function recordChatSystemEvent(roomId, eventType, text) {
   scheduleSessionFlush(session);
 }
 
+// GitHub Auto-Upload Sync Queue (Supports GitHub REST API on Render + Local Git CLI)
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+const GITHUB_REPO = process.env.GITHUB_REPO || 'maheshwarkibehan-hub/anonchat';
+const GITHUB_BRANCH = process.env.GITHUB_BRANCH || 'main';
+
+let isGitSyncRunning = false;
+const gitSyncQueue = [];
+
+async function triggerAutoUpload(filePath) {
+  if (!fs.existsSync(filePath)) return;
+
+  // 1. If GITHUB_TOKEN is provided (Recommended for Render cloud hosting)
+  if (GITHUB_TOKEN) {
+    try {
+      const fileContent = await fs.promises.readFile(filePath, 'utf8');
+      const relativePath = path.relative(__dirname, filePath).replace(/\\/g, '/');
+      const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${relativePath}`;
+
+      let sha = undefined;
+      try {
+        const getRes = await fetch(`${url}?ref=${GITHUB_BRANCH}`, {
+          headers: {
+            'Authorization': `Bearer ${GITHUB_TOKEN}`,
+            'Accept': 'application/vnd.github+json',
+            'User-Agent': 'AnonChat-AutoSync'
+          }
+        });
+        if (getRes.ok) {
+          const resData = await getRes.json();
+          sha = resData.sha;
+        }
+      } catch (e) {}
+
+      const body = {
+        message: `archive: sync ${path.basename(filePath)} [skip ci] [skip render]`,
+        content: Buffer.from(fileContent, 'utf8').toString('base64'),
+        branch: GITHUB_BRANCH
+      };
+      if (sha) body.sha = sha;
+
+      const putRes = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${GITHUB_TOKEN}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+          'User-Agent': 'AnonChat-AutoSync'
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (putRes.ok) {
+        console.log(`[GitHub Sync] Uploaded ${relativePath} directly via API [skip ci]`);
+        return;
+      }
+    } catch (err) {
+      console.error('[GitHub API Upload Error]', err.message);
+    }
+  }
+
+  // 2. Fallback: Local Git CLI auto-commit & push (when running locally with .git directory)
+  if (fs.existsSync(path.join(__dirname, '.git'))) {
+    gitSyncQueue.push(filePath);
+    processNextGitSync();
+  }
+}
+
+function processNextGitSync() {
+  if (isGitSyncRunning || gitSyncQueue.length === 0) return;
+  isGitSyncRunning = true;
+  const targetFile = gitSyncQueue.shift();
+
+  // Commit and push with [skip ci] [skip render] to prevent auto-deploy loop on Render
+  const cmd = `git add "chat" && git commit -m "archive: auto-save chat session [skip ci] [skip render]" && git push origin ${GITHUB_BRANCH}`;
+
+  exec(cmd, { cwd: __dirname }, (error, stdout, stderr) => {
+    isGitSyncRunning = false;
+    if (error) {
+      if (!error.message.includes('nothing to commit')) {
+        console.error('[Git Auto-Push]', error.message.split('\n')[0]);
+      }
+    } else {
+      console.log('[Git Auto-Push] Successfully pushed chat archive to GitHub [skip ci]');
+    }
+
+    if (gitSyncQueue.length > 0) {
+      setTimeout(processNextGitSync, 1500);
+    }
+  });
+}
+
 function finishChatSession(roomId) {
   const session = chatSessions.get(roomId);
   if (!session) return;
@@ -264,7 +356,10 @@ function finishChatSession(roomId) {
 
   // Only keep conversation logs that have at least 1 user message
   if (session.messages.length > 0) {
-    flushSessionToFile(session);
+    flushSessionToFile(session).then(() => {
+      // Trigger automatic GitHub upload
+      triggerAutoUpload(session.filePath);
+    });
   } else {
     try {
       if (fs.existsSync(session.filePath)) {

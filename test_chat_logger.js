@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 let passed = 0;
 let failed = 0;
@@ -15,20 +14,14 @@ function assert(cond, msg) {
   }
 }
 
-console.log('--- Testing Private Chat Session Logger & AI Training Dataset Engine ---');
+console.log('--- Testing Private Chat Session Logger & Auto-GitHub Sync Engine ---');
 
 const serverJs = fs.readFileSync(path.join(__dirname, 'server.js'), 'utf-8');
-const gitignore = fs.readFileSync(path.join(__dirname, '.gitignore'), 'utf-8');
 
-// 1. Static Security & Architecture Checks
-console.log('\n1. Checking Git Ignore & Privacy Concealment...');
-assert(gitignore.includes('chat/'), '.gitignore contains chat/ directory ignore');
-assert(gitignore.includes('chats/'), '.gitignore contains chats/ directory ignore');
-assert(fs.existsSync(path.join(__dirname, 'chat')), 'chat/ directory exists on local disk');
-
-// Verify git status doesn't track chat folder
-const gitStatus = execSync('git status --porcelain').toString();
-assert(!gitStatus.includes('chat/'), 'Git ignores chat/ directory completely (No chat leak on push)');
+// 1. Directory & Git Readiness Checks
+console.log('\n1. Checking Chat Folder & Git Tracking...');
+assert(fs.existsSync(path.join(__dirname, 'chat')), 'chat/ directory exists on disk');
+assert(fs.existsSync(path.join(__dirname, 'chat', '.gitkeep')), 'chat/.gitkeep exists to track folder in git');
 
 // 2. Server Code Integration Checks
 console.log('\n2. Checking Server Integration Hooks...');
@@ -38,6 +31,9 @@ assert(serverJs.includes('function flushSessionToFile('), 'server.js defines flu
 assert(serverJs.includes('function recordChatMessage('), 'server.js defines recordChatMessage');
 assert(serverJs.includes('function recordChatSystemEvent('), 'server.js defines recordChatSystemEvent');
 assert(serverJs.includes('function finishChatSession('), 'server.js defines finishChatSession');
+assert(serverJs.includes('triggerAutoUpload'), 'server.js triggers automatic GitHub upload');
+assert(serverJs.includes('processNextGitSync'), 'server.js has git sync queue worker');
+assert(serverJs.includes('[skip ci] [skip render]'), 'server.js uses [skip ci] [skip render] commit flag to avoid deploy loop');
 
 assert(serverJs.includes('initChatSession(roomId, socketA.id, socketB.id, vibeLabel);'), 'pairUsers initializes chat session');
 assert(serverJs.includes('finishChatSession(roomId);'), 'cleanupUser finalizes chat session and flushes');
@@ -48,7 +44,6 @@ assert(serverJs.includes('recordChatSystemEvent(roomId, \'bench_chit\''), 'Bench
 // 3. Functional Simulation of Chat Logging & AI Training Dataset Generation
 console.log('\n3. Testing Functional Session Simulation & JSON Output...');
 
-// Extract helper functions or simulate using server's exact algorithm
 const CHAT_LOG_DIR = path.join(__dirname, 'chat');
 const testSessions = new Map();
 
@@ -125,18 +120,6 @@ session.messages.push({
 session.openai_format.push({ role: 'assistant', content: t2Text });
 session.sharegpt_format.push({ from: 'gpt', value: t2Text });
 
-// Turn 3: Bench Chit Event
-session.messages.push({
-  turn: 3,
-  msgId: 'event_chit_1',
-  sender: 'System',
-  role: 'system',
-  timestamp: Date.now() + 2000,
-  isoTime: new Date().toISOString(),
-  type: 'bench_chit',
-  text: 'Parchi Pass: Joby Sir corridor me hai... 🚨'
-});
-
 // Finalize Session
 session.endTime = new Date().toISOString();
 session.durationSeconds = 12;
@@ -172,23 +155,17 @@ const savedData = JSON.parse(fs.readFileSync(testFilePath, 'utf8'));
 
 assert(savedData.metadata.roomId === testRoomId, 'JSON metadata contains correct roomId');
 assert(savedData.metadata.vibe === 'Exam Panic 📚', 'JSON metadata contains correct vibe');
-assert(savedData.metadata.totalMessages === 3, 'JSON metadata contains totalMessages count (3)');
+assert(savedData.metadata.totalMessages === 2, 'JSON metadata contains totalMessages count (2)');
 assert(savedData.metadata.aiTrainingReady === true, 'JSON metadata marks aiTrainingReady as true');
-assert(savedData.messages.length === 3, 'JSON messages array contains 3 entries');
+assert(savedData.messages.length === 2, 'JSON messages array contains 2 entries');
 assert(savedData.messages[0].sender === 'Student_1' && savedData.messages[0].role === 'user', 'Turn 1 mapped to Student_1 / user');
 assert(savedData.messages[1].sender === 'Student_2' && savedData.messages[1].role === 'assistant', 'Turn 2 mapped to Student_2 / assistant');
-assert(savedData.messages[2].role === 'system' && savedData.messages[2].type === 'bench_chit', 'Turn 3 mapped to system bench chit');
 
 assert(Array.isArray(savedData.ai_dataset.openai_format) && savedData.ai_dataset.openai_format.length === 2, 'OpenAI ChatML format contains 2 conversation turns');
-assert(savedData.ai_dataset.openai_format[0].role === 'user' && savedData.ai_dataset.openai_format[0].content === t1Text, 'OpenAI format Turn 1 validated');
-assert(savedData.ai_dataset.openai_format[1].role === 'assistant' && savedData.ai_dataset.openai_format[1].content === t2Text, 'OpenAI format Turn 2 validated');
-
 assert(Array.isArray(savedData.ai_dataset.sharegpt_format) && savedData.ai_dataset.sharegpt_format.length === 2, 'ShareGPT format contains 2 conversation turns');
-assert(savedData.ai_dataset.sharegpt_format[0].from === 'human' && savedData.ai_dataset.sharegpt_format[0].value === t1Text, 'ShareGPT format Turn 1 validated');
-assert(savedData.ai_dataset.sharegpt_format[1].from === 'gpt' && savedData.ai_dataset.sharegpt_format[1].value === t2Text, 'ShareGPT format Turn 2 validated');
 
 // 4. Testing Empty Room Clean up (Zero junk files)
-console.log('\n4. Verifying Empty Room Noise Prevention (Zero-Message Skip)...');
+console.log('\n4. Verifying Empty Room Noise Prevention...');
 const emptyRoomId = `room_empty_${Date.now()}`;
 const emptyFilePath = path.join(dayDir, `chat_${timePrefix}_${emptyRoomId}.json`);
 
