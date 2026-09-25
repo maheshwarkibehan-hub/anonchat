@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "roomId": "room_1790347477457_wbvk6f",
+    "vibe": "Any Bench 🎒",
+    "date": "2026-09-25",
+    "startTime": "2026-09-25T14:44:37.458Z",
+    "endTime": "2026-09-25T14:45:06.698Z",
+    "durationSeconds": 29,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790347471413_t8km1p",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790347480934,
+      "isoTime": "2026-09-25T14:44:40.934Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790347480319_y8jemx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790347489853,
+      "isoTime": "2026-09-25T14:44:49.853Z",
+      "type": "text",
+      "text": "aree suno kaise ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790347488659_qwwv8x",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790347498724,
+      "isoTime": "2026-09-25T14:44:58.724Z",
+      "type": "image",
+      "text": "",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "aree suno kaise ho"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "aree suno kaise ho"
+      }
+    ]
+  }
+}
