@@ -1,0 +1,366 @@
+{
+  "metadata": {
+    "roomId": "room_1790416334531_686yy2",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T09:52:14.531Z",
+    "endTime": "2026-09-26T09:54:14.930Z",
+    "durationSeconds": 120,
+    "totalMessages": 17,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790416343812_n6tq7d",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416344580,
+      "isoTime": "2026-09-26T09:52:24.580Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790416345253_00fh8i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416346056,
+      "isoTime": "2026-09-26T09:52:26.056Z",
+      "type": "text",
+      "text": "abe badhve",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790416346520_gj7wis",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416347288,
+      "isoTime": "2026-09-26T09:52:27.288Z",
+      "type": "text",
+      "text": "Cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790416348155_8ypcxb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416348928,
+      "isoTime": "2026-09-26T09:52:28.928Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790416354564_f001bj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416355385,
+      "isoTime": "2026-09-26T09:52:35.385Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790416360940_bbgp5m",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416361769,
+      "isoTime": "2026-09-26T09:52:41.769Z",
+      "type": "text",
+      "text": "aage ka bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790416361188_xbw78k",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416361958,
+      "isoTime": "2026-09-26T09:52:41.958Z",
+      "type": "text",
+      "text": "Yaaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790416368361_w18hyg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416369224,
+      "isoTime": "2026-09-26T09:52:49.224Z",
+      "type": "text",
+      "text": "..4",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "aage ka bolo",
+        "author": "self"
+      }
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790416383850_c0esz6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416384697,
+      "isoTime": "2026-09-26T09:53:04.697Z",
+      "type": "text",
+      "text": "cindrella to mujhe bolna tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790416398974_p1mc93",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416399744,
+      "isoTime": "2026-09-26T09:53:19.744Z",
+      "type": "text",
+      "text": "Tum bolo mai iske pahle kisi se baat karne lagi ti tumko samajh ke",
+      "ephemeral": true,
+      "replyTo": {
+        "text": "cindrella",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790416415438_ma5olf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416416258,
+      "isoTime": "2026-09-26T09:53:36.258Z",
+      "type": "text",
+      "text": "mai bhi tum samajh ke baat karr raha tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790416420064_zkwsbj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416420890,
+      "isoTime": "2026-09-26T09:53:40.890Z",
+      "type": "text",
+      "text": "to accha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790416429920_8mqtmm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416430692,
+      "isoTime": "2026-09-26T09:53:50.692Z",
+      "type": "text",
+      "text": "Ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790416432287_2hibcu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416433136,
+      "isoTime": "2026-09-26T09:53:53.136Z",
+      "type": "text",
+      "text": "kiss topic pe baat kar rahe the ye to yaad hoga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790416436259_0wd4dr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416437089,
+      "isoTime": "2026-09-26T09:53:57.089Z",
+      "type": "text",
+      "text": "itna batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790416440133_c28cfv",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416440952,
+      "isoTime": "2026-09-26T09:54:00.952Z",
+      "type": "text",
+      "text": "bagh gyi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790416445124_oaxk9t",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416445936,
+      "isoTime": "2026-09-26T09:54:05.936Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "abe badhve"
+      },
+      {
+        "role": "user",
+        "content": "Cindrella"
+      },
+      {
+        "role": "user",
+        "content": "?"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "aage ka bolo"
+      },
+      {
+        "role": "user",
+        "content": "Yaaaa"
+      },
+      {
+        "role": "assistant",
+        "content": "..4"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella to mujhe bolna tha"
+      },
+      {
+        "role": "user",
+        "content": "Tum bolo mai iske pahle kisi se baat karne lagi ti tumko samajh ke"
+      },
+      {
+        "role": "assistant",
+        "content": "mai bhi tum samajh ke baat karr raha tha"
+      },
+      {
+        "role": "assistant",
+        "content": "to accha"
+      },
+      {
+        "role": "user",
+        "content": "Ha"
+      },
+      {
+        "role": "assistant",
+        "content": "kiss topic pe baat kar rahe the ye to yaad hoga"
+      },
+      {
+        "role": "assistant",
+        "content": "itna batao"
+      },
+      {
+        "role": "assistant",
+        "content": "bagh gyi"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "abe badhve"
+      },
+      {
+        "from": "human",
+        "value": "Cindrella"
+      },
+      {
+        "from": "human",
+        "value": "?"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "aage ka bolo"
+      },
+      {
+        "from": "human",
+        "value": "Yaaaa"
+      },
+      {
+        "from": "gpt",
+        "value": "..4"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella to mujhe bolna tha"
+      },
+      {
+        "from": "human",
+        "value": "Tum bolo mai iske pahle kisi se baat karne lagi ti tumko samajh ke"
+      },
+      {
+        "from": "gpt",
+        "value": "mai bhi tum samajh ke baat karr raha tha"
+      },
+      {
+        "from": "gpt",
+        "value": "to accha"
+      },
+      {
+        "from": "human",
+        "value": "Ha"
+      },
+      {
+        "from": "gpt",
+        "value": "kiss topic pe baat kar rahe the ye to yaad hoga"
+      },
+      {
+        "from": "gpt",
+        "value": "itna batao"
+      },
+      {
+        "from": "gpt",
+        "value": "bagh gyi"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      }
+    ]
+  }
+}
