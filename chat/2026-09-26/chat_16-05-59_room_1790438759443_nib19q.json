@@ -1,0 +1,340 @@
+{
+  "metadata": {
+    "roomId": "room_1790438759443_nib19q",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T16:05:59.444Z",
+    "endTime": "2026-09-26T16:07:20.088Z",
+    "durationSeconds": 81,
+    "totalMessages": 16,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790438762246_d8vxrg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438764316,
+      "isoTime": "2026-09-26T16:06:04.316Z",
+      "type": "text",
+      "text": "Bhag gayi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790438768867_x9r3ex",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438770291,
+      "isoTime": "2026-09-26T16:06:10.291Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790438781422_tconr1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438782843,
+      "isoTime": "2026-09-26T16:06:22.843Z",
+      "type": "text",
+      "text": "are sorry yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790438791150_r7ar7c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438792571,
+      "isoTime": "2026-09-26T16:06:32.571Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790438795032_l0zgve",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438796443,
+      "isoTime": "2026-09-26T16:06:36.443Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790438797215_i7dce1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438798605,
+      "isoTime": "2026-09-26T16:06:38.605Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790438798970_4i25dc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438800372,
+      "isoTime": "2026-09-26T16:06:40.372Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790438800338_jclcuj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438801764,
+      "isoTime": "2026-09-26T16:06:41.764Z",
+      "type": "text",
+      "text": "sirry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790438806325_ar8z3l",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438807723,
+      "isoTime": "2026-09-26T16:06:47.723Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790438806213_tdmp84",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438808300,
+      "isoTime": "2026-09-26T16:06:48.300Z",
+      "type": "text",
+      "text": "Naah jao tum",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790438811168_sns204",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438812563,
+      "isoTime": "2026-09-26T16:06:52.563Z",
+      "type": "text",
+      "text": "sre yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790438815228_qf6ia5",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438816620,
+      "isoTime": "2026-09-26T16:06:56.620Z",
+      "type": "text",
+      "text": "are",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790438816873_aju4h0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438818276,
+      "isoTime": "2026-09-26T16:06:58.276Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790438829788_czpid9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438831204,
+      "isoTime": "2026-09-26T16:07:11.204Z",
+      "type": "text",
+      "text": "abb nahi mangunga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790438834950_b29txt",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438836364,
+      "isoTime": "2026-09-26T16:07:16.364Z",
+      "type": "text",
+      "text": "photo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790438837235_wnjpt2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438839306,
+      "isoTime": "2026-09-26T16:07:19.306Z",
+      "type": "text",
+      "text": "Are jao tum",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Bhag gayi"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "are sorry yrr"
+      },
+      {
+        "role": "user",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "sirry"
+      },
+      {
+        "role": "user",
+        "content": "sorry"
+      },
+      {
+        "role": "assistant",
+        "content": "Naah jao tum"
+      },
+      {
+        "role": "user",
+        "content": "sre yrr"
+      },
+      {
+        "role": "user",
+        "content": "are"
+      },
+      {
+        "role": "user",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "abb nahi mangunga"
+      },
+      {
+        "role": "user",
+        "content": "photo"
+      },
+      {
+        "role": "assistant",
+        "content": "Are jao tum"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Bhag gayi"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "are sorry yrr"
+      },
+      {
+        "from": "human",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "sirry"
+      },
+      {
+        "from": "human",
+        "value": "sorry"
+      },
+      {
+        "from": "gpt",
+        "value": "Naah jao tum"
+      },
+      {
+        "from": "human",
+        "value": "sre yrr"
+      },
+      {
+        "from": "human",
+        "value": "are"
+      },
+      {
+        "from": "human",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "abb nahi mangunga"
+      },
+      {
+        "from": "human",
+        "value": "photo"
+      },
+      {
+        "from": "gpt",
+        "value": "Are jao tum"
+      }
+    ]
+  }
+}
