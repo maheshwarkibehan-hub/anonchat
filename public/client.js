@@ -10,6 +10,9 @@ const landingScreen = document.getElementById('landingScreen');
 const searchingScreen = document.getElementById('searchingScreen');
 const chatScreen = document.getElementById('chatScreen');
 const dimensionalFlash = document.getElementById('dimensionalFlash');
+if (landingScreen && landingScreen.classList.contains('active')) {
+  document.body.classList.add('on-landing');
+}
 
 const startChatBtn = document.getElementById('startChatBtn');
 const cancelSearchBtn = document.getElementById('cancelSearchBtn');
@@ -40,6 +43,8 @@ const pinnedText = document.getElementById('pinnedText');
 const unpinBtn = document.getElementById('unpinBtn');
 
 const bombToggleBtn = document.getElementById('bombToggleBtn');
+const bombStatusBanner = document.getElementById('bombStatusBanner');
+const cancelBombBannerBtn = document.getElementById('cancelBombBannerBtn');
 const micBtn = document.getElementById('micBtn');
 const voiceRecordBar = document.getElementById('voiceRecordBar');
 const recordingTimer = document.getElementById('recordingTimer');
@@ -55,85 +60,64 @@ let typingTimeout = null;
 let isTypingSent = false;
 let isPartnerConnected = false;
 
+const chatSoundBtn = document.getElementById('chatSoundBtn');
+const chatSoundOn = chatSoundBtn ? chatSoundBtn.querySelector('.chat-sound-on') : null;
+const chatSoundOff = chatSoundBtn ? chatSoundBtn.querySelector('.chat-sound-off') : null;
+
 function updateSoundUI() {
   if (soundEnabled) {
-    soundOnIcon.classList.remove('hidden');
-    soundOffIcon.classList.add('hidden');
+    if (soundOnIcon) soundOnIcon.classList.remove('hidden');
+    if (soundOffIcon) soundOffIcon.classList.add('hidden');
+    if (chatSoundOn) chatSoundOn.classList.remove('hidden');
+    if (chatSoundOff) chatSoundOff.classList.add('hidden');
+    if (chatSoundBtn) {
+      chatSoundBtn.setAttribute('title', 'Sound alerts: ON');
+      chatSoundBtn.setAttribute('aria-label', 'Sound alerts: ON. Click to mute');
+    }
   } else {
-    soundOnIcon.classList.add('hidden');
-    soundOffIcon.classList.remove('hidden');
+    if (soundOnIcon) soundOnIcon.classList.add('hidden');
+    if (soundOffIcon) soundOffIcon.classList.remove('hidden');
+    if (chatSoundOn) chatSoundOn.classList.add('hidden');
+    if (chatSoundOff) chatSoundOff.classList.remove('hidden');
+    if (chatSoundBtn) {
+      chatSoundBtn.setAttribute('title', 'Sound alerts: MUTED');
+      chatSoundBtn.setAttribute('aria-label', 'Sound alerts: MUTED. Click to unmute');
+    }
   }
 }
 updateSoundUI();
 
-soundToggleBtn.addEventListener('click', () => {
+function toggleSound() {
   soundEnabled = !soundEnabled;
   localStorage.setItem('anonchat_sound', soundEnabled);
   updateSoundUI();
-});
+}
+
+if (soundToggleBtn) soundToggleBtn.addEventListener('click', toggleSound);
+if (chatSoundBtn) chatSoundBtn.addEventListener('click', toggleSound);
 
 // Precision Web Audio API Synthesizer (Micro-chimes & Dimensional Swells)
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
 
+// Two User-Specified Audio Sound Effects (Mouse Click & New Notification)
+const sfxClick = new Audio('/universfield-computer-mouse-click-352734.mp3');
+const sfxNotification = new Audio('/universfield-new-notification-051-494246.mp3');
+sfxClick.preload = 'auto';
+sfxNotification.preload = 'auto';
+
 function playChime(type) {
   if (!soundEnabled) return;
   try {
-    if (!audioCtx) audioCtx = new AudioContext();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    const now = audioCtx.currentTime;
-
-    if (type === 'sent') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(520, now);
-      osc.frequency.exponentialRampToValueAtTime(780, now + 0.08);
-      gain.gain.setValueAtTime(0.06, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-      osc.start(now);
-      osc.stop(now + 0.08);
-    } else if (type === 'received') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(680, now);
-      osc.frequency.setValueAtTime(920, now + 0.07);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
-      osc.start(now);
-      osc.stop(now + 0.22);
-    } else if (type === 'connected') {
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.exponentialRampToValueAtTime(880, now + 0.22);
-      gain.gain.setValueAtTime(0.1, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-      osc.start(now);
-      osc.stop(now + 0.35);
-    } else if (type === 'disconnected') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(420, now);
-      osc.frequency.exponentialRampToValueAtTime(200, now + 0.18);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-      osc.start(now);
-      osc.stop(now + 0.2);
-    } else if (type === 'warp') {
-      // Hyperspace / Dimensional Warp Audio Swell
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(120, now);
-      osc.frequency.exponentialRampToValueAtTime(960, now + 0.45);
-      gain.gain.setValueAtTime(0.02, now);
-      gain.gain.linearRampToValueAtTime(0.08, now + 0.25);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
-      osc.start(now);
-      osc.stop(now + 0.55);
+    if (type === 'sent' || type === 'click' || type === 'action') {
+      sfxClick.currentTime = 0;
+      sfxClick.play().catch(() => {});
+    } else if (type === 'received' || type === 'connected' || type === 'match') {
+      sfxNotification.currentTime = 0;
+      sfxNotification.play().catch(() => {});
     }
   } catch (e) {
-    // Audio context may be restricted before user interaction
+    // Audio playback blocked before user interaction
   }
 }
 
@@ -200,7 +184,7 @@ let threeScene = null;
 let threeParticles = null;
 const THREE_STAR_COUNT = 1400;
 
-if (typeof THREE !== 'undefined' && canvas) {
+if (typeof THREE !== 'undefined' && canvas && canvas.offsetParent !== null) {
   try {
     threeScene = new THREE.Scene();
     threeCamera = new THREE.PerspectiveCamera(65, canvasWidth / canvasHeight, 0.1, 2000);
@@ -446,7 +430,7 @@ document.querySelectorAll('.ambient-glow').forEach(el => el.style.display = 'non
 const spotlightCanvas = document.getElementById('spotlightCanvas');
 // DISABLED: hide spotlight canvas too
 if (spotlightCanvas) spotlightCanvas.style.display = 'none';
-if (spotlightCanvas) {
+if (spotlightCanvas && spotlightCanvas.offsetParent !== null) {
   const sCtx = spotlightCanvas.getContext('2d', { alpha: true });
   if (sCtx) {
     let sRafId = null;
@@ -586,6 +570,14 @@ const dimensionalPortal = document.getElementById('dimensionalPortal');
 function updateScreenDOM(screen) {
   [landingScreen, searchingScreen, chatScreen].forEach((s) => s.classList.remove('active'));
   screen.classList.add('active');
+  document.body.classList.remove('on-landing', 'on-searching', 'on-chat');
+  if (screen === landingScreen) {
+    document.body.classList.add('on-landing');
+  } else if (screen === searchingScreen) {
+    document.body.classList.add('on-searching');
+  } else if (screen === chatScreen) {
+    document.body.classList.add('on-chat');
+  }
 }
 
 function showScreen(screen) {
@@ -602,6 +594,7 @@ function showScreen(screen) {
         duration: 0.28,
         ease: 'power2.in',
         onComplete: () => {
+          gsap.set(currentActive, { clearProps: 'transform,filter,scale' });
           updateScreenDOM(screen);
         }
       });
@@ -612,7 +605,7 @@ function showScreen(screen) {
     tl.fromTo(
       screen,
       { scale: 1.08, opacity: 0, filter: 'blur(14px)' },
-      { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.45, ease: 'power3.out' }
+      { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.45, ease: 'power3.out', onComplete: () => { gsap.set(screen, { clearProps: 'transform,filter,scale' }); } }
     );
     return;
   }
@@ -639,16 +632,20 @@ function initDimensionalEntrance() {
   }
 
   if (typeof gsap !== 'undefined') {
-    gsap.fromTo(
-      '.navbar',
-      { y: -35, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out', delay: 0.15 }
-    );
-    gsap.fromTo(
-      '#landingScreen .card',
-      { scale: 0.88, rotationX: 12, opacity: 0, filter: 'blur(16px)' },
-      { scale: 1, rotationX: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', delay: 0.25 }
-    );
+    if (document.querySelector('.navbar')) {
+      gsap.fromTo(
+        '.navbar',
+        { y: -35, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out', delay: 0.15 }
+      );
+    }
+    if (document.querySelector('#landingScreen .card')) {
+      gsap.fromTo(
+        '#landingScreen .card',
+        { scale: 0.88, rotationX: 12, opacity: 0, filter: 'blur(16px)' },
+        { scale: 1, rotationX: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', delay: 0.25 }
+      );
+    }
   }
 }
 
@@ -953,17 +950,38 @@ function generateMsgId() {
   return 'msg_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
 }
 
+function updateBombUI() {
+  if (bombToggleBtn) bombToggleBtn.classList.toggle('active', isBombActive);
+  if (bombStatusBanner) {
+    if (isBombActive) {
+      bombStatusBanner.classList.remove('hidden');
+    } else {
+      bombStatusBanner.classList.add('hidden');
+    }
+  }
+  if (messageInput) {
+    if (isBombActive) {
+      messageInput.setAttribute('placeholder', 'Self-destruct message (dissolves after 5s on screen)...');
+    } else {
+      messageInput.setAttribute('placeholder', 'Type a message...');
+    }
+  }
+}
+updateBombUI();
+
 if (bombToggleBtn) {
   bombToggleBtn.addEventListener('click', () => {
     isBombActive = !isBombActive;
-    bombToggleBtn.classList.toggle('active', isBombActive);
-    if (messageInput) {
-      if (isBombActive) {
-        messageInput.setAttribute('placeholder', '💣 Self-destruct message (5s)...');
-      } else {
-        messageInput.setAttribute('placeholder', 'Type a message...');
-      }
-    }
+    updateBombUI();
+    triggerHaptic('light');
+  });
+}
+
+if (cancelBombBannerBtn) {
+  cancelBombBannerBtn.addEventListener('click', () => {
+    isBombActive = false;
+    updateBombUI();
+    triggerHaptic('light');
   });
 }
 
@@ -1026,7 +1044,7 @@ async function startVoiceRecording() {
         const reader = new FileReader();
         reader.onloadend = () => {
           const base64Audio = reader.result;
-          const duration = Math.min(Math.max(1, voiceDurationSeconds), 10);
+          const duration = Math.min(Math.max(1, voiceDurationSeconds), 15);
           const replyPayload = activeReply ? { id: activeReply.id, text: activeReply.text, author: activeReply.author } : null;
           const msgId = generateMsgId();
 
@@ -1066,7 +1084,7 @@ async function startVoiceRecording() {
       if (recordingTimer) {
         recordingTimer.textContent = `0:${String(voiceDurationSeconds).padStart(2, '0')}`;
       }
-      if (voiceDurationSeconds >= 10) {
+      if (voiceDurationSeconds >= 15) {
         stopVoiceRecording(true);
       }
     }, 1000);
@@ -1723,7 +1741,7 @@ function resetChatUI() {
         <line x1="12" y1="16" x2="12" y2="12"/>
         <line x1="12" y1="8" x2="12.01" y2="8"/>
       </svg>
-      <span>You are paired with a stranger. Say hello!</span>
+      <span>You are paired with an anonymous peer. Say hello!</span>
     </div>
   `;
   messageInput.value = '';
@@ -1756,6 +1774,7 @@ function startSearch() {
   showScreen(searchingScreen);
   socket.emit('find_partner');
 }
+window.startSearch = startSearch;
 
 function cancelSearch() {
   socket.emit('cancel_search');
@@ -2001,7 +2020,7 @@ if (viewOnceToggleBtn) {
     pendingAttachment.isViewOnce = !pendingAttachment.isViewOnce;
     if (pendingAttachment.isViewOnce) {
       viewOnceToggleBtn.classList.add('active');
-      if (viewOnceStatusText) viewOnceStatusText.textContent = '🔒 View Once Active (1 time seen)';
+      if (viewOnceStatusText) viewOnceStatusText.textContent = "View-Once active: Recipient sees photo for 8s; bytes not saved in archive";
     } else {
       viewOnceToggleBtn.classList.remove('active');
       if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
@@ -2133,6 +2152,18 @@ setInterval(() => {
 const navGetStartedBtn = document.getElementById('navGetStartedBtn');
 if (navGetStartedBtn) {
   navGetStartedBtn.addEventListener('click', startSearch);
+}
+document.querySelectorAll('.trigger-start-chat').forEach(btn => {
+  if (btn !== startChatBtn && btn.id !== 'startChatBtn') {
+    btn.addEventListener('click', startSearch);
+  }
+});
+
+// Editorial Hero Video Autoplay Assurance
+const heroVideo = document.querySelector('.editorial-hero-video');
+if (heroVideo) {
+  heroVideo.muted = true;
+  heroVideo.play().catch(() => {});
 }
 
 const infoModalOverlay = document.getElementById('infoModalOverlay');
@@ -2304,10 +2335,35 @@ messageInput.addEventListener('input', () => {
 // Shortcuts
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
+    // 1. Close Archive Modal if open
+    if (archiveModal && !archiveModal.classList.contains('hidden')) {
+      e.preventDefault();
+      closeArchiveModal();
+      return;
+    }
+    // 2. Close Info Modal if open
     if (infoModalOverlay && !infoModalOverlay.classList.contains('hidden')) {
+      e.preventDefault();
       closeInfoModal();
       return;
     }
+    // 3. Close Lightbox if open
+    if (mediaModal && !mediaModal.classList.contains('hidden')) {
+      e.preventDefault();
+      closeMediaModal();
+      return;
+    }
+    // 4. Do NOT skip if user is typing in composer or another editable field!
+    const activeEl = document.activeElement;
+    const isEditing = activeEl && (
+      activeEl.tagName === 'INPUT' ||
+      activeEl.tagName === 'TEXTAREA' ||
+      activeEl.isContentEditable
+    );
+    if (isEditing) {
+      return;
+    }
+    // 5. Otherwise, trigger skip or cancel skip grace period
     if (chatScreen.classList.contains('active')) {
       e.preventDefault();
       if (skipTimer) {
@@ -2347,10 +2403,32 @@ socket.on('search_cancelled', () => {
 
 socket.on('chat_start', (data) => {
   isPartnerConnected = true;
-  resetChatUI();
-  showScreen(chatScreen);
   playChime('connected');
   triggerHaptic('connected');
+
+  const expandBar = document.getElementById('matchExpandBar');
+  const socketWrap = document.getElementById('findingSocket');
+  const captionArea = document.querySelector('.finding-caption-area');
+
+  if (expandBar && searchingScreen.classList.contains('active')) {
+    // Horizontal expansion transition ("ye horizontal chizzz baddi ho puri screen ko cover karle then chat screen khule")
+    expandBar.classList.add('active');
+    if (socketWrap) socketWrap.classList.add('match-found');
+    if (captionArea) captionArea.classList.add('match-found');
+
+    setTimeout(() => {
+      resetChatUI();
+      showScreen(chatScreen);
+      setTimeout(() => {
+        expandBar.classList.remove('active');
+        if (socketWrap) socketWrap.classList.remove('match-found');
+        if (captionArea) captionArea.classList.remove('match-found');
+      }, 400);
+    }, 520);
+  } else {
+    resetChatUI();
+    showScreen(chatScreen);
+  }
 });
 
 socket.on('server_build', handleServerBuild);
@@ -2364,6 +2442,7 @@ socket.on('receive_message', (data) => {
   });
   playChime('received');
   triggerHaptic('light');
+  clearTimeout(partnerTypingAutoClearTimer);
   typingIndicator.classList.add('hidden');
 });
 
@@ -2425,19 +2504,27 @@ socket.on('message_destruct', (data) => {
   }
 });
 
+let partnerTypingAutoClearTimer = null;
+
 socket.on('partner_typing', () => {
   typingIndicator.classList.remove('hidden');
   if (isScrolledNearBottom()) {
     messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
   }
+  clearTimeout(partnerTypingAutoClearTimer);
+  partnerTypingAutoClearTimer = setTimeout(() => {
+    typingIndicator.classList.add('hidden');
+  }, 2500);
 });
 
 socket.on('partner_stop_typing', () => {
+  clearTimeout(partnerTypingAutoClearTimer);
   typingIndicator.classList.add('hidden');
 });
 
 socket.on('partner_disconnected', () => {
   isPartnerConnected = false;
+  clearTimeout(partnerTypingAutoClearTimer);
   cancelSkipGrace();
   clearReply();
   unpinMessage(false);
@@ -2642,96 +2729,54 @@ socket.on('joby_sir_message', (data) => {
   renderJobySirMessage(data);
 });
 
-// Modal keyboard accessibility
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && whatsNewModal && !whatsNewModal.classList.contains('hidden')) {
-    e.preventDefault();
-    closeWhatsNewModal();
-  }
-});
-
-// What's New Modal Logic (1-Time per IP & LocalStorage check)
-const whatsNewModal = document.getElementById('whatsNewModal');
-const closeWhatsNewModalBtn = document.getElementById('closeWhatsNewModalBtn');
-const ackWhatsNewBtn = document.getElementById('ackWhatsNewBtn');
-
-function openWhatsNewModal() {
-  if (whatsNewModal) {
-    whatsNewModal.classList.remove('hidden');
-    whatsNewModal.setAttribute('aria-hidden', 'false');
-  }
-}
-
-function closeWhatsNewModal() {
-  if (whatsNewModal) {
-    whatsNewModal.classList.add('hidden');
-    whatsNewModal.setAttribute('aria-hidden', 'true');
-  }
-  // Mark as seen locally so student is never bothered again on this device
-  try {
-    localStorage.setItem('anon_whats_new_v3_seen', 'true');
-  } catch (err) {}
-  // Acknowledge to server for this client IP via both socket and API
-  if (typeof socket !== 'undefined' && socket && socket.connected) {
-    socket.emit('ack_whats_new');
-  }
-  fetch('/api/whats-new/ack', { method: 'POST' }).catch(() => {});
-}
-
-if (closeWhatsNewModalBtn) {
-  closeWhatsNewModalBtn.addEventListener('click', closeWhatsNewModal);
-}
-
-if (ackWhatsNewBtn) {
-  ackWhatsNewBtn.addEventListener('click', () => {
-    closeWhatsNewModal();
-    triggerHaptic('light');
-  });
-}
-
-function handleWhatsNewStatus(show) {
-  try {
-    if (localStorage.getItem('anon_whats_new_v3_seen') === 'true') {
-      return;
-    }
-  } catch (e) {}
-
-  if (show) {
-    setTimeout(() => {
-      openWhatsNewModal();
-    }, 700);
-  }
-}
-
-// Socket listener for 1-time per IP What's New status
-if (typeof socket !== 'undefined' && socket) {
-  socket.on('whats_new_status', (data) => {
-    if (data && data.show) {
-      handleWhatsNewStatus(true);
+// Character counter approaching 1,500 limit
+const charCounter = document.getElementById('charCounter');
+if (messageInput && charCounter) {
+  messageInput.addEventListener('input', () => {
+    const len = messageInput.value.length;
+    if (len >= 1350) {
+      charCounter.textContent = `${len}/1500`;
+      charCounter.classList.remove('hidden');
+      if (len >= 1480) {
+        charCounter.classList.add('near-limit');
+      } else {
+        charCounter.classList.remove('near-limit');
+      }
+    } else {
+      charCounter.classList.add('hidden');
     }
   });
 }
 
-// Fallback check on initial load (HTTP version check and socket emit)
-async function checkWhatsNewStatus() {
-  try {
-    const localSeen = localStorage.getItem('anon_whats_new_v3_seen');
-    if (localSeen === 'true') return; // Fast-path: already acknowledged locally
 
-    if (typeof socket !== 'undefined' && socket && socket.connected) {
-      socket.emit('check_whats_new');
-    }
+// Archive & Session Transparency Modal Logic
+const archiveModal = document.getElementById('archiveModal');
+const archiveDisclosureBtn = document.getElementById('archiveDisclosureBtn');
+const closeArchiveModalBtn = document.getElementById('closeArchiveModalBtn');
+const ackArchiveModalBtn = document.getElementById('ackArchiveModalBtn');
 
-    const res = await fetch('/api/version');
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data && data.shouldShowWhatsNew) {
-      handleWhatsNewStatus(true);
-    }
-  } catch (e) {
-    // Silent failover
+function openArchiveModal() {
+  if (archiveModal) {
+    archiveModal.classList.remove('hidden');
+    archiveModal.setAttribute('aria-hidden', 'false');
+    if (ackArchiveModalBtn) ackArchiveModalBtn.focus();
   }
 }
 
-checkWhatsNewStatus();
+function closeArchiveModal() {
+  if (archiveModal) {
+    archiveModal.classList.add('hidden');
+    archiveModal.setAttribute('aria-hidden', 'true');
+    if (archiveDisclosureBtn) archiveDisclosureBtn.focus();
+  }
+}
+
+if (archiveDisclosureBtn) archiveDisclosureBtn.addEventListener('click', openArchiveModal);
+if (closeArchiveModalBtn) closeArchiveModalBtn.addEventListener('click', closeArchiveModal);
+if (ackArchiveModalBtn) ackArchiveModalBtn.addEventListener('click', closeArchiveModal);
+if (archiveModal) {
+  archiveModal.addEventListener('click', (e) => {
+    if (e.target === archiveModal) closeArchiveModal();
+  });
+}
 

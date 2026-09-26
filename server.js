@@ -84,6 +84,11 @@ app.get('/privacy', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
 });
 
+// Clean route for Synapse Design System showcase
+app.get('/synapse', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'synapse.html'));
+});
+
 // Trust proxy for accurate client IP detection behind proxies / cloud hosts
 app.set('trust proxy', true);
 

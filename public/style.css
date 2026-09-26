@@ -67,7 +67,7 @@
 
 body {
   background-color: #030508;
-  background-image: url('bg-pc.png');
+  background-image: none;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -84,12 +84,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-@media (max-width: 768px) {
-  body {
-    background-image: url('bg-mobile.png');
-    background-attachment: scroll;
-  }
-}
+/* Mobile background override removed */
 
 /* Dynamic Background Removal ("dynamic bg hata dena") */
 /* Disabled dynamic canvases, shockwaves, and ambient glow overlays so static backgrounds render cleanly */
@@ -2231,10 +2226,12 @@ body {
     padding-bottom: 56px;
   }
 
+  body.on-chat .app-shell,
   .app-shell:has(#chatScreen.active) {
-    padding-bottom: 8px;
+    padding: 0 !important;
   }
 
+  body.on-chat .app-footer,
   .app-shell:has(#chatScreen.active) .app-footer {
     display: none !important;
   }
