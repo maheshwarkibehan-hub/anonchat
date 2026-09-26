@@ -7,3 +7,18 @@ Thumbs.db
 *.log
 .env
 .env.*
+
+# Scratch / dev files
+scratch/
+
+# Duplicate / unused assets
+public/click.mp3
+public/notification.mp3
+public/fabale-assets/
+public/synapse.html
+fabale_source.html
+fabale_texts.json
+verify_fabale.js
+section_*.html
+CHAT_UI_REDESIGN_PROMPT.md
+universfield-*.mp3

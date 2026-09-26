@@ -1,0 +1,1422 @@
+/* ==========================================================================
+   Fabale AI Design System - Extracted & Engineered for AnonChat
+   Aesthetic: Ultra-Luxe Obsidian Dark Mode, Instrument Serif Editorial Accents,
+              Electric Cyan Glows, Glassmorphic Capsule Navigation & Fluid Motion
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Fabale Exact Color Tokens */
+  --fab-bg: #000000;
+  --fab-surface-1: #0d0d0f;
+  --fab-surface-2: #121215;
+  --fab-surface-3: #161619;
+  --fab-surface-4: #1e1e22;
+  --fab-card-bg: #111113;
+  --fab-card-hover: #161619;
+  
+  --fab-border-subtle: rgba(240, 240, 240, 0.08);
+  --fab-border-medium: rgba(240, 240, 240, 0.14);
+  --fab-border-strong: rgba(240, 240, 240, 0.22);
+  --fab-border-glow: rgba(33, 210, 237, 0.4);
+
+  --fab-text-white: #f5f5f5;
+  --fab-text-muted: rgba(240, 240, 240, 0.7);
+  --fab-text-dim: rgba(240, 240, 240, 0.45);
+  --fab-text-dark: #000000;
+
+  --fab-cyan: #21d2ed;
+  --fab-cyan-glow: rgba(33, 210, 237, 0.25);
+  
+  /* Fonts */
+  --font-editorial: 'Instrument Serif', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  
+  /* Radii */
+  --fab-radius-pill: 9999px;
+  --fab-radius-card: 24px;
+  --fab-radius-inner: 16px;
+  --fab-radius-sm: 10px;
+
+  /* Transitions */
+  --fab-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fab-transition-fast: 0.2s var(--fab-ease);
+  --fab-transition-normal: 0.35s var(--fab-ease);
+  --fab-transition-slow: 0.6s var(--fab-ease);
+}
+
+/* ==========================================================================
+   Base Layout & Typography
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--fab-bg);
+}
+
+body {
+  background-color: var(--fab-bg) !important;
+  color: var(--fab-text-white);
+  font-family: var(--font-ui);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Luxury Editorial Serif Italic Punch (Signature Fabale Style) */
+.serif-italic {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--fab-text-white);
+}
+
+.text-gradient {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyan-gradient {
+  background: linear-gradient(135deg, #21d2ed 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Containers */
+.fab-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  width: 100%;
+}
+
+.fab-section {
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .fab-section {
+    padding: 64px 0;
+  }
+}
+
+/* ==========================================================================
+   Section Headers & Badges
+   ========================================================================== */
+.fab-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--fab-radius-pill);
+  background-color: rgba(240, 240, 240, 0.05);
+  border: 1px solid var(--fab-border-subtle);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fab-text-muted);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-bottom: 20px;
+  transition: all var(--fab-transition-fast);
+  text-decoration: none;
+}
+
+.fab-badge-pill:hover {
+  border-color: var(--fab-border-medium);
+  color: var(--fab-text-white);
+  background-color: rgba(240, 240, 240, 0.08);
+}
+
+.fab-badge-pill svg {
+  color: var(--fab-cyan);
+}
+
+.fab-section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px auto;
+}
+
+.fab-section-title {
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px 0;
+  color: var(--fab-text-white);
+}
+
+.fab-section-title .serif-italic {
+  font-size: 1.12em;
+  padding: 0 4px;
+}
+
+.fab-section-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fab-text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Buttons (Fabale Exact Capsule Design & Slide Interaction)
+   ========================================================================== */
+.fab-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--fab-radius-pill);
+  background-color: #ffffff;
+  color: #000000;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  transition: all var(--fab-transition-fast);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.fab-btn-primary svg {
+  transition: transform var(--fab-transition-fast);
+}
+
+.fab-btn-primary:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 28px rgba(255, 255, 255, 0.35);
+}
+
+.fab-btn-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.fab-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--fab-radius-pill);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--fab-border-medium);
+  color: var(--fab-text-white);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--fab-transition-fast);
+  white-space: nowrap;
+}
+
+.fab-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--fab-border-strong);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Header / Sticky Capsule Navigation
+   ========================================================================== */
+.fab-navbar-wrap {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.fab-navbar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px 12px 8px 18px;
+  border-radius: var(--fab-radius-pill);
+  background-color: rgba(18, 18, 21, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--fab-border-medium);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 980px;
+}
+
+.fab-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.fab-brand-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #21d2ed 0%, #6366f1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  box-shadow: 0 0 12px rgba(33, 210, 237, 0.4);
+}
+
+.fab-brand-title {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--fab-text-white);
+}
+
+.fab-brand-ver {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background-color: rgba(33, 210, 237, 0.12);
+  color: var(--fab-cyan);
+  border: 1px solid rgba(33, 210, 237, 0.25);
+}
+
+.fab-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fab-nav-link {
+  color: var(--fab-text-muted);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--fab-radius-pill);
+  transition: all var(--fab-transition-fast);
+}
+
+.fab-nav-link:hover {
+  color: var(--fab-text-white);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.fab-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fab-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--fab-radius-pill);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--fab-border-subtle);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fab-text-muted);
+}
+
+.fab-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: fabPulseDot 2s infinite ease-in-out;
+}
+
+@keyframes fabPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.fab-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--fab-border-subtle);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--fab-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--fab-transition-fast);
+}
+
+.fab-icon-btn:hover {
+  color: var(--fab-text-white);
+  border-color: var(--fab-border-medium);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 860px) {
+  .fab-nav-links {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.fab-hero {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
+  text-align: center;
+}
+
+/* Subtle Cosmic Cloud Ambient Glows */
+.fab-hero-glow {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(33, 210, 237, 0.12) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fab-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fab-hero-title {
+  font-size: clamp(38px, 6.5vw, 76px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  margin: 0 auto 24px auto;
+  color: var(--fab-text-white);
+}
+
+.fab-hero-title .serif-italic {
+  font-size: 1.15em;
+  padding: 0 4px;
+}
+
+.fab-hero-subtitle {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.55;
+  color: var(--fab-text-muted);
+  max-width: 620px;
+  margin: 0 auto 36px auto;
+}
+
+.fab-hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.fab-hero-online-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--fab-text-dim);
+  margin-bottom: 50px;
+}
+
+/* Hero Showcase Framer Card */
+.fab-hero-showcase {
+  max-width: 1040px;
+  margin: 0 auto;
+  border-radius: var(--fab-radius-card);
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid var(--fab-border-medium);
+  box-shadow: 0 25px 80px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px var(--fab-cyan-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.fab-hero-showcase-inner {
+  border-radius: var(--fab-radius-inner);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.fab-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--fab-radius-inner);
+  opacity: 0.95;
+  transition: transform var(--fab-transition-slow);
+}
+
+.fab-hero-showcase:hover .fab-hero-img {
+  transform: scale(1.015);
+}
+
+/* Floating Badges Over Hero Showcase */
+.fab-floating-badge {
+  position: absolute;
+  padding: 8px 16px;
+  border-radius: var(--fab-radius-pill);
+  background: rgba(17, 17, 19, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--fab-border-medium);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fab-text-white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+}
+
+.fab-floating-badge.badge-left {
+  top: 24px;
+  left: 24px;
+}
+
+.fab-floating-badge.badge-right {
+  bottom: 24px;
+  right: 24px;
+}
+
+@media (max-width: 600px) {
+  .fab-floating-badge {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Tech / Marquee Ticker
+   ========================================================================== */
+.fab-ticker-section {
+  padding: 30px 0 60px 0;
+  border-bottom: 1px solid var(--fab-border-subtle);
+}
+
+.fab-ticker-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fab-text-dim);
+  margin-bottom: 24px;
+}
+
+.fab-ticker-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.fab-ticker-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--fab-radius-pill);
+  background-color: var(--fab-surface-1);
+  border: 1px solid var(--fab-border-subtle);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fab-text-muted);
+  transition: all var(--fab-transition-fast);
+}
+
+.fab-ticker-chip:hover {
+  border-color: var(--fab-border-medium);
+  color: var(--fab-text-white);
+  transform: translateY(-2px);
+}
+
+.fab-ticker-chip svg {
+  color: var(--fab-cyan);
+}
+
+/* ==========================================================================
+   Features Section (3 Luxury Framer Cards)
+   ========================================================================== */
+.fab-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .fab-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fab-feature-card {
+  border-radius: var(--fab-radius-card);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--fab-transition-normal);
+}
+
+.fab-feature-card:hover {
+  border-color: var(--fab-border-medium);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px -10px var(--fab-cyan-glow);
+}
+
+.fab-feature-img-wrap {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--fab-radius-inner);
+  overflow: hidden;
+  background-color: var(--fab-surface-1);
+  border: 1px solid var(--fab-border-subtle);
+  position: relative;
+}
+
+.fab-feature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--fab-transition-slow);
+}
+
+.fab-feature-card:hover .fab-feature-img {
+  transform: scale(1.05);
+}
+
+.fab-feature-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fab-feature-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--fab-text-white);
+  margin: 0;
+}
+
+.fab-feature-desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--fab-text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Why Section (3 Tall Cards with "Try it now ->")
+   ========================================================================== */
+.fab-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .fab-why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fab-why-card {
+  border-radius: var(--fab-radius-card);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  transition: all var(--fab-transition-normal);
+}
+
+.fab-why-card:hover {
+  border-color: var(--fab-border-medium);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.fab-why-content h4 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+  color: var(--fab-text-white);
+}
+
+.fab-why-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fab-text-muted);
+  margin: 0 0 24px 0;
+}
+
+.fab-why-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--fab-cyan);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: gap var(--fab-transition-fast);
+}
+
+.fab-why-link:hover {
+  gap: 10px;
+}
+
+.fab-why-illustration {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--fab-radius-inner);
+  overflow: hidden;
+  border: 1px solid var(--fab-border-subtle);
+}
+
+.fab-why-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Use Cases (Interactive Tabs with Showcase)
+   ========================================================================== */
+.fab-tabs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.fab-tab-btn {
+  padding: 10px 22px;
+  border-radius: var(--fab-radius-pill);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--fab-border-subtle);
+  color: var(--fab-text-muted);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--fab-transition-fast);
+}
+
+.fab-tab-btn:hover {
+  color: var(--fab-text-white);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.fab-tab-btn.active {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.fab-tab-panel {
+  display: none;
+  border-radius: var(--fab-radius-card);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  padding: 40px;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  transition: opacity var(--fab-transition-normal);
+}
+
+.fab-tab-panel.active {
+  display: grid;
+  animation: fabFadeIn 0.4s var(--fab-ease);
+}
+
+@keyframes fabFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 860px) {
+  .fab-tab-panel {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+}
+
+.fab-tab-details h3 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px 0;
+  color: var(--fab-text-white);
+}
+
+.fab-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fab-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.fab-check-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(33, 210, 237, 0.12);
+  border: 1px solid rgba(33, 210, 237, 0.3);
+  color: var(--fab-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fab-check-text strong {
+  display: block;
+  font-size: 15px;
+  color: var(--fab-text-white);
+  margin-bottom: 2px;
+}
+
+.fab-check-text span {
+  font-size: 13.5px;
+  color: var(--fab-text-muted);
+  line-height: 1.45;
+}
+
+.fab-tab-preview {
+  border-radius: var(--fab-radius-inner);
+  overflow: hidden;
+  border: 1px solid var(--fab-border-medium);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  background-color: var(--fab-surface-1);
+}
+
+.fab-tab-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Metrics Section (4 Animated Glowing Stat Cards)
+   ========================================================================== */
+.fab-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .fab-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .fab-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fab-metric-card {
+  border-radius: var(--fab-radius-card);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all var(--fab-transition-normal);
+}
+
+.fab-metric-card:hover {
+  border-color: var(--fab-border-medium);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+.fab-metric-num {
+  font-size: clamp(38px, 4vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--fab-text-white);
+  margin-bottom: 8px;
+  font-family: var(--font-ui);
+}
+
+.fab-metric-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fab-cyan);
+  margin-bottom: 8px;
+}
+
+.fab-metric-sub {
+  font-size: 13px;
+  color: var(--fab-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Pricing Section (Monthly / Yearly Switcher + 3 Tiers)
+   ========================================================================== */
+.fab-pricing-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.fab-switch-box {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--fab-radius-pill);
+  background-color: var(--fab-surface-1);
+  border: 1px solid var(--fab-border-medium);
+}
+
+.fab-switch-btn {
+  padding: 8px 20px;
+  border-radius: var(--fab-radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--fab-text-muted);
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--fab-transition-fast);
+}
+
+.fab-switch-btn.active {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fab-discount-pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background-color: rgba(33, 210, 237, 0.15);
+  color: var(--fab-cyan);
+  border: 1px solid rgba(33, 210, 237, 0.3);
+}
+
+.fab-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .fab-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fab-pricing-card {
+  border-radius: var(--fab-radius-card);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  position: relative;
+  transition: all var(--fab-transition-normal);
+}
+
+.fab-pricing-card:hover {
+  border-color: var(--fab-border-medium);
+  transform: translateY(-4px);
+}
+
+/* Featured / Popular Tier with Glowing Border */
+.fab-pricing-card.featured {
+  border: 1px solid var(--fab-cyan);
+  box-shadow: 0 0 35px -5px var(--fab-cyan-glow), inset 0 0 20px rgba(33, 210, 237, 0.05);
+  background-color: var(--fab-surface-2);
+}
+
+.fab-popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 14px;
+  border-radius: var(--fab-radius-pill);
+  background: var(--fab-cyan);
+  color: #000000;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.fab-tier-header h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--fab-text-white);
+}
+
+.fab-tier-desc {
+  font-size: 14px;
+  color: var(--fab-text-muted);
+  min-height: 42px;
+  margin: 0;
+}
+
+.fab-tier-price {
+  margin: 20px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.fab-tier-amount {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--fab-text-white);
+}
+
+.fab-tier-period {
+  font-size: 14px;
+  color: var(--fab-text-dim);
+}
+
+.fab-tier-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fab-tier-feat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--fab-text-muted);
+}
+
+.fab-tier-feat svg {
+  color: var(--fab-cyan);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Testimonials
+   ========================================================================== */
+.fab-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .fab-testi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fab-testi-card {
+  border-radius: var(--fab-radius-card);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  transition: all var(--fab-transition-normal);
+}
+
+.fab-testi-card:hover {
+  border-color: var(--fab-border-medium);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.fab-testi-quote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fab-text-white);
+  margin: 0;
+  font-style: italic;
+}
+
+.fab-testi-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fab-testi-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--fab-border-medium);
+}
+
+.fab-testi-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--fab-text-white);
+}
+
+.fab-testi-role {
+  font-size: 12.5px;
+  color: var(--fab-text-muted);
+}
+
+/* ==========================================================================
+   FAQ Accordions (Fabale Smooth Expansion)
+   ========================================================================== */
+.fab-faq-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fab-accordion {
+  border-radius: var(--fab-radius-inner);
+  background-color: var(--fab-card-bg);
+  border: 1px solid var(--fab-border-subtle);
+  overflow: hidden;
+  transition: border-color var(--fab-transition-fast);
+}
+
+.fab-accordion:hover {
+  border-color: var(--fab-border-medium);
+}
+
+.fab-accordion-header {
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fab-accordion-question {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--fab-text-white);
+  margin: 0;
+}
+
+.fab-accordion-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--fab-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fab-text-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--fab-ease), background-color var(--fab-transition-fast);
+}
+
+.fab-accordion.open .fab-accordion-icon {
+  transform: rotate(45deg);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--fab-text-white);
+}
+
+.fab-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--fab-ease), padding 0.3s var(--fab-ease);
+  padding: 0 26px;
+}
+
+.fab-accordion.open .fab-accordion-body {
+  max-height: 240px;
+  padding: 0 26px 24px 26px;
+}
+
+.fab-accordion-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fab-text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Final High-Impact CTA Banner
+   ========================================================================== */
+.fab-cta-banner {
+  max-width: 1040px;
+  margin: 0 auto;
+  border-radius: var(--fab-radius-card);
+  padding: 80px 40px;
+  background: radial-gradient(circle at center, rgba(33, 210, 237, 0.15) 0%, rgba(20, 20, 24, 0.95) 70%);
+  border: 1px solid var(--fab-border-strong);
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.8), 0 0 60px -15px var(--fab-cyan-glow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.fab-cta-title {
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px 0;
+  color: var(--fab-text-white);
+}
+
+.fab-cta-sub {
+  font-size: 17px;
+  color: var(--fab-text-muted);
+  max-width: 580px;
+  margin: 0 auto 36px auto;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.fab-footer {
+  border-top: 1px solid var(--fab-border-subtle);
+  padding: 64px 0 40px 0;
+  background-color: var(--fab-bg);
+}
+
+.fab-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 800px) {
+  .fab-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .fab-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fab-footer-brand p {
+  font-size: 14px;
+  color: var(--fab-text-dim);
+  margin: 14px 0 0 0;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+.fab-footer-col h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fab-text-white);
+  margin: 0 0 16px 0;
+}
+
+.fab-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fab-footer-links a {
+  color: var(--fab-text-dim);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color var(--fab-transition-fast);
+}
+
+.fab-footer-links a:hover {
+  color: var(--fab-text-white);
+}
+
+.fab-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+  color: var(--fab-text-dim);
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   Smooth View Transitions & Screen Switching Guard
+   ========================================================================== */
+body.on-landing,
+body:has(#landingScreen.active) {
+  overflow-y: auto !important;
+  display: block !important;
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
+body.on-landing .app-shell,
+body:has(#landingScreen.active) .app-shell {
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+body.on-landing .viewport,
+body:has(#landingScreen.active) .viewport {
+  display: block !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  perspective: none !important;
+}
+
+#landingScreen.screen.active {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  animation: fabFadeIn 0.5s var(--fab-ease);
+}
+
+/* Hide floating landing navbar during active chat or searching */
+body:not(.on-landing) .fab-navbar-wrap {
+  display: none !important;
+}
+
+/* Restore centered app shell when in chat or searching */
+body:not(.on-landing) {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+body:not(.on-landing) .app-shell {
+  max-width: 1080px !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  padding: 16px 24px 40px 24px !important;
+  display: flex !important;
+}
+
+body:not(.on-landing) .viewport {
+  flex: 1 !important;
+  display: flex !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Intersection Observer Reveal Animations (Framer-like Motion)
+   ========================================================================== */
+.fab-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--fab-ease), transform 0.7s var(--fab-ease);
+  will-change: opacity, transform;
+}
+
+.fab-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
