@@ -153,6 +153,7 @@ app.post('/api/whats-new/ack', (req, res) => {
 // Matchmaking state (In-Memory / Zero DB)
 let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
+const aiAgentSockets = new Set(); // socket.id of connected AI agents
 
 // --- Private Chat Session Logger (Structured for AI Training Datasets) ---
 const CHAT_LOG_DIR = path.join(__dirname, 'chat');
@@ -596,31 +597,68 @@ function matchUser(socket) {
   // First clean up any existing room or queue status
   cleanupUser(socket.id, true);
 
+  const isCurrentSocketAi = aiAgentSockets.has(socket.id);
+
   // Purge any stale disconnected sockets from waitingQueue
   waitingQueue = waitingQueue.filter((id) => {
     const s = io.sockets.sockets.get(id);
     return s && s.connected && id !== socket.id;
   });
 
-  if (waitingQueue.length > 0) {
-    const partnerId = waitingQueue.shift();
-    const partnerSocket = io.sockets.sockets.get(partnerId);
-
-    if (partnerSocket && partnerSocket.connected) {
-      pairUsers(socket, partnerSocket);
-    } else {
-      matchUser(socket);
+  if (isCurrentSocketAi) {
+    // If the requester is an AI agent, find an idle REAL HUMAN in waitingQueue
+    const humanPartnerIdx = waitingQueue.findIndex((id) => !aiAgentSockets.has(id));
+    if (humanPartnerIdx !== -1) {
+      const humanPartnerId = waitingQueue.splice(humanPartnerIdx, 1)[0];
+      const humanPartnerSocket = io.sockets.sockets.get(humanPartnerId);
+      if (humanPartnerSocket && humanPartnerSocket.connected) {
+        pairUsers(socket, humanPartnerSocket);
+        return;
+      }
     }
-  } else {
+    // No real human waiting right now; AI agent waits silently (NEVER PAIR AI WITH AI!)
     waitingQueue.push(socket.id);
     socket.emit('waiting_for_partner');
+    return;
   }
+
+  // --- Requester is a REAL HUMAN ---
+  // 1. First priority: Match with another waiting REAL HUMAN
+  const humanPartnerIdx = waitingQueue.findIndex((id) => !aiAgentSockets.has(id));
+  if (humanPartnerIdx !== -1) {
+    const partnerId = waitingQueue.splice(humanPartnerIdx, 1)[0];
+    const partnerSocket = io.sockets.sockets.get(partnerId);
+    if (partnerSocket && partnerSocket.connected) {
+      pairUsers(socket, partnerSocket);
+      return;
+    }
+  }
+
+  // 2. Second priority: If no human is waiting, match with an idle AI AGENT!
+  const aiPartnerIdx = waitingQueue.findIndex((id) => aiAgentSockets.has(id));
+  if (aiPartnerIdx !== -1) {
+    const aiPartnerId = waitingQueue.splice(aiPartnerIdx, 1)[0];
+    const aiPartnerSocket = io.sockets.sockets.get(aiPartnerId);
+    if (aiPartnerSocket && aiPartnerSocket.connected) {
+      pairUsers(socket, aiPartnerSocket);
+      return;
+    }
+  }
+
+  // 3. Otherwise add human to waiting queue
+  waitingQueue.push(socket.id);
+  socket.emit('waiting_for_partner');
 }
 
 io.on('connection', (socket) => {
   socket.data = { msgTimestamps: [], lastAction: 0 };
   broadcastOnlineCount();
   wakeUpAiWorker();
+
+  // Register autonomous AI agents into AI pool so they never match with each other
+  socket.on('register_ai_agent', () => {
+    aiAgentSockets.add(socket.id);
+  });
 
   const clientIp = (socket.handshake.headers && socket.handshake.headers['x-forwarded-for']
     ? socket.handshake.headers['x-forwarded-for'].split(',')[0].trim()
@@ -881,6 +919,7 @@ io.on('connection', (socket) => {
 
   // Socket disconnected
   socket.on('disconnect', () => {
+    aiAgentSockets.delete(socket.id);
     cleanupUser(socket.id, true);
     broadcastOnlineCount();
   });
