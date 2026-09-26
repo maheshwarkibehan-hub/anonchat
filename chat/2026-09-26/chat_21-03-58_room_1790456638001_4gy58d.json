@@ -1,0 +1,240 @@
+{
+  "metadata": {
+    "roomId": "room_1790456638001_4gy58d",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T21:03:58.002Z",
+    "endTime": "2026-09-26T21:09:32.985Z",
+    "durationSeconds": 335,
+    "totalMessages": 11,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790456641063_ig9gn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790456641069,
+      "isoTime": "2026-09-26T21:04:01.069Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790456644950_c9z7h8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790456645297,
+      "isoTime": "2026-09-26T21:04:05.297Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790456647382_di1aoy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790456647726,
+      "isoTime": "2026-09-26T21:04:07.726Z",
+      "type": "text",
+      "text": "kaise ho bro",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790456656232_zbpd7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790456656241,
+      "isoTime": "2026-09-26T21:04:16.241Z",
+      "type": "text",
+      "text": "main badhiya hu aap batao kaise ho sab theek",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790456667101_nhz22k",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790456667446,
+      "isoTime": "2026-09-26T21:04:27.446Z",
+      "type": "text",
+      "text": "hnn yaar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790456671325_kqgx7v",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790456671677,
+      "isoTime": "2026-09-26T21:04:31.677Z",
+      "type": "text",
+      "text": "ye anmol kon hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790456682836_47k8z",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790456682841,
+      "isoTime": "2026-09-26T21:04:42.841Z",
+      "type": "text",
+      "text": "anon chat hai toh bina naam ke baat karte hain pehle vibe match karte hain aap batao kya kar rahe ho abhi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790456703949_cz6bxm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790456704287,
+      "isoTime": "2026-09-26T21:05:04.287Z",
+      "type": "text",
+      "text": "ye anmol kon hai ye toh batao na",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790456714612_qs4j4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790456714618,
+      "isoTime": "2026-09-26T21:05:14.618Z",
+      "type": "text",
+      "text": "yah toh chat ka host ya admin hoga mujhe details nahi pata main bas apni baatein share kar raha hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790456732621_dgfauo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790456732972,
+      "isoTime": "2026-09-26T21:05:32.972Z",
+      "type": "text",
+      "text": "aur batao tatti khati ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790456742321_yv7xz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790456742327,
+      "isoTime": "2026-09-26T21:05:42.327Z",
+      "type": "text",
+      "text": "are nahi yaar main toh healthy khana peeta hu aap kya khaya aaj",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "kaise ho bro"
+      },
+      {
+        "role": "assistant",
+        "content": "main badhiya hu aap batao kaise ho sab theek"
+      },
+      {
+        "role": "user",
+        "content": "hnn yaar"
+      },
+      {
+        "role": "user",
+        "content": "ye anmol kon hai"
+      },
+      {
+        "role": "assistant",
+        "content": "anon chat hai toh bina naam ke baat karte hain pehle vibe match karte hain aap batao kya kar rahe ho abhi"
+      },
+      {
+        "role": "user",
+        "content": "ye anmol kon hai ye toh batao na"
+      },
+      {
+        "role": "assistant",
+        "content": "yah toh chat ka host ya admin hoga mujhe details nahi pata main bas apni baatein share kar raha hu"
+      },
+      {
+        "role": "user",
+        "content": "aur batao tatti khati ho"
+      },
+      {
+        "role": "assistant",
+        "content": "are nahi yaar main toh healthy khana peeta hu aap kya khaya aaj"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "kaise ho bro"
+      },
+      {
+        "from": "gpt",
+        "value": "main badhiya hu aap batao kaise ho sab theek"
+      },
+      {
+        "from": "human",
+        "value": "hnn yaar"
+      },
+      {
+        "from": "human",
+        "value": "ye anmol kon hai"
+      },
+      {
+        "from": "gpt",
+        "value": "anon chat hai toh bina naam ke baat karte hain pehle vibe match karte hain aap batao kya kar rahe ho abhi"
+      },
+      {
+        "from": "human",
+        "value": "ye anmol kon hai ye toh batao na"
+      },
+      {
+        "from": "gpt",
+        "value": "yah toh chat ka host ya admin hoga mujhe details nahi pata main bas apni baatein share kar raha hu"
+      },
+      {
+        "from": "human",
+        "value": "aur batao tatti khati ho"
+      },
+      {
+        "from": "gpt",
+        "value": "are nahi yaar main toh healthy khana peeta hu aap kya khaya aaj"
+      }
+    ]
+  }
+}
