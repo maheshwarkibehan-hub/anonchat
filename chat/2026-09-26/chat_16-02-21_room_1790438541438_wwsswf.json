@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "roomId": "room_1790438541438_wwsswf",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T16:02:21.438Z",
+    "endTime": "2026-09-26T16:03:28.949Z",
+    "durationSeconds": 68,
+    "totalMessages": 8,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790438545485_1jhn66",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438546909,
+      "isoTime": "2026-09-26T16:02:26.909Z",
+      "type": "text",
+      "text": "Hyyy",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790438551932_cafgsm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438553322,
+      "isoTime": "2026-09-26T16:02:33.322Z",
+      "type": "text",
+      "text": "maheswar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790438553646_6vao2b",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438555042,
+      "isoTime": "2026-09-26T16:02:35.042Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790438557699_b5qmzp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438559082,
+      "isoTime": "2026-09-26T16:02:39.082Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790438561868_wsra2z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438563275,
+      "isoTime": "2026-09-26T16:02:43.275Z",
+      "type": "text",
+      "text": "Name kahee batayeee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790438576112_my5zt8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438577514,
+      "isoTime": "2026-09-26T16:02:57.514Z",
+      "type": "text",
+      "text": "Scout",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790438579531_b1coy3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790438580943,
+      "isoTime": "2026-09-26T16:03:00.943Z",
+      "type": "text",
+      "text": "Huuu bhaiii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790438586782_tmml9f",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790438588203,
+      "isoTime": "2026-09-26T16:03:08.203Z",
+      "type": "text",
+      "text": "thk",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hyyy"
+      },
+      {
+        "role": "assistant",
+        "content": "maheswar"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "Name kahee batayeee"
+      },
+      {
+        "role": "user",
+        "content": "Scout"
+      },
+      {
+        "role": "user",
+        "content": "Huuu bhaiii"
+      },
+      {
+        "role": "assistant",
+        "content": "thk"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hyyy"
+      },
+      {
+        "from": "gpt",
+        "value": "maheswar"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "Name kahee batayeee"
+      },
+      {
+        "from": "human",
+        "value": "Scout"
+      },
+      {
+        "from": "human",
+        "value": "Huuu bhaiii"
+      },
+      {
+        "from": "gpt",
+        "value": "thk"
+      }
+    ]
+  }
+}
