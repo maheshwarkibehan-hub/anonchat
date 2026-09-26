@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790429926599_s2qzsz",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T13:38:46.599Z",
+    "endTime": "2026-09-26T13:39:49.425Z",
+    "durationSeconds": 63,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790429935428_1agv0t",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790429934724,
+      "isoTime": "2026-09-26T13:38:54.724Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790429949615_jtomi0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790429948879,
+      "isoTime": "2026-09-26T13:39:08.879Z",
+      "type": "text",
+      "text": "Bro who are you",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790429976560_n65ixj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790429975825,
+      "isoTime": "2026-09-26T13:39:35.825Z",
+      "type": "text",
+      "text": "Bole ga kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790429984831_ueurkg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790429984103,
+      "isoTime": "2026-09-26T13:39:44.103Z",
+      "type": "text",
+      "text": "Baak",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "user",
+        "content": "Bro who are you"
+      },
+      {
+        "role": "user",
+        "content": "Bole ga kya"
+      },
+      {
+        "role": "user",
+        "content": "Baak"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "human",
+        "value": "Bro who are you"
+      },
+      {
+        "from": "human",
+        "value": "Bole ga kya"
+      },
+      {
+        "from": "human",
+        "value": "Baak"
+      }
+    ]
+  }
+}
