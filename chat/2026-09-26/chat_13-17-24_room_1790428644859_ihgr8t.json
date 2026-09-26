@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "roomId": "room_1790428644859_ihgr8t",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T13:17:24.860Z",
+    "endTime": "2026-09-26T13:18:20.969Z",
+    "durationSeconds": 56,
+    "totalMessages": 6,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790428651064_luwpqd",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790428651978,
+      "isoTime": "2026-09-26T13:17:31.978Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790428659332_j84hf6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790428660275,
+      "isoTime": "2026-09-26T13:17:40.275Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790428664147_fbc6oi",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790428665057,
+      "isoTime": "2026-09-26T13:17:45.057Z",
+      "type": "text",
+      "text": "kon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790428669246_esrzzn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790428670191,
+      "isoTime": "2026-09-26T13:17:50.191Z",
+      "type": "text",
+      "text": "tum kon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790428674573_a26sgy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790428675497,
+      "isoTime": "2026-09-26T13:17:55.497Z",
+      "type": "text",
+      "text": "tumhare papa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790428683231_hq4qvu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790428684191,
+      "isoTime": "2026-09-26T13:18:04.191Z",
+      "type": "text",
+      "text": "mujhe laga ki mai tumhara papa hu",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "kon"
+      },
+      {
+        "role": "assistant",
+        "content": "tum kon"
+      },
+      {
+        "role": "user",
+        "content": "tumhare papa"
+      },
+      {
+        "role": "assistant",
+        "content": "mujhe laga ki mai tumhara papa hu"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "kon"
+      },
+      {
+        "from": "gpt",
+        "value": "tum kon"
+      },
+      {
+        "from": "human",
+        "value": "tumhare papa"
+      },
+      {
+        "from": "gpt",
+        "value": "mujhe laga ki mai tumhara papa hu"
+      }
+    ]
+  }
+}
