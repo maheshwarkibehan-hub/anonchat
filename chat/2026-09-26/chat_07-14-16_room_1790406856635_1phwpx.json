@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "roomId": "room_1790406856635_1phwpx",
+    "vibe": "Canteen & Bakchodi 🥪",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T07:14:16.635Z",
+    "endTime": "2026-09-26T07:15:24.516Z",
+    "durationSeconds": 68,
+    "totalMessages": 11,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790406860940_ncpq6e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790406862921,
+      "isoTime": "2026-09-26T07:14:22.921Z",
+      "type": "text",
+      "text": "Abhi koi hai asspat",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790406863576_x0hanq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790406864380,
+      "isoTime": "2026-09-26T07:14:24.380Z",
+      "type": "text",
+      "text": "koi aagya tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790406863331_4gwi1c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790406865316,
+      "isoTime": "2026-09-26T07:14:25.316Z",
+      "type": "text",
+      "text": "Asspas",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790406866097_bicxt1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790406868076,
+      "isoTime": "2026-09-26T07:14:28.076Z",
+      "type": "text",
+      "text": "Ohh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790406873028_0yu7yy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790406873860,
+      "isoTime": "2026-09-26T07:14:33.860Z",
+      "type": "text",
+      "text": "kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790406878629_8mzf6c",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790406879420,
+      "isoTime": "2026-09-26T07:14:39.420Z",
+      "type": "text",
+      "text": "tumhare",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Asspas",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790406895422_ea9rld",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790406897407,
+      "isoTime": "2026-09-26T07:14:57.407Z",
+      "type": "text",
+      "text": "Tumhare asspas koi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790406899687_fh3z30",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790406900500,
+      "isoTime": "2026-09-26T07:15:00.500Z",
+      "type": "text",
+      "text": "nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790406902364_pcs3q1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790406904336,
+      "isoTime": "2026-09-26T07:15:04.336Z",
+      "type": "text",
+      "text": "Ohh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790406912628_70vo9s",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790406913420,
+      "isoTime": "2026-09-26T07:15:13.420Z",
+      "type": "text",
+      "text": "abhi to mai room ke bahar bhi nahi nikla",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790406923708_ftz0ve",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790406924516,
+      "isoTime": "2026-09-26T07:15:24.516Z",
+      "type": "text",
+      "text": "jab se utha hu tabse bed me hihu",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Abhi koi hai asspat"
+      },
+      {
+        "role": "assistant",
+        "content": "koi aagya tha"
+      },
+      {
+        "role": "user",
+        "content": "Asspas"
+      },
+      {
+        "role": "user",
+        "content": "Ohh"
+      },
+      {
+        "role": "assistant",
+        "content": "kya"
+      },
+      {
+        "role": "assistant",
+        "content": "tumhare"
+      },
+      {
+        "role": "user",
+        "content": "Tumhare asspas koi hai"
+      },
+      {
+        "role": "assistant",
+        "content": "nahi"
+      },
+      {
+        "role": "user",
+        "content": "Ohh"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi to mai room ke bahar bhi nahi nikla"
+      },
+      {
+        "role": "assistant",
+        "content": "jab se utha hu tabse bed me hihu"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Abhi koi hai asspat"
+      },
+      {
+        "from": "gpt",
+        "value": "koi aagya tha"
+      },
+      {
+        "from": "human",
+        "value": "Asspas"
+      },
+      {
+        "from": "human",
+        "value": "Ohh"
+      },
+      {
+        "from": "gpt",
+        "value": "kya"
+      },
+      {
+        "from": "gpt",
+        "value": "tumhare"
+      },
+      {
+        "from": "human",
+        "value": "Tumhare asspas koi hai"
+      },
+      {
+        "from": "gpt",
+        "value": "nahi"
+      },
+      {
+        "from": "human",
+        "value": "Ohh"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi to mai room ke bahar bhi nahi nikla"
+      },
+      {
+        "from": "gpt",
+        "value": "jab se utha hu tabse bed me hihu"
+      }
+    ]
+  }
+}
