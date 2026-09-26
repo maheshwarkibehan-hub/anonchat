@@ -40,6 +40,31 @@ function isMaintenanceActive() {
   return process.env.MAINTENANCE_MODE === 'true' || fs.existsSync(MAINTENANCE_FILE);
 }
 
+// Optional Render AI Worker Webhook (Wakes up the separate 10 AI Agents service on Render)
+const AI_WORKER_URL = process.env.AI_WORKER_URL || '';
+let lastWorkerPing = 0;
+function wakeUpAiWorker() {
+  if (!AI_WORKER_URL) return;
+  const now = Date.now();
+  if (now - lastWorkerPing < 60000) return; // Throttled to at most once per minute
+  lastWorkerPing = now;
+
+  try {
+    const isHttps = AI_WORKER_URL.startsWith('https');
+    const client = isHttps ? require('https') : require('http');
+    const targetUrl = new URL('/api/wakeup', AI_WORKER_URL);
+    const req = client.request(targetUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 5000
+    });
+    req.on('error', () => {});
+    req.write(JSON.stringify({ timestamp: now }));
+    req.end();
+  } catch (err) {}
+}
+
+
 app.use((req, res, next) => {
   if (isMaintenanceActive()) {
     if (req.path.startsWith('/socket.io/')) {
@@ -509,8 +534,19 @@ function pairUsers(socketA, socketB, vibeLabel = 'Direct') {
     console.error('[Chat Logger Init Error]', err.message);
   }
 
-  socketA.emit('chat_start', { roomId });
-  socketB.emit('chat_start', { roomId });
+  const crypto = require('crypto');
+  const getAnonHash = (sock) => {
+    const ip = (sock.handshake.headers && sock.handshake.headers['x-forwarded-for']
+      ? sock.handshake.headers['x-forwarded-for'].split(',')[0].trim()
+      : sock.handshake.address) || '127.0.0.1';
+    return crypto.createHash('sha256').update(ip + '_salt_anon').digest('hex').slice(0, 16);
+  };
+
+  const hashA = getAnonHash(socketA);
+  const hashB = getAnonHash(socketB);
+
+  socketA.emit('chat_start', { roomId, partnerHash: hashB });
+  socketB.emit('chat_start', { roomId, partnerHash: hashA });
 }
 
 function removeFromQueue(socketId) {
@@ -584,6 +620,7 @@ function matchUser(socket) {
 io.on('connection', (socket) => {
   socket.data = { msgTimestamps: [], lastAction: 0 };
   broadcastOnlineCount();
+  wakeUpAiWorker();
 
   const clientIp = (socket.handshake.headers && socket.handshake.headers['x-forwarded-for']
     ? socket.handshake.headers['x-forwarded-for'].split(',')[0].trim()
