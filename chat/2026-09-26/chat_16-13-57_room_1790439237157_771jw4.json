@@ -1,0 +1,1475 @@
+{
+  "metadata": {
+    "roomId": "room_1790439237157_771jw4",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T16:13:57.158Z",
+    "endTime": "2026-09-26T16:25:03.096Z",
+    "durationSeconds": 666,
+    "totalMessages": 72,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790439261490_6n14u8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439261225,
+      "isoTime": "2026-09-26T16:14:21.225Z",
+      "type": "text",
+      "text": "Hello",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790439263792_13bkon",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439265188,
+      "isoTime": "2026-09-26T16:14:25.188Z",
+      "type": "text",
+      "text": "hellow",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790439291416_dk94bv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439291815,
+      "isoTime": "2026-09-26T16:14:51.815Z",
+      "type": "text",
+      "text": "Cinderella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790439296194_ttkw4h",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439297596,
+      "isoTime": "2026-09-26T16:14:57.596Z",
+      "type": "text",
+      "text": "bagh gyi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790439311513_zfvjap",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439311340,
+      "isoTime": "2026-09-26T16:15:11.340Z",
+      "type": "text",
+      "text": "Aur batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790439316077_rekz04",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439317475,
+      "isoTime": "2026-09-26T16:15:17.475Z",
+      "type": "text",
+      "text": "kya hua yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790439318898_9ijbsm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439320284,
+      "isoTime": "2026-09-26T16:15:20.284Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790439327101_2d7xvx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439328490,
+      "isoTime": "2026-09-26T16:15:28.490Z",
+      "type": "text",
+      "text": "abb to maff kardo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790439342505_ascoh0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439343915,
+      "isoTime": "2026-09-26T16:15:43.915Z",
+      "type": "text",
+      "text": "itni derr se rude behave kar rahi ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790439347116_tjt33i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439348515,
+      "isoTime": "2026-09-26T16:15:48.515Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790439366244_hga1g1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439367635,
+      "isoTime": "2026-09-26T16:16:07.635Z",
+      "type": "text",
+      "text": "anmol hi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790439399176_fgl66y",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439398900,
+      "isoTime": "2026-09-26T16:16:38.900Z",
+      "type": "text",
+      "text": "Hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790439408955_5yxnn4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439410357,
+      "isoTime": "2026-09-26T16:16:50.357Z",
+      "type": "text",
+      "text": "maff kardiya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790439415476_1l79q2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439416875,
+      "isoTime": "2026-09-26T16:16:56.875Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790439436570_pfsmpd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439437955,
+      "isoTime": "2026-09-26T16:17:17.955Z",
+      "type": "text",
+      "text": "yee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790439441001_84s0iu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439442396,
+      "isoTime": "2026-09-26T16:17:22.396Z",
+      "type": "text",
+      "text": "yrrrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790439448406_bon9ts",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439449796,
+      "isoTime": "2026-09-26T16:17:29.796Z",
+      "type": "text",
+      "text": "kuch to bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790439462509_x1x387",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439463923,
+      "isoTime": "2026-09-26T16:17:43.923Z",
+      "type": "text",
+      "text": "avika ki taraf dekhunga bhi nahi abbse",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790439471114_xo7zs5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439472519,
+      "isoTime": "2026-09-26T16:17:52.519Z",
+      "type": "text",
+      "text": "promise",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1790439495545_fysd9p",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439496955,
+      "isoTime": "2026-09-26T16:18:16.955Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1790439512648_5dg4ld",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439514035,
+      "isoTime": "2026-09-26T16:18:34.035Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 22,
+      "msgId": "msg_1790439523686_0my04j",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439523475,
+      "isoTime": "2026-09-26T16:18:43.475Z",
+      "type": "text",
+      "text": "Haa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 23,
+      "msgId": "msg_1790439523520_5ehvy7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439524922,
+      "isoTime": "2026-09-26T16:18:44.922Z",
+      "type": "text",
+      "text": "kya hui yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 24,
+      "msgId": "msg_1790439533489_4jq7gx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439534868,
+      "isoTime": "2026-09-26T16:18:54.868Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 25,
+      "msgId": "msg_1790439537917_joxaou",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439537650,
+      "isoTime": "2026-09-26T16:18:57.650Z",
+      "type": "text",
+      "text": "Anmollllllll",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 26,
+      "msgId": "msg_1790439540021_8bzyp1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439541443,
+      "isoTime": "2026-09-26T16:19:01.443Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 27,
+      "msgId": "msg_1790439544701_uwv846",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439546108,
+      "isoTime": "2026-09-26T16:19:06.108Z",
+      "type": "text",
+      "text": "bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 28,
+      "msgId": "msg_1790439548468_l9avcx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439548190,
+      "isoTime": "2026-09-26T16:19:08.190Z",
+      "type": "text",
+      "text": "Yrrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 29,
+      "msgId": "msg_1790439552221_joc7iq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439553628,
+      "isoTime": "2026-09-26T16:19:13.628Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 30,
+      "msgId": "msg_1790439564042_puijsa",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439565435,
+      "isoTime": "2026-09-26T16:19:25.435Z",
+      "type": "text",
+      "text": "are bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 31,
+      "msgId": "msg_1790439586127_r5eax6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439587518,
+      "isoTime": "2026-09-26T16:19:47.518Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 32,
+      "msgId": "msg_1790439597305_qtsotv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439597186,
+      "isoTime": "2026-09-26T16:19:57.186Z",
+      "type": "text",
+      "text": "Hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 33,
+      "msgId": "msg_1790439607627_wspltg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439609043,
+      "isoTime": "2026-09-26T16:20:09.043Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 34,
+      "msgId": "msg_1790439615390_ogimzf",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439615135,
+      "isoTime": "2026-09-26T16:20:15.135Z",
+      "type": "text",
+      "text": "Kuch nhi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 35,
+      "msgId": "msg_1790439620722_f1spqn",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439620435,
+      "isoTime": "2026-09-26T16:20:20.435Z",
+      "type": "text",
+      "text": "Mood off h",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 36,
+      "msgId": "msg_1790439622149_2g3yje",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439623548,
+      "isoTime": "2026-09-26T16:20:23.548Z",
+      "type": "text",
+      "text": "kyu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 37,
+      "msgId": "msg_1790439643318_0pqyi3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439643314,
+      "isoTime": "2026-09-26T16:20:43.314Z",
+      "type": "text",
+      "text": "Pata nhi aise hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 38,
+      "msgId": "msg_1790439643866_q9dpj8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439645277,
+      "isoTime": "2026-09-26T16:20:45.277Z",
+      "type": "text",
+      "text": "parents ne kuch bola kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 39,
+      "msgId": "msg_1790439651471_ht7uq2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439651167,
+      "isoTime": "2026-09-26T16:20:51.167Z",
+      "type": "text",
+      "text": "Nhi",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "parents ne kuch bola kya",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 40,
+      "msgId": "msg_1790439656250_6alphn",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439656065,
+      "isoTime": "2026-09-26T16:20:56.065Z",
+      "type": "text",
+      "text": "Mood swings",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 41,
+      "msgId": "msg_1790439664300_dt491z",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439665715,
+      "isoTime": "2026-09-26T16:21:05.715Z",
+      "type": "text",
+      "text": "to paani pelo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 42,
+      "msgId": "msg_1790439693398_qrcexh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439693120,
+      "isoTime": "2026-09-26T16:21:33.120Z",
+      "type": "text",
+      "text": "Cold coffee pina h but coffee khtm ho gai h",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "to paani pelo",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 43,
+      "msgId": "msg_1790439702259_urq7il",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439701969,
+      "isoTime": "2026-09-26T16:21:41.969Z",
+      "type": "text",
+      "text": "👀",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 44,
+      "msgId": "msg_1790439705605_vcdz2q",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439706988,
+      "isoTime": "2026-09-26T16:21:46.988Z",
+      "type": "text",
+      "text": "to lelo ,",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 45,
+      "msgId": "msg_1790439712661_h6t3u7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439714076,
+      "isoTime": "2026-09-26T16:21:54.076Z",
+      "type": "text",
+      "text": "aas - pass shop hai??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 46,
+      "msgId": "msg_1790439716795_7mbku6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439718203,
+      "isoTime": "2026-09-26T16:21:58.203Z",
+      "type": "text",
+      "text": "ghar ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 47,
+      "msgId": "msg_1790439718810_5mgx5q",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439720228,
+      "isoTime": "2026-09-26T16:22:00.228Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 48,
+      "msgId": "msg_1790439728147_0u1xb4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439727855,
+      "isoTime": "2026-09-26T16:22:07.855Z",
+      "type": "text",
+      "text": "Hai par man nhi h Jane kaa",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "aas - pass shop hai??",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 49,
+      "msgId": "msg_1790439745138_mufe9u",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439745144,
+      "isoTime": "2026-09-26T16:22:25.144Z",
+      "type": "text",
+      "text": "Tum le aao 👀",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 50,
+      "msgId": "msg_1790439752877_8gagnq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439754279,
+      "isoTime": "2026-09-26T16:22:34.279Z",
+      "type": "text",
+      "text": "address do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 51,
+      "msgId": "msg_1790439775868_iaat5e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439775629,
+      "isoTime": "2026-09-26T16:22:55.629Z",
+      "type": "text",
+      "text": "Bambolistan",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "address do",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 52,
+      "msgId": "msg_1790439783551_ag5czv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439783287,
+      "isoTime": "2026-09-26T16:23:03.287Z",
+      "type": "text",
+      "text": "😂",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 53,
+      "msgId": "msg_1790439782894_ywcal7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439784278,
+      "isoTime": "2026-09-26T16:23:04.278Z",
+      "type": "text",
+      "text": "ye kaha hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 54,
+      "msgId": "msg_1790439784054_bo1wru",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439785443,
+      "isoTime": "2026-09-26T16:23:05.443Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 55,
+      "msgId": "msg_1790439818236_b61yzf",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439817940,
+      "isoTime": "2026-09-26T16:23:37.940Z",
+      "type": "text",
+      "text": "Jaha tak tum nhi pahuch skte ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 56,
+      "msgId": "msg_1790439821392_6f4bqz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439822185,
+      "isoTime": "2026-09-26T16:23:42.185Z",
+      "type": "text",
+      "text": "😂",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 57,
+      "msgId": "msg_1790439823303_rryzff",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439824684,
+      "isoTime": "2026-09-26T16:23:44.684Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 58,
+      "msgId": "msg_1790439826728_bb71d8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439826529,
+      "isoTime": "2026-09-26T16:23:46.529Z",
+      "type": "text",
+      "text": "Byeeee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 59,
+      "msgId": "msg_1790439827806_0rscmj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439829188,
+      "isoTime": "2026-09-26T16:23:49.188Z",
+      "type": "text",
+      "text": "kyu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 60,
+      "msgId": "msg_1790439836890_gsfpvz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439838276,
+      "isoTime": "2026-09-26T16:23:58.276Z",
+      "type": "text",
+      "text": "abhi to aayi ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 61,
+      "msgId": "msg_1790439837112_sxjpcc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439838306,
+      "isoTime": "2026-09-26T16:23:58.306Z",
+      "type": "text",
+      "text": "Meraa makshad puraa huaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 62,
+      "msgId": "msg_1790439845188_dxvw3i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439846595,
+      "isoTime": "2026-09-26T16:24:06.595Z",
+      "type": "text",
+      "text": "hein",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 63,
+      "msgId": "msg_1790439858407_bfyrbj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439858890,
+      "isoTime": "2026-09-26T16:24:18.890Z",
+      "type": "text",
+      "text": "Haaa meraa makshad puraa huaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 64,
+      "msgId": "msg_1790439862643_teiu0y",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439864028,
+      "isoTime": "2026-09-26T16:24:24.028Z",
+      "type": "text",
+      "text": "are",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 65,
+      "msgId": "msg_1790439866798_1xsdf2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439868196,
+      "isoTime": "2026-09-26T16:24:28.196Z",
+      "type": "text",
+      "text": "kya tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 66,
+      "msgId": "msg_1790439869017_i89hmk",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439870414,
+      "isoTime": "2026-09-26T16:24:30.414Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 67,
+      "msgId": "msg_1790439872100_xtwcq0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439871990,
+      "isoTime": "2026-09-26T16:24:31.990Z",
+      "type": "text",
+      "text": "Mere pass tumhari sari chat history h",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 68,
+      "msgId": "msg_1790439873760_fdmtu2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439875154,
+      "isoTime": "2026-09-26T16:24:35.154Z",
+      "type": "text",
+      "text": "mood sahi karna",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 69,
+      "msgId": "msg_1790439881414_5pe33b",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790439882843,
+      "isoTime": "2026-09-26T16:24:42.843Z",
+      "type": "text",
+      "text": "to",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Mere pass tumhari sari chat history h",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 70,
+      "msgId": "msg_1790439892872_sothzz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439893510,
+      "isoTime": "2026-09-26T16:24:53.510Z",
+      "type": "text",
+      "text": "Ab tum gayee betaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 71,
+      "msgId": "msg_1790439897086_pms0w2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439898225,
+      "isoTime": "2026-09-26T16:24:58.225Z",
+      "type": "text",
+      "text": "Byee byee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 72,
+      "msgId": "msg_1790439900328_zzs8ao",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790439900735,
+      "isoTime": "2026-09-26T16:25:00.735Z",
+      "type": "text",
+      "text": "Good luck",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hello"
+      },
+      {
+        "role": "assistant",
+        "content": "hellow"
+      },
+      {
+        "role": "user",
+        "content": "Cinderella"
+      },
+      {
+        "role": "assistant",
+        "content": "bagh gyi"
+      },
+      {
+        "role": "user",
+        "content": "Aur batao"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua yrr"
+      },
+      {
+        "role": "assistant",
+        "content": "sorry"
+      },
+      {
+        "role": "assistant",
+        "content": "abb to maff kardo"
+      },
+      {
+        "role": "assistant",
+        "content": "itni derr se rude behave kar rahi ho"
+      },
+      {
+        "role": "assistant",
+        "content": "sorry"
+      },
+      {
+        "role": "assistant",
+        "content": "anmol hi hu"
+      },
+      {
+        "role": "user",
+        "content": "Hmm"
+      },
+      {
+        "role": "assistant",
+        "content": "maff kardiya"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "yee"
+      },
+      {
+        "role": "assistant",
+        "content": "yrrrr"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch to bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "avika ki taraf dekhunga bhi nahi abbse"
+      },
+      {
+        "role": "assistant",
+        "content": "promise"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "!!"
+      },
+      {
+        "role": "user",
+        "content": "Haa"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hui yrr"
+      },
+      {
+        "role": "assistant",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "Anmollllllll"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "assistant",
+        "content": "bolo"
+      },
+      {
+        "role": "user",
+        "content": "Yrrr"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "assistant",
+        "content": "are bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "Hmm"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "user",
+        "content": "Kuch nhi"
+      },
+      {
+        "role": "user",
+        "content": "Mood off h"
+      },
+      {
+        "role": "assistant",
+        "content": "kyu"
+      },
+      {
+        "role": "user",
+        "content": "Pata nhi aise hi"
+      },
+      {
+        "role": "assistant",
+        "content": "parents ne kuch bola kya"
+      },
+      {
+        "role": "user",
+        "content": "Nhi"
+      },
+      {
+        "role": "user",
+        "content": "Mood swings"
+      },
+      {
+        "role": "assistant",
+        "content": "to paani pelo"
+      },
+      {
+        "role": "user",
+        "content": "Cold coffee pina h but coffee khtm ho gai h"
+      },
+      {
+        "role": "user",
+        "content": "👀"
+      },
+      {
+        "role": "assistant",
+        "content": "to lelo ,"
+      },
+      {
+        "role": "assistant",
+        "content": "aas - pass shop hai??"
+      },
+      {
+        "role": "assistant",
+        "content": "ghar ke"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Hai par man nhi h Jane kaa"
+      },
+      {
+        "role": "user",
+        "content": "Tum le aao 👀"
+      },
+      {
+        "role": "assistant",
+        "content": "address do"
+      },
+      {
+        "role": "user",
+        "content": "Bambolistan"
+      },
+      {
+        "role": "user",
+        "content": "😂"
+      },
+      {
+        "role": "assistant",
+        "content": "ye kaha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Jaha tak tum nhi pahuch skte ho"
+      },
+      {
+        "role": "user",
+        "content": "😂"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "user",
+        "content": "Byeeee"
+      },
+      {
+        "role": "assistant",
+        "content": "kyu"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi to aayi ho"
+      },
+      {
+        "role": "user",
+        "content": "Meraa makshad puraa huaa"
+      },
+      {
+        "role": "assistant",
+        "content": "hein"
+      },
+      {
+        "role": "user",
+        "content": "Haaa meraa makshad puraa huaa"
+      },
+      {
+        "role": "assistant",
+        "content": "are"
+      },
+      {
+        "role": "assistant",
+        "content": "kya tha"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Mere pass tumhari sari chat history h"
+      },
+      {
+        "role": "assistant",
+        "content": "mood sahi karna"
+      },
+      {
+        "role": "assistant",
+        "content": "to"
+      },
+      {
+        "role": "user",
+        "content": "Ab tum gayee betaaa"
+      },
+      {
+        "role": "user",
+        "content": "Byee byee"
+      },
+      {
+        "role": "user",
+        "content": "Good luck"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hello"
+      },
+      {
+        "from": "gpt",
+        "value": "hellow"
+      },
+      {
+        "from": "human",
+        "value": "Cinderella"
+      },
+      {
+        "from": "gpt",
+        "value": "bagh gyi"
+      },
+      {
+        "from": "human",
+        "value": "Aur batao"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua yrr"
+      },
+      {
+        "from": "gpt",
+        "value": "sorry"
+      },
+      {
+        "from": "gpt",
+        "value": "abb to maff kardo"
+      },
+      {
+        "from": "gpt",
+        "value": "itni derr se rude behave kar rahi ho"
+      },
+      {
+        "from": "gpt",
+        "value": "sorry"
+      },
+      {
+        "from": "gpt",
+        "value": "anmol hi hu"
+      },
+      {
+        "from": "human",
+        "value": "Hmm"
+      },
+      {
+        "from": "gpt",
+        "value": "maff kardiya"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "yee"
+      },
+      {
+        "from": "gpt",
+        "value": "yrrrr"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch to bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "avika ki taraf dekhunga bhi nahi abbse"
+      },
+      {
+        "from": "gpt",
+        "value": "promise"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "!!"
+      },
+      {
+        "from": "human",
+        "value": "Haa"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hui yrr"
+      },
+      {
+        "from": "gpt",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "Anmollllllll"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "gpt",
+        "value": "bolo"
+      },
+      {
+        "from": "human",
+        "value": "Yrrr"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "gpt",
+        "value": "are bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "Hmm"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "human",
+        "value": "Kuch nhi"
+      },
+      {
+        "from": "human",
+        "value": "Mood off h"
+      },
+      {
+        "from": "gpt",
+        "value": "kyu"
+      },
+      {
+        "from": "human",
+        "value": "Pata nhi aise hi"
+      },
+      {
+        "from": "gpt",
+        "value": "parents ne kuch bola kya"
+      },
+      {
+        "from": "human",
+        "value": "Nhi"
+      },
+      {
+        "from": "human",
+        "value": "Mood swings"
+      },
+      {
+        "from": "gpt",
+        "value": "to paani pelo"
+      },
+      {
+        "from": "human",
+        "value": "Cold coffee pina h but coffee khtm ho gai h"
+      },
+      {
+        "from": "human",
+        "value": "👀"
+      },
+      {
+        "from": "gpt",
+        "value": "to lelo ,"
+      },
+      {
+        "from": "gpt",
+        "value": "aas - pass shop hai??"
+      },
+      {
+        "from": "gpt",
+        "value": "ghar ke"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Hai par man nhi h Jane kaa"
+      },
+      {
+        "from": "human",
+        "value": "Tum le aao 👀"
+      },
+      {
+        "from": "gpt",
+        "value": "address do"
+      },
+      {
+        "from": "human",
+        "value": "Bambolistan"
+      },
+      {
+        "from": "human",
+        "value": "😂"
+      },
+      {
+        "from": "gpt",
+        "value": "ye kaha hai"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Jaha tak tum nhi pahuch skte ho"
+      },
+      {
+        "from": "human",
+        "value": "😂"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "human",
+        "value": "Byeeee"
+      },
+      {
+        "from": "gpt",
+        "value": "kyu"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi to aayi ho"
+      },
+      {
+        "from": "human",
+        "value": "Meraa makshad puraa huaa"
+      },
+      {
+        "from": "gpt",
+        "value": "hein"
+      },
+      {
+        "from": "human",
+        "value": "Haaa meraa makshad puraa huaa"
+      },
+      {
+        "from": "gpt",
+        "value": "are"
+      },
+      {
+        "from": "gpt",
+        "value": "kya tha"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Mere pass tumhari sari chat history h"
+      },
+      {
+        "from": "gpt",
+        "value": "mood sahi karna"
+      },
+      {
+        "from": "gpt",
+        "value": "to"
+      },
+      {
+        "from": "human",
+        "value": "Ab tum gayee betaaa"
+      },
+      {
+        "from": "human",
+        "value": "Byee byee"
+      },
+      {
+        "from": "human",
+        "value": "Good luck"
+      }
+    ]
+  }
+}
