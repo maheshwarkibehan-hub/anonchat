@@ -1,0 +1,420 @@
+{
+  "metadata": {
+    "roomId": "room_1790408908679_otnuap",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T07:48:28.680Z",
+    "endTime": "2026-09-26T07:49:59.143Z",
+    "durationSeconds": 90,
+    "totalMessages": 20,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790408910177_ig1e4y",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408912175,
+      "isoTime": "2026-09-26T07:48:32.175Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790408920729_d0i0dy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408921542,
+      "isoTime": "2026-09-26T07:48:41.542Z",
+      "type": "text",
+      "text": "tu firse",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790408922266_1mfqi4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408923109,
+      "isoTime": "2026-09-26T07:48:43.109Z",
+      "type": "text",
+      "text": "aagya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790408931388_0qlm1i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408932214,
+      "isoTime": "2026-09-26T07:48:52.214Z",
+      "type": "text",
+      "text": "kuch kaam nahi hai kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790408932675_k8suim",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408934665,
+      "isoTime": "2026-09-26T07:48:54.665Z",
+      "type": "text",
+      "text": "Cinderalla",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790408934748_l0rn7t",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408935581,
+      "isoTime": "2026-09-26T07:48:55.581Z",
+      "type": "text",
+      "text": "tere pass",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790408938402_sojkqn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408939256,
+      "isoTime": "2026-09-26T07:48:59.256Z",
+      "type": "text",
+      "text": "accha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790408939019_kx8ius",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408941015,
+      "isoTime": "2026-09-26T07:49:01.015Z",
+      "type": "text",
+      "text": "Bhag gayi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790408943711_3a2nfj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408944534,
+      "isoTime": "2026-09-26T07:49:04.534Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790408951210_j0xh3q",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408952061,
+      "isoTime": "2026-09-26T07:49:12.061Z",
+      "type": "text",
+      "text": "to batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790408951447_3uj9oh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408953426,
+      "isoTime": "2026-09-26T07:49:13.426Z",
+      "type": "text",
+      "text": "Kya lag rha hai app",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790408955854_o1352z",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408956702,
+      "isoTime": "2026-09-26T07:49:16.702Z",
+      "type": "text",
+      "text": "jo maine pucha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790408958326_nu7721",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408960315,
+      "isoTime": "2026-09-26T07:49:20.315Z",
+      "type": "text",
+      "text": "Bhaidiya bana diya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790408968061_hsky8r",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408968941,
+      "isoTime": "2026-09-26T07:49:28.941Z",
+      "type": "text",
+      "text": "vo chodo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790408974386_0z6su9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408975214,
+      "isoTime": "2026-09-26T07:49:35.214Z",
+      "type": "text",
+      "text": "jo puch raha tha vo batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790408973525_hbzk15",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408975515,
+      "isoTime": "2026-09-26T07:49:35.515Z",
+      "type": "text",
+      "text": "Hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790408976468_tr25vo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790408978455,
+      "isoTime": "2026-09-26T07:49:38.455Z",
+      "type": "text",
+      "text": "Kyaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790408987487_3eks0r",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408988324,
+      "isoTime": "2026-09-26T07:49:48.324Z",
+      "type": "text",
+      "text": "are jo puch raha tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790408996671_3f5rx2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408997509,
+      "isoTime": "2026-09-26T07:49:57.509Z",
+      "type": "text",
+      "text": "bhulgyi kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1790408998318_rz1bmi",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790408999142,
+      "isoTime": "2026-09-26T07:49:59.142Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "tu firse"
+      },
+      {
+        "role": "assistant",
+        "content": "aagya"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch kaam nahi hai kya"
+      },
+      {
+        "role": "user",
+        "content": "Cinderalla"
+      },
+      {
+        "role": "assistant",
+        "content": "tere pass"
+      },
+      {
+        "role": "assistant",
+        "content": "accha"
+      },
+      {
+        "role": "user",
+        "content": "Bhag gayi"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "assistant",
+        "content": "to batao"
+      },
+      {
+        "role": "user",
+        "content": "Kya lag rha hai app"
+      },
+      {
+        "role": "assistant",
+        "content": "jo maine pucha"
+      },
+      {
+        "role": "user",
+        "content": "Bhaidiya bana diya"
+      },
+      {
+        "role": "assistant",
+        "content": "vo chodo"
+      },
+      {
+        "role": "assistant",
+        "content": "jo puch raha tha vo batao"
+      },
+      {
+        "role": "user",
+        "content": "Hmm"
+      },
+      {
+        "role": "user",
+        "content": "Kyaaa"
+      },
+      {
+        "role": "assistant",
+        "content": "are jo puch raha tha"
+      },
+      {
+        "role": "assistant",
+        "content": "bhulgyi kya"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "tu firse"
+      },
+      {
+        "from": "gpt",
+        "value": "aagya"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch kaam nahi hai kya"
+      },
+      {
+        "from": "human",
+        "value": "Cinderalla"
+      },
+      {
+        "from": "gpt",
+        "value": "tere pass"
+      },
+      {
+        "from": "gpt",
+        "value": "accha"
+      },
+      {
+        "from": "human",
+        "value": "Bhag gayi"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "gpt",
+        "value": "to batao"
+      },
+      {
+        "from": "human",
+        "value": "Kya lag rha hai app"
+      },
+      {
+        "from": "gpt",
+        "value": "jo maine pucha"
+      },
+      {
+        "from": "human",
+        "value": "Bhaidiya bana diya"
+      },
+      {
+        "from": "gpt",
+        "value": "vo chodo"
+      },
+      {
+        "from": "gpt",
+        "value": "jo puch raha tha vo batao"
+      },
+      {
+        "from": "human",
+        "value": "Hmm"
+      },
+      {
+        "from": "human",
+        "value": "Kyaaa"
+      },
+      {
+        "from": "gpt",
+        "value": "are jo puch raha tha"
+      },
+      {
+        "from": "gpt",
+        "value": "bhulgyi kya"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      }
+    ]
+  }
+}
