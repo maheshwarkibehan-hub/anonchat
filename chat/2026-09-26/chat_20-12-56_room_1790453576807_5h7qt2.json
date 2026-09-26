@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "roomId": "room_1790453576807_5h7qt2",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T20:12:56.807Z",
+    "endTime": "2026-09-26T20:19:31.830Z",
+    "durationSeconds": 395,
+    "totalMessages": 15,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790453580186_t84b6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453580195,
+      "isoTime": "2026-09-26T20:13:00.195Z",
+      "type": "text",
+      "text": "yo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790453581674_vlancg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453581937,
+      "isoTime": "2026-09-26T20:13:01.937Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790453590111_5e556",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453590115,
+      "isoTime": "2026-09-26T20:13:10.115Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790453596845_qels41",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453597107,
+      "isoTime": "2026-09-26T20:13:17.107Z",
+      "type": "text",
+      "text": "kaise ho bro",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790453601877_rq842",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453601884,
+      "isoTime": "2026-09-26T20:13:21.884Z",
+      "type": "text",
+      "text": "bass",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790453605945_6g7kmq",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453606197,
+      "isoTime": "2026-09-26T20:13:26.197Z",
+      "type": "text",
+      "text": "what",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790453615422_w0zlw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453615426,
+      "isoTime": "2026-09-26T20:13:35.426Z",
+      "type": "text",
+      "text": "bass",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790453623189_4eb3lb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453623447,
+      "isoTime": "2026-09-26T20:13:43.447Z",
+      "type": "text",
+      "text": "kyabusss kuch toh bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790453628034_7jtmn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453628038,
+      "isoTime": "2026-09-26T20:13:48.038Z",
+      "type": "text",
+      "text": "kch ni",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790453644381_xcdkzl",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453644637,
+      "isoTime": "2026-09-26T20:14:04.637Z",
+      "type": "text",
+      "text": "aur btao kya chal raha hai kuch news sunao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790453648048_1zjiz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453648055,
+      "isoTime": "2026-09-26T20:14:08.055Z",
+      "type": "text",
+      "text": "kch ni",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790453717833_qybfu9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453718092,
+      "isoTime": "2026-09-26T20:15:18.092Z",
+      "type": "text",
+      "text": "ai ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790453725761_5xz80",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453725768,
+      "isoTime": "2026-09-26T20:15:25.768Z",
+      "type": "text",
+      "text": "pagal h kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790453731557_i4bg5j",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790453731817,
+      "isoTime": "2026-09-26T20:15:31.817Z",
+      "type": "text",
+      "text": "fir kon ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790453737270_04th8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790453737274,
+      "isoTime": "2026-09-26T20:15:37.274Z",
+      "type": "text",
+      "text": "nam",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "yo"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "kaise ho bro"
+      },
+      {
+        "role": "assistant",
+        "content": "bass"
+      },
+      {
+        "role": "user",
+        "content": "what"
+      },
+      {
+        "role": "assistant",
+        "content": "bass"
+      },
+      {
+        "role": "user",
+        "content": "kyabusss kuch toh bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "kch ni"
+      },
+      {
+        "role": "user",
+        "content": "aur btao kya chal raha hai kuch news sunao"
+      },
+      {
+        "role": "assistant",
+        "content": "kch ni"
+      },
+      {
+        "role": "user",
+        "content": "ai ho"
+      },
+      {
+        "role": "assistant",
+        "content": "pagal h kya"
+      },
+      {
+        "role": "user",
+        "content": "fir kon ho"
+      },
+      {
+        "role": "assistant",
+        "content": "nam"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "yo"
+      },
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "kaise ho bro"
+      },
+      {
+        "from": "gpt",
+        "value": "bass"
+      },
+      {
+        "from": "human",
+        "value": "what"
+      },
+      {
+        "from": "gpt",
+        "value": "bass"
+      },
+      {
+        "from": "human",
+        "value": "kyabusss kuch toh bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "kch ni"
+      },
+      {
+        "from": "human",
+        "value": "aur btao kya chal raha hai kuch news sunao"
+      },
+      {
+        "from": "gpt",
+        "value": "kch ni"
+      },
+      {
+        "from": "human",
+        "value": "ai ho"
+      },
+      {
+        "from": "gpt",
+        "value": "pagal h kya"
+      },
+      {
+        "from": "human",
+        "value": "fir kon ho"
+      },
+      {
+        "from": "gpt",
+        "value": "nam"
+      }
+    ]
+  }
+}
