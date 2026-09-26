@@ -1,0 +1,380 @@
+{
+  "metadata": {
+    "roomId": "room_1790416190929_2eefny",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T09:49:50.929Z",
+    "endTime": "2026-09-26T09:51:49.857Z",
+    "durationSeconds": 119,
+    "totalMessages": 18,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790416195253_l7vh2i",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416196057,
+      "isoTime": "2026-09-26T09:49:56.057Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790416200521_9b668j",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416201291,
+      "isoTime": "2026-09-26T09:50:01.291Z",
+      "type": "text",
+      "text": "Kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790416208034_sas1lk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416208856,
+      "isoTime": "2026-09-26T09:50:08.856Z",
+      "type": "text",
+      "text": "firse",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790416211603_nkdzjs",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416212456,
+      "isoTime": "2026-09-26T09:50:12.456Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790416212699_9kklds",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416213536,
+      "isoTime": "2026-09-26T09:50:13.536Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790416216772_xiesuq",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416217577,
+      "isoTime": "2026-09-26T09:50:17.577Z",
+      "type": "text",
+      "text": "kahagya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790416222981_3q5quy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416223779,
+      "isoTime": "2026-09-26T09:50:23.779Z",
+      "type": "text",
+      "text": "bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790416233736_v5ybx8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416234495,
+      "isoTime": "2026-09-26T09:50:34.495Z",
+      "type": "text",
+      "text": "Orrr beta sudhar jao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790416243264_7oslkh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416244089,
+      "isoTime": "2026-09-26T09:50:44.089Z",
+      "type": "text",
+      "text": "tumbhi sudro sath me",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790416249846_vulj2h",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416250696,
+      "isoTime": "2026-09-26T09:50:50.696Z",
+      "type": "text",
+      "text": "fir humbhi line lagate hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790416258443_9p1lz6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416259215,
+      "isoTime": "2026-09-26T09:50:59.215Z",
+      "type": "text",
+      "text": "Hm toh sudhre hue hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790416263164_36ctoh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416263969,
+      "isoTime": "2026-09-26T09:51:03.969Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790416265679_7a50l2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416266489,
+      "isoTime": "2026-09-26T09:51:06.489Z",
+      "type": "text",
+      "text": "Tum sudhro",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790416268762_sge1fm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416269609,
+      "isoTime": "2026-09-26T09:51:09.609Z",
+      "type": "text",
+      "text": "thk",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790416277007_rw27z5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416277774,
+      "isoTime": "2026-09-26T09:51:17.774Z",
+      "type": "text",
+      "text": "Niklo ohir",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790416284305_3qvtis",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416285249,
+      "isoTime": "2026-09-26T09:51:25.249Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790416296424_ln6yjm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790416297192,
+      "isoTime": "2026-09-26T09:51:37.192Z",
+      "type": "text",
+      "text": "Nikl  m.....",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790416308944_m7jc8t",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790416309776,
+      "isoTime": "2026-09-26T09:51:49.776Z",
+      "type": "text",
+      "text": "tubhi to jaa sakta hai na , madarchod",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "kya hua"
+      },
+      {
+        "role": "assistant",
+        "content": "Kya"
+      },
+      {
+        "role": "user",
+        "content": "firse"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "kahagya"
+      },
+      {
+        "role": "user",
+        "content": "bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "Orrr beta sudhar jao"
+      },
+      {
+        "role": "user",
+        "content": "tumbhi sudro sath me"
+      },
+      {
+        "role": "user",
+        "content": "fir humbhi line lagate hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Hm toh sudhre hue hai"
+      },
+      {
+        "role": "user",
+        "content": "hmm"
+      },
+      {
+        "role": "assistant",
+        "content": "Tum sudhro"
+      },
+      {
+        "role": "user",
+        "content": "thk"
+      },
+      {
+        "role": "assistant",
+        "content": "Niklo ohir"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "Nikl  m....."
+      },
+      {
+        "role": "user",
+        "content": "tubhi to jaa sakta hai na , madarchod"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "kya hua"
+      },
+      {
+        "from": "gpt",
+        "value": "Kya"
+      },
+      {
+        "from": "human",
+        "value": "firse"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "kahagya"
+      },
+      {
+        "from": "human",
+        "value": "bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "Orrr beta sudhar jao"
+      },
+      {
+        "from": "human",
+        "value": "tumbhi sudro sath me"
+      },
+      {
+        "from": "human",
+        "value": "fir humbhi line lagate hai"
+      },
+      {
+        "from": "gpt",
+        "value": "Hm toh sudhre hue hai"
+      },
+      {
+        "from": "human",
+        "value": "hmm"
+      },
+      {
+        "from": "gpt",
+        "value": "Tum sudhro"
+      },
+      {
+        "from": "human",
+        "value": "thk"
+      },
+      {
+        "from": "gpt",
+        "value": "Niklo ohir"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "Nikl  m....."
+      },
+      {
+        "from": "human",
+        "value": "tubhi to jaa sakta hai na , madarchod"
+      }
+    ]
+  }
+}
