@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "roomId": "room_1790418487499_pyfzun",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T10:28:07.499Z",
+    "endTime": "2026-09-26T10:29:20.045Z",
+    "durationSeconds": 73,
+    "totalMessages": 8,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790418491672_w8mo58",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790418492771,
+      "isoTime": "2026-09-26T10:28:12.771Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790418495506_rxsroe",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790418496345,
+      "isoTime": "2026-09-26T10:28:16.345Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790418499159_xnv7ui",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790418500261,
+      "isoTime": "2026-09-26T10:28:20.261Z",
+      "type": "text",
+      "text": "bhag gayi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790418518860_nxi40o",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790418519696,
+      "isoTime": "2026-09-26T10:28:39.696Z",
+      "type": "text",
+      "text": "to trust hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790418541371_t5q4hy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790418542481,
+      "isoTime": "2026-09-26T10:29:02.481Z",
+      "type": "text",
+      "text": "nahh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790418549831_zieo6v",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790418550936,
+      "isoTime": "2026-09-26T10:29:10.936Z",
+      "type": "text",
+      "text": "abhi bhi barosa nahi hai tumpe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790418550597_9fyykx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790418551456,
+      "isoTime": "2026-09-26T10:29:11.456Z",
+      "type": "text",
+      "text": "mai abhi padh raha hu , thodi derr baad aata hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790418555727_rbi5ev",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790418556835,
+      "isoTime": "2026-09-26T10:29:16.835Z",
+      "type": "text",
+      "text": "okie",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "bhag gayi"
+      },
+      {
+        "role": "user",
+        "content": "to trust hua"
+      },
+      {
+        "role": "assistant",
+        "content": "nahh"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi bhi barosa nahi hai tumpe"
+      },
+      {
+        "role": "user",
+        "content": "mai abhi padh raha hu , thodi derr baad aata hu"
+      },
+      {
+        "role": "assistant",
+        "content": "okie"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "bhag gayi"
+      },
+      {
+        "from": "human",
+        "value": "to trust hua"
+      },
+      {
+        "from": "gpt",
+        "value": "nahh"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi bhi barosa nahi hai tumpe"
+      },
+      {
+        "from": "human",
+        "value": "mai abhi padh raha hu , thodi derr baad aata hu"
+      },
+      {
+        "from": "gpt",
+        "value": "okie"
+      }
+    ]
+  }
+}
