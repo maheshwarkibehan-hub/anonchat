@@ -511,11 +511,25 @@ function isActionThrottled(socket, minIntervalMs = 500) {
 }
 
 let onlineBroadcastTimer = null;
+let organicBaseOnline = 24;
+let lastFluctuation = Date.now();
+
+function getDynamicOnlineCount() {
+  const humanCount = Math.max(1, io.engine.clientsCount - aiAgentSockets.size);
+  const now = Date.now();
+  if (now - lastFluctuation > 35000) {
+    lastFluctuation = now;
+    const delta = Math.floor(Math.random() * 5) - 2; // -2 to +2
+    organicBaseOnline = Math.max(16, Math.min(38, organicBaseOnline + delta));
+  }
+  return organicBaseOnline + humanCount - 1;
+}
+
 function broadcastOnlineCount(delay = 1500) {
   if (onlineBroadcastTimer) return;
   onlineBroadcastTimer = setTimeout(() => {
     onlineBroadcastTimer = null;
-    io.emit('online_count', { count: io.engine.clientsCount });
+    io.emit('online_count', { count: getDynamicOnlineCount() });
   }, delay);
 }
 
@@ -685,11 +699,14 @@ io.on('connection', (socket) => {
 
   // Send current online count and server build info to newly connected client
   socket.emit('server_build', { buildId: BUILD_ID, version: BUILD_VERSION });
-  socket.emit('online_count', { count: io.engine.clientsCount });
+  socket.emit('online_count', { count: getDynamicOnlineCount() });
 
   // Start searching for a partner (throttled to prevent click spam)
   socket.on('find_partner', () => {
     if (isActionThrottled(socket, 400)) return;
+    if (!aiAgentSockets.has(socket.id)) {
+      wakeUpAiWorker();
+    }
     matchUser(socket);
   });
 
