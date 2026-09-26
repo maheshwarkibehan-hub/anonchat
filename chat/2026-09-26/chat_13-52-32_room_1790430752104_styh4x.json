@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "roomId": "room_1790430752104_styh4x",
+    "vibe": "Direct",
+    "date": "2026-09-26",
+    "startTime": "2026-09-26T13:52:32.105Z",
+    "endTime": "2026-09-26T13:54:07.499Z",
+    "durationSeconds": 95,
+    "totalMessages": 13,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790430754459_2kyrky",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430756510,
+      "isoTime": "2026-09-26T13:52:36.510Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790430760248_zq4165",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790430761176,
+      "isoTime": "2026-09-26T13:52:41.176Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790430764751_vjtmlx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790430765671,
+      "isoTime": "2026-09-26T13:52:45.671Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790430764579_i7ouod",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430766625,
+      "isoTime": "2026-09-26T13:52:46.625Z",
+      "type": "text",
+      "text": "Bhag gayi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790430770150_zdrkj8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430772205,
+      "isoTime": "2026-09-26T13:52:52.205Z",
+      "type": "text",
+      "text": "Aree kaise ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790430775659_remw6w",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790430776577,
+      "isoTime": "2026-09-26T13:52:56.577Z",
+      "type": "text",
+      "text": "gussa ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790430776425_ltgj0p",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790430777343,
+      "isoTime": "2026-09-26T13:52:57.343Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790430778359_a4od69",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430780400,
+      "isoTime": "2026-09-26T13:53:00.400Z",
+      "type": "text",
+      "text": "Haaaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790430780139_hz9f74",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430782199,
+      "isoTime": "2026-09-26T13:53:02.199Z",
+      "type": "text",
+      "text": "Bahut",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790430811918_n1b537",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430813985,
+      "isoTime": "2026-09-26T13:53:33.985Z",
+      "type": "text",
+      "text": "Tumne aisa bola",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790430818102_h1qngn",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430820155,
+      "isoTime": "2026-09-26T13:53:40.155Z",
+      "type": "text",
+      "text": "Tumhe barosa hi nahi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790430822360_k52vvw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790430824405,
+      "isoTime": "2026-09-26T13:53:44.405Z",
+      "type": "text",
+      "text": "Tu kya matlab",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790430832354_ujjflr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790430833303,
+      "isoTime": "2026-09-26T13:53:53.303Z",
+      "type": "text",
+      "text": "1 sec",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "Bhag gayi"
+      },
+      {
+        "role": "user",
+        "content": "Aree kaise ho"
+      },
+      {
+        "role": "assistant",
+        "content": "gussa ho"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Haaaaa"
+      },
+      {
+        "role": "user",
+        "content": "Bahut"
+      },
+      {
+        "role": "user",
+        "content": "Tumne aisa bola"
+      },
+      {
+        "role": "user",
+        "content": "Tumhe barosa hi nahi hai"
+      },
+      {
+        "role": "user",
+        "content": "Tu kya matlab"
+      },
+      {
+        "role": "assistant",
+        "content": "1 sec"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "Bhag gayi"
+      },
+      {
+        "from": "human",
+        "value": "Aree kaise ho"
+      },
+      {
+        "from": "gpt",
+        "value": "gussa ho"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Haaaaa"
+      },
+      {
+        "from": "human",
+        "value": "Bahut"
+      },
+      {
+        "from": "human",
+        "value": "Tumne aisa bola"
+      },
+      {
+        "from": "human",
+        "value": "Tumhe barosa hi nahi hai"
+      },
+      {
+        "from": "human",
+        "value": "Tu kya matlab"
+      },
+      {
+        "from": "gpt",
+        "value": "1 sec"
+      }
+    ]
+  }
+}
