@@ -1,0 +1,240 @@
+{
+  "metadata": {
+    "roomId": "room_1790517401561_hhpqlm",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:56:41.561Z",
+    "endTime": "2026-09-27T14:00:27.520Z",
+    "durationSeconds": 226,
+    "totalMessages": 11,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517404438_flwqu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517404446,
+      "isoTime": "2026-09-27T13:56:44.446Z",
+      "type": "text",
+      "text": "suno",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517407769_0887mq",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517408520,
+      "isoTime": "2026-09-27T13:56:48.520Z",
+      "type": "text",
+      "text": "cindrella\\",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790517423190_oza44",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517423199,
+      "isoTime": "2026-09-27T13:57:03.199Z",
+      "type": "text",
+      "text": "ha haan maine dekhi thi classic hai aapko pasand aayi kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790517435172_b3fkzd",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517435892,
+      "isoTime": "2026-09-27T13:57:15.892Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790517438444_9dnuqa",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517439167,
+      "isoTime": "2026-09-27T13:57:19.167Z",
+      "type": "text",
+      "text": "aur aapko",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790517454975_v6ncp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517454983,
+      "isoTime": "2026-09-27T13:57:34.983Z",
+      "type": "text",
+      "text": "haan mujhe bhi acchi lagi especially the ending part",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790517465041_svei6r",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517465782,
+      "isoTime": "2026-09-27T13:57:45.782Z",
+      "type": "text",
+      "text": "awww",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790517474493_h67pm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517474501,
+      "isoTime": "2026-09-27T13:57:54.501Z",
+      "type": "text",
+      "text": "hehe kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790517487022_d9pmdc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517487768,
+      "isoTime": "2026-09-27T13:58:07.768Z",
+      "type": "text",
+      "text": "aapko bhi pasand hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790517488681_qq60bp",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517489448,
+      "isoTime": "2026-09-27T13:58:09.448Z",
+      "type": "text",
+      "text": "heheh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790517497478_imsqm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517497487,
+      "isoTime": "2026-09-27T13:58:17.487Z",
+      "type": "text",
+      "text": "haan",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "suno"
+      },
+      {
+        "role": "user",
+        "content": "cindrella\\"
+      },
+      {
+        "role": "assistant",
+        "content": "ha haan maine dekhi thi classic hai aapko pasand aayi kya"
+      },
+      {
+        "role": "user",
+        "content": "hmm"
+      },
+      {
+        "role": "user",
+        "content": "aur aapko"
+      },
+      {
+        "role": "assistant",
+        "content": "haan mujhe bhi acchi lagi especially the ending part"
+      },
+      {
+        "role": "user",
+        "content": "awww"
+      },
+      {
+        "role": "assistant",
+        "content": "hehe kya"
+      },
+      {
+        "role": "user",
+        "content": "aapko bhi pasand hai"
+      },
+      {
+        "role": "user",
+        "content": "heheh"
+      },
+      {
+        "role": "assistant",
+        "content": "haan"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "suno"
+      },
+      {
+        "from": "human",
+        "value": "cindrella\\"
+      },
+      {
+        "from": "gpt",
+        "value": "ha haan maine dekhi thi classic hai aapko pasand aayi kya"
+      },
+      {
+        "from": "human",
+        "value": "hmm"
+      },
+      {
+        "from": "human",
+        "value": "aur aapko"
+      },
+      {
+        "from": "gpt",
+        "value": "haan mujhe bhi acchi lagi especially the ending part"
+      },
+      {
+        "from": "human",
+        "value": "awww"
+      },
+      {
+        "from": "gpt",
+        "value": "hehe kya"
+      },
+      {
+        "from": "human",
+        "value": "aapko bhi pasand hai"
+      },
+      {
+        "from": "human",
+        "value": "heheh"
+      },
+      {
+        "from": "gpt",
+        "value": "haan"
+      }
+    ]
+  }
+}
