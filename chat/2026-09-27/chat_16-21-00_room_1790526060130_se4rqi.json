@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790526060130_se4rqi",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T16:21:00.130Z",
+    "endTime": "2026-09-27T16:21:51.749Z",
+    "durationSeconds": 52,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790526063274_lssrd",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790526063283,
+      "isoTime": "2026-09-27T16:21:03.283Z",
+      "type": "text",
+      "text": "hii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790526063051_333jnr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790526065320,
+      "isoTime": "2026-09-27T16:21:05.320Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790526076993_okih6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790526077001,
+      "isoTime": "2026-09-27T16:21:17.001Z",
+      "type": "text",
+      "text": "hey kaise ho aap kya chal raha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790526108126_9l0mkq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790526110404,
+      "isoTime": "2026-09-27T16:21:50.404Z",
+      "type": "text",
+      "text": "Bhadiya",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hii"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi"
+      },
+      {
+        "role": "user",
+        "content": "hey kaise ho aap kya chal raha"
+      },
+      {
+        "role": "assistant",
+        "content": "Bhadiya"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hii"
+      },
+      {
+        "from": "gpt",
+        "value": "Hi"
+      },
+      {
+        "from": "human",
+        "value": "hey kaise ho aap kya chal raha"
+      },
+      {
+        "from": "gpt",
+        "value": "Bhadiya"
+      }
+    ]
+  }
+}
