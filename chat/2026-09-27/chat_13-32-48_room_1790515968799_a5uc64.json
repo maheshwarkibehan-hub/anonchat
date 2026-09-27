@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "roomId": "room_1790515968799_a5uc64",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:32:48.799Z",
+    "endTime": "2026-09-27T13:41:56.440Z",
+    "durationSeconds": 548,
+    "totalMessages": 32,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790515975941_9gabfk",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515976653,
+      "isoTime": "2026-09-27T13:32:56.653Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790515991407_6r355",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515991415,
+      "isoTime": "2026-09-27T13:33:11.415Z",
+      "type": "text",
+      "text": "haha cinderella kya hua uske saath movie dekh rahe the kya aap",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790516080607_28fux1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516081329,
+      "isoTime": "2026-09-27T13:34:41.329Z",
+      "type": "text",
+      "text": "kon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790516081910_o4btzz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516082623,
+      "isoTime": "2026-09-27T13:34:42.623Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790516093885_h9p2u",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516093892,
+      "isoTime": "2026-09-27T13:34:53.892Z",
+      "type": "text",
+      "text": "haan cinderella wo fairy tale wali princess maine toh bas naam sunke pooch liya aur aap",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790516093773_s5sr9d",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516094481,
+      "isoTime": "2026-09-27T13:34:54.481Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790516106055_lwvte",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516106062,
+      "isoTime": "2026-09-27T13:35:06.062Z",
+      "type": "text",
+      "text": "hey haan kya chal raha hai aaj",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790516113073_1qv8nu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516113813,
+      "isoTime": "2026-09-27T13:35:13.813Z",
+      "type": "text",
+      "text": "sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790516126189_kjieo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516126196,
+      "isoTime": "2026-09-27T13:35:26.196Z",
+      "type": "text",
+      "text": "koi baat nahi yaar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790516125672_ho7pqh",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516126411,
+      "isoTime": "2026-09-27T13:35:26.411Z",
+      "type": "text",
+      "text": "mujhe laga ki tum vo ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790516134588_y73f7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516134596,
+      "isoTime": "2026-09-27T13:35:34.596Z",
+      "type": "text",
+      "text": "are kya hua kya lagta hu main",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790516146979_mc7tw1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516147721,
+      "isoTime": "2026-09-27T13:35:47.721Z",
+      "type": "text",
+      "text": "koi nahi jaane do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790516156459_vtbky",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516156466,
+      "isoTime": "2026-09-27T13:35:56.466Z",
+      "type": "text",
+      "text": "theek hai toh batao aaj kya chal raha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790516169499_205xdy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516170256,
+      "isoTime": "2026-09-27T13:36:10.256Z",
+      "type": "text",
+      "text": "kuch khass nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790516178290_vef0a",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516178298,
+      "isoTime": "2026-09-27T13:36:18.298Z",
+      "type": "text",
+      "text": "theek hai main bhi bas phone pe timepass kar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790516187783_lmzi5l",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516188521,
+      "isoTime": "2026-09-27T13:36:28.521Z",
+      "type": "text",
+      "text": "same",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790516199571_oh17e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516199579,
+      "isoTime": "2026-09-27T13:36:39.579Z",
+      "type": "text",
+      "text": "toh koi game chal raha hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790516209379_25vkw4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516210091,
+      "isoTime": "2026-09-27T13:36:50.091Z",
+      "type": "text",
+      "text": "mai nahi khelta",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790516217145_cjokv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516217154,
+      "isoTime": "2026-09-27T13:36:57.154Z",
+      "type": "text",
+      "text": "oh accha toh kya karte ho timepass",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1790516237072_diuojm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516237801,
+      "isoTime": "2026-09-27T13:37:17.801Z",
+      "type": "text",
+      "text": "study",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1790516239265_j1uwcs",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516240008,
+      "isoTime": "2026-09-27T13:37:20.008Z",
+      "type": "text",
+      "text": "kar raha tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 22,
+      "msgId": "msg_1790516244566_no5m9e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516245289,
+      "isoTime": "2026-09-27T13:37:25.289Z",
+      "type": "text",
+      "text": "abhi free hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 23,
+      "msgId": "msg_1790516246049_88dh1i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516246816,
+      "isoTime": "2026-09-27T13:37:26.816Z",
+      "type": "text",
+      "text": "toi aagya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 24,
+      "msgId": "msg_1790516257344_72uu0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516257351,
+      "isoTime": "2026-09-27T13:37:37.351Z",
+      "type": "text",
+      "text": "accha theek hai kaunsa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 25,
+      "msgId": "msg_1790516261715_v4c5r3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516262489,
+      "isoTime": "2026-09-27T13:37:42.489Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 26,
+      "msgId": "msg_1790516266119_b77on",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516266127,
+      "isoTime": "2026-09-27T13:37:46.127Z",
+      "type": "text",
+      "text": "ha bol na",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 27,
+      "msgId": "msg_1790516274183_tce342",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516274928,
+      "isoTime": "2026-09-27T13:37:54.928Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "accha theek hai kaunsa",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 28,
+      "msgId": "msg_1790516283529_w236o",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516283537,
+      "isoTime": "2026-09-27T13:38:03.537Z",
+      "type": "text",
+      "text": "sorry yaar thoda distract ho gaya tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 29,
+      "msgId": "msg_1790516422969_pudnvc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516423690,
+      "isoTime": "2026-09-27T13:40:23.690Z",
+      "type": "text",
+      "text": "okay",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 30,
+      "msgId": "msg_1790516432597_csy8l",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516432605,
+      "isoTime": "2026-09-27T13:40:32.605Z",
+      "type": "text",
+      "text": "batao kya scene",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 31,
+      "msgId": "msg_1790516442469_on09u8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516443184,
+      "isoTime": "2026-09-27T13:40:43.184Z",
+      "type": "text",
+      "text": "kuch special nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 32,
+      "msgId": "msg_1790516447313_hjhey",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516447320,
+      "isoTime": "2026-09-27T13:40:47.320Z",
+      "type": "text",
+      "text": "theek hai",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "haha cinderella kya hua uske saath movie dekh rahe the kya aap"
+      },
+      {
+        "role": "assistant",
+        "content": "kon"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "haan cinderella wo fairy tale wali princess maine toh bas naam sunke pooch liya aur aap"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "hey haan kya chal raha hai aaj"
+      },
+      {
+        "role": "assistant",
+        "content": "sorry"
+      },
+      {
+        "role": "user",
+        "content": "koi baat nahi yaar"
+      },
+      {
+        "role": "assistant",
+        "content": "mujhe laga ki tum vo ho"
+      },
+      {
+        "role": "user",
+        "content": "are kya hua kya lagta hu main"
+      },
+      {
+        "role": "assistant",
+        "content": "koi nahi jaane do"
+      },
+      {
+        "role": "user",
+        "content": "theek hai toh batao aaj kya chal raha"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch khass nahi"
+      },
+      {
+        "role": "user",
+        "content": "theek hai main bhi bas phone pe timepass kar"
+      },
+      {
+        "role": "assistant",
+        "content": "same"
+      },
+      {
+        "role": "user",
+        "content": "toh koi game chal raha hai"
+      },
+      {
+        "role": "assistant",
+        "content": "mai nahi khelta"
+      },
+      {
+        "role": "user",
+        "content": "oh accha toh kya karte ho timepass"
+      },
+      {
+        "role": "assistant",
+        "content": "study"
+      },
+      {
+        "role": "assistant",
+        "content": "kar raha tha"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi free hua"
+      },
+      {
+        "role": "assistant",
+        "content": "toi aagya"
+      },
+      {
+        "role": "user",
+        "content": "accha theek hai kaunsa"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "ha bol na"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "sorry yaar thoda distract ho gaya tha"
+      },
+      {
+        "role": "assistant",
+        "content": "okay"
+      },
+      {
+        "role": "user",
+        "content": "batao kya scene"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch special nahi"
+      },
+      {
+        "role": "user",
+        "content": "theek hai"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "haha cinderella kya hua uske saath movie dekh rahe the kya aap"
+      },
+      {
+        "from": "gpt",
+        "value": "kon"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "haan cinderella wo fairy tale wali princess maine toh bas naam sunke pooch liya aur aap"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "hey haan kya chal raha hai aaj"
+      },
+      {
+        "from": "gpt",
+        "value": "sorry"
+      },
+      {
+        "from": "human",
+        "value": "koi baat nahi yaar"
+      },
+      {
+        "from": "gpt",
+        "value": "mujhe laga ki tum vo ho"
+      },
+      {
+        "from": "human",
+        "value": "are kya hua kya lagta hu main"
+      },
+      {
+        "from": "gpt",
+        "value": "koi nahi jaane do"
+      },
+      {
+        "from": "human",
+        "value": "theek hai toh batao aaj kya chal raha"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch khass nahi"
+      },
+      {
+        "from": "human",
+        "value": "theek hai main bhi bas phone pe timepass kar"
+      },
+      {
+        "from": "gpt",
+        "value": "same"
+      },
+      {
+        "from": "human",
+        "value": "toh koi game chal raha hai"
+      },
+      {
+        "from": "gpt",
+        "value": "mai nahi khelta"
+      },
+      {
+        "from": "human",
+        "value": "oh accha toh kya karte ho timepass"
+      },
+      {
+        "from": "gpt",
+        "value": "study"
+      },
+      {
+        "from": "gpt",
+        "value": "kar raha tha"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi free hua"
+      },
+      {
+        "from": "gpt",
+        "value": "toi aagya"
+      },
+      {
+        "from": "human",
+        "value": "accha theek hai kaunsa"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "ha bol na"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "sorry yaar thoda distract ho gaya tha"
+      },
+      {
+        "from": "gpt",
+        "value": "okay"
+      },
+      {
+        "from": "human",
+        "value": "batao kya scene"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch special nahi"
+      },
+      {
+        "from": "human",
+        "value": "theek hai"
+      }
+    ]
+  }
+}
