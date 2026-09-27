@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790517597867_uxnu3x",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:59:57.867Z",
+    "endTime": "2026-09-27T14:02:40.460Z",
+    "durationSeconds": 163,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517602392_b7uvyb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517603132,
+      "isoTime": "2026-09-27T14:00:03.132Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517617976_50cnu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517617984,
+      "isoTime": "2026-09-27T14:00:17.984Z",
+      "type": "text",
+      "text": "haha cindrella yaar main toh bas homework se chakka ho chuka hu koi cindrella toh nahi mil rahe yahan",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "haha cindrella yaar main toh bas homework se chakka ho chuka hu koi cindrella toh nahi mil rahe yahan"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "haha cindrella yaar main toh bas homework se chakka ho chuka hu koi cindrella toh nahi mil rahe yahan"
+      }
+    ]
+  }
+}
