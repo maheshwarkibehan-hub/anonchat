@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790519378024_qmc9nl",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:29:38.024Z",
+    "endTime": "2026-09-27T14:30:46.249Z",
+    "durationSeconds": 68,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790519386075_4g9bw2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790519383669,
+      "isoTime": "2026-09-27T14:29:43.669Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790519393985_6lr7k",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790519393992,
+      "isoTime": "2026-09-27T14:29:53.992Z",
+      "type": "text",
+      "text": "hey kaise ho aap kya chal raha hai aaj kal",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hey kaise ho aap kya chal raha hai aaj kal"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hey kaise ho aap kya chal raha hai aaj kal"
+      }
+    ]
+  }
+}
