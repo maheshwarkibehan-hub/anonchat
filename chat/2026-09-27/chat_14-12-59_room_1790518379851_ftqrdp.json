@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790518379851_ftqrdp",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:12:59.851Z",
+    "endTime": "2026-09-27T14:13:42.175Z",
+    "durationSeconds": 42,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518390655_9j9vfy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518391418,
+      "isoTime": "2026-09-27T14:13:11.418Z",
+      "type": "text",
+      "text": "cindrellla",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518400007_0a0bz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518400013,
+      "isoTime": "2026-09-27T14:13:20.013Z",
+      "type": "text",
+      "text": "hnn sun rhi hu",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "cindrellla"
+      },
+      {
+        "role": "assistant",
+        "content": "hnn sun rhi hu"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "cindrellla"
+      },
+      {
+        "from": "gpt",
+        "value": "hnn sun rhi hu"
+      }
+    ]
+  }
+}
