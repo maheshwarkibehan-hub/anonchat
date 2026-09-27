@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "roomId": "room_1790517127288_prkh6v",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:52:07.288Z",
+    "endTime": "2026-09-27T13:53:32.823Z",
+    "durationSeconds": 86,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517130859_yxch6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517130866,
+      "isoTime": "2026-09-27T13:52:10.866Z",
+      "type": "text",
+      "text": "hii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517137940_fzg9tg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517135528,
+      "isoTime": "2026-09-27T13:52:15.528Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790517147099_48fhd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517147106,
+      "isoTime": "2026-09-27T13:52:27.106Z",
+      "type": "text",
+      "text": "hey kaise ho aaj",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hii"
+      },
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hey kaise ho aaj"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hii"
+      },
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hey kaise ho aaj"
+      }
+    ]
+  }
+}
