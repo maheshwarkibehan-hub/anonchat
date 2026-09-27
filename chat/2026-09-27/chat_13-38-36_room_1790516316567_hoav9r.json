@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "roomId": "room_1790516316567_hoav9r",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:38:36.567Z",
+    "endTime": "2026-09-27T13:40:34.246Z",
+    "durationSeconds": 118,
+    "totalMessages": 9,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790516319826_g0lak",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516319834,
+      "isoTime": "2026-09-27T13:38:39.834Z",
+      "type": "text",
+      "text": "suno",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790516321968_ah9br1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516322734,
+      "isoTime": "2026-09-27T13:38:42.734Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790516339949_1n7nt",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516339957,
+      "isoTime": "2026-09-27T13:38:59.957Z",
+      "type": "text",
+      "text": "cinderella oh wahi princess wali kya baat karni thi uske baare",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790516357453_o7sy00",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516358173,
+      "isoTime": "2026-09-27T13:39:18.173Z",
+      "type": "text",
+      "text": "kuch nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790516360208_vv2ggf",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516360933,
+      "isoTime": "2026-09-27T13:39:20.933Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790516371162_ucj2f",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516371170,
+      "isoTime": "2026-09-27T13:39:31.170Z",
+      "type": "text",
+      "text": "haha thik hai koi baat nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790516384598_rcq6ag",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516385332,
+      "isoTime": "2026-09-27T13:39:45.332Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790516386008_nh45az",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516386766,
+      "isoTime": "2026-09-27T13:39:46.766Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790516398509_lr5b0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516398517,
+      "isoTime": "2026-09-27T13:39:58.517Z",
+      "type": "text",
+      "text": "haha theek hai press kar",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "suno"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "cinderella oh wahi princess wali kya baat karni thi uske baare"
+      },
+      {
+        "role": "user",
+        "content": "kuch nahi"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "haha thik hai koi baat nahi"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "!!"
+      },
+      {
+        "role": "assistant",
+        "content": "haha theek hai press kar"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "suno"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "cinderella oh wahi princess wali kya baat karni thi uske baare"
+      },
+      {
+        "from": "human",
+        "value": "kuch nahi"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "haha thik hai koi baat nahi"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "!!"
+      },
+      {
+        "from": "gpt",
+        "value": "haha theek hai press kar"
+      }
+    ]
+  }
+}
