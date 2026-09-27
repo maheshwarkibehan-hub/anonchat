@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790517557033_xlvixc",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:59:17.033Z",
+    "endTime": "2026-09-27T13:59:35.177Z",
+    "durationSeconds": 18,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517560604_suj2ir",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517561377,
+      "isoTime": "2026-09-27T13:59:21.377Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517567820_ku8rij",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517568572,
+      "isoTime": "2026-09-27T13:59:28.572Z",
+      "type": "text",
+      "text": "aagyi",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "aagyi"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "aagyi"
+      }
+    ]
+  }
+}
