@@ -1,0 +1,380 @@
+{
+  "metadata": {
+    "roomId": "room_1790518459018_xtzfbz",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:14:19.018Z",
+    "endTime": "2026-09-27T14:16:18.026Z",
+    "durationSeconds": 119,
+    "totalMessages": 18,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518463815_7zmz7n",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518464578,
+      "isoTime": "2026-09-27T14:14:24.578Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518472535_pdd42",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518472544,
+      "isoTime": "2026-09-27T14:14:32.544Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790518476726_6grc5n",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518477499,
+      "isoTime": "2026-09-27T14:14:37.499Z",
+      "type": "text",
+      "text": "bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790518478254_rj6mpb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518479027,
+      "isoTime": "2026-09-27T14:14:39.027Z",
+      "type": "text",
+      "text": "aage",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790518487582_7ovjc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518487591,
+      "isoTime": "2026-09-27T14:14:47.591Z",
+      "type": "text",
+      "text": "kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790518510466_gfymz1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518511218,
+      "isoTime": "2026-09-27T14:15:11.218Z",
+      "type": "text",
+      "text": "konsi class ke ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790518512230_ztkn2h",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518512978,
+      "isoTime": "2026-09-27T14:15:12.978Z",
+      "type": "text",
+      "text": "brooooooo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790518515315_3q4s90",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518516087,
+      "isoTime": "2026-09-27T14:15:16.087Z",
+      "type": "text",
+      "text": "breoo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790518522815_x74vy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518522824,
+      "isoTime": "2026-09-27T14:15:22.824Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790518522331_jm3f7z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518523075,
+      "isoTime": "2026-09-27T14:15:23.075Z",
+      "type": "text",
+      "text": "beroo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790518529739_d2eqe9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518530498,
+      "isoTime": "2026-09-27T14:15:30.498Z",
+      "type": "text",
+      "text": "are batao tio beroo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790518534965_xo6jg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518534974,
+      "isoTime": "2026-09-27T14:15:34.974Z",
+      "type": "text",
+      "text": "bol na yr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790518541918_c1fr6c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518542658,
+      "isoTime": "2026-09-27T14:15:42.658Z",
+      "type": "text",
+      "text": "ladies first",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790518543277_tmwp0l",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518544058,
+      "isoTime": "2026-09-27T14:15:44.058Z",
+      "type": "text",
+      "text": "beroo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790518552981_v68ra",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518552990,
+      "isoTime": "2026-09-27T14:15:52.990Z",
+      "type": "text",
+      "text": "hnn sun rhi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790518562081_gu6wdl",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518562848,
+      "isoTime": "2026-09-27T14:16:02.848Z",
+      "type": "text",
+      "text": "accha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790518567447_7wwxjd",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518568193,
+      "isoTime": "2026-09-27T14:16:08.193Z",
+      "type": "text",
+      "text": "to koi aur ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790518572073_4xg7q",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518572082,
+      "isoTime": "2026-09-27T14:16:12.082Z",
+      "type": "text",
+      "text": "ha bol na",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "user",
+        "content": "bolo"
+      },
+      {
+        "role": "user",
+        "content": "aage"
+      },
+      {
+        "role": "assistant",
+        "content": "kya"
+      },
+      {
+        "role": "user",
+        "content": "konsi class ke ho"
+      },
+      {
+        "role": "user",
+        "content": "brooooooo"
+      },
+      {
+        "role": "user",
+        "content": "breoo"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "user",
+        "content": "beroo"
+      },
+      {
+        "role": "user",
+        "content": "are batao tio beroo"
+      },
+      {
+        "role": "assistant",
+        "content": "bol na yr"
+      },
+      {
+        "role": "user",
+        "content": "ladies first"
+      },
+      {
+        "role": "user",
+        "content": "beroo"
+      },
+      {
+        "role": "assistant",
+        "content": "hnn sun rhi hu"
+      },
+      {
+        "role": "user",
+        "content": "accha"
+      },
+      {
+        "role": "user",
+        "content": "to koi aur ho"
+      },
+      {
+        "role": "assistant",
+        "content": "ha bol na"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "human",
+        "value": "bolo"
+      },
+      {
+        "from": "human",
+        "value": "aage"
+      },
+      {
+        "from": "gpt",
+        "value": "kya"
+      },
+      {
+        "from": "human",
+        "value": "konsi class ke ho"
+      },
+      {
+        "from": "human",
+        "value": "brooooooo"
+      },
+      {
+        "from": "human",
+        "value": "breoo"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "human",
+        "value": "beroo"
+      },
+      {
+        "from": "human",
+        "value": "are batao tio beroo"
+      },
+      {
+        "from": "gpt",
+        "value": "bol na yr"
+      },
+      {
+        "from": "human",
+        "value": "ladies first"
+      },
+      {
+        "from": "human",
+        "value": "beroo"
+      },
+      {
+        "from": "gpt",
+        "value": "hnn sun rhi hu"
+      },
+      {
+        "from": "human",
+        "value": "accha"
+      },
+      {
+        "from": "human",
+        "value": "to koi aur ho"
+      },
+      {
+        "from": "gpt",
+        "value": "ha bol na"
+      }
+    ]
+  }
+}
