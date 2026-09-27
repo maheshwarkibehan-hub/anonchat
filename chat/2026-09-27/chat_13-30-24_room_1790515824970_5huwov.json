@@ -1,0 +1,380 @@
+{
+  "metadata": {
+    "roomId": "room_1790515824970_5huwov",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:30:24.970Z",
+    "endTime": "2026-09-27T13:34:54.497Z",
+    "durationSeconds": 270,
+    "totalMessages": 18,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790515829661_0zru55",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515830418,
+      "isoTime": "2026-09-27T13:30:30.418Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790515844631_07mht",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515844639,
+      "isoTime": "2026-09-27T13:30:44.639Z",
+      "type": "text",
+      "text": "oww haath chal gaya sorry yaar itna zor laga diya 😭",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790515872737_fmfhkr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515873458,
+      "isoTime": "2026-09-27T13:31:13.458Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790515884985_y6a1l",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515884992,
+      "isoTime": "2026-09-27T13:31:24.992Z",
+      "type": "text",
+      "text": "haan sun raha hu bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790515926100_5abmec",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515926817,
+      "isoTime": "2026-09-27T13:32:06.817Z",
+      "type": "text",
+      "text": "kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790515927380_zuozk4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515928146,
+      "isoTime": "2026-09-27T13:32:08.146Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790515938341_6uzrs",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515938352,
+      "isoTime": "2026-09-27T13:32:18.352Z",
+      "type": "text",
+      "text": "sorry aapka message miss ho gaya tha kya bheja tha aapne ab",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790515960988_ubbxi7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515961731,
+      "isoTime": "2026-09-27T13:32:41.731Z",
+      "type": "text",
+      "text": "konho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790515969226_0ae3d",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515969235,
+      "isoTime": "2026-09-27T13:32:49.235Z",
+      "type": "text",
+      "text": "hnn sun rhi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790515985162_79r6ox",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515985931,
+      "isoTime": "2026-09-27T13:33:05.931Z",
+      "type": "text",
+      "text": "kuch hint do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790515989634_qj4pdo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515990377,
+      "isoTime": "2026-09-27T13:33:10.378Z",
+      "type": "text",
+      "text": "ki tumhiho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790515998597_7mhgw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515998607,
+      "isoTime": "2026-09-27T13:33:18.607Z",
+      "type": "text",
+      "text": "hnn sun rhi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790516010812_oga36e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516011571,
+      "isoTime": "2026-09-27T13:33:31.571Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790516018511_f7l2g",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516018518,
+      "isoTime": "2026-09-27T13:33:38.518Z",
+      "type": "text",
+      "text": "haan boliye kya baat karti hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790516030087_w24kqj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516030820,
+      "isoTime": "2026-09-27T13:33:50.820Z",
+      "type": "text",
+      "text": "???",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790516035660_semrb",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516035688,
+      "isoTime": "2026-09-27T13:33:55.688Z",
+      "type": "text",
+      "text": "haan sun rhi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790516039867_96yxre",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516040611,
+      "isoTime": "2026-09-27T13:34:00.611Z",
+      "type": "text",
+      "text": "kya sun rahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790516047340_yip9j",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516047347,
+      "isoTime": "2026-09-27T13:34:07.347Z",
+      "type": "text",
+      "text": "aapne kch mat bola",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "oww haath chal gaya sorry yaar itna zor laga diya 😭"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "haan sun raha hu bolo"
+      },
+      {
+        "role": "user",
+        "content": "kya"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "sorry aapka message miss ho gaya tha kya bheja tha aapne ab"
+      },
+      {
+        "role": "user",
+        "content": "konho"
+      },
+      {
+        "role": "assistant",
+        "content": "hnn sun rhi hu"
+      },
+      {
+        "role": "user",
+        "content": "kuch hint do"
+      },
+      {
+        "role": "user",
+        "content": "ki tumhiho"
+      },
+      {
+        "role": "assistant",
+        "content": "hnn sun rhi hu"
+      },
+      {
+        "role": "user",
+        "content": "?"
+      },
+      {
+        "role": "assistant",
+        "content": "haan boliye kya baat karti hai"
+      },
+      {
+        "role": "user",
+        "content": "???"
+      },
+      {
+        "role": "assistant",
+        "content": "haan sun rhi hu"
+      },
+      {
+        "role": "user",
+        "content": "kya sun rahi"
+      },
+      {
+        "role": "assistant",
+        "content": "aapne kch mat bola"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "oww haath chal gaya sorry yaar itna zor laga diya 😭"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "haan sun raha hu bolo"
+      },
+      {
+        "from": "human",
+        "value": "kya"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "sorry aapka message miss ho gaya tha kya bheja tha aapne ab"
+      },
+      {
+        "from": "human",
+        "value": "konho"
+      },
+      {
+        "from": "gpt",
+        "value": "hnn sun rhi hu"
+      },
+      {
+        "from": "human",
+        "value": "kuch hint do"
+      },
+      {
+        "from": "human",
+        "value": "ki tumhiho"
+      },
+      {
+        "from": "gpt",
+        "value": "hnn sun rhi hu"
+      },
+      {
+        "from": "human",
+        "value": "?"
+      },
+      {
+        "from": "gpt",
+        "value": "haan boliye kya baat karti hai"
+      },
+      {
+        "from": "human",
+        "value": "???"
+      },
+      {
+        "from": "gpt",
+        "value": "haan sun rhi hu"
+      },
+      {
+        "from": "human",
+        "value": "kya sun rahi"
+      },
+      {
+        "from": "gpt",
+        "value": "aapne kch mat bola"
+      }
+    ]
+  }
+}
