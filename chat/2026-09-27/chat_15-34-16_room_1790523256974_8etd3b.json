@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "roomId": "room_1790523256974_8etd3b",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T15:34:16.975Z",
+    "endTime": "2026-09-27T15:36:05.270Z",
+    "durationSeconds": 108,
+    "totalMessages": 10,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790523269235_9t43zq",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790523270916,
+      "isoTime": "2026-09-27T15:34:30.916Z",
+      "type": "text",
+      "text": "Cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790523271460_ho6121",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790523273141,
+      "isoTime": "2026-09-27T15:34:33.141Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790523278730_08pavy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790523280416,
+      "isoTime": "2026-09-27T15:34:40.416Z",
+      "type": "text",
+      "text": "Dalo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790523284825_3eb2cl",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790523285609,
+      "isoTime": "2026-09-27T15:34:45.609Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790523290593_3ov6kx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790523291374,
+      "isoTime": "2026-09-27T15:34:51.374Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790523291854_51bwjl",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790523292629,
+      "isoTime": "2026-09-27T15:34:52.629Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790523295931_s8mlp5",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790523297632,
+      "isoTime": "2026-09-27T15:34:57.632Z",
+      "type": "text",
+      "text": "Ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790523303323_yas8sd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790523304109,
+      "isoTime": "2026-09-27T15:35:04.109Z",
+      "type": "text",
+      "text": "1 sec]",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790523304235_iyltjg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790523305019,
+      "isoTime": "2026-09-27T15:35:05.019Z",
+      "type": "text",
+      "text": "aaya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790523319544_jx5lcw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790523321264,
+      "isoTime": "2026-09-27T15:35:21.264Z",
+      "type": "text",
+      "text": "👍🏻",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "aaya",
+        "author": "partner"
+      }
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Cindrella"
+      },
+      {
+        "role": "user",
+        "content": "?"
+      },
+      {
+        "role": "user",
+        "content": "Dalo"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Ha"
+      },
+      {
+        "role": "assistant",
+        "content": "1 sec]"
+      },
+      {
+        "role": "assistant",
+        "content": "aaya"
+      },
+      {
+        "role": "user",
+        "content": "👍🏻"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Cindrella"
+      },
+      {
+        "from": "human",
+        "value": "?"
+      },
+      {
+        "from": "human",
+        "value": "Dalo"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Ha"
+      },
+      {
+        "from": "gpt",
+        "value": "1 sec]"
+      },
+      {
+        "from": "gpt",
+        "value": "aaya"
+      },
+      {
+        "from": "human",
+        "value": "👍🏻"
+      }
+    ]
+  }
+}
