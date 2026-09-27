@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "roomId": "room_1790518341521_xurec8",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:12:21.521Z",
+    "endTime": "2026-09-27T14:12:43.659Z",
+    "durationSeconds": 22,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518345337_90ca9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518345345,
+      "isoTime": "2026-09-27T14:12:25.345Z",
+      "type": "text",
+      "text": "yo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518347253_mgq9m4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518348013,
+      "isoTime": "2026-09-27T14:12:28.013Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790518355998_1c1fk",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518356005,
+      "isoTime": "2026-09-27T14:12:36.005Z",
+      "type": "text",
+      "text": "bol na yr",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "yo"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "bol na yr"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "yo"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "bol na yr"
+      }
+    ]
+  }
+}
