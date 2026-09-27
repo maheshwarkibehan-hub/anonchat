@@ -1,0 +1,300 @@
+{
+  "metadata": {
+    "roomId": "room_1790518247866_j56vbl",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:10:47.866Z",
+    "endTime": "2026-09-27T14:11:49.858Z",
+    "durationSeconds": 62,
+    "totalMessages": 14,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518250533_qkzacn",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518251314,
+      "isoTime": "2026-09-27T14:10:51.314Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518252335_z9rot2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518253073,
+      "isoTime": "2026-09-27T14:10:53.073Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790518254654_nb5ufy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518255418,
+      "isoTime": "2026-09-27T14:10:55.418Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790518255899_x2urbu",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518256640,
+      "isoTime": "2026-09-27T14:10:56.640Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790518265869_l16bc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518265877,
+      "isoTime": "2026-09-27T14:11:05.877Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790518275913_a9wtmk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518276658,
+      "isoTime": "2026-09-27T14:11:16.658Z",
+      "type": "text",
+      "text": "aage ka bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790518277376_qbeqcg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518278137,
+      "isoTime": "2026-09-27T14:11:18.137Z",
+      "type": "text",
+      "text": "code",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790518282410_c237sm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518283155,
+      "isoTime": "2026-09-27T14:11:23.155Z",
+      "type": "text",
+      "text": "!!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790518286485_1vvv9z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518287219,
+      "isoTime": "2026-09-27T14:11:27.219Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790518288256_l8yq9k",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518289018,
+      "isoTime": "2026-09-27T14:11:29.018Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790518293317_alfvnr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518294099,
+      "isoTime": "2026-09-27T14:11:34.099Z",
+      "type": "text",
+      "text": "daaba e",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790518296887_72b75y",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518297633,
+      "isoTime": "2026-09-27T14:11:37.633Z",
+      "type": "text",
+      "text": "bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790518298992_f24mn2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518299778,
+      "isoTime": "2026-09-27T14:11:39.778Z",
+      "type": "text",
+      "text": "bol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790518301109_0ccf06",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518301858,
+      "isoTime": "2026-09-27T14:11:41.858Z",
+      "type": "text",
+      "text": "na",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "!!"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "user",
+        "content": "aage ka bolo"
+      },
+      {
+        "role": "user",
+        "content": "code"
+      },
+      {
+        "role": "user",
+        "content": "!!!"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "daaba e"
+      },
+      {
+        "role": "user",
+        "content": "bolo"
+      },
+      {
+        "role": "user",
+        "content": "bol"
+      },
+      {
+        "role": "user",
+        "content": "na"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "!!"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "human",
+        "value": "aage ka bolo"
+      },
+      {
+        "from": "human",
+        "value": "code"
+      },
+      {
+        "from": "human",
+        "value": "!!!"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "daaba e"
+      },
+      {
+        "from": "human",
+        "value": "bolo"
+      },
+      {
+        "from": "human",
+        "value": "bol"
+      },
+      {
+        "from": "human",
+        "value": "na"
+      }
+    ]
+  }
+}
