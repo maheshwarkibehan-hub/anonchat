@@ -1,0 +1,380 @@
+{
+  "metadata": {
+    "roomId": "room_1790517090409_68nc1e",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:51:30.409Z",
+    "endTime": "2026-09-27T13:55:27.480Z",
+    "durationSeconds": 237,
+    "totalMessages": 18,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517095525_oumyqq",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517096263,
+      "isoTime": "2026-09-27T13:51:36.263Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517097041_c7i398",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517097770,
+      "isoTime": "2026-09-27T13:51:37.770Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790517109597_0vw8ka",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517110321,
+      "isoTime": "2026-09-27T13:51:50.321Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790517112993_junkv7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517113721,
+      "isoTime": "2026-09-27T13:51:53.721Z",
+      "type": "text",
+      "text": "tum hooo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790517124528_3rqar",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517124538,
+      "isoTime": "2026-09-27T13:52:04.538Z",
+      "type": "text",
+      "text": "haan hu kya baat hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790517133005_t9u6df",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517133729,
+      "isoTime": "2026-09-27T13:52:13.729Z",
+      "type": "text",
+      "text": "are tumhiho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790517134860_gnc9xu",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517135608,
+      "isoTime": "2026-09-27T13:52:15.608Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790517135930_w8t107",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517136689,
+      "isoTime": "2026-09-27T13:52:16.689Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790517143937_kb8eq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517143945,
+      "isoTime": "2026-09-27T13:52:23.945Z",
+      "type": "text",
+      "text": "haan main hu kya baat hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790517154494_cdca6b",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517155223,
+      "isoTime": "2026-09-27T13:52:35.223Z",
+      "type": "text",
+      "text": "aage ki baat bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790517157240_c3z9ko",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517157968,
+      "isoTime": "2026-09-27T13:52:37.968Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790517158505_16j24c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517159248,
+      "isoTime": "2026-09-27T13:52:39.248Z",
+      "type": "text",
+      "text": "..",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790517172355_ac2tc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517172362,
+      "isoTime": "2026-09-27T13:52:52.362Z",
+      "type": "text",
+      "text": "yeah yeah dekh ra",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790517228697_8rb4e2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517229447,
+      "isoTime": "2026-09-27T13:53:49.447Z",
+      "type": "text",
+      "text": "ky",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790517232205_y8t2pv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517232969,
+      "isoTime": "2026-09-27T13:53:52.969Z",
+      "type": "text",
+      "text": "a",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790517233862_aq9yic",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517234609,
+      "isoTime": "2026-09-27T13:53:54.609Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790517236597_q8ypvy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517237328,
+      "isoTime": "2026-09-27T13:53:57.328Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790517244719_sef0i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517244726,
+      "isoTime": "2026-09-27T13:54:04.726Z",
+      "type": "text",
+      "text": "rey",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "tum hooo"
+      },
+      {
+        "role": "assistant",
+        "content": "haan hu kya baat hai"
+      },
+      {
+        "role": "user",
+        "content": "are tumhiho"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "haan main hu kya baat hai"
+      },
+      {
+        "role": "user",
+        "content": "aage ki baat bolo"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": ".."
+      },
+      {
+        "role": "assistant",
+        "content": "yeah yeah dekh ra"
+      },
+      {
+        "role": "user",
+        "content": "ky"
+      },
+      {
+        "role": "user",
+        "content": "a"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "rey"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "tum hooo"
+      },
+      {
+        "from": "gpt",
+        "value": "haan hu kya baat hai"
+      },
+      {
+        "from": "human",
+        "value": "are tumhiho"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "haan main hu kya baat hai"
+      },
+      {
+        "from": "human",
+        "value": "aage ki baat bolo"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": ".."
+      },
+      {
+        "from": "gpt",
+        "value": "yeah yeah dekh ra"
+      },
+      {
+        "from": "human",
+        "value": "ky"
+      },
+      {
+        "from": "human",
+        "value": "a"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "rey"
+      }
+    ]
+  }
+}
