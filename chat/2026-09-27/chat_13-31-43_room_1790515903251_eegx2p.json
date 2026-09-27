@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790515903251_eegx2p",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:31:43.251Z",
+    "endTime": "2026-09-27T13:32:20.241Z",
+    "durationSeconds": 37,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790515905285_awdwz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515905293,
+      "isoTime": "2026-09-27T13:31:45.293Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790515908880_qrz5zu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515909608,
+      "isoTime": "2026-09-27T13:31:49.608Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790515910783_dgfkva",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515911529,
+      "isoTime": "2026-09-27T13:31:51.529Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790515915711_4nshm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515915719,
+      "isoTime": "2026-09-27T13:31:55.719Z",
+      "type": "text",
+      "text": "hmm cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "?"
+      },
+      {
+        "role": "user",
+        "content": "hmm cindrella"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "?"
+      },
+      {
+        "from": "human",
+        "value": "hmm cindrella"
+      }
+    ]
+  }
+}
