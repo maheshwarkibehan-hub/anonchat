@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790518312427_av7c25",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:11:52.427Z",
+    "endTime": "2026-09-27T14:12:19.299Z",
+    "durationSeconds": 27,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518316517_lz53fo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518317258,
+      "isoTime": "2026-09-27T14:11:57.258Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518320419_u5ae1n",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518321178,
+      "isoTime": "2026-09-27T14:12:01.178Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790518323168_8fzyfw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518323940,
+      "isoTime": "2026-09-27T14:12:03.940Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790518332448_yk5w3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518332457,
+      "isoTime": "2026-09-27T14:12:12.457Z",
+      "type": "text",
+      "text": "ha bol na",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "!!"
+      },
+      {
+        "role": "assistant",
+        "content": "ha bol na"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "!!"
+      },
+      {
+        "from": "gpt",
+        "value": "ha bol na"
+      }
+    ]
+  }
+}
