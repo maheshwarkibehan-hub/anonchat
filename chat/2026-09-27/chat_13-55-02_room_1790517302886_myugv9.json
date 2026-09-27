@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "roomId": "room_1790517302886_myugv9",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:55:02.886Z",
+    "endTime": "2026-09-27T13:58:42.676Z",
+    "durationSeconds": 220,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517305940_gw5t2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517305947,
+      "isoTime": "2026-09-27T13:55:05.947Z",
+      "type": "text",
+      "text": "suno",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517309044_91yz2t",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517309783,
+      "isoTime": "2026-09-27T13:55:09.783Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790517324631_n698x",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517324638,
+      "isoTime": "2026-09-27T13:55:24.638Z",
+      "type": "text",
+      "text": "ohw cinderella movie hai kya wo toh classic hai aapne dekhi hai kya",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "suno"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "ohw cinderella movie hai kya wo toh classic hai aapne dekhi hai kya"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "suno"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "ohw cinderella movie hai kya wo toh classic hai aapne dekhi hai kya"
+      }
+    ]
+  }
+}
