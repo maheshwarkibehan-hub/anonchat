@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790527605773_wmh0p9",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T16:46:45.773Z",
+    "endTime": "2026-09-27T16:47:08.564Z",
+    "durationSeconds": 23,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790527609730_ixsf9t",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790527609749,
+      "isoTime": "2026-09-27T16:46:49.749Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790527622149_89a40",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790527622157,
+      "isoTime": "2026-09-27T16:47:02.157Z",
+      "type": "text",
+      "text": "hey kaise ho kya chal raha hai",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hey kaise ho kya chal raha hai"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hey kaise ho kya chal raha hai"
+      }
+    ]
+  }
+}
