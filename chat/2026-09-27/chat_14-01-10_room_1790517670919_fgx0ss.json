@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790517670919_fgx0ss",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:01:10.919Z",
+    "endTime": "2026-09-27T14:01:52.175Z",
+    "durationSeconds": 41,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517676025_xyziyn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517676776,
+      "isoTime": "2026-09-27T14:01:16.776Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517690324_igbnh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517690333,
+      "isoTime": "2026-09-27T14:01:30.333Z",
+      "type": "text",
+      "text": "ooh cinderella yaar maine school drama me toh actor role diya tha acting thodi ajeeb thi aapne dekha hai kya film",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "ooh cinderella yaar maine school drama me toh actor role diya tha acting thodi ajeeb thi aapne dekha hai kya film"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "ooh cinderella yaar maine school drama me toh actor role diya tha acting thodi ajeeb thi aapne dekha hai kya film"
+      }
+    ]
+  }
+}
