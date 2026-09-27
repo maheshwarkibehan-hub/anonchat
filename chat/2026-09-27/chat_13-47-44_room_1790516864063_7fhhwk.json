@@ -1,0 +1,900 @@
+{
+  "metadata": {
+    "roomId": "room_1790516864063_7fhhwk",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:47:44.063Z",
+    "endTime": "2026-09-27T13:56:13.187Z",
+    "durationSeconds": 509,
+    "totalMessages": 44,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790516868270_xhpl7p",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516869023,
+      "isoTime": "2026-09-27T13:47:49.023Z",
+      "type": "text",
+      "text": "daab ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790516880107_8jrrt",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516880114,
+      "isoTime": "2026-09-27T13:48:00.114Z",
+      "type": "text",
+      "text": "kaunsi baat thoda specific batao sun raha hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790516896238_kzbs4i",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516896975,
+      "isoTime": "2026-09-27T13:48:16.975Z",
+      "type": "text",
+      "text": "tum samjh nahi rahe hp1",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790516908165_y76qm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516908173,
+      "isoTime": "2026-09-27T13:48:28.173Z",
+      "type": "text",
+      "text": "nahi koi bhasha problem toh nahi hai thoda clear likho kya confusion hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790516972607_t20xkn",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516973383,
+      "isoTime": "2026-09-27T13:49:33.383Z",
+      "type": "text",
+      "text": "jaane do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790516973855_6m7bex",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516974622,
+      "isoTime": "2026-09-27T13:49:34.622Z",
+      "type": "text",
+      "text": "iss",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790516975939_641vbu",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516976703,
+      "isoTime": "2026-09-27T13:49:36.703Z",
+      "type": "text",
+      "text": "topic ko",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790516984243_3tqo8v",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790516984982,
+      "isoTime": "2026-09-27T13:49:44.982Z",
+      "type": "text",
+      "text": "mai explain nahi kar paunga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790516994698_rwt6j",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790516994706,
+      "isoTime": "2026-09-27T13:49:54.706Z",
+      "type": "text",
+      "text": "theek hai toh bahas kya karo kuch aur topic pe baat kare",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790517009566_aceano",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517010332,
+      "isoTime": "2026-09-27T13:50:10.332Z",
+      "type": "text",
+      "text": "ok\\",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790517022112_5rv0z",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517022120,
+      "isoTime": "2026-09-27T13:50:22.120Z",
+      "type": "text",
+      "text": "accha toh aaj kal kya chal raha hai life me",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790517040421_neeqv5",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517041172,
+      "isoTime": "2026-09-27T13:50:41.172Z",
+      "type": "text",
+      "text": "stidies",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790517056233_160m3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517056240,
+      "isoTime": "2026-09-27T13:50:56.240Z",
+      "type": "text",
+      "text": "haan 11th me kaafi heavy hota hai syllabus aapko koi specific subject thoda tough lag raha hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790517085612_nfnu1j",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517086354,
+      "isoTime": "2026-09-27T13:51:26.354Z",
+      "type": "text",
+      "text": "mai 10th me hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790517094314_jrqqk",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517094322,
+      "isoTime": "2026-09-27T13:51:34.322Z",
+      "type": "text",
+      "text": "are 10th toh aur bhi important hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790517104848_gl7m99",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517105579,
+      "isoTime": "2026-09-27T13:51:45.579Z",
+      "type": "text",
+      "text": "yaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790517113644_pwgfx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517113653,
+      "isoTime": "2026-09-27T13:51:53.653Z",
+      "type": "text",
+      "text": "bhai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790517118781_maquv3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517119532,
+      "isoTime": "2026-09-27T13:51:59.532Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790517126453_ld926",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517126462,
+      "isoTime": "2026-09-27T13:52:06.462Z",
+      "type": "text",
+      "text": "boards ki tension kya level",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1790517142374_foio49",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517143115,
+      "isoTime": "2026-09-27T13:52:23.115Z",
+      "type": "text",
+      "text": "nahi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1790517155046_4f155",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517155054,
+      "isoTime": "2026-09-27T13:52:35.054Z",
+      "type": "text",
+      "text": "ohh achha toh chill mode on hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 22,
+      "msgId": "msg_1790517169221_llrvef",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517169979,
+      "isoTime": "2026-09-27T13:52:49.979Z",
+      "type": "text",
+      "text": "kehh sakte hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 23,
+      "msgId": "msg_1790517176442_ewj1x",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517176449,
+      "isoTime": "2026-09-27T13:52:56.449Z",
+      "type": "text",
+      "text": "nice toh abhi kya plan hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 24,
+      "msgId": "msg_1790517192914_regx1p",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517193660,
+      "isoTime": "2026-09-27T13:53:13.660Z",
+      "type": "text",
+      "text": "bass half yearly me acche marks aajaye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 25,
+      "msgId": "msg_1790517200896_gmwfr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517200903,
+      "isoTime": "2026-09-27T13:53:20.903Z",
+      "type": "text",
+      "text": "focus rakho regular revision",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 26,
+      "msgId": "msg_1790517206531_moupa1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517207261,
+      "isoTime": "2026-09-27T13:53:27.261Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 27,
+      "msgId": "msg_1790517207778_dnuenv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517208514,
+      "isoTime": "2026-09-27T13:53:28.514Z",
+      "type": "text",
+      "text": "vahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 28,
+      "msgId": "msg_1790517211728_xkabwt",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517212476,
+      "isoTime": "2026-09-27T13:53:32.476Z",
+      "type": "text",
+      "text": "kar raha tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 29,
+      "msgId": "msg_1790517215833_2n4ffm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517216579,
+      "isoTime": "2026-09-27T13:53:36.579Z",
+      "type": "text",
+      "text": "abhi to free hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 30,
+      "msgId": "msg_1790517217735_ribz9q",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517218500,
+      "isoTime": "2026-09-27T13:53:38.500Z",
+      "type": "text",
+      "text": "to aagya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 31,
+      "msgId": "msg_1790517218561_m7cz46",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517219347,
+      "isoTime": "2026-09-27T13:53:39.347Z",
+      "type": "text",
+      "text": "isme",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 32,
+      "msgId": "msg_1790517221462_8kjc71",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517222191,
+      "isoTime": "2026-09-27T13:53:42.191Z",
+      "type": "text",
+      "text": "baat karne",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 33,
+      "msgId": "msg_1790517222921_9ua22c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517223700,
+      "isoTime": "2026-09-27T13:53:43.700Z",
+      "type": "text",
+      "text": "ke liye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 34,
+      "msgId": "msg_1790517236271_zn9cc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517236279,
+      "isoTime": "2026-09-27T13:53:56.279Z",
+      "type": "text",
+      "text": "accha toh relax ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 35,
+      "msgId": "msg_1790517242842_1ndv5d",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517243579,
+      "isoTime": "2026-09-27T13:54:03.579Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 36,
+      "msgId": "msg_1790517252299_lcoxx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517252306,
+      "isoTime": "2026-09-27T13:54:12.306Z",
+      "type": "text",
+      "text": "kya padhte ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 37,
+      "msgId": "msg_1790517262495_s2nk5z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517263252,
+      "isoTime": "2026-09-27T13:54:23.252Z",
+      "type": "text",
+      "text": "jo subjects hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 38,
+      "msgId": "msg_1790517267183_gcngb",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517267190,
+      "isoTime": "2026-09-27T13:54:27.190Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 39,
+      "msgId": "msg_1790517266668_g5u02t",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517267459,
+      "isoTime": "2026-09-27T13:54:27.459Z",
+      "type": "text",
+      "text": "padhne ko",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 40,
+      "msgId": "msg_1790517270540_cw9xt0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517271299,
+      "isoTime": "2026-09-27T13:54:31.299Z",
+      "type": "text",
+      "text": "aur kya padunga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 41,
+      "msgId": "msg_1790517275773_e6wlx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517275780,
+      "isoTime": "2026-09-27T13:54:35.780Z",
+      "type": "text",
+      "text": "ha bol na",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 42,
+      "msgId": "msg_1790517351018_w9a4gc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517351772,
+      "isoTime": "2026-09-27T13:55:51.772Z",
+      "type": "text",
+      "text": "kya bolu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 43,
+      "msgId": "msg_1790517359733_j1t51",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517359741,
+      "isoTime": "2026-09-27T13:55:59.741Z",
+      "type": "text",
+      "text": "kya lag",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 44,
+      "msgId": "msg_1790517367199_pr9niw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517367932,
+      "isoTime": "2026-09-27T13:56:07.932Z",
+      "type": "text",
+      "text": "hein",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "daab ke"
+      },
+      {
+        "role": "assistant",
+        "content": "kaunsi baat thoda specific batao sun raha hu"
+      },
+      {
+        "role": "user",
+        "content": "tum samjh nahi rahe hp1"
+      },
+      {
+        "role": "assistant",
+        "content": "nahi koi bhasha problem toh nahi hai thoda clear likho kya confusion hai"
+      },
+      {
+        "role": "user",
+        "content": "jaane do"
+      },
+      {
+        "role": "user",
+        "content": "iss"
+      },
+      {
+        "role": "user",
+        "content": "topic ko"
+      },
+      {
+        "role": "user",
+        "content": "mai explain nahi kar paunga"
+      },
+      {
+        "role": "assistant",
+        "content": "theek hai toh bahas kya karo kuch aur topic pe baat kare"
+      },
+      {
+        "role": "user",
+        "content": "ok\\"
+      },
+      {
+        "role": "assistant",
+        "content": "accha toh aaj kal kya chal raha hai life me"
+      },
+      {
+        "role": "user",
+        "content": "stidies"
+      },
+      {
+        "role": "assistant",
+        "content": "haan 11th me kaafi heavy hota hai syllabus aapko koi specific subject thoda tough lag raha hai"
+      },
+      {
+        "role": "user",
+        "content": "mai 10th me hu"
+      },
+      {
+        "role": "assistant",
+        "content": "are 10th toh aur bhi important hai"
+      },
+      {
+        "role": "user",
+        "content": "yaa"
+      },
+      {
+        "role": "assistant",
+        "content": "bhai"
+      },
+      {
+        "role": "user",
+        "content": "ha"
+      },
+      {
+        "role": "assistant",
+        "content": "boards ki tension kya level"
+      },
+      {
+        "role": "user",
+        "content": "nahi hai"
+      },
+      {
+        "role": "assistant",
+        "content": "ohh achha toh chill mode on hai"
+      },
+      {
+        "role": "user",
+        "content": "kehh sakte hai"
+      },
+      {
+        "role": "assistant",
+        "content": "nice toh abhi kya plan hai"
+      },
+      {
+        "role": "user",
+        "content": "bass half yearly me acche marks aajaye"
+      },
+      {
+        "role": "assistant",
+        "content": "focus rakho regular revision"
+      },
+      {
+        "role": "user",
+        "content": "ha"
+      },
+      {
+        "role": "user",
+        "content": "vahi"
+      },
+      {
+        "role": "user",
+        "content": "kar raha tha"
+      },
+      {
+        "role": "user",
+        "content": "abhi to free hua"
+      },
+      {
+        "role": "user",
+        "content": "to aagya"
+      },
+      {
+        "role": "user",
+        "content": "isme"
+      },
+      {
+        "role": "user",
+        "content": "baat karne"
+      },
+      {
+        "role": "user",
+        "content": "ke liye"
+      },
+      {
+        "role": "assistant",
+        "content": "accha toh relax ho"
+      },
+      {
+        "role": "user",
+        "content": "hmm"
+      },
+      {
+        "role": "assistant",
+        "content": "kya padhte ho"
+      },
+      {
+        "role": "user",
+        "content": "jo subjects hai"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "user",
+        "content": "padhne ko"
+      },
+      {
+        "role": "user",
+        "content": "aur kya padunga"
+      },
+      {
+        "role": "assistant",
+        "content": "ha bol na"
+      },
+      {
+        "role": "user",
+        "content": "kya bolu"
+      },
+      {
+        "role": "assistant",
+        "content": "kya lag"
+      },
+      {
+        "role": "user",
+        "content": "hein"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "daab ke"
+      },
+      {
+        "from": "gpt",
+        "value": "kaunsi baat thoda specific batao sun raha hu"
+      },
+      {
+        "from": "human",
+        "value": "tum samjh nahi rahe hp1"
+      },
+      {
+        "from": "gpt",
+        "value": "nahi koi bhasha problem toh nahi hai thoda clear likho kya confusion hai"
+      },
+      {
+        "from": "human",
+        "value": "jaane do"
+      },
+      {
+        "from": "human",
+        "value": "iss"
+      },
+      {
+        "from": "human",
+        "value": "topic ko"
+      },
+      {
+        "from": "human",
+        "value": "mai explain nahi kar paunga"
+      },
+      {
+        "from": "gpt",
+        "value": "theek hai toh bahas kya karo kuch aur topic pe baat kare"
+      },
+      {
+        "from": "human",
+        "value": "ok\\"
+      },
+      {
+        "from": "gpt",
+        "value": "accha toh aaj kal kya chal raha hai life me"
+      },
+      {
+        "from": "human",
+        "value": "stidies"
+      },
+      {
+        "from": "gpt",
+        "value": "haan 11th me kaafi heavy hota hai syllabus aapko koi specific subject thoda tough lag raha hai"
+      },
+      {
+        "from": "human",
+        "value": "mai 10th me hu"
+      },
+      {
+        "from": "gpt",
+        "value": "are 10th toh aur bhi important hai"
+      },
+      {
+        "from": "human",
+        "value": "yaa"
+      },
+      {
+        "from": "gpt",
+        "value": "bhai"
+      },
+      {
+        "from": "human",
+        "value": "ha"
+      },
+      {
+        "from": "gpt",
+        "value": "boards ki tension kya level"
+      },
+      {
+        "from": "human",
+        "value": "nahi hai"
+      },
+      {
+        "from": "gpt",
+        "value": "ohh achha toh chill mode on hai"
+      },
+      {
+        "from": "human",
+        "value": "kehh sakte hai"
+      },
+      {
+        "from": "gpt",
+        "value": "nice toh abhi kya plan hai"
+      },
+      {
+        "from": "human",
+        "value": "bass half yearly me acche marks aajaye"
+      },
+      {
+        "from": "gpt",
+        "value": "focus rakho regular revision"
+      },
+      {
+        "from": "human",
+        "value": "ha"
+      },
+      {
+        "from": "human",
+        "value": "vahi"
+      },
+      {
+        "from": "human",
+        "value": "kar raha tha"
+      },
+      {
+        "from": "human",
+        "value": "abhi to free hua"
+      },
+      {
+        "from": "human",
+        "value": "to aagya"
+      },
+      {
+        "from": "human",
+        "value": "isme"
+      },
+      {
+        "from": "human",
+        "value": "baat karne"
+      },
+      {
+        "from": "human",
+        "value": "ke liye"
+      },
+      {
+        "from": "gpt",
+        "value": "accha toh relax ho"
+      },
+      {
+        "from": "human",
+        "value": "hmm"
+      },
+      {
+        "from": "gpt",
+        "value": "kya padhte ho"
+      },
+      {
+        "from": "human",
+        "value": "jo subjects hai"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "human",
+        "value": "padhne ko"
+      },
+      {
+        "from": "human",
+        "value": "aur kya padunga"
+      },
+      {
+        "from": "gpt",
+        "value": "ha bol na"
+      },
+      {
+        "from": "human",
+        "value": "kya bolu"
+      },
+      {
+        "from": "gpt",
+        "value": "kya lag"
+      },
+      {
+        "from": "human",
+        "value": "hein"
+      }
+    ]
+  }
+}
