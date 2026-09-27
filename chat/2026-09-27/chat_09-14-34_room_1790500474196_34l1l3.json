@@ -1,0 +1,163 @@
+{
+  "metadata": {
+    "roomId": "room_1790500474196_34l1l3",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T09:14:34.196Z",
+    "endTime": "2026-09-27T09:15:47.460Z",
+    "durationSeconds": 73,
+    "totalMessages": 7,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790500488496_m37vvp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790500489110,
+      "isoTime": "2026-09-27T09:14:49.110Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790500494357_ibtotw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790500494413,
+      "isoTime": "2026-09-27T09:14:54.413Z",
+      "type": "text",
+      "text": "Hlww",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790500500204_bls0m1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790500500830,
+      "isoTime": "2026-09-27T09:15:00.830Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790500507468_7gbifj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790500507522,
+      "isoTime": "2026-09-27T09:15:07.522Z",
+      "type": "text",
+      "text": "Henii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790500513607_fmz682",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790500513662,
+      "isoTime": "2026-09-27T09:15:13.662Z",
+      "type": "text",
+      "text": "Cinderella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790500526777_4gi8n5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790500527389,
+      "isoTime": "2026-09-27T09:15:27.389Z",
+      "type": "text",
+      "text": "kal badla tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790500533963_4svpjo",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790500534598,
+      "isoTime": "2026-09-27T09:15:34.598Z",
+      "type": "text",
+      "text": "bagh gyi",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Cinderella",
+        "author": "partner"
+      }
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "Hlww"
+      },
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "Henii"
+      },
+      {
+        "role": "user",
+        "content": "Cinderella"
+      },
+      {
+        "role": "assistant",
+        "content": "kal badla tha"
+      },
+      {
+        "role": "assistant",
+        "content": "bagh gyi"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "Hlww"
+      },
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "Henii"
+      },
+      {
+        "from": "human",
+        "value": "Cinderella"
+      },
+      {
+        "from": "gpt",
+        "value": "kal badla tha"
+      },
+      {
+        "from": "gpt",
+        "value": "bagh gyi"
+      }
+    ]
+  }
+}
