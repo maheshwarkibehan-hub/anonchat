@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790518117337_toylwr",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:08:37.337Z",
+    "endTime": "2026-09-27T14:09:03.729Z",
+    "durationSeconds": 26,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518120779_4sut8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518120786,
+      "isoTime": "2026-09-27T14:08:40.786Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518127677_sv1xyr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518128456,
+      "isoTime": "2026-09-27T14:08:48.456Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790518135213_d72d0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518135219,
+      "isoTime": "2026-09-27T14:08:55.219Z",
+      "type": "text",
+      "text": "bol na yr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790518136923_ileeff",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518137656,
+      "isoTime": "2026-09-27T14:08:57.656Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "bol na yr"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "bol na yr"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      }
+    ]
+  }
+}
