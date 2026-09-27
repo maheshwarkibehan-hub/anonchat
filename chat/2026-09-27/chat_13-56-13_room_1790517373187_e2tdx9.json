@@ -1,0 +1,340 @@
+{
+  "metadata": {
+    "roomId": "room_1790517373187_e2tdx9",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:56:13.187Z",
+    "endTime": "2026-09-27T13:58:18.667Z",
+    "durationSeconds": 125,
+    "totalMessages": 16,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790517376183_wnpd6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517376192,
+      "isoTime": "2026-09-27T13:56:16.192Z",
+      "type": "text",
+      "text": "yo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790517377860_fq4rtx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517378620,
+      "isoTime": "2026-09-27T13:56:18.620Z",
+      "type": "text",
+      "text": "hlo\\",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790517387097_1k88fc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517387842,
+      "isoTime": "2026-09-27T13:56:27.842Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790517389066_3pb4k0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517389827,
+      "isoTime": "2026-09-27T13:56:29.827Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790517393015_30wfqk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517393788,
+      "isoTime": "2026-09-27T13:56:33.788Z",
+      "type": "text",
+      "text": "isn't you",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790517408476_copbf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517408484,
+      "isoTime": "2026-09-27T13:56:48.484Z",
+      "type": "text",
+      "text": "lol nahi yaar main aditya hu cinderella toh movie wali hai main toh bas 12th me padh raha hun",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790517422427_ga0wpu",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517423179,
+      "isoTime": "2026-09-27T13:57:03.179Z",
+      "type": "text",
+      "text": "mujhe laga ki",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790517425721_j5pisp",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517426454,
+      "isoTime": "2026-09-27T13:57:06.454Z",
+      "type": "text",
+      "text": "keri wali hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790517427344_csz44r",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517428099,
+      "isoTime": "2026-09-27T13:57:08.099Z",
+      "type": "text",
+      "text": "heheh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790517436484_pyxvi",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517436498,
+      "isoTime": "2026-09-27T13:57:16.498Z",
+      "type": "text",
+      "text": "hahe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790517452317_lmrdi9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517453059,
+      "isoTime": "2026-09-27T13:57:33.059Z",
+      "type": "text",
+      "text": "aur batao bhai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790517457217_sj0nm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517457225,
+      "isoTime": "2026-09-27T13:57:37.225Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790517470094_xxo3kw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517470851,
+      "isoTime": "2026-09-27T13:57:50.851Z",
+      "type": "text",
+      "text": "kuch to nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790517473210_3y9zku",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517473972,
+      "isoTime": "2026-09-27T13:57:53.972Z",
+      "type": "text",
+      "text": "mujhe kya hoga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790517480366_6p26a",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790517480374,
+      "isoTime": "2026-09-27T13:58:00.374Z",
+      "type": "text",
+      "text": "kuch nahi yaar chill karo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790517495067_9b3q0b",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790517495819,
+      "isoTime": "2026-09-27T13:58:15.819Z",
+      "type": "text",
+      "text": "thk hai",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "yo"
+      },
+      {
+        "role": "user",
+        "content": "hlo\\"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "user",
+        "content": "!!"
+      },
+      {
+        "role": "user",
+        "content": "isn't you"
+      },
+      {
+        "role": "assistant",
+        "content": "lol nahi yaar main aditya hu cinderella toh movie wali hai main toh bas 12th me padh raha hun"
+      },
+      {
+        "role": "user",
+        "content": "mujhe laga ki"
+      },
+      {
+        "role": "user",
+        "content": "keri wali hai"
+      },
+      {
+        "role": "user",
+        "content": "heheh"
+      },
+      {
+        "role": "assistant",
+        "content": "hahe"
+      },
+      {
+        "role": "user",
+        "content": "aur batao bhai"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      },
+      {
+        "role": "user",
+        "content": "kuch to nahi"
+      },
+      {
+        "role": "user",
+        "content": "mujhe kya hoga"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch nahi yaar chill karo"
+      },
+      {
+        "role": "user",
+        "content": "thk hai"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "yo"
+      },
+      {
+        "from": "human",
+        "value": "hlo\\"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "human",
+        "value": "!!"
+      },
+      {
+        "from": "human",
+        "value": "isn't you"
+      },
+      {
+        "from": "gpt",
+        "value": "lol nahi yaar main aditya hu cinderella toh movie wali hai main toh bas 12th me padh raha hun"
+      },
+      {
+        "from": "human",
+        "value": "mujhe laga ki"
+      },
+      {
+        "from": "human",
+        "value": "keri wali hai"
+      },
+      {
+        "from": "human",
+        "value": "heheh"
+      },
+      {
+        "from": "gpt",
+        "value": "hahe"
+      },
+      {
+        "from": "human",
+        "value": "aur batao bhai"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      },
+      {
+        "from": "human",
+        "value": "kuch to nahi"
+      },
+      {
+        "from": "human",
+        "value": "mujhe kya hoga"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch nahi yaar chill karo"
+      },
+      {
+        "from": "human",
+        "value": "thk hai"
+      }
+    ]
+  }
+}
