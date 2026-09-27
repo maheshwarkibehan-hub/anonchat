@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1790518363659_cqdl7c",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T14:12:43.659Z",
+    "endTime": "2026-09-27T14:12:59.851Z",
+    "durationSeconds": 16,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790518367971_qzviz6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790518368738,
+      "isoTime": "2026-09-27T14:12:48.738Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790518375538_8ykf8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790518375545,
+      "isoTime": "2026-09-27T14:12:55.545Z",
+      "type": "text",
+      "text": "kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hua"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hua"
+      }
+    ]
+  }
+}
