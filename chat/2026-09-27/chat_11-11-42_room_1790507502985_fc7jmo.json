@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "roomId": "room_1790507502985_fc7jmo",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T11:11:42.985Z",
+    "endTime": "2026-09-27T11:13:27.190Z",
+    "durationSeconds": 104,
+    "totalMessages": 13,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790507505926_9id60x",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507506578,
+      "isoTime": "2026-09-27T11:11:46.578Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790507508362_efln0g",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790507509886,
+      "isoTime": "2026-09-27T11:11:49.886Z",
+      "type": "text",
+      "text": "Anmol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790507511506_vz5ql5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790507513026,
+      "isoTime": "2026-09-27T11:11:53.026Z",
+      "type": "text",
+      "text": "Cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790507514030_02xtoi",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790507515562,
+      "isoTime": "2026-09-27T11:11:55.562Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790507522088_gc4v6j",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507522777,
+      "isoTime": "2026-09-27T11:12:02.777Z",
+      "type": "text",
+      "text": "mai amma behen pe aajaunga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790507526757_ez7m65",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507527457,
+      "isoTime": "2026-09-27T11:12:07.457Z",
+      "type": "text",
+      "text": "mai anmol nahi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790507533572_9vpg18",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507534265,
+      "isoTime": "2026-09-27T11:12:14.265Z",
+      "type": "text",
+      "text": "bataya to samjh nahi aaraha ahi ky",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790507563124_labaru",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790507564649,
+      "isoTime": "2026-09-27T11:12:44.649Z",
+      "type": "text",
+      "text": "Kl jo photo bheje thi tumko wo dekhe tumne",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790507573698_xx8reu",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507574379,
+      "isoTime": "2026-09-27T11:12:54.379Z",
+      "type": "text",
+      "text": "are yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790507576101_csel4m",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507576761,
+      "isoTime": "2026-09-27T11:12:56.761Z",
+      "type": "text",
+      "text": "anmol nahi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790507584168_ha7cj8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790507585689,
+      "isoTime": "2026-09-27T11:13:05.689Z",
+      "type": "text",
+      "text": "Nhi tum hee ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790507604486_pt22m9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790507605178,
+      "isoTime": "2026-09-27T11:13:25.178Z",
+      "type": "text",
+      "text": "jabarjasti hai kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790507604037_qeexe9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790507605571,
+      "isoTime": "2026-09-27T11:13:25.571Z",
+      "type": "text",
+      "text": "Mai ja rahe hu",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "Anmol"
+      },
+      {
+        "role": "assistant",
+        "content": "Cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "?"
+      },
+      {
+        "role": "user",
+        "content": "mai amma behen pe aajaunga"
+      },
+      {
+        "role": "user",
+        "content": "mai anmol nahi hu"
+      },
+      {
+        "role": "user",
+        "content": "bataya to samjh nahi aaraha ahi ky"
+      },
+      {
+        "role": "assistant",
+        "content": "Kl jo photo bheje thi tumko wo dekhe tumne"
+      },
+      {
+        "role": "user",
+        "content": "are yrr"
+      },
+      {
+        "role": "user",
+        "content": "anmol nahi hu"
+      },
+      {
+        "role": "assistant",
+        "content": "Nhi tum hee ho"
+      },
+      {
+        "role": "user",
+        "content": "jabarjasti hai kya"
+      },
+      {
+        "role": "assistant",
+        "content": "Mai ja rahe hu"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "Anmol"
+      },
+      {
+        "from": "gpt",
+        "value": "Cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "?"
+      },
+      {
+        "from": "human",
+        "value": "mai amma behen pe aajaunga"
+      },
+      {
+        "from": "human",
+        "value": "mai anmol nahi hu"
+      },
+      {
+        "from": "human",
+        "value": "bataya to samjh nahi aaraha ahi ky"
+      },
+      {
+        "from": "gpt",
+        "value": "Kl jo photo bheje thi tumko wo dekhe tumne"
+      },
+      {
+        "from": "human",
+        "value": "are yrr"
+      },
+      {
+        "from": "human",
+        "value": "anmol nahi hu"
+      },
+      {
+        "from": "gpt",
+        "value": "Nhi tum hee ho"
+      },
+      {
+        "from": "human",
+        "value": "jabarjasti hai kya"
+      },
+      {
+        "from": "gpt",
+        "value": "Mai ja rahe hu"
+      }
+    ]
+  }
+}
