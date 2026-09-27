@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "roomId": "room_1790527002532_lsxupp",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T16:36:42.532Z",
+    "endTime": "2026-09-27T16:39:07.662Z",
+    "durationSeconds": 145,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790527006020_3emtqv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790527007773,
+      "isoTime": "2026-09-27T16:36:47.773Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790527013025_gdnhhj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790527014765,
+      "isoTime": "2026-09-27T16:36:54.765Z",
+      "type": "text",
+      "text": "Cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790527030650_sdrdu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790527030657,
+      "isoTime": "2026-09-27T16:37:10.657Z",
+      "type": "text",
+      "text": "haha kya yeh disney movie hai kya waise main toh thoda sci-fi aur action dekh leta hu par aapko ye pasand hai",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hlo"
+      },
+      {
+        "role": "user",
+        "content": "Cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "haha kya yeh disney movie hai kya waise main toh thoda sci-fi aur action dekh leta hu par aapko ye pasand hai"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hlo"
+      },
+      {
+        "from": "human",
+        "value": "Cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "haha kya yeh disney movie hai kya waise main toh thoda sci-fi aur action dekh leta hu par aapko ye pasand hai"
+      }
+    ]
+  }
+}
