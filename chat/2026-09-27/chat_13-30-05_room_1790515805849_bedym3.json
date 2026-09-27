@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "roomId": "room_1790515805849_bedym3",
+    "vibe": "Direct",
+    "date": "2026-09-27",
+    "startTime": "2026-09-27T13:30:05.849Z",
+    "endTime": "2026-09-27T13:31:40.729Z",
+    "durationSeconds": 95,
+    "totalMessages": 8,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790515811287_o1aaii",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515812009,
+      "isoTime": "2026-09-27T13:30:12.009Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790515819904_idn25v",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515820642,
+      "isoTime": "2026-09-27T13:30:20.642Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790515834008_r6egw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515834016,
+      "isoTime": "2026-09-27T13:30:34.016Z",
+      "type": "text",
+      "text": "eww kya ajeeb baatein ho rahi hain yaar tameez se baat karo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790515840525_clcjw8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515841250,
+      "isoTime": "2026-09-27T13:30:41.250Z",
+      "type": "text",
+      "text": "okay",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790515844271_zoj5sg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515845008,
+      "isoTime": "2026-09-27T13:30:45.008Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790515858673_tgd83",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515858680,
+      "isoTime": "2026-09-27T13:30:58.680Z",
+      "type": "text",
+      "text": "sahi hai yaar waise cinderella toh purani movie hai chhote bache dekhte hain na",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790515877310_hzlylt",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790515878054,
+      "isoTime": "2026-09-27T13:31:18.054Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790515888773_yxi6h",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790515888780,
+      "isoTime": "2026-09-27T13:31:28.780Z",
+      "type": "text",
+      "text": "haan yaad hai movie me glass slipper wala scene tha na",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "eww kya ajeeb baatein ho rahi hain yaar tameez se baat karo"
+      },
+      {
+        "role": "user",
+        "content": "okay"
+      },
+      {
+        "role": "user",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "sahi hai yaar waise cinderella toh purani movie hai chhote bache dekhte hain na"
+      },
+      {
+        "role": "user",
+        "content": "ha"
+      },
+      {
+        "role": "assistant",
+        "content": "haan yaad hai movie me glass slipper wala scene tha na"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "eww kya ajeeb baatein ho rahi hain yaar tameez se baat karo"
+      },
+      {
+        "from": "human",
+        "value": "okay"
+      },
+      {
+        "from": "human",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "sahi hai yaar waise cinderella toh purani movie hai chhote bache dekhte hain na"
+      },
+      {
+        "from": "human",
+        "value": "ha"
+      },
+      {
+        "from": "gpt",
+        "value": "haan yaad hai movie me glass slipper wala scene tha na"
+      }
+    ]
+  }
+}
