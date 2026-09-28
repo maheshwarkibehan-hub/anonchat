@@ -3,157 +3,357 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>AnonChat - Thoda Kaam Chal Raha Hai!</title>
+  <title>AnonChat - Officially Shutting Down</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-base: #0B0C10;
-      --card-base: #12131C;
-      --border-slate: rgba(51, 65, 85, 0.6);
-      --text-primary: #ffffff;
+      --bg-dark: #07090e;
+      --card-bg: rgba(15, 20, 32, 0.72);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --card-border-glow: rgba(239, 68, 68, 0.25);
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --accent-indigo: #4f46e5;
-      --accent-indigo-hover: #6366f1;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background-color: var(--bg-base);
-      color: var(--text-primary);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-      overflow: hidden;
-      position: relative;
-    }
-    .ambient-glow {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(140px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .top-ambient {
-      top: -160px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 520px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.12), transparent 70%);
-    }
-    .maintenance-card {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 520px;
-      background: var(--card-base);
-      border: 1px solid var(--border-slate);
-      border-radius: 24px;
-      padding: 48px 36px;
-      text-align: center;
-      display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.75), 0 0 40px -10px rgba(245, 158, 11, 0.1);
+      justify-content: center;
+      padding: 24px 16px;
+      overflow-x: hidden;
+      position: relative;
     }
-    .status-badge {
+
+    /* Video Background Layer */
+    .video-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: saturate(1.1) brightness(0.65);
+    }
+
+    /* Cinematic Vignette Overlay */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(7, 9, 14, 0.55) 0%, rgba(7, 9, 14, 0.88) 100%),
+                  linear-gradient(to bottom, rgba(7, 9, 14, 0.6) 0%, rgba(7, 9, 14, 0.92) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Ambient Glow Behind Container */
+    .ambient-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, rgba(245, 158, 11, 0.05) 45%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Main Container */
+    .shutdown-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 620px;
+      background: var(--card-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 44px 36px;
+      text-align: center;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85),
+                  0 0 0 1px rgba(255, 255, 255, 0.05),
+                  0 0 50px -10px var(--card-border-glow);
+      animation: fadeInScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Brand Header */
+    .brand-header {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 5px 12px;
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.25);
+      gap: 6px;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 2.2rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 22px;
+      text-decoration: none;
+    }
+
+    .brand-header sup {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-left: 2px;
+      vertical-align: super;
+    }
+
+    /* Status Pill */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 18px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
       border-radius: 9999px;
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      color: #fbbf24;
+      color: #fca5a5;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      box-shadow: 0 0 10px var(--accent-red);
+      animation: pulseAlert 2s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+
+    /* Typography */
+    .headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .highlight-banner {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 16px;
+      padding: 16px 20px;
       margin-bottom: 24px;
     }
-    .pulse-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #f59e0b;
-      box-shadow: 0 0 10px #f59e0b;
-      animation: pulse 2s infinite;
+
+    .highlight-banner p {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fee2e2;
+      line-height: 1.5;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+
+    .highlight-banner span {
+      color: #fca5a5;
+      font-weight: 700;
     }
-    .icon-wrapper {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.2);
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .description p + p {
+      margin-top: 12px;
+    }
+
+    /* Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .info-box-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94a3b8;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #f59e0b;
-      margin-bottom: 20px;
+      gap: 6px;
     }
-    .headline {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      color: #f8fafc;
+
+    .info-box-text {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.45;
     }
-    .subtext {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 380px;
-      margin-bottom: 28px;
+
+    /* Footer message */
+    .signoff-message {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: #f1f5f9;
+      margin-top: 10px;
+      margin-bottom: 6px;
     }
-    .retry-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-indigo);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 28px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
+
+    .sub-signoff {
+      font-size: 0.82rem;
+      color: #64748b;
     }
-    .retry-btn:hover {
-      background: var(--accent-indigo-hover);
-      transform: translateY(-1px);
+
+    @media (max-width: 600px) {
+      .shutdown-container {
+        padding: 32px 20px;
+        border-radius: 22px;
+      }
+      .headline {
+        font-size: 1.7rem;
+      }
+      .brand-header {
+        font-size: 1.8rem;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .highlight-banner p {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="ambient-glow top-ambient"></div>
-  <main class="maintenance-card">
-    <div class="status-badge">
-      <span class="pulse-dot"></span>
-      <span>Thoda Upgrade Chal Raha Hai</span>
+  <!-- Fullscreen Video Background Layer -->
+  <div class="video-background">
+    <video autoplay loop muted playsinline preload="auto" poster="hero-poster.jpg" onloadeddata="this.playbackRate=1.0;" onplay="this.playbackRate=1.0;">
+      <source src="serene-art-hero.mp4" type="video/mp4" />
+      <source src="https://designerstephen.github.io/public-assets/videos/serene-art-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="video-overlay"></div>
+  <div class="ambient-glow"></div>
+
+  <!-- Centered Shutdown Modal Card -->
+  <main class="shutdown-container">
+    <div class="brand-header">
+      AnonChat<sup>®</sup>
     </div>
-    <div class="icon-wrapper">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-      </svg>
+
+    <div>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Service Officially Shut Down</span>
+      </div>
     </div>
-    <h1 class="headline">Server Par Kaam Chal Raha Hai!</h1>
-    <p class="subtext">AnonChat ko aur zyada smooth aur fast banane ke liye thoda maintenance chal raha hai. Tension mat lo, bas thodi der me wapas live aate hain!</p>
-    <button class="retry-btn" onclick="window.location.reload()">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="23 4 23 10 17 10"/>
-        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-      </svg>
-      <span>Refresh Karke Dekho</span>
-    </button>
+
+    <h1 class="headline">Alvida Dosto, AnonChat Is Signing Off!</h1>
+
+    <!-- Hinglish Highlight Banner -->
+    <div class="highlight-banner">
+      <p>⚠️ <span>Low traffic aur kam active users</span> hone ki wajah se AnonChat ki services ko officially band kiya ja raha hai.</p>
+    </div>
+
+    <!-- Hinglish Detailed Message -->
+    <div class="description">
+      <p>
+        Bhaiyo aur behno, AnonChat ko launch karne ka maqsad ek safe, clean aur superfast anonymous chatting platform dena tha jahan koi login ya tracking na ho.
+      </p>
+      <p>
+        Pichhle kuch samay se active traffic kafi low hone ke kaaran server costs aur maintenance ko sustain rakh pana feasible nahi raha, isliye hum is project ko yahin wrap up kar rahe hain.
+      </p>
+      <p>
+        Aap sabhi ne jitna bhi time yahan spend kiya, random strangers se dosti ki ya baatein share ki — us sabke liye dil se bohot bohot shukriya! ❤️
+      </p>
+    </div>
+
+    <!-- Info Highlights Grid -->
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="info-box-title">
+          <span>🔒</span> Privacy & Data
+        </div>
+        <div class="info-box-text">
+          Zero data retained. Hum koi bhi chats ya IP store nahi karte the. Sab kuch ephemeral tha aur hamesha rahega.
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">
+          <span>⚡</span> Service Status
+        </div>
+        <div class="info-box-text">
+          WebSocket & Matchmaking servers permanently offline ho chuke hain.
+        </div>
+      </div>
+    </div>
+
+    <div class="signoff-message">
+      “Thank you for being a part of this journey.”
+    </div>
+    <div class="sub-signoff">
+      AnonChat Team • 2026
+    </div>
   </main>
 </body>
 </html>

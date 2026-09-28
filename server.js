@@ -114,6 +114,11 @@ app.get('/synapse', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'synapse.html'));
 });
 
+// Clean route for Shutdown notice page
+app.get('/shutdown', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'shutdown.html'));
+});
+
 // Trust proxy for accurate client IP detection behind proxies / cloud hosts
 app.set('trust proxy', true);
 
