@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "roomId": "room_1790599369249_lmzm3t",
+    "vibe": "Direct",
+    "date": "2026-09-28",
+    "startTime": "2026-09-28T12:42:49.249Z",
+    "endTime": "2026-09-28T12:43:22.132Z",
+    "durationSeconds": 33,
+    "totalMessages": 8,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790599377137_uwtju9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790599377308,
+      "isoTime": "2026-09-28T12:42:57.308Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790599376367_7l714h",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790599377322,
+      "isoTime": "2026-09-28T12:42:57.322Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790599379293_sa4c8o",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790599380250,
+      "isoTime": "2026-09-28T12:43:00.250Z",
+      "type": "text",
+      "text": "cindrella",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790599383486_i78n7l",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790599384475,
+      "isoTime": "2026-09-28T12:43:04.475Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790599386308_05tzur",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790599386483,
+      "isoTime": "2026-09-28T12:43:06.483Z",
+      "type": "text",
+      "text": "Arree",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790599389892_4y04dr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790599390068,
+      "isoTime": "2026-09-28T12:43:10.068Z",
+      "type": "text",
+      "text": "Ghanta",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790599389649_lh23al",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790599390605,
+      "isoTime": "2026-09-28T12:43:10.605Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790599398598_p7tl23",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790599399571,
+      "isoTime": "2026-09-28T12:43:19.571Z",
+      "type": "text",
+      "text": "to baja ke aana",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "cindrella"
+      },
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "Arree"
+      },
+      {
+        "role": "user",
+        "content": "Ghanta"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "to baja ke aana"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "cindrella"
+      },
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "Arree"
+      },
+      {
+        "from": "human",
+        "value": "Ghanta"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "to baja ke aana"
+      }
+    ]
+  }
+}
