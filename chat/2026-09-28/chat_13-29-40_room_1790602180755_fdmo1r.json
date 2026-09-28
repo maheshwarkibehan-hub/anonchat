@@ -1,0 +1,2984 @@
+{
+  "metadata": {
+    "roomId": "room_1790602180755_fdmo1r",
+    "vibe": "Direct",
+    "date": "2026-09-28",
+    "startTime": "2026-09-28T13:29:40.755Z",
+    "endTime": "2026-09-28T13:48:55.629Z",
+    "durationSeconds": 1155,
+    "totalMessages": 147,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790602184850_y4lpmb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602185022,
+      "isoTime": "2026-09-28T13:29:45.022Z",
+      "type": "text",
+      "text": "Haaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790602190094_ebyi16",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602191073,
+      "isoTime": "2026-09-28T13:29:51.073Z",
+      "type": "text",
+      "text": "hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790602197286_jsxosi",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602198253,
+      "isoTime": "2026-09-28T13:29:58.253Z",
+      "type": "text",
+      "text": "ho gyi baat",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790602202460_plu98s",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602202637,
+      "isoTime": "2026-09-28T13:30:02.637Z",
+      "type": "text",
+      "text": "Haaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790602213898_2c85iz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602214868,
+      "isoTime": "2026-09-28T13:30:14.868Z",
+      "type": "text",
+      "text": "kuch padha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790602215317_5fw035",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602216272,
+      "isoTime": "2026-09-28T13:30:16.272Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790602231689_m5o0y2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602231862,
+      "isoTime": "2026-09-28T13:30:31.862Z",
+      "type": "text",
+      "text": "Haaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790602236574_9ncow8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602237528,
+      "isoTime": "2026-09-28T13:30:37.528Z",
+      "type": "text",
+      "text": "kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790602237515_w98916",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602238473,
+      "isoTime": "2026-09-28T13:30:38.473Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790602244058_388b62",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602244237,
+      "isoTime": "2026-09-28T13:30:44.237Z",
+      "type": "text",
+      "text": "Math",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790602246349_v7uui5",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602246528,
+      "isoTime": "2026-09-28T13:30:46.528Z",
+      "type": "text",
+      "text": "Ch7",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790602248095_6t7jzc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602248267,
+      "isoTime": "2026-09-28T13:30:48.267Z",
+      "type": "text",
+      "text": "7.1",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790602250237_wwddyk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602250407,
+      "isoTime": "2026-09-28T13:30:50.407Z",
+      "type": "text",
+      "text": "Pura",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790602257229_bln1o4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602258178,
+      "isoTime": "2026-09-28T13:30:58.178Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790602269700_ip06iy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602270653,
+      "isoTime": "2026-09-28T13:31:10.653Z",
+      "type": "text",
+      "text": "agli baar top karne ki socha hai kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790602270711_ieup4o",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602270887,
+      "isoTime": "2026-09-28T13:31:10.887Z",
+      "type": "text",
+      "text": "And social",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790602271201_6150d9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602272162,
+      "isoTime": "2026-09-28T13:31:12.162Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790602276981_ybd4r3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602277162,
+      "isoTime": "2026-09-28T13:31:17.162Z",
+      "type": "text",
+      "text": "Nahhh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790602287346_qj0vkf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602288308,
+      "isoTime": "2026-09-28T13:31:28.308Z",
+      "type": "text",
+      "text": "are yrr bass karo itna to mai bhi nahi padha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1790602318177_olwfkn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602319148,
+      "isoTime": "2026-09-28T13:31:59.148Z",
+      "type": "text",
+      "text": "kya hui",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1790602336753_gwiyh3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602336937,
+      "isoTime": "2026-09-28T13:32:16.937Z",
+      "type": "text",
+      "text": "Naah",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 22,
+      "msgId": "msg_1790602353143_x0iya4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602354093,
+      "isoTime": "2026-09-28T13:32:34.093Z",
+      "type": "text",
+      "text": "abhi , 2 October ki assembly ke liye jaan khai hai kritika",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 23,
+      "msgId": "msg_1790602363905_lbpj6s",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602364087,
+      "isoTime": "2026-09-28T13:32:44.087Z",
+      "type": "text",
+      "text": "Ohh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 24,
+      "msgId": "msg_1790602371001_ddnkr2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602371973,
+      "isoTime": "2026-09-28T13:32:51.973Z",
+      "type": "text",
+      "text": "usko quotes chaiye mujhse",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 25,
+      "msgId": "msg_1790602383459_08p0g6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602383637,
+      "isoTime": "2026-09-28T13:33:03.637Z",
+      "type": "text",
+      "text": "Ohh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 26,
+      "msgId": "msg_1790602384701_ccqdbc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602385663,
+      "isoTime": "2026-09-28T13:33:05.663Z",
+      "type": "text",
+      "text": "aur usko abhi pta nahi ki mai tumse chat karr raha hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 27,
+      "msgId": "msg_1790602386703_iorsom",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602387672,
+      "isoTime": "2026-09-28T13:33:07.672Z",
+      "type": "text",
+      "text": "to",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 28,
+      "msgId": "msg_1790602396618_zj91iy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602397568,
+      "isoTime": "2026-09-28T13:33:17.568Z",
+      "type": "text",
+      "text": "vo meri aur avika ki setting karwa rahi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 29,
+      "msgId": "msg_1790602408344_dtlq6h",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602408517,
+      "isoTime": "2026-09-28T13:33:28.517Z",
+      "type": "text",
+      "text": "Ohhh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 30,
+      "msgId": "msg_1790602411699_36jqwt",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602412653,
+      "isoTime": "2026-09-28T13:33:32.653Z",
+      "type": "text",
+      "text": "bol rahi hai ki mai aur avika sath me quotes bolenge",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 31,
+      "msgId": "msg_1790602426705_szytv7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602427673,
+      "isoTime": "2026-09-28T13:33:47.673Z",
+      "type": "text",
+      "text": "abb mai mna to kardu , but abhi kuch clear nahi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 32,
+      "msgId": "msg_1790602427635_bik2yx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602428593,
+      "isoTime": "2026-09-28T13:33:48.593Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 33,
+      "msgId": "msg_1790602445044_x744o4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602445217,
+      "isoTime": "2026-09-28T13:34:05.217Z",
+      "type": "text",
+      "text": "Jo tumhen Sahi lagi karo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 34,
+      "msgId": "msg_1790602458916_sfwj94",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602459883,
+      "isoTime": "2026-09-28T13:34:19.883Z",
+      "type": "text",
+      "text": "mera dimag kaam nahi kiya karta",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 35,
+      "msgId": "msg_1790602461092_hfhqlz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602462052,
+      "isoTime": "2026-09-28T13:34:22.052Z",
+      "type": "text",
+      "text": "tabhi to",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 36,
+      "msgId": "msg_1790602464579_mm9eu6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602464752,
+      "isoTime": "2026-09-28T13:34:24.752Z",
+      "type": "text",
+      "text": "Main bhi karne wali ki per Tum Jaan jaate",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 37,
+      "msgId": "msg_1790602464211_qr3own",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602465163,
+      "isoTime": "2026-09-28T13:34:25.163Z",
+      "type": "text",
+      "text": "tumse puch raha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 38,
+      "msgId": "msg_1790602493792_b5t3vj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602494754,
+      "isoTime": "2026-09-28T13:34:54.754Z",
+      "type": "text",
+      "text": "sentence acche se frame karo",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Main bhi karne wali ki per Tum Jaan jaate",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 39,
+      "msgId": "msg_1790602511238_9onphb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602511412,
+      "isoTime": "2026-09-28T13:35:11.412Z",
+      "type": "text",
+      "text": "Main bhi participate karne wali Thi but Maine nahin kiya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 40,
+      "msgId": "msg_1790602523820_dwb4sr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602524784,
+      "isoTime": "2026-09-28T13:35:24.784Z",
+      "type": "text",
+      "text": "tum hamari class ki ho!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 41,
+      "msgId": "msg_1790602525998_u55pz0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602526962,
+      "isoTime": "2026-09-28T13:35:26.962Z",
+      "type": "text",
+      "text": "😊😊",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 42,
+      "msgId": "msg_1790602535852_l641r6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602537564,
+      "isoTime": "2026-09-28T13:35:37.564Z",
+      "type": "text",
+      "text": "Nahh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 43,
+      "msgId": "msg_1790602543119_0rzgfn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602544088,
+      "isoTime": "2026-09-28T13:35:44.088Z",
+      "type": "text",
+      "text": "fir kaise part leti",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 44,
+      "msgId": "msg_1790602553541_0130tx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602553712,
+      "isoTime": "2026-09-28T13:35:53.712Z",
+      "type": "text",
+      "text": "Are abhi kuchh nahin kuchh nahin kuchh nahin kuchh nahin kuchh nahin",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 45,
+      "msgId": "msg_1790602580652_amrm22",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602581613,
+      "isoTime": "2026-09-28T13:36:21.613Z",
+      "type": "text",
+      "text": "nahi , mujhe kyu lagg raha hai ki tum hamari class ki ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 46,
+      "msgId": "msg_1790602584733_5px2zf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602585688,
+      "isoTime": "2026-09-28T13:36:25.688Z",
+      "type": "text",
+      "text": "patli bhi to",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 47,
+      "msgId": "msg_1790602585683_53l0kp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602586643,
+      "isoTime": "2026-09-28T13:36:26.643Z",
+      "type": "text",
+      "text": "tum",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 48,
+      "msgId": "msg_1790602590912_exxt3e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602591863,
+      "isoTime": "2026-09-28T13:36:31.863Z",
+      "type": "text",
+      "text": "aur height bhi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 49,
+      "msgId": "msg_1790602601250_m9r7tw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602601428,
+      "isoTime": "2026-09-28T13:36:41.428Z",
+      "type": "text",
+      "text": "Are nahin nahin nahin nahin nahin",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 50,
+      "msgId": "msg_1790602602678_ctlcnx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602603633,
+      "isoTime": "2026-09-28T13:36:43.633Z",
+      "type": "text",
+      "text": "agar left side dekhti ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 51,
+      "msgId": "msg_1790602612783_tl8ssk",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602613753,
+      "isoTime": "2026-09-28T13:36:53.753Z",
+      "type": "text",
+      "text": "to neck se bone samajh aati hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 52,
+      "msgId": "msg_1790602623945_vt3v6m",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602624122,
+      "isoTime": "2026-09-28T13:37:04.122Z",
+      "type": "text",
+      "text": "Are yaar tu kya baat kar rahe ho chi chi chi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 53,
+      "msgId": "msg_1790602627436_4sd3qb",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602628393,
+      "isoTime": "2026-09-28T13:37:08.393Z",
+      "type": "text",
+      "text": "itna bol rahi hoto , means ki meri classk ki hi ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 54,
+      "msgId": "msg_1790602640273_luqha7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602640452,
+      "isoTime": "2026-09-28T13:37:20.452Z",
+      "type": "text",
+      "text": "Are nahin nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 55,
+      "msgId": "msg_1790602644796_3k4z1a",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602645753,
+      "isoTime": "2026-09-28T13:37:25.753Z",
+      "type": "text",
+      "text": "are , ganda sense matt nikalo",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Are yaar tu kya baat kar rahe ho chi chi chi",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 56,
+      "msgId": "msg_1790602672072_dkxoyn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602673027,
+      "isoTime": "2026-09-28T13:37:53.027Z",
+      "type": "text",
+      "text": "😎",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 57,
+      "msgId": "msg_1790602675411_v2lmuo",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602676368,
+      "isoTime": "2026-09-28T13:37:56.368Z",
+      "type": "text",
+      "text": "topper hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 58,
+      "msgId": "msg_1790602680159_gowm6l",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602680337,
+      "isoTime": "2026-09-28T13:38:00.337Z",
+      "type": "text",
+      "text": "Ohhh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 59,
+      "msgId": "msg_1790602679843_nrgl0h",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602680802,
+      "isoTime": "2026-09-28T13:38:00.802Z",
+      "type": "text",
+      "text": "pta laga liya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 60,
+      "msgId": "msg_1790602692359_c8d1dh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602692537,
+      "isoTime": "2026-09-28T13:38:12.537Z",
+      "type": "text",
+      "text": "Aree nahi yaar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 61,
+      "msgId": "msg_1790602695359_k5y082",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602696317,
+      "isoTime": "2026-09-28T13:38:16.317Z",
+      "type": "text",
+      "text": "abb bass thoda sa pta chal jaye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 62,
+      "msgId": "msg_1790602703591_0khxi4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602703767,
+      "isoTime": "2026-09-28T13:38:23.767Z",
+      "type": "text",
+      "text": "Maheshwar nahi bataunga par",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 63,
+      "msgId": "msg_1790602715402_pkg2x4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602716383,
+      "isoTime": "2026-09-28T13:38:36.383Z",
+      "type": "text",
+      "text": "usko aane do to school",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 64,
+      "msgId": "msg_1790602723805_n23v3c",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602724772,
+      "isoTime": "2026-09-28T13:38:44.772Z",
+      "type": "text",
+      "text": "uski aatma bhi bolegi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 65,
+      "msgId": "msg_1790602726997_7y6was",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602727174,
+      "isoTime": "2026-09-28T13:38:47.174Z",
+      "type": "text",
+      "text": "Kisko",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 66,
+      "msgId": "msg_1790602732764_xtf9eu",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602732942,
+      "isoTime": "2026-09-28T13:38:52.942Z",
+      "type": "text",
+      "text": "Areeeeee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 67,
+      "msgId": "msg_1790602732004_9hmxgi",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602732963,
+      "isoTime": "2026-09-28T13:38:52.963Z",
+      "type": "text",
+      "text": "maheswarko",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 68,
+      "msgId": "msg_1790602745618_n2qg45",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602745797,
+      "isoTime": "2026-09-28T13:39:05.797Z",
+      "type": "text",
+      "text": "Woh nahi batane wala bhaiyaaaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 69,
+      "msgId": "msg_1790602749665_3sm36b",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602749847,
+      "isoTime": "2026-09-28T13:39:09.847Z",
+      "type": "text",
+      "text": "Aree sorry",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 70,
+      "msgId": "msg_1790602759526_3l12pz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602760513,
+      "isoTime": "2026-09-28T13:39:20.513Z",
+      "type": "text",
+      "text": "mai kal rakhi leke aatahu",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Woh nahi batane wala bhaiyaaaaa",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 71,
+      "msgId": "msg_1790602762377_9bltuh",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602763333,
+      "isoTime": "2026-09-28T13:39:23.333Z",
+      "type": "text",
+      "text": "band dena",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 72,
+      "msgId": "msg_1790602766077_jz23yd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602767032,
+      "isoTime": "2026-09-28T13:39:27.032Z",
+      "type": "text",
+      "text": "🎉🎉",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 73,
+      "msgId": "msg_1790602770236_hrkfmw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602770412,
+      "isoTime": "2026-09-28T13:39:30.412Z",
+      "type": "text",
+      "text": "Aree sorry naaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 74,
+      "msgId": "msg_1790602774234_ylityg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602774407,
+      "isoTime": "2026-09-28T13:39:34.407Z",
+      "type": "text",
+      "text": "Adat bani hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 75,
+      "msgId": "msg_1790602778175_ritebq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602779133,
+      "isoTime": "2026-09-28T13:39:39.133Z",
+      "type": "text",
+      "text": "ye 1st time to hai nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 76,
+      "msgId": "msg_1790602793403_npoirs",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602793582,
+      "isoTime": "2026-09-28T13:39:53.582Z",
+      "type": "text",
+      "text": "Areee adat hai meri",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 77,
+      "msgId": "msg_1790602803644_qsikng",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602804613,
+      "isoTime": "2026-09-28T13:40:04.613Z",
+      "type": "text",
+      "text": "to sudaro",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 78,
+      "msgId": "msg_1790602806196_m3e77y",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602806372,
+      "isoTime": "2026-09-28T13:40:06.372Z",
+      "type": "text",
+      "text": "Sabse bhaiya bro bro karke baat karti hu isliye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 79,
+      "msgId": "msg_1790602822052_vrq9lh",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602823023,
+      "isoTime": "2026-09-28T13:40:23.023Z",
+      "type": "text",
+      "text": "mtlb , loyal to ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 80,
+      "msgId": "msg_1790602825005_5ezurs",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602825983,
+      "isoTime": "2026-09-28T13:40:25.983Z",
+      "type": "text",
+      "text": "kisi ke liye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 81,
+      "msgId": "msg_1790602827565_dmhohr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602827742,
+      "isoTime": "2026-09-28T13:40:27.742Z",
+      "type": "text",
+      "text": "Areeee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 82,
+      "msgId": "msg_1790602829810_ev33nl",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602829987,
+      "isoTime": "2026-09-28T13:40:29.987Z",
+      "type": "text",
+      "text": "Areee .",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 83,
+      "msgId": "msg_1790602833065_e2g5rg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602833247,
+      "isoTime": "2026-09-28T13:40:33.247Z",
+      "type": "text",
+      "text": "Sharmaa gayiiii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 84,
+      "msgId": "msg_1790602839984_i19mdm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602840162,
+      "isoTime": "2026-09-28T13:40:40.162Z",
+      "type": "text",
+      "text": "Par kuch bhi karlo nahi jaan launge",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 85,
+      "msgId": "msg_1790602842243_qzjr7n",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602842422,
+      "isoTime": "2026-09-28T13:40:42.422Z",
+      "type": "text",
+      "text": "Paunge",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 86,
+      "msgId": "msg_1790602851529_44x52g",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602851707,
+      "isoTime": "2026-09-28T13:40:51.707Z",
+      "type": "text",
+      "text": "Koi kuch nahi bataye ga woh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 87,
+      "msgId": "msg_1790602860739_545g5v",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602861718,
+      "isoTime": "2026-09-28T13:41:01.718Z",
+      "type": "text",
+      "text": "to bass itna",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 88,
+      "msgId": "msg_1790602861731_klbg3e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602862693,
+      "isoTime": "2026-09-28T13:41:02.693Z",
+      "type": "text",
+      "text": "bta",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 89,
+      "msgId": "msg_1790602863000_dgxjz7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602863963,
+      "isoTime": "2026-09-28T13:41:03.963Z",
+      "type": "text",
+      "text": "do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 90,
+      "msgId": "msg_1790602868184_4bi8pa",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602869137,
+      "isoTime": "2026-09-28T13:41:09.137Z",
+      "type": "text",
+      "text": "ki maheswar janta hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 91,
+      "msgId": "msg_1790602869542_b16mdw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602870493,
+      "isoTime": "2026-09-28T13:41:10.493Z",
+      "type": "text",
+      "text": "tumhe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 92,
+      "msgId": "msg_1790602875171_7yla7i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602876122,
+      "isoTime": "2026-09-28T13:41:16.122Z",
+      "type": "text",
+      "text": "ki tum mujhse vo karti ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 93,
+      "msgId": "msg_1790602881081_sc917n",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602881256,
+      "isoTime": "2026-09-28T13:41:21.256Z",
+      "type": "text",
+      "text": "Kyo batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 94,
+      "msgId": "msg_1790602885872_qig5o4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602886828,
+      "isoTime": "2026-09-28T13:41:26.828Z",
+      "type": "text",
+      "text": "plzz",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 95,
+      "msgId": "msg_1790602893019_opsisk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602893197,
+      "isoTime": "2026-09-28T13:41:33.197Z",
+      "type": "text",
+      "text": "Naah ji naaaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 96,
+      "msgId": "msg_1790602893789_xur1ky",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602894758,
+      "isoTime": "2026-09-28T13:41:34.758Z",
+      "type": "text",
+      "text": "plzz bol raha hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 97,
+      "msgId": "msg_1790602896595_l2nb5e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602897547,
+      "isoTime": "2026-09-28T13:41:37.547Z",
+      "type": "text",
+      "text": "bta do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 98,
+      "msgId": "msg_1790602899614_mlgaue",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602899807,
+      "isoTime": "2026-09-28T13:41:39.807Z",
+      "type": "text",
+      "text": "Tum khatarnak vyakti ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 99,
+      "msgId": "msg_1790602907202_4vj3r1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602908168,
+      "isoTime": "2026-09-28T13:41:48.168Z",
+      "type": "text",
+      "text": "yahi dosti , yahi pyaarr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 100,
+      "msgId": "msg_1790602913343_566uq0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602913522,
+      "isoTime": "2026-09-28T13:41:53.522Z",
+      "type": "text",
+      "text": "Dosttiiiii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 101,
+      "msgId": "msg_1790602916749_i7x4xl",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602916932,
+      "isoTime": "2026-09-28T13:41:56.932Z",
+      "type": "text",
+      "text": "Nahi pyaaaarrrrrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 102,
+      "msgId": "msg_1790602931594_lvumph",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602932554,
+      "isoTime": "2026-09-28T13:42:12.554Z",
+      "type": "text",
+      "text": "ha to jo bhi hai , !!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 103,
+      "msgId": "msg_1790602933463_u2ld08",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602934417,
+      "isoTime": "2026-09-28T13:42:14.417Z",
+      "type": "text",
+      "text": "bta do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 104,
+      "msgId": "msg_1790602944120_mzgk08",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602945083,
+      "isoTime": "2026-09-28T13:42:25.083Z",
+      "type": "text",
+      "text": "mai kind hearted tha",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Tum khatarnak vyakti ho",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 105,
+      "msgId": "msg_1790602945066_juwuot",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602945247,
+      "isoTime": "2026-09-28T13:42:25.247Z",
+      "type": "text",
+      "text": "Nah nah woh pil gaya toh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 106,
+      "msgId": "msg_1790602945448_28l363",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602946408,
+      "isoTime": "2026-09-28T13:42:26.408Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 107,
+      "msgId": "msg_1790602953676_vfa20q",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602954638,
+      "isoTime": "2026-09-28T13:42:34.638Z",
+      "type": "text",
+      "text": "usko kuch nahi hoga",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Nah nah woh pil gaya toh",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 108,
+      "msgId": "msg_1790602956004_9cask9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602956182,
+      "isoTime": "2026-09-28T13:42:36.182Z",
+      "type": "text",
+      "text": "Uske ke liye nahi rahonge",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "mai kind hearted tha",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 109,
+      "msgId": "msg_1790602973710_6p3h6b",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602974673,
+      "isoTime": "2026-09-28T13:42:54.673Z",
+      "type": "text",
+      "text": "to bta do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 110,
+      "msgId": "msg_1790602978158_aq3umk",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602979123,
+      "isoTime": "2026-09-28T13:42:59.123Z",
+      "type": "text",
+      "text": "just imagine",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 111,
+      "msgId": "msg_1790602982566_v3ktsk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790602982737,
+      "isoTime": "2026-09-28T13:43:02.737Z",
+      "type": "text",
+      "text": "Nahh me na batane wali",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 112,
+      "msgId": "msg_1790602992905_wxmfan",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790602993873,
+      "isoTime": "2026-09-28T13:43:13.873Z",
+      "type": "text",
+      "text": "ki tum jisko pasand karti ho vo tumhe dhundta hua aata hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 113,
+      "msgId": "msg_1790603005327_xhe8i3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603005508,
+      "isoTime": "2026-09-28T13:43:25.508Z",
+      "type": "text",
+      "text": "Naaa jinmaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 114,
+      "msgId": "msg_1790603025089_c2maxd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603026068,
+      "isoTime": "2026-09-28T13:43:46.068Z",
+      "type": "text",
+      "text": "kya  , mai nahi aau",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 115,
+      "msgId": "msg_1790603032577_gy5d4h",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603033553,
+      "isoTime": "2026-09-28T13:43:53.553Z",
+      "type": "text",
+      "text": "tum soch kyu nahi rahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 116,
+      "msgId": "msg_1790603038204_z8ohn9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603039163,
+      "isoTime": "2026-09-28T13:43:59.163Z",
+      "type": "text",
+      "text": "tum lunch kar rahi ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 117,
+      "msgId": "msg_1790603039101_7d5vnj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603040058,
+      "isoTime": "2026-09-28T13:44:00.058Z",
+      "type": "text",
+      "text": "aur",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 118,
+      "msgId": "msg_1790603040956_dl76yc",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603041933,
+      "isoTime": "2026-09-28T13:44:01.933Z",
+      "type": "text",
+      "text": "mai aau",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 119,
+      "msgId": "msg_1790603046754_e9d98a",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603047728,
+      "isoTime": "2026-09-28T13:44:07.728Z",
+      "type": "text",
+      "text": "tumhare group me",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 120,
+      "msgId": "msg_1790603051708_okyobb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603051898,
+      "isoTime": "2026-09-28T13:44:11.898Z",
+      "type": "text",
+      "text": "Areee areeee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 121,
+      "msgId": "msg_1790603052150_eggjsi",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603053112,
+      "isoTime": "2026-09-28T13:44:13.112Z",
+      "type": "text",
+      "text": "aur sabb bol du",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 122,
+      "msgId": "msg_1790603058376_iug66c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603058562,
+      "isoTime": "2026-09-28T13:44:18.562Z",
+      "type": "text",
+      "text": "Kacchii gili kardi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 123,
+      "msgId": "msg_1790603059662_4pfe01",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603059847,
+      "isoTime": "2026-09-28T13:44:19.847Z",
+      "type": "text",
+      "text": "Buss",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 124,
+      "msgId": "msg_1790603067436_4j6i8m",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603068412,
+      "isoTime": "2026-09-28T13:44:28.412Z",
+      "type": "text",
+      "text": "??hein",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 125,
+      "msgId": "msg_1790603076615_bj7qbs",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603076792,
+      "isoTime": "2026-09-28T13:44:36.792Z",
+      "type": "text",
+      "text": "Kuch nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 126,
+      "msgId": "msg_1790603077695_wl6tj0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603077892,
+      "isoTime": "2026-09-28T13:44:37.892Z",
+      "type": "text",
+      "text": "https://www.instagram.com/reel/Ddywf7ytEfl/?stkn=emU3dzlnOXV3aHZk",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 127,
+      "msgId": "msg_1790603131503_eucsd0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603131682,
+      "isoTime": "2026-09-28T13:45:31.682Z",
+      "type": "text",
+      "text": "Aree yaar sharma jati hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 128,
+      "msgId": "msg_1790603140701_v9shv5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603141663,
+      "isoTime": "2026-09-28T13:45:41.663Z",
+      "type": "text",
+      "text": "oye!!",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "Kacchii gili kardi",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 129,
+      "msgId": "msg_1790603147784_ln6mat",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603147962,
+      "isoTime": "2026-09-28T13:45:47.962Z",
+      "type": "text",
+      "text": "Hehehehehe",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "oye!!",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 130,
+      "msgId": "msg_1790603155864_frla9y",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603156837,
+      "isoTime": "2026-09-28T13:45:56.837Z",
+      "type": "text",
+      "text": "ye sab gandi baat ya word mat likha karo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 131,
+      "msgId": "msg_1790603168598_vf475l",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603169573,
+      "isoTime": "2026-09-28T13:46:09.573Z",
+      "type": "text",
+      "text": "thoda sa manners hota hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 132,
+      "msgId": "msg_1790603170400_3t9aos",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603170572,
+      "isoTime": "2026-09-28T13:46:10.572Z",
+      "type": "text",
+      "text": "Aree slang hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 133,
+      "msgId": "msg_1790603190763_mok4gr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603191733,
+      "isoTime": "2026-09-28T13:46:31.733Z",
+      "type": "text",
+      "text": "thode acche slang use karlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 134,
+      "msgId": "msg_1790603209812_qtj6jn",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603209997,
+      "isoTime": "2026-09-28T13:46:49.997Z",
+      "type": "text",
+      "text": "Areeee areee kuch jyada hi reddit chala liya na",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 135,
+      "msgId": "msg_1790603214168_5i6ciz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603215133,
+      "isoTime": "2026-09-28T13:46:55.133Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 136,
+      "msgId": "msg_1790603222916_etfiu7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603223913,
+      "isoTime": "2026-09-28T13:47:03.913Z",
+      "type": "text",
+      "text": "tabhi to bola hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 137,
+      "msgId": "msg_1790603242722_gq2i34",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603243703,
+      "isoTime": "2026-09-28T13:47:23.703Z",
+      "type": "text",
+      "text": "ek to yr kritika , mujhe marrdalegi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 138,
+      "msgId": "msg_1790603249365_gm0bsq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603250332,
+      "isoTime": "2026-09-28T13:47:30.332Z",
+      "type": "text",
+      "text": "10+ message kardi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 139,
+      "msgId": "msg_1790603252445_v27ugv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603252622,
+      "isoTime": "2026-09-28T13:47:32.622Z",
+      "type": "text",
+      "text": "Kyu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 140,
+      "msgId": "msg_1790603257497_43i1r1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603257672,
+      "isoTime": "2026-09-28T13:47:37.672Z",
+      "type": "text",
+      "text": "Wow",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 141,
+      "msgId": "msg_1790603262873_2cac8l",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603263052,
+      "isoTime": "2026-09-28T13:47:43.052Z",
+      "type": "text",
+      "text": "Jao karo ankering",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 142,
+      "msgId": "msg_1790603278560_w0a3ej",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603279528,
+      "isoTime": "2026-09-28T13:47:59.528Z",
+      "type": "text",
+      "text": "are nahi karni haimujhe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 143,
+      "msgId": "msg_1790603287277_koi29t",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603288253,
+      "isoTime": "2026-09-28T13:48:08.253Z",
+      "type": "text",
+      "text": "vo to joby sir call kiye the",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 144,
+      "msgId": "msg_1790603301780_8jl6i7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603301962,
+      "isoTime": "2026-09-28T13:48:21.962Z",
+      "type": "text",
+      "text": "Ohhh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 145,
+      "msgId": "msg_1790603313255_u916tj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603313437,
+      "isoTime": "2026-09-28T13:48:33.437Z",
+      "type": "text",
+      "text": "Akele hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 146,
+      "msgId": "msg_1790603317135_4bs3o9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790603317318,
+      "isoTime": "2026-09-28T13:48:37.318Z",
+      "type": "text",
+      "text": "Mere sath karlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 147,
+      "msgId": "msg_1790603327622_isaha3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790603328593,
+      "isoTime": "2026-09-28T13:48:48.593Z",
+      "type": "text",
+      "text": "are abhi 18 ke nahi hue",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Haaa"
+      },
+      {
+        "role": "assistant",
+        "content": "hu"
+      },
+      {
+        "role": "assistant",
+        "content": "ho gyi baat"
+      },
+      {
+        "role": "user",
+        "content": "Haaaa"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch padha"
+      },
+      {
+        "role": "assistant",
+        "content": "?"
+      },
+      {
+        "role": "user",
+        "content": "Haaa"
+      },
+      {
+        "role": "assistant",
+        "content": "kya"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Math"
+      },
+      {
+        "role": "user",
+        "content": "Ch7"
+      },
+      {
+        "role": "user",
+        "content": "7.1"
+      },
+      {
+        "role": "user",
+        "content": "Pura"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "assistant",
+        "content": "agli baar top karne ki socha hai kya"
+      },
+      {
+        "role": "user",
+        "content": "And social"
+      },
+      {
+        "role": "assistant",
+        "content": "!!"
+      },
+      {
+        "role": "user",
+        "content": "Nahhh"
+      },
+      {
+        "role": "assistant",
+        "content": "are yrr bass karo itna to mai bhi nahi padha"
+      },
+      {
+        "role": "assistant",
+        "content": "kya hui"
+      },
+      {
+        "role": "user",
+        "content": "Naah"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi , 2 October ki assembly ke liye jaan khai hai kritika"
+      },
+      {
+        "role": "user",
+        "content": "Ohh"
+      },
+      {
+        "role": "assistant",
+        "content": "usko quotes chaiye mujhse"
+      },
+      {
+        "role": "user",
+        "content": "Ohh"
+      },
+      {
+        "role": "assistant",
+        "content": "aur usko abhi pta nahi ki mai tumse chat karr raha hu"
+      },
+      {
+        "role": "assistant",
+        "content": "to"
+      },
+      {
+        "role": "assistant",
+        "content": "vo meri aur avika ki setting karwa rahi hai"
+      },
+      {
+        "role": "user",
+        "content": "Ohhh"
+      },
+      {
+        "role": "assistant",
+        "content": "bol rahi hai ki mai aur avika sath me quotes bolenge"
+      },
+      {
+        "role": "assistant",
+        "content": "abb mai mna to kardu , but abhi kuch clear nahi hai"
+      },
+      {
+        "role": "assistant",
+        "content": "!!"
+      },
+      {
+        "role": "user",
+        "content": "Jo tumhen Sahi lagi karo"
+      },
+      {
+        "role": "assistant",
+        "content": "mera dimag kaam nahi kiya karta"
+      },
+      {
+        "role": "assistant",
+        "content": "tabhi to"
+      },
+      {
+        "role": "user",
+        "content": "Main bhi karne wali ki per Tum Jaan jaate"
+      },
+      {
+        "role": "assistant",
+        "content": "tumse puch raha"
+      },
+      {
+        "role": "assistant",
+        "content": "sentence acche se frame karo"
+      },
+      {
+        "role": "user",
+        "content": "Main bhi participate karne wali Thi but Maine nahin kiya"
+      },
+      {
+        "role": "assistant",
+        "content": "tum hamari class ki ho!!"
+      },
+      {
+        "role": "assistant",
+        "content": "😊😊"
+      },
+      {
+        "role": "user",
+        "content": "Nahh"
+      },
+      {
+        "role": "assistant",
+        "content": "fir kaise part leti"
+      },
+      {
+        "role": "user",
+        "content": "Are abhi kuchh nahin kuchh nahin kuchh nahin kuchh nahin kuchh nahin"
+      },
+      {
+        "role": "assistant",
+        "content": "nahi , mujhe kyu lagg raha hai ki tum hamari class ki ho"
+      },
+      {
+        "role": "assistant",
+        "content": "patli bhi to"
+      },
+      {
+        "role": "assistant",
+        "content": "tum"
+      },
+      {
+        "role": "assistant",
+        "content": "aur height bhi hai"
+      },
+      {
+        "role": "user",
+        "content": "Are nahin nahin nahin nahin nahin"
+      },
+      {
+        "role": "assistant",
+        "content": "agar left side dekhti ho"
+      },
+      {
+        "role": "assistant",
+        "content": "to neck se bone samajh aati hai"
+      },
+      {
+        "role": "user",
+        "content": "Are yaar tu kya baat kar rahe ho chi chi chi"
+      },
+      {
+        "role": "assistant",
+        "content": "itna bol rahi hoto , means ki meri classk ki hi ho"
+      },
+      {
+        "role": "user",
+        "content": "Are nahin nahi"
+      },
+      {
+        "role": "assistant",
+        "content": "are , ganda sense matt nikalo"
+      },
+      {
+        "role": "assistant",
+        "content": "😎"
+      },
+      {
+        "role": "assistant",
+        "content": "topper hu"
+      },
+      {
+        "role": "user",
+        "content": "Ohhh"
+      },
+      {
+        "role": "assistant",
+        "content": "pta laga liya"
+      },
+      {
+        "role": "user",
+        "content": "Aree nahi yaar"
+      },
+      {
+        "role": "assistant",
+        "content": "abb bass thoda sa pta chal jaye"
+      },
+      {
+        "role": "user",
+        "content": "Maheshwar nahi bataunga par"
+      },
+      {
+        "role": "assistant",
+        "content": "usko aane do to school"
+      },
+      {
+        "role": "assistant",
+        "content": "uski aatma bhi bolegi"
+      },
+      {
+        "role": "user",
+        "content": "Kisko"
+      },
+      {
+        "role": "user",
+        "content": "Areeeeee"
+      },
+      {
+        "role": "assistant",
+        "content": "maheswarko"
+      },
+      {
+        "role": "user",
+        "content": "Woh nahi batane wala bhaiyaaaaa"
+      },
+      {
+        "role": "user",
+        "content": "Aree sorry"
+      },
+      {
+        "role": "assistant",
+        "content": "mai kal rakhi leke aatahu"
+      },
+      {
+        "role": "assistant",
+        "content": "band dena"
+      },
+      {
+        "role": "assistant",
+        "content": "🎉🎉"
+      },
+      {
+        "role": "user",
+        "content": "Aree sorry naaaa"
+      },
+      {
+        "role": "user",
+        "content": "Adat bani hai"
+      },
+      {
+        "role": "assistant",
+        "content": "ye 1st time to hai nahi"
+      },
+      {
+        "role": "user",
+        "content": "Areee adat hai meri"
+      },
+      {
+        "role": "assistant",
+        "content": "to sudaro"
+      },
+      {
+        "role": "user",
+        "content": "Sabse bhaiya bro bro karke baat karti hu isliye"
+      },
+      {
+        "role": "assistant",
+        "content": "mtlb , loyal to ho"
+      },
+      {
+        "role": "assistant",
+        "content": "kisi ke liye"
+      },
+      {
+        "role": "user",
+        "content": "Areeee"
+      },
+      {
+        "role": "user",
+        "content": "Areee ."
+      },
+      {
+        "role": "user",
+        "content": "Sharmaa gayiiii"
+      },
+      {
+        "role": "user",
+        "content": "Par kuch bhi karlo nahi jaan launge"
+      },
+      {
+        "role": "user",
+        "content": "Paunge"
+      },
+      {
+        "role": "user",
+        "content": "Koi kuch nahi bataye ga woh"
+      },
+      {
+        "role": "assistant",
+        "content": "to bass itna"
+      },
+      {
+        "role": "assistant",
+        "content": "bta"
+      },
+      {
+        "role": "assistant",
+        "content": "do"
+      },
+      {
+        "role": "assistant",
+        "content": "ki maheswar janta hai"
+      },
+      {
+        "role": "assistant",
+        "content": "tumhe"
+      },
+      {
+        "role": "assistant",
+        "content": "ki tum mujhse vo karti ho"
+      },
+      {
+        "role": "user",
+        "content": "Kyo batao"
+      },
+      {
+        "role": "assistant",
+        "content": "plzz"
+      },
+      {
+        "role": "user",
+        "content": "Naah ji naaaaa"
+      },
+      {
+        "role": "assistant",
+        "content": "plzz bol raha hu"
+      },
+      {
+        "role": "assistant",
+        "content": "bta do"
+      },
+      {
+        "role": "user",
+        "content": "Tum khatarnak vyakti ho"
+      },
+      {
+        "role": "assistant",
+        "content": "yahi dosti , yahi pyaarr"
+      },
+      {
+        "role": "user",
+        "content": "Dosttiiiii"
+      },
+      {
+        "role": "user",
+        "content": "Nahi pyaaaarrrrrr"
+      },
+      {
+        "role": "assistant",
+        "content": "ha to jo bhi hai , !!"
+      },
+      {
+        "role": "assistant",
+        "content": "bta do"
+      },
+      {
+        "role": "assistant",
+        "content": "mai kind hearted tha"
+      },
+      {
+        "role": "user",
+        "content": "Nah nah woh pil gaya toh"
+      },
+      {
+        "role": "assistant",
+        "content": "!!"
+      },
+      {
+        "role": "assistant",
+        "content": "usko kuch nahi hoga"
+      },
+      {
+        "role": "user",
+        "content": "Uske ke liye nahi rahonge"
+      },
+      {
+        "role": "assistant",
+        "content": "to bta do"
+      },
+      {
+        "role": "assistant",
+        "content": "just imagine"
+      },
+      {
+        "role": "user",
+        "content": "Nahh me na batane wali"
+      },
+      {
+        "role": "assistant",
+        "content": "ki tum jisko pasand karti ho vo tumhe dhundta hua aata hai"
+      },
+      {
+        "role": "user",
+        "content": "Naaa jinmaaa"
+      },
+      {
+        "role": "assistant",
+        "content": "kya  , mai nahi aau"
+      },
+      {
+        "role": "assistant",
+        "content": "tum soch kyu nahi rahi"
+      },
+      {
+        "role": "assistant",
+        "content": "tum lunch kar rahi ho"
+      },
+      {
+        "role": "assistant",
+        "content": "aur"
+      },
+      {
+        "role": "assistant",
+        "content": "mai aau"
+      },
+      {
+        "role": "assistant",
+        "content": "tumhare group me"
+      },
+      {
+        "role": "user",
+        "content": "Areee areeee"
+      },
+      {
+        "role": "assistant",
+        "content": "aur sabb bol du"
+      },
+      {
+        "role": "user",
+        "content": "Kacchii gili kardi"
+      },
+      {
+        "role": "user",
+        "content": "Buss"
+      },
+      {
+        "role": "assistant",
+        "content": "??hein"
+      },
+      {
+        "role": "user",
+        "content": "Kuch nahi"
+      },
+      {
+        "role": "user",
+        "content": "https://www.instagram.com/reel/Ddywf7ytEfl/?stkn=emU3dzlnOXV3aHZk"
+      },
+      {
+        "role": "user",
+        "content": "Aree yaar sharma jati hu"
+      },
+      {
+        "role": "assistant",
+        "content": "oye!!"
+      },
+      {
+        "role": "user",
+        "content": "Hehehehehe"
+      },
+      {
+        "role": "assistant",
+        "content": "ye sab gandi baat ya word mat likha karo"
+      },
+      {
+        "role": "assistant",
+        "content": "thoda sa manners hota hai"
+      },
+      {
+        "role": "user",
+        "content": "Aree slang hai"
+      },
+      {
+        "role": "assistant",
+        "content": "thode acche slang use karlo"
+      },
+      {
+        "role": "user",
+        "content": "Areeee areee kuch jyada hi reddit chala liya na"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "assistant",
+        "content": "tabhi to bola hu"
+      },
+      {
+        "role": "assistant",
+        "content": "ek to yr kritika , mujhe marrdalegi"
+      },
+      {
+        "role": "assistant",
+        "content": "10+ message kardi hai"
+      },
+      {
+        "role": "user",
+        "content": "Kyu"
+      },
+      {
+        "role": "user",
+        "content": "Wow"
+      },
+      {
+        "role": "user",
+        "content": "Jao karo ankering"
+      },
+      {
+        "role": "assistant",
+        "content": "are nahi karni haimujhe"
+      },
+      {
+        "role": "assistant",
+        "content": "vo to joby sir call kiye the"
+      },
+      {
+        "role": "user",
+        "content": "Ohhh"
+      },
+      {
+        "role": "user",
+        "content": "Akele hai"
+      },
+      {
+        "role": "user",
+        "content": "Mere sath karlo"
+      },
+      {
+        "role": "assistant",
+        "content": "are abhi 18 ke nahi hue"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Haaa"
+      },
+      {
+        "from": "gpt",
+        "value": "hu"
+      },
+      {
+        "from": "gpt",
+        "value": "ho gyi baat"
+      },
+      {
+        "from": "human",
+        "value": "Haaaa"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch padha"
+      },
+      {
+        "from": "gpt",
+        "value": "?"
+      },
+      {
+        "from": "human",
+        "value": "Haaa"
+      },
+      {
+        "from": "gpt",
+        "value": "kya"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Math"
+      },
+      {
+        "from": "human",
+        "value": "Ch7"
+      },
+      {
+        "from": "human",
+        "value": "7.1"
+      },
+      {
+        "from": "human",
+        "value": "Pura"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "gpt",
+        "value": "agli baar top karne ki socha hai kya"
+      },
+      {
+        "from": "human",
+        "value": "And social"
+      },
+      {
+        "from": "gpt",
+        "value": "!!"
+      },
+      {
+        "from": "human",
+        "value": "Nahhh"
+      },
+      {
+        "from": "gpt",
+        "value": "are yrr bass karo itna to mai bhi nahi padha"
+      },
+      {
+        "from": "gpt",
+        "value": "kya hui"
+      },
+      {
+        "from": "human",
+        "value": "Naah"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi , 2 October ki assembly ke liye jaan khai hai kritika"
+      },
+      {
+        "from": "human",
+        "value": "Ohh"
+      },
+      {
+        "from": "gpt",
+        "value": "usko quotes chaiye mujhse"
+      },
+      {
+        "from": "human",
+        "value": "Ohh"
+      },
+      {
+        "from": "gpt",
+        "value": "aur usko abhi pta nahi ki mai tumse chat karr raha hu"
+      },
+      {
+        "from": "gpt",
+        "value": "to"
+      },
+      {
+        "from": "gpt",
+        "value": "vo meri aur avika ki setting karwa rahi hai"
+      },
+      {
+        "from": "human",
+        "value": "Ohhh"
+      },
+      {
+        "from": "gpt",
+        "value": "bol rahi hai ki mai aur avika sath me quotes bolenge"
+      },
+      {
+        "from": "gpt",
+        "value": "abb mai mna to kardu , but abhi kuch clear nahi hai"
+      },
+      {
+        "from": "gpt",
+        "value": "!!"
+      },
+      {
+        "from": "human",
+        "value": "Jo tumhen Sahi lagi karo"
+      },
+      {
+        "from": "gpt",
+        "value": "mera dimag kaam nahi kiya karta"
+      },
+      {
+        "from": "gpt",
+        "value": "tabhi to"
+      },
+      {
+        "from": "human",
+        "value": "Main bhi karne wali ki per Tum Jaan jaate"
+      },
+      {
+        "from": "gpt",
+        "value": "tumse puch raha"
+      },
+      {
+        "from": "gpt",
+        "value": "sentence acche se frame karo"
+      },
+      {
+        "from": "human",
+        "value": "Main bhi participate karne wali Thi but Maine nahin kiya"
+      },
+      {
+        "from": "gpt",
+        "value": "tum hamari class ki ho!!"
+      },
+      {
+        "from": "gpt",
+        "value": "😊😊"
+      },
+      {
+        "from": "human",
+        "value": "Nahh"
+      },
+      {
+        "from": "gpt",
+        "value": "fir kaise part leti"
+      },
+      {
+        "from": "human",
+        "value": "Are abhi kuchh nahin kuchh nahin kuchh nahin kuchh nahin kuchh nahin"
+      },
+      {
+        "from": "gpt",
+        "value": "nahi , mujhe kyu lagg raha hai ki tum hamari class ki ho"
+      },
+      {
+        "from": "gpt",
+        "value": "patli bhi to"
+      },
+      {
+        "from": "gpt",
+        "value": "tum"
+      },
+      {
+        "from": "gpt",
+        "value": "aur height bhi hai"
+      },
+      {
+        "from": "human",
+        "value": "Are nahin nahin nahin nahin nahin"
+      },
+      {
+        "from": "gpt",
+        "value": "agar left side dekhti ho"
+      },
+      {
+        "from": "gpt",
+        "value": "to neck se bone samajh aati hai"
+      },
+      {
+        "from": "human",
+        "value": "Are yaar tu kya baat kar rahe ho chi chi chi"
+      },
+      {
+        "from": "gpt",
+        "value": "itna bol rahi hoto , means ki meri classk ki hi ho"
+      },
+      {
+        "from": "human",
+        "value": "Are nahin nahi"
+      },
+      {
+        "from": "gpt",
+        "value": "are , ganda sense matt nikalo"
+      },
+      {
+        "from": "gpt",
+        "value": "😎"
+      },
+      {
+        "from": "gpt",
+        "value": "topper hu"
+      },
+      {
+        "from": "human",
+        "value": "Ohhh"
+      },
+      {
+        "from": "gpt",
+        "value": "pta laga liya"
+      },
+      {
+        "from": "human",
+        "value": "Aree nahi yaar"
+      },
+      {
+        "from": "gpt",
+        "value": "abb bass thoda sa pta chal jaye"
+      },
+      {
+        "from": "human",
+        "value": "Maheshwar nahi bataunga par"
+      },
+      {
+        "from": "gpt",
+        "value": "usko aane do to school"
+      },
+      {
+        "from": "gpt",
+        "value": "uski aatma bhi bolegi"
+      },
+      {
+        "from": "human",
+        "value": "Kisko"
+      },
+      {
+        "from": "human",
+        "value": "Areeeeee"
+      },
+      {
+        "from": "gpt",
+        "value": "maheswarko"
+      },
+      {
+        "from": "human",
+        "value": "Woh nahi batane wala bhaiyaaaaa"
+      },
+      {
+        "from": "human",
+        "value": "Aree sorry"
+      },
+      {
+        "from": "gpt",
+        "value": "mai kal rakhi leke aatahu"
+      },
+      {
+        "from": "gpt",
+        "value": "band dena"
+      },
+      {
+        "from": "gpt",
+        "value": "🎉🎉"
+      },
+      {
+        "from": "human",
+        "value": "Aree sorry naaaa"
+      },
+      {
+        "from": "human",
+        "value": "Adat bani hai"
+      },
+      {
+        "from": "gpt",
+        "value": "ye 1st time to hai nahi"
+      },
+      {
+        "from": "human",
+        "value": "Areee adat hai meri"
+      },
+      {
+        "from": "gpt",
+        "value": "to sudaro"
+      },
+      {
+        "from": "human",
+        "value": "Sabse bhaiya bro bro karke baat karti hu isliye"
+      },
+      {
+        "from": "gpt",
+        "value": "mtlb , loyal to ho"
+      },
+      {
+        "from": "gpt",
+        "value": "kisi ke liye"
+      },
+      {
+        "from": "human",
+        "value": "Areeee"
+      },
+      {
+        "from": "human",
+        "value": "Areee ."
+      },
+      {
+        "from": "human",
+        "value": "Sharmaa gayiiii"
+      },
+      {
+        "from": "human",
+        "value": "Par kuch bhi karlo nahi jaan launge"
+      },
+      {
+        "from": "human",
+        "value": "Paunge"
+      },
+      {
+        "from": "human",
+        "value": "Koi kuch nahi bataye ga woh"
+      },
+      {
+        "from": "gpt",
+        "value": "to bass itna"
+      },
+      {
+        "from": "gpt",
+        "value": "bta"
+      },
+      {
+        "from": "gpt",
+        "value": "do"
+      },
+      {
+        "from": "gpt",
+        "value": "ki maheswar janta hai"
+      },
+      {
+        "from": "gpt",
+        "value": "tumhe"
+      },
+      {
+        "from": "gpt",
+        "value": "ki tum mujhse vo karti ho"
+      },
+      {
+        "from": "human",
+        "value": "Kyo batao"
+      },
+      {
+        "from": "gpt",
+        "value": "plzz"
+      },
+      {
+        "from": "human",
+        "value": "Naah ji naaaaa"
+      },
+      {
+        "from": "gpt",
+        "value": "plzz bol raha hu"
+      },
+      {
+        "from": "gpt",
+        "value": "bta do"
+      },
+      {
+        "from": "human",
+        "value": "Tum khatarnak vyakti ho"
+      },
+      {
+        "from": "gpt",
+        "value": "yahi dosti , yahi pyaarr"
+      },
+      {
+        "from": "human",
+        "value": "Dosttiiiii"
+      },
+      {
+        "from": "human",
+        "value": "Nahi pyaaaarrrrrr"
+      },
+      {
+        "from": "gpt",
+        "value": "ha to jo bhi hai , !!"
+      },
+      {
+        "from": "gpt",
+        "value": "bta do"
+      },
+      {
+        "from": "gpt",
+        "value": "mai kind hearted tha"
+      },
+      {
+        "from": "human",
+        "value": "Nah nah woh pil gaya toh"
+      },
+      {
+        "from": "gpt",
+        "value": "!!"
+      },
+      {
+        "from": "gpt",
+        "value": "usko kuch nahi hoga"
+      },
+      {
+        "from": "human",
+        "value": "Uske ke liye nahi rahonge"
+      },
+      {
+        "from": "gpt",
+        "value": "to bta do"
+      },
+      {
+        "from": "gpt",
+        "value": "just imagine"
+      },
+      {
+        "from": "human",
+        "value": "Nahh me na batane wali"
+      },
+      {
+        "from": "gpt",
+        "value": "ki tum jisko pasand karti ho vo tumhe dhundta hua aata hai"
+      },
+      {
+        "from": "human",
+        "value": "Naaa jinmaaa"
+      },
+      {
+        "from": "gpt",
+        "value": "kya  , mai nahi aau"
+      },
+      {
+        "from": "gpt",
+        "value": "tum soch kyu nahi rahi"
+      },
+      {
+        "from": "gpt",
+        "value": "tum lunch kar rahi ho"
+      },
+      {
+        "from": "gpt",
+        "value": "aur"
+      },
+      {
+        "from": "gpt",
+        "value": "mai aau"
+      },
+      {
+        "from": "gpt",
+        "value": "tumhare group me"
+      },
+      {
+        "from": "human",
+        "value": "Areee areeee"
+      },
+      {
+        "from": "gpt",
+        "value": "aur sabb bol du"
+      },
+      {
+        "from": "human",
+        "value": "Kacchii gili kardi"
+      },
+      {
+        "from": "human",
+        "value": "Buss"
+      },
+      {
+        "from": "gpt",
+        "value": "??hein"
+      },
+      {
+        "from": "human",
+        "value": "Kuch nahi"
+      },
+      {
+        "from": "human",
+        "value": "https://www.instagram.com/reel/Ddywf7ytEfl/?stkn=emU3dzlnOXV3aHZk"
+      },
+      {
+        "from": "human",
+        "value": "Aree yaar sharma jati hu"
+      },
+      {
+        "from": "gpt",
+        "value": "oye!!"
+      },
+      {
+        "from": "human",
+        "value": "Hehehehehe"
+      },
+      {
+        "from": "gpt",
+        "value": "ye sab gandi baat ya word mat likha karo"
+      },
+      {
+        "from": "gpt",
+        "value": "thoda sa manners hota hai"
+      },
+      {
+        "from": "human",
+        "value": "Aree slang hai"
+      },
+      {
+        "from": "gpt",
+        "value": "thode acche slang use karlo"
+      },
+      {
+        "from": "human",
+        "value": "Areeee areee kuch jyada hi reddit chala liya na"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "gpt",
+        "value": "tabhi to bola hu"
+      },
+      {
+        "from": "gpt",
+        "value": "ek to yr kritika , mujhe marrdalegi"
+      },
+      {
+        "from": "gpt",
+        "value": "10+ message kardi hai"
+      },
+      {
+        "from": "human",
+        "value": "Kyu"
+      },
+      {
+        "from": "human",
+        "value": "Wow"
+      },
+      {
+        "from": "human",
+        "value": "Jao karo ankering"
+      },
+      {
+        "from": "gpt",
+        "value": "are nahi karni haimujhe"
+      },
+      {
+        "from": "gpt",
+        "value": "vo to joby sir call kiye the"
+      },
+      {
+        "from": "human",
+        "value": "Ohhh"
+      },
+      {
+        "from": "human",
+        "value": "Akele hai"
+      },
+      {
+        "from": "human",
+        "value": "Mere sath karlo"
+      },
+      {
+        "from": "gpt",
+        "value": "are abhi 18 ke nahi hue"
+      }
+    ]
+  }
+}
