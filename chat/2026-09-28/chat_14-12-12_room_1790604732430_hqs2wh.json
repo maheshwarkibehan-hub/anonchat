@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790604732430_hqs2wh",
+    "vibe": "Direct",
+    "date": "2026-09-28",
+    "startTime": "2026-09-28T14:12:12.430Z",
+    "endTime": "2026-09-28T14:14:51.298Z",
+    "durationSeconds": 159,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790604736848_7sdovj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790604737024,
+      "isoTime": "2026-09-28T14:12:17.024Z",
+      "type": "text",
+      "text": "Hi kisse",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790604740992_7j1w8b",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790604741181,
+      "isoTime": "2026-09-28T14:12:21.181Z",
+      "type": "text",
+      "text": "Baat kar rahe the",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790604754897_arcofg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790604755084,
+      "isoTime": "2026-09-28T14:12:35.084Z",
+      "type": "text",
+      "text": "Code",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790604887743_gowtd0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790604887924,
+      "isoTime": "2026-09-28T14:14:47.924Z",
+      "type": "text",
+      "text": "Acccha ja rahi hu byeeee",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hi kisse"
+      },
+      {
+        "role": "user",
+        "content": "Baat kar rahe the"
+      },
+      {
+        "role": "user",
+        "content": "Code"
+      },
+      {
+        "role": "user",
+        "content": "Acccha ja rahi hu byeeee"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hi kisse"
+      },
+      {
+        "from": "human",
+        "value": "Baat kar rahe the"
+      },
+      {
+        "from": "human",
+        "value": "Code"
+      },
+      {
+        "from": "human",
+        "value": "Acccha ja rahi hu byeeee"
+      }
+    ]
+  }
+}
