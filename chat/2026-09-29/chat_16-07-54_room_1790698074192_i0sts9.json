@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "roomId": "room_1790698074192_i0sts9",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:07:54.192Z",
+    "endTime": "2026-09-29T16:09:18.020Z",
+    "durationSeconds": 84,
+    "totalMessages": 11,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790698077985_d1jvo8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698078992,
+      "isoTime": "2026-09-29T16:07:58.992Z",
+      "type": "text",
+      "text": "bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790698081303_49sjal",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698082299,
+      "isoTime": "2026-09-29T16:08:02.299Z",
+      "type": "text",
+      "text": "kya bol rahe the",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790698081543_krr9in",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698083412,
+      "isoTime": "2026-09-29T16:08:03.412Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790698087135_ffevxp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698088121,
+      "isoTime": "2026-09-29T16:08:08.121Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790698103331_u4ipme",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698104321,
+      "isoTime": "2026-09-29T16:08:24.321Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790698108127_17e61w",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698109997,
+      "isoTime": "2026-09-29T16:08:29.997Z",
+      "type": "text",
+      "text": "acha ye batao ki kal kaunse topic ka test hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790698120517_rpzeko",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698121537,
+      "isoTime": "2026-09-29T16:08:41.537Z",
+      "type": "text",
+      "text": "chapter 2",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790698127347_yj38we",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698129230,
+      "isoTime": "2026-09-29T16:08:49.230Z",
+      "type": "text",
+      "text": "ok",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "chapter 2",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790698134591_omx9eg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698135622,
+      "isoTime": "2026-09-29T16:08:55.622Z",
+      "type": "text",
+      "text": "purra",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790698139242_s100go",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698141118,
+      "isoTime": "2026-09-29T16:09:01.118Z",
+      "type": "text",
+      "text": "nhi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790698148710_xsootz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698149744,
+      "isoTime": "2026-09-29T16:09:09.744Z",
+      "type": "text",
+      "text": "okay",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "kya bol rahe the"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "acha ye batao ki kal kaunse topic ka test hai"
+      },
+      {
+        "role": "assistant",
+        "content": "chapter 2"
+      },
+      {
+        "role": "user",
+        "content": "ok"
+      },
+      {
+        "role": "assistant",
+        "content": "purra"
+      },
+      {
+        "role": "user",
+        "content": "nhi"
+      },
+      {
+        "role": "assistant",
+        "content": "okay"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "kya bol rahe the"
+      },
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "acha ye batao ki kal kaunse topic ka test hai"
+      },
+      {
+        "from": "gpt",
+        "value": "chapter 2"
+      },
+      {
+        "from": "human",
+        "value": "ok"
+      },
+      {
+        "from": "gpt",
+        "value": "purra"
+      },
+      {
+        "from": "human",
+        "value": "nhi"
+      },
+      {
+        "from": "gpt",
+        "value": "okay"
+      }
+    ]
+  }
+}
