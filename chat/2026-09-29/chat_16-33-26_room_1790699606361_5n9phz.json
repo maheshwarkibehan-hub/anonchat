@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790699606361_5n9phz",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:33:26.361Z",
+    "endTime": "2026-09-29T16:33:53.419Z",
+    "durationSeconds": 27,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790699611141_ibtra7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790699611745,
+      "isoTime": "2026-09-29T16:33:31.745Z",
+      "type": "text",
+      "text": "Hiii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790699617622_j68hp4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699618638,
+      "isoTime": "2026-09-29T16:33:38.638Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790699621521_xw2orw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790699622100,
+      "isoTime": "2026-09-29T16:33:42.100Z",
+      "type": "text",
+      "text": "Tomorrow is history test",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790699628283_0aqaax",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699629319,
+      "isoTime": "2026-09-29T16:33:49.319Z",
+      "type": "text",
+      "text": "are pta nahi yrr",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hiii"
+      },
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "Tomorrow is history test"
+      },
+      {
+        "role": "assistant",
+        "content": "are pta nahi yrr"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hiii"
+      },
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "Tomorrow is history test"
+      },
+      {
+        "from": "gpt",
+        "value": "are pta nahi yrr"
+      }
+    ]
+  }
+}
