@@ -1,0 +1,260 @@
+{
+  "metadata": {
+    "roomId": "room_1790697987861_g0us4l",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:06:27.861Z",
+    "endTime": "2026-09-29T16:07:44.796Z",
+    "durationSeconds": 77,
+    "totalMessages": 12,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790697991169_wk1fn2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790697992182,
+      "isoTime": "2026-09-29T16:06:32.182Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790697998713_h8z0qe",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698000614,
+      "isoTime": "2026-09-29T16:06:40.614Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790698012454_dkai9v",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698013470,
+      "isoTime": "2026-09-29T16:06:53.470Z",
+      "type": "text",
+      "text": "kal test hai kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790698017225_a7azut",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698018220,
+      "isoTime": "2026-09-29T16:06:58.220Z",
+      "type": "text",
+      "text": "ki LOC ka kaam hoga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790698024905_c2qvcj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698026776,
+      "isoTime": "2026-09-29T16:07:06.776Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790698031603_8ax4t6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698032640,
+      "isoTime": "2026-09-29T16:07:12.640Z",
+      "type": "text",
+      "text": "kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790698033173_pw6xwm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698034185,
+      "isoTime": "2026-09-29T16:07:14.185Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790698033839_785nxx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698034944,
+      "isoTime": "2026-09-29T16:07:14.944Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790698054240_vzk7ga",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698055240,
+      "isoTime": "2026-09-29T16:07:35.240Z",
+      "type": "text",
+      "text": "lenge test",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790698054038_4hz25u",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698055915,
+      "isoTime": "2026-09-29T16:07:35.915Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790698056155_pagzn7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698058028,
+      "isoTime": "2026-09-29T16:07:38.028Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790698061272_59mh5t",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698062281,
+      "isoTime": "2026-09-29T16:07:42.281Z",
+      "type": "text",
+      "text": "oka",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "kal test hai kya"
+      },
+      {
+        "role": "user",
+        "content": "ki LOC ka kaam hoga"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "user",
+        "content": "kya"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "ha"
+      },
+      {
+        "role": "user",
+        "content": "lenge test"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "user",
+        "content": "oka"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "kal test hai kya"
+      },
+      {
+        "from": "human",
+        "value": "ki LOC ka kaam hoga"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "human",
+        "value": "kya"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "ha"
+      },
+      {
+        "from": "human",
+        "value": "lenge test"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "human",
+        "value": "oka"
+      }
+    ]
+  }
+}
