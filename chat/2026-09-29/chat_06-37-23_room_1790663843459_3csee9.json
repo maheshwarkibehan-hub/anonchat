@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1790663843459_3csee9",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T06:37:23.459Z",
+    "endTime": "2026-09-29T06:38:16.478Z",
+    "durationSeconds": 53,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790663859127_o920cg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790663859315,
+      "isoTime": "2026-09-29T06:37:39.315Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790663871616_c44gm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790663871621,
+      "isoTime": "2026-09-29T06:37:51.621Z",
+      "type": "text",
+      "text": "hello kaise ho aap",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790663878095_c1i83z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790663878265,
+      "isoTime": "2026-09-29T06:37:58.265Z",
+      "type": "text",
+      "text": "App kon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790663892599_phl8j",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790663892605,
+      "isoTime": "2026-09-29T06:38:12.605Z",
+      "type": "text",
+      "text": "anon chat hai toh bina naam ke baat karte hain pehle vibe match karte hain",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "hello kaise ho aap"
+      },
+      {
+        "role": "user",
+        "content": "App kon"
+      },
+      {
+        "role": "assistant",
+        "content": "anon chat hai toh bina naam ke baat karte hain pehle vibe match karte hain"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "hello kaise ho aap"
+      },
+      {
+        "from": "human",
+        "value": "App kon"
+      },
+      {
+        "from": "gpt",
+        "value": "anon chat hai toh bina naam ke baat karte hain pehle vibe match karte hain"
+      }
+    ]
+  }
+}
