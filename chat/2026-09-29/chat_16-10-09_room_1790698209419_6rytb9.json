@@ -1,0 +1,480 @@
+{
+  "metadata": {
+    "roomId": "room_1790698209419_6rytb9",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:10:09.419Z",
+    "endTime": "2026-09-29T16:12:23.821Z",
+    "durationSeconds": 134,
+    "totalMessages": 23,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790698216916_qicjmr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698216545,
+      "isoTime": "2026-09-29T16:10:16.545Z",
+      "type": "text",
+      "text": "hloooooooooo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790698216067_wroayn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698217104,
+      "isoTime": "2026-09-29T16:10:17.104Z",
+      "type": "text",
+      "text": "daaba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790698224834_eei42q",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698224460,
+      "isoTime": "2026-09-29T16:10:24.460Z",
+      "type": "text",
+      "text": "whatsupppppp",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790698227227_y92oej",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698226852,
+      "isoTime": "2026-09-29T16:10:26.852Z",
+      "type": "text",
+      "text": "guysss",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790698236535_cc8j9r",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698237577,
+      "isoTime": "2026-09-29T16:10:37.577Z",
+      "type": "text",
+      "text": "just chilling",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790698243874_e3txgw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698243500,
+      "isoTime": "2026-09-29T16:10:43.500Z",
+      "type": "text",
+      "text": "kon sirrrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790698251878_hqxyo3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698251503,
+      "isoTime": "2026-09-29T16:10:51.503Z",
+      "type": "text",
+      "text": "just asking",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790698253265_9l4qjj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698252895,
+      "isoTime": "2026-09-29T16:10:52.895Z",
+      "type": "text",
+      "text": "mas",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790698258375_fshu0w",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698259381,
+      "isoTime": "2026-09-29T16:10:59.381Z",
+      "type": "text",
+      "text": "i can't tell",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790698260506_krccxv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698260129,
+      "isoTime": "2026-09-29T16:11:00.129Z",
+      "type": "text",
+      "text": "koi imprtant nahi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790698269461_p2dts7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698269088,
+      "isoTime": "2026-09-29T16:11:09.088Z",
+      "type": "text",
+      "text": "koi naaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790698278526_vurd8e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698278151,
+      "isoTime": "2026-09-29T16:11:18.151Z",
+      "type": "text",
+      "text": "dont revel identity",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790698278852_mvp0d3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698279898,
+      "isoTime": "2026-09-29T16:11:19.898Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790698295058_elnxqo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698294683,
+      "isoTime": "2026-09-29T16:11:34.683Z",
+      "type": "text",
+      "text": "kal test hai social ka",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790698297340_9nunjb",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698298339,
+      "isoTime": "2026-09-29T16:11:38.339Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790698307901_fcqwr9",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698307524,
+      "isoTime": "2026-09-29T16:11:47.524Z",
+      "type": "text",
+      "text": "kis topic ka",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790698314978_epl9po",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698316016,
+      "isoTime": "2026-09-29T16:11:56.016Z",
+      "type": "text",
+      "text": "1st aur 2nd",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790698315526_jafhl6",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698316551,
+      "isoTime": "2026-09-29T16:11:56.551Z",
+      "type": "text",
+      "text": "ka",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790698323088_bv4fkz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698322712,
+      "isoTime": "2026-09-29T16:12:02.712Z",
+      "type": "text",
+      "text": "anmol?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1790698326157_5fwhlm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698327197,
+      "isoTime": "2026-09-29T16:12:07.197Z",
+      "type": "text",
+      "text": "nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1790698331504_lu1vki",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698331128,
+      "isoTime": "2026-09-29T16:12:11.128Z",
+      "type": "text",
+      "text": "😂😂😂😂",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 22,
+      "msgId": "msg_1790698335687_02ctvg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790698335310,
+      "isoTime": "2026-09-29T16:12:15.310Z",
+      "type": "text",
+      "text": "chal betaaa",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 23,
+      "msgId": "msg_1790698340589_7xesws",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790698341580,
+      "isoTime": "2026-09-29T16:12:21.580Z",
+      "type": "text",
+      "text": "bhkk",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hloooooooooo"
+      },
+      {
+        "role": "assistant",
+        "content": "daaba ke"
+      },
+      {
+        "role": "user",
+        "content": "whatsupppppp"
+      },
+      {
+        "role": "user",
+        "content": "guysss"
+      },
+      {
+        "role": "assistant",
+        "content": "just chilling"
+      },
+      {
+        "role": "user",
+        "content": "kon sirrrr"
+      },
+      {
+        "role": "user",
+        "content": "just asking"
+      },
+      {
+        "role": "user",
+        "content": "mas"
+      },
+      {
+        "role": "assistant",
+        "content": "i can't tell"
+      },
+      {
+        "role": "user",
+        "content": "koi imprtant nahi hai"
+      },
+      {
+        "role": "user",
+        "content": "koi naaa"
+      },
+      {
+        "role": "user",
+        "content": "dont revel identity"
+      },
+      {
+        "role": "assistant",
+        "content": "hmm"
+      },
+      {
+        "role": "user",
+        "content": "kal test hai social ka"
+      },
+      {
+        "role": "assistant",
+        "content": "hmm"
+      },
+      {
+        "role": "user",
+        "content": "kis topic ka"
+      },
+      {
+        "role": "assistant",
+        "content": "1st aur 2nd"
+      },
+      {
+        "role": "assistant",
+        "content": "ka"
+      },
+      {
+        "role": "user",
+        "content": "anmol?"
+      },
+      {
+        "role": "assistant",
+        "content": "nahi"
+      },
+      {
+        "role": "user",
+        "content": "😂😂😂😂"
+      },
+      {
+        "role": "user",
+        "content": "chal betaaa"
+      },
+      {
+        "role": "assistant",
+        "content": "bhkk"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hloooooooooo"
+      },
+      {
+        "from": "gpt",
+        "value": "daaba ke"
+      },
+      {
+        "from": "human",
+        "value": "whatsupppppp"
+      },
+      {
+        "from": "human",
+        "value": "guysss"
+      },
+      {
+        "from": "gpt",
+        "value": "just chilling"
+      },
+      {
+        "from": "human",
+        "value": "kon sirrrr"
+      },
+      {
+        "from": "human",
+        "value": "just asking"
+      },
+      {
+        "from": "human",
+        "value": "mas"
+      },
+      {
+        "from": "gpt",
+        "value": "i can't tell"
+      },
+      {
+        "from": "human",
+        "value": "koi imprtant nahi hai"
+      },
+      {
+        "from": "human",
+        "value": "koi naaa"
+      },
+      {
+        "from": "human",
+        "value": "dont revel identity"
+      },
+      {
+        "from": "gpt",
+        "value": "hmm"
+      },
+      {
+        "from": "human",
+        "value": "kal test hai social ka"
+      },
+      {
+        "from": "gpt",
+        "value": "hmm"
+      },
+      {
+        "from": "human",
+        "value": "kis topic ka"
+      },
+      {
+        "from": "gpt",
+        "value": "1st aur 2nd"
+      },
+      {
+        "from": "gpt",
+        "value": "ka"
+      },
+      {
+        "from": "human",
+        "value": "anmol?"
+      },
+      {
+        "from": "gpt",
+        "value": "nahi"
+      },
+      {
+        "from": "human",
+        "value": "😂😂😂😂"
+      },
+      {
+        "from": "human",
+        "value": "chal betaaa"
+      },
+      {
+        "from": "gpt",
+        "value": "bhkk"
+      }
+    ]
+  }
+}
