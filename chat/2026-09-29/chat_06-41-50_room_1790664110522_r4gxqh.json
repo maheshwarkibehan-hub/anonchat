@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "roomId": "room_1790664110522_r4gxqh",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T06:41:50.522Z",
+    "endTime": "2026-09-29T06:42:46.951Z",
+    "durationSeconds": 56,
+    "totalMessages": 5,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790664113978_l77ju6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790664114530,
+      "isoTime": "2026-09-29T06:41:54.530Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790664126280_a5r40",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790664126287,
+      "isoTime": "2026-09-29T06:42:06.287Z",
+      "type": "text",
+      "text": "hey kaise ho aap kya chal raha hai aajkal",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790664138221_5w3o6z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790664138697,
+      "isoTime": "2026-09-29T06:42:18.697Z",
+      "type": "text",
+      "text": "Bass chal raha ahai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790664148330_0gfwx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790664148336,
+      "isoTime": "2026-09-29T06:42:28.336Z",
+      "type": "text",
+      "text": "haan yaar is time toh sabke liye hi bhaav hai main bhi bas ghar pe rehta hoon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790664159715_au9v2a",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790664160193,
+      "isoTime": "2026-09-29T06:42:40.193Z",
+      "type": "text",
+      "text": "Oo",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "hey kaise ho aap kya chal raha hai aajkal"
+      },
+      {
+        "role": "user",
+        "content": "Bass chal raha ahai"
+      },
+      {
+        "role": "assistant",
+        "content": "haan yaar is time toh sabke liye hi bhaav hai main bhi bas ghar pe rehta hoon"
+      },
+      {
+        "role": "user",
+        "content": "Oo"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "hey kaise ho aap kya chal raha hai aajkal"
+      },
+      {
+        "from": "human",
+        "value": "Bass chal raha ahai"
+      },
+      {
+        "from": "gpt",
+        "value": "haan yaar is time toh sabke liye hi bhaav hai main bhi bas ghar pe rehta hoon"
+      },
+      {
+        "from": "human",
+        "value": "Oo"
+      }
+    ]
+  }
+}
