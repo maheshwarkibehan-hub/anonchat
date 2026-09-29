@@ -1,0 +1,410 @@
+{
+  "metadata": {
+    "roomId": "room_1790708446274_1zps89",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T19:00:46.274Z",
+    "endTime": "2026-09-29T19:02:05.368Z",
+    "durationSeconds": 79,
+    "totalMessages": 20,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790708450963_kfcmgx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708450655,
+      "isoTime": "2026-09-29T19:00:50.655Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790708452343_84h0l8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708453449,
+      "isoTime": "2026-09-29T19:00:53.449Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790708457522_igabt8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708457209,
+      "isoTime": "2026-09-29T19:00:57.209Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790708461680_2p31aa",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708462818,
+      "isoTime": "2026-09-29T19:01:02.818Z",
+      "type": "text",
+      "text": "maheswar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790708462808_7uj072",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708463905,
+      "isoTime": "2026-09-29T19:01:03.905Z",
+      "type": "text",
+      "text": "?/",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790708467870_0bmx1k",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708467557,
+      "isoTime": "2026-09-29T19:01:07.557Z",
+      "type": "text",
+      "text": "Kon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790708475631_rnjk0e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708476753,
+      "isoTime": "2026-09-29T19:01:16.753Z",
+      "type": "text",
+      "text": "pehchan liya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790708480512_f57nej",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708481585,
+      "isoTime": "2026-09-29T19:01:21.585Z",
+      "type": "text",
+      "text": "😂😂",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790708486404_mqyw7b",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708487489,
+      "isoTime": "2026-09-29T19:01:27.489Z",
+      "type": "text",
+      "text": "tum maheswar ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790708488411_ghkg3y",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708488172,
+      "isoTime": "2026-09-29T19:01:28.172Z",
+      "type": "text",
+      "text": "Ayooo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790708491201_4b8vpm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708490892,
+      "isoTime": "2026-09-29T19:01:30.892Z",
+      "type": "text",
+      "text": "Who are you",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1790708496101_fptea5",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708497209,
+      "isoTime": "2026-09-29T19:01:37.209Z",
+      "type": "text",
+      "text": "hacker",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1790708497566_gp7op2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708498656,
+      "isoTime": "2026-09-29T19:01:38.656Z",
+      "type": "text",
+      "text": "!!",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1790708506434_1d2hvr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708506122,
+      "isoTime": "2026-09-29T19:01:46.122Z",
+      "type": "text",
+      "text": "Hmm hmm bata bhi do",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1790708508245_ucezbt",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708507932,
+      "isoTime": "2026-09-29T19:01:47.932Z",
+      "type": "text",
+      "text": "Kon jo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1790708516039_ymjhg4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708517133,
+      "isoTime": "2026-09-29T19:01:57.133Z",
+      "type": "text",
+      "text": "tera baaapppp",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1790708520922_22x22c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708521984,
+      "isoTime": "2026-09-29T19:02:01.984Z",
+      "type": "text",
+      "text": "gand marao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1790708522747_yj8d6g",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790708522423,
+      "isoTime": "2026-09-29T19:02:02.423Z",
+      "type": "text",
+      "text": "Hein",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1790708522109_90yrav",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790708523184,
+      "isoTime": "2026-09-29T19:02:03.184Z",
+      "type": "text",
+      "text": "byr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "event_1790708523186",
+      "sender": "System",
+      "role": "system",
+      "timestamp": 1790708523186,
+      "isoTime": "2026-09-29T19:02:03.186Z",
+      "type": "teacher_intervention",
+      "text": "Joby Sir: i told you beta gali nahi dene ka meet tommarow"
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Hi"
+      },
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "Hlo"
+      },
+      {
+        "role": "user",
+        "content": "maheswar"
+      },
+      {
+        "role": "user",
+        "content": "?/"
+      },
+      {
+        "role": "assistant",
+        "content": "Kon"
+      },
+      {
+        "role": "user",
+        "content": "pehchan liya"
+      },
+      {
+        "role": "user",
+        "content": "😂😂"
+      },
+      {
+        "role": "user",
+        "content": "tum maheswar ho"
+      },
+      {
+        "role": "assistant",
+        "content": "Ayooo"
+      },
+      {
+        "role": "assistant",
+        "content": "Who are you"
+      },
+      {
+        "role": "user",
+        "content": "hacker"
+      },
+      {
+        "role": "user",
+        "content": "!!"
+      },
+      {
+        "role": "assistant",
+        "content": "Hmm hmm bata bhi do"
+      },
+      {
+        "role": "assistant",
+        "content": "Kon jo"
+      },
+      {
+        "role": "user",
+        "content": "tera baaapppp"
+      },
+      {
+        "role": "user",
+        "content": "gand marao"
+      },
+      {
+        "role": "assistant",
+        "content": "Hein"
+      },
+      {
+        "role": "user",
+        "content": "byr"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Hi"
+      },
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "Hlo"
+      },
+      {
+        "from": "human",
+        "value": "maheswar"
+      },
+      {
+        "from": "human",
+        "value": "?/"
+      },
+      {
+        "from": "gpt",
+        "value": "Kon"
+      },
+      {
+        "from": "human",
+        "value": "pehchan liya"
+      },
+      {
+        "from": "human",
+        "value": "😂😂"
+      },
+      {
+        "from": "human",
+        "value": "tum maheswar ho"
+      },
+      {
+        "from": "gpt",
+        "value": "Ayooo"
+      },
+      {
+        "from": "gpt",
+        "value": "Who are you"
+      },
+      {
+        "from": "human",
+        "value": "hacker"
+      },
+      {
+        "from": "human",
+        "value": "!!"
+      },
+      {
+        "from": "gpt",
+        "value": "Hmm hmm bata bhi do"
+      },
+      {
+        "from": "gpt",
+        "value": "Kon jo"
+      },
+      {
+        "from": "human",
+        "value": "tera baaapppp"
+      },
+      {
+        "from": "human",
+        "value": "gand marao"
+      },
+      {
+        "from": "gpt",
+        "value": "Hein"
+      },
+      {
+        "from": "human",
+        "value": "byr"
+      }
+    ]
+  }
+}
