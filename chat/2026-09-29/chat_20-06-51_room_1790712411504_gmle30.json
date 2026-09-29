@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "roomId": "room_1790712411504_gmle30",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T20:06:51.504Z",
+    "endTime": "2026-09-29T20:08:53.209Z",
+    "durationSeconds": 122,
+    "totalMessages": 8,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790712414371_nilyy4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790712415528,
+      "isoTime": "2026-09-29T20:06:55.528Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790712416896_h3kgnl",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790712418072,
+      "isoTime": "2026-09-29T20:06:58.072Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790712419597_q6l3p1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790712419291,
+      "isoTime": "2026-09-29T20:06:59.291Z",
+      "type": "text",
+      "text": "Code toh deod",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790712424047_959qx0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790712423741,
+      "isoTime": "2026-09-29T20:07:03.741Z",
+      "type": "text",
+      "text": "Anydesk ka",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790712425758_nslr5s",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790712426912,
+      "isoTime": "2026-09-29T20:07:06.912Z",
+      "type": "text",
+      "text": "1sec",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790712433275_idjadq",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790712434584,
+      "isoTime": "2026-09-29T20:07:14.584Z",
+      "type": "text",
+      "text": "1650755036",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790712470385_2fffgq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790712470066,
+      "isoTime": "2026-09-29T20:07:50.066Z",
+      "type": "text",
+      "text": "Seee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790712485258_o1ft62",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790712487904,
+      "isoTime": "2026-09-29T20:08:07.904Z",
+      "type": "text",
+      "text": "karliya",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "Code toh deod"
+      },
+      {
+        "role": "assistant",
+        "content": "Anydesk ka"
+      },
+      {
+        "role": "user",
+        "content": "1sec"
+      },
+      {
+        "role": "user",
+        "content": "1650755036"
+      },
+      {
+        "role": "assistant",
+        "content": "Seee"
+      },
+      {
+        "role": "user",
+        "content": "karliya"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "Code toh deod"
+      },
+      {
+        "from": "gpt",
+        "value": "Anydesk ka"
+      },
+      {
+        "from": "human",
+        "value": "1sec"
+      },
+      {
+        "from": "human",
+        "value": "1650755036"
+      },
+      {
+        "from": "gpt",
+        "value": "Seee"
+      },
+      {
+        "from": "human",
+        "value": "karliya"
+      }
+    ]
+  }
+}
