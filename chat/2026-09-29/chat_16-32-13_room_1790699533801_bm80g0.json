@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "roomId": "room_1790699533801_bm80g0",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:32:13.801Z",
+    "endTime": "2026-09-29T16:33:59.674Z",
+    "durationSeconds": 106,
+    "totalMessages": 5,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790699542561_d7vpbs",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699543584,
+      "isoTime": "2026-09-29T16:32:23.584Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790699580074_ovwqdp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699581078,
+      "isoTime": "2026-09-29T16:33:01.078Z",
+      "type": "text",
+      "text": "ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790699591973_o58pgx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790699594839,
+      "isoTime": "2026-09-29T16:33:14.839Z",
+      "type": "text",
+      "text": "Mai vahi hu jis se tumne abhi chat ke hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790699602363_7vn4f0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699603377,
+      "isoTime": "2026-09-29T16:33:23.377Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790699634005_76vx78",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790699637764,
+      "isoTime": "2026-09-29T16:33:57.764Z",
+      "type": "text",
+      "text": "Ok bay",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "ho"
+      },
+      {
+        "role": "user",
+        "content": "Mai vahi hu jis se tumne abhi chat ke hai"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "user",
+        "content": "Ok bay"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "ho"
+      },
+      {
+        "from": "human",
+        "value": "Mai vahi hu jis se tumne abhi chat ke hai"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "human",
+        "value": "Ok bay"
+      }
+    ]
+  }
+}
