@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "roomId": "room_1790699953670_lo30ow",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:39:13.670Z",
+    "endTime": "2026-09-29T16:40:21.036Z",
+    "durationSeconds": 67,
+    "totalMessages": 7,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790699959585_sqkyhq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699963778,
+      "isoTime": "2026-09-29T16:39:23.778Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790699965172_ptb15v",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699968293,
+      "isoTime": "2026-09-29T16:39:28.293Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790699981740_7vmitt",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790699983337,
+      "isoTime": "2026-09-29T16:39:43.337Z",
+      "type": "text",
+      "text": "ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790699990653_kt5nx3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790699991886,
+      "isoTime": "2026-09-29T16:39:51.886Z",
+      "type": "text",
+      "text": "Nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790700004975_l9zd98",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790700006018,
+      "isoTime": "2026-09-29T16:40:06.018Z",
+      "type": "text",
+      "text": "to karne kya aarahe ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790700006567_3bltb3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790700007617,
+      "isoTime": "2026-09-29T16:40:07.617Z",
+      "type": "text",
+      "text": "jaoo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790700010915_g2prp2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790700011985,
+      "isoTime": "2026-09-29T16:40:11.985Z",
+      "type": "text",
+      "text": "jake soo jaoo",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "ho"
+      },
+      {
+        "role": "user",
+        "content": "Nahi"
+      },
+      {
+        "role": "assistant",
+        "content": "to karne kya aarahe ho"
+      },
+      {
+        "role": "assistant",
+        "content": "jaoo"
+      },
+      {
+        "role": "assistant",
+        "content": "jake soo jaoo"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "ho"
+      },
+      {
+        "from": "human",
+        "value": "Nahi"
+      },
+      {
+        "from": "gpt",
+        "value": "to karne kya aarahe ho"
+      },
+      {
+        "from": "gpt",
+        "value": "jaoo"
+      },
+      {
+        "from": "gpt",
+        "value": "jake soo jaoo"
+      }
+    ]
+  }
+}
