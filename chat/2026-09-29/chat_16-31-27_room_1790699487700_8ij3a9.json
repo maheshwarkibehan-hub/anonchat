@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "roomId": "room_1790699487700_8ij3a9",
+    "vibe": "Direct",
+    "date": "2026-09-29",
+    "startTime": "2026-09-29T16:31:27.700Z",
+    "endTime": "2026-09-29T16:32:18.689Z",
+    "durationSeconds": 51,
+    "totalMessages": 1,
+    "aiTrainingReady": false
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790699507980_cugim0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790699508650,
+      "isoTime": "2026-09-29T16:31:48.650Z",
+      "type": "text",
+      "text": "Tomorrow is history test??",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Tomorrow is history test??"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Tomorrow is history test??"
+      }
+    ]
+  }
+}
