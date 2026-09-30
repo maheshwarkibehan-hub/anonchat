@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "roomId": "room_1790788713772_kdjaus",
+    "vibe": "Direct",
+    "date": "2026-09-30",
+    "startTime": "2026-09-30T17:18:33.772Z",
+    "endTime": "2026-09-30T17:19:03.065Z",
+    "durationSeconds": 29,
+    "totalMessages": 1,
+    "aiTrainingReady": false
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790788718945_x3ostd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788721179,
+      "isoTime": "2026-09-30T17:18:41.179Z",
+      "type": "text",
+      "text": "hio",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hio"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hio"
+      }
+    ]
+  }
+}
