@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "roomId": "room_1790788242729_gpp0lb",
+    "vibe": "Direct",
+    "date": "2026-09-30",
+    "startTime": "2026-09-30T17:10:42.729Z",
+    "endTime": "2026-09-30T17:11:54.185Z",
+    "durationSeconds": 71,
+    "totalMessages": 8,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790788245222_zuxb9z",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788247441,
+      "isoTime": "2026-09-30T17:10:47.441Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790788261382_loffzo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788261992,
+      "isoTime": "2026-09-30T17:11:01.992Z",
+      "type": "text",
+      "text": "Tomorrow sir will take sst test???",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790788268234_7x4no0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788270449,
+      "isoTime": "2026-09-30T17:11:10.449Z",
+      "type": "text",
+      "text": "i think so",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790788280574_f2n5l7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788281141,
+      "isoTime": "2026-09-30T17:11:21.141Z",
+      "type": "text",
+      "text": "Which ch",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790788283814_onplwf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788286039,
+      "isoTime": "2026-09-30T17:11:26.039Z",
+      "type": "text",
+      "text": "ch2",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790788289262_x6f7hg",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788291494,
+      "isoTime": "2026-09-30T17:11:31.494Z",
+      "type": "text",
+      "text": "till topic 2",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790788294821_uoiq2d",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788297039,
+      "isoTime": "2026-09-30T17:11:37.039Z",
+      "type": "text",
+      "text": "padh lena nahi toh pele jaonge",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790788309509_md8b44",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788310101,
+      "isoTime": "2026-09-30T17:11:50.101Z",
+      "type": "text",
+      "text": "Ok",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "Tomorrow sir will take sst test???"
+      },
+      {
+        "role": "assistant",
+        "content": "i think so"
+      },
+      {
+        "role": "user",
+        "content": "Which ch"
+      },
+      {
+        "role": "assistant",
+        "content": "ch2"
+      },
+      {
+        "role": "assistant",
+        "content": "till topic 2"
+      },
+      {
+        "role": "assistant",
+        "content": "padh lena nahi toh pele jaonge"
+      },
+      {
+        "role": "user",
+        "content": "Ok"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "Tomorrow sir will take sst test???"
+      },
+      {
+        "from": "gpt",
+        "value": "i think so"
+      },
+      {
+        "from": "human",
+        "value": "Which ch"
+      },
+      {
+        "from": "gpt",
+        "value": "ch2"
+      },
+      {
+        "from": "gpt",
+        "value": "till topic 2"
+      },
+      {
+        "from": "gpt",
+        "value": "padh lena nahi toh pele jaonge"
+      },
+      {
+        "from": "human",
+        "value": "Ok"
+      }
+    ]
+  }
+}
