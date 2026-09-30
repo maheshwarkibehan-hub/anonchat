@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "roomId": "room_1790787558428_x4a5db",
+    "vibe": "Direct",
+    "date": "2026-09-30",
+    "startTime": "2026-09-30T16:59:18.428Z",
+    "endTime": "2026-09-30T16:59:53.740Z",
+    "durationSeconds": 35,
+    "totalMessages": 6,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790787561205_5u3z3c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790787563399,
+      "isoTime": "2026-09-30T16:59:23.399Z",
+      "type": "text",
+      "text": "hm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790787565805_mz42dx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790787567996,
+      "isoTime": "2026-09-30T16:59:27.996Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790787572614_qsmlhz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790787574809,
+      "isoTime": "2026-09-30T16:59:34.809Z",
+      "type": "text",
+      "text": "arpit",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790787577534_sdpuij",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790787579715,
+      "isoTime": "2026-09-30T16:59:39.715Z",
+      "type": "text",
+      "text": "arpit",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790787579865_rsabjx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790787582054,
+      "isoTime": "2026-09-30T16:59:42.054Z",
+      "type": "text",
+      "text": "okkie",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790787583822_xpgj5f",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790787585999,
+      "isoTime": "2026-09-30T16:59:45.999Z",
+      "type": "text",
+      "text": "aree majak tha yaar",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hm"
+      },
+      {
+        "role": "assistant",
+        "content": "hmm"
+      },
+      {
+        "role": "user",
+        "content": "arpit"
+      },
+      {
+        "role": "assistant",
+        "content": "arpit"
+      },
+      {
+        "role": "assistant",
+        "content": "okkie"
+      },
+      {
+        "role": "assistant",
+        "content": "aree majak tha yaar"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hm"
+      },
+      {
+        "from": "gpt",
+        "value": "hmm"
+      },
+      {
+        "from": "human",
+        "value": "arpit"
+      },
+      {
+        "from": "gpt",
+        "value": "arpit"
+      },
+      {
+        "from": "gpt",
+        "value": "okkie"
+      },
+      {
+        "from": "gpt",
+        "value": "aree majak tha yaar"
+      }
+    ]
+  }
+}
