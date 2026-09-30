@@ -1,0 +1,240 @@
+{
+  "metadata": {
+    "roomId": "room_1790788466157_pz0e7z",
+    "vibe": "Direct",
+    "date": "2026-09-30",
+    "startTime": "2026-09-30T17:14:26.157Z",
+    "endTime": "2026-09-30T17:16:13.944Z",
+    "durationSeconds": 108,
+    "totalMessages": 11,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1790788474355_cvafuo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788474942,
+      "isoTime": "2026-09-30T17:14:34.942Z",
+      "type": "text",
+      "text": "Which questions are we supposed to do from the homework Sir sent??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1790788475538_pu843r",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788477759,
+      "isoTime": "2026-09-30T17:14:37.759Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1790788482270_4yg929",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788484502,
+      "isoTime": "2026-09-30T17:14:44.502Z",
+      "type": "text",
+      "text": "aree sare karo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1790788483621_w51s62",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788485850,
+      "isoTime": "2026-09-30T17:14:45.850Z",
+      "type": "text",
+      "text": "mat",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1790788488121_ydigm8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788490344,
+      "isoTime": "2026-09-30T17:14:50.344Z",
+      "type": "text",
+      "text": "sirf long and some shorts",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1790788490930_fy3udz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788493164,
+      "isoTime": "2026-09-30T17:14:53.164Z",
+      "type": "text",
+      "text": "karlo bus",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1790788498214_xlf5iv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788498777,
+      "isoTime": "2026-09-30T17:14:58.777Z",
+      "type": "text",
+      "text": "Ok",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1790788519401_2n9fq8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788521625,
+      "isoTime": "2026-09-30T17:15:21.625Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1790788538447_4b0zxx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788539022,
+      "isoTime": "2026-09-30T17:15:39.022Z",
+      "type": "text",
+      "text": "Waise who are you",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1790788545845_mt0adf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1790788548074,
+      "isoTime": "2026-09-30T17:15:48.074Z",
+      "type": "text",
+      "text": "anmol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1790788553828_hoibpp",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1790788554423,
+      "isoTime": "2026-09-30T17:15:54.423Z",
+      "type": "text",
+      "text": "Ok",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Which questions are we supposed to do from the homework Sir sent??"
+      },
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "aree sare karo"
+      },
+      {
+        "role": "assistant",
+        "content": "mat"
+      },
+      {
+        "role": "assistant",
+        "content": "sirf long and some shorts"
+      },
+      {
+        "role": "assistant",
+        "content": "karlo bus"
+      },
+      {
+        "role": "user",
+        "content": "Ok"
+      },
+      {
+        "role": "assistant",
+        "content": "hmm"
+      },
+      {
+        "role": "user",
+        "content": "Waise who are you"
+      },
+      {
+        "role": "assistant",
+        "content": "anmol"
+      },
+      {
+        "role": "user",
+        "content": "Ok"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Which questions are we supposed to do from the homework Sir sent??"
+      },
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "aree sare karo"
+      },
+      {
+        "from": "gpt",
+        "value": "mat"
+      },
+      {
+        "from": "gpt",
+        "value": "sirf long and some shorts"
+      },
+      {
+        "from": "gpt",
+        "value": "karlo bus"
+      },
+      {
+        "from": "human",
+        "value": "Ok"
+      },
+      {
+        "from": "gpt",
+        "value": "hmm"
+      },
+      {
+        "from": "human",
+        "value": "Waise who are you"
+      },
+      {
+        "from": "gpt",
+        "value": "anmol"
+      },
+      {
+        "from": "human",
+        "value": "Ok"
+      }
+    ]
+  }
+}
