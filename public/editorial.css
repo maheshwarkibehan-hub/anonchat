@@ -37,11 +37,61 @@
   pointer-events: none !important;
 }
 
-body {
-  background-color: var(--ed-bg-cream) !important;
-  color: var(--ed-primary-text) !important;
-  font-family: var(--ed-font-body) !important;
-  -webkit-font-smoothing: antialiased;
+html,
+body.on-landing {
+  /* `overflow-x: clip` rather than `hidden`, because `hidden` cannot be paired
+     with `overflow-y: visible` - CSS Overflow 3 says visible computes to auto when
+     the other axis is neither visible nor clip, so `hidden` would quietly turn the
+     root into a scroll container in both axes. `clip` is explicitly allowed
+     alongside `visible`, so horizontal overflow is still contained while the
+     vertical axis stays untouched. */
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
+/* ---- CRITICAL: let the landing screen host fixed-position pins --------------
+   `style.css` gives every `.screen` this trio:
+
+       transform: scale(0.96) translateY(10px);
+       filter: blur(6px);
+       transform-style: preserve-3d;
+       will-change: transform, opacity, filter;
+
+   so screen switches can animate in 3D. `.screen.active` resets `transform` and
+   `filter`, but `transform-style: preserve-3d` and `will-change` were left in
+   place - and BOTH of those make the element a containing block for
+   `position: fixed` descendants, exactly as a real transform or filter would.
+
+   That is what silently broke every ScrollTrigger pin on this page. #storyStage
+   did get `position: fixed; top: 0`, but it was resolved against #landingScreen
+   (which starts at document y=0) instead of against the viewport, so it rendered
+   `scrollY` pixels above the fold. The pinned story simply scrolled off screen:
+   for roughly 1200px of the pin the viewport was blank except the progress bar,
+   while the deck transforms and the journey line kept scrubbing off-screen.
+
+   Flattening the landing screen costs nothing. It has no 3D children that need a
+   shared 3D rendering context - the story deck keeps its own `preserve-3d` on
+   `.card-swap-deck`, far below this element - and dropping the permanent
+   `will-change` also stops the browser holding a compositor layer for the entire
+   page, which is pure wasted memory for a wrapper this large. The searching and
+   chat screens keep their 3D treatment: neither contains a pinned trigger, so
+   they have no reason to be flattened. */
+#landingScreen {
+  transform-style: flat !important;
+  will-change: auto !important;
+}
+
+body.on-landing .app-shell,
+body.on-landing .viewport,
+#landingScreen.screen.active {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
 }
 
 body.on-landing,
@@ -50,6 +100,7 @@ body.on-landing .viewport,
 #landingScreen,
 .editorial-hero-wrapper,
 .fab-ticker-section,
+.scroll-story-section,
 .fab-section,
 #features,
 #why,
@@ -74,6 +125,7 @@ body.on-landing .viewport,
   background-color: var(--ed-bg-basis);
   overflow: hidden;
   box-sizing: border-box;
+  padding-top: 80px;
   z-index: 2;
 }
 
@@ -114,17 +166,33 @@ body.on-landing .viewport,
 
 /* 3-Column Distributed Navigation Bar */
 .editorial-navbar {
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   width: 100%;
-  max-width: 1280px;
-  padding: 24px 32px;
+  padding: 22px 32px;
   box-sizing: border-box;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   flex-shrink: 0;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-navbar.navbar-scrolled {
+  background: rgba(241, 247, 246, 0.90) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--ed-border-light);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  padding: 14px 32px;
 }
 
 /* Left Col: Brand Logo */
@@ -3691,4 +3759,1864 @@ body.on-chat main.viewport,
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ==========================================================================
+   Oct 2026 Scroll Experience Architecture (GSAP ScrollTrigger + Lenis)
+   ========================================================================== */
+
+/* 1. Ultra-Precise Reading & Story Progress Indicator */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5px;
+  z-index: 999999;
+  pointer-events: none;
+  background: rgba(14, 116, 144, 0.08);
+}
+
+.scroll-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0e7490 0%, #21d2ed 45%, #6366f1 100%);
+  box-shadow: 0 0 12px rgba(33, 210, 237, 0.6);
+  border-radius: 0 9999px 9999px 0;
+  transition: width 0.05s linear;
+}
+
+body:not(.on-landing) .scroll-progress-bar {
+  display: none !important;
+}
+
+/* 2. 3D Stacking & Swapping Cards Showcase (Real AnonChat UI + SVG Journey Line) */
+.scroll-story-section {
+  position: relative;
+  background-color: var(--ed-bg-cherry) !important;
+  color: var(--ed-primary-text) !important;
+  padding: 0;
+  overflow: visible;
+  border-bottom: 1px solid var(--ed-border-light);
+  isolation: isolate;
+}
+
+/* The pinned stage. Height is locked to the viewport so ScrollTrigger can pin it
+   without ever clipping the deck or the journey sentence. Everything inside is
+   sized in dvh so the composition still fits on short laptop screens. */
+.sticky-stage {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(10px, 2vh, 24px);
+  padding: clamp(56px, 7.5vh, 84px) 0 0;
+
+  /* `hidden` alone is not enough. It still makes the stage a scroll container,
+     and Chrome reports a few pixels of scrollable overflow for the
+     perspective-transformed back cards, so the deck can be nudged sideways by
+     a focus change or a scrollIntoView call. `clip` clips identically but is
+     not a scroll container at all, which is what a pinned stage wants.
+     `hidden` is declared first so browsers without `clip` keep the old
+     behaviour instead of falling back to `visible` and spilling the deck. */
+  overflow: hidden;
+  overflow: clip;
+
+  isolation: isolate;
+}
+
+/* A quiet, generated atmosphere gives the deck depth without replacing the
+   genuine conversation captures inside the cards. It lives on the STAGE (not the
+   section) so it travels with the pinned element instead of scrolling away. */
+.sticky-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 246, 0.94), rgba(255, 250, 246, 0.84)),
+    url('story-atmosphere.png') center / cover no-repeat;
+  opacity: 0.44;
+}
+
+.scroll-story-container {
+  max-width: 1300px;
+  width: 100%;
+  margin: auto auto;
+  padding: 0 clamp(20px, 3.5vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr 1.26fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+/* Left Column: Story Track (the whole stage is already pinned, so no nested
+   sticky positioning is needed here any more). */
+.story-left-col {
+  position: relative;
+  height: 100%;
+}
+
+.story-sticky-content {
+  position: static;
+  padding-right: 20px;
+}
+
+.story-badge {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-live-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #21d2ed;
+  box-shadow: 0 0 8px #21d2ed;
+  animation: radarPing 2s infinite ease-out;
+}
+
+.story-headline {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.1vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -1.4px;
+  color: var(--ed-primary-text);
+  margin: 14px 0 12px 0;
+}
+
+.story-subheadline {
+  font-family: var(--ed-font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ed-muted-text);
+  max-width: 460px;
+  margin-bottom: 22px;
+}
+
+/* SVG Journey Connector Rail */
+.story-journey-wrapper {
+  position: relative;
+  margin-bottom: 22px;
+  padding-left: 10px;
+}
+
+.journey-svg-rail {
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  width: 34px;
+  height: 94%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.journey-base-path {
+  stroke: rgba(14, 116, 144, 0.14);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.journey-draw-path {
+  stroke: url(#journeyGradient);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 0.1s linear;
+  filter: drop-shadow(0 0 6px rgba(33, 210, 237, 0.5));
+}
+
+.story-step-track {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.1vh, 16px);
+}
+
+.story-step-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  padding: clamp(5px, 0.9vh, 10px) 14px;
+  border-radius: 14px;
+  transition: background 0.25s ease, transform 0.25s ease;
+  user-select: none;
+}
+
+.story-step-item:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.story-step-item .step-num {
+  position: relative;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ed-bg-white);
+  border: 1.5px solid rgba(14, 116, 144, 0.2);
+  color: var(--ed-muted-text);
+  font-family: var(--ed-font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+}
+
+.story-step-item.active .step-num {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(33, 210, 237, 0.28), 0 4px 12px rgba(15, 23, 42, 0.15);
+  transform: scale(1.08);
+}
+
+.story-step-item .step-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.story-step-item .step-title {
+  font-family: var(--ed-font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ed-primary-text);
+  transition: color 0.25s ease;
+}
+
+.story-step-item.active .step-title {
+  color: #0e7490;
+}
+
+.story-step-item .step-desc {
+  font-family: var(--ed-font-body);
+  font-size: 12.5px;
+  color: var(--ed-muted-text);
+}
+
+.story-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.story-swap-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(14, 116, 144, 0.2);
+  color: var(--ed-primary-text);
+  border-radius: 9999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.story-swap-btn:hover {
+  background: #ffffff;
+  border-color: #0e7490;
+  color: #0e7490;
+  transform: translateY(-1px);
+}
+
+/* Right Column: 3D Stacking & Swapping Cards Deck */
+.story-right-col {
+  position: relative;
+  width: 100%;
+}
+
+.card-swap-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+.card-swap-deck {
+  /* Deck width follows the viewport in both axes so the pinned stage always fits.
+     The aspect ratio mirrors the real 938x906 capture, which means object-fit:
+     contain shows the whole conversation - no cropping, no distortion. */
+  --deck-w: clamp(280px, min(48vw, 65dvh), 560px);
+  position: relative;
+  width: var(--deck-w);
+  max-width: 100%;
+  aspect-ratio: 938 / 906;
+  transform-style: preserve-3d;
+}
+
+.swap-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.35s ease;
+}
+
+/* A deliberate first frame: JS takes over these slots when GSAP is available,
+   while this still communicates a real deck if a browser delays animation JS. */
+.swap-card:nth-child(1) { z-index: 10; }
+.swap-card:nth-child(2) { z-index: 9; transform: translate3d(34px, -22px, -70px) scale(0.95) rotateY(-3deg) skewY(2.5deg); opacity: 0.92; }
+.swap-card:nth-child(3) { z-index: 8; transform: translate3d(68px, -44px, -140px) scale(0.90) rotateY(-6deg) skewY(5deg); opacity: 0.78; }
+.swap-card:nth-child(4) { z-index: 7; transform: translate3d(102px, -66px, -210px) scale(0.85) rotateY(-9deg) skewY(7.5deg); opacity: 0.62; }
+
+.swap-card:hover {
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Real Chat Screenshot Card Architecture */
+.real-chat-frame.has-screenshot {
+  padding: 0 !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(14, 116, 144, 0.18) !important;
+  border-radius: 26px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-shadow: 0 25px 65px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(14, 116, 144, 0.2) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.real-chat-screenshot-img {
+  width: 100% !important;
+  height: 100% !important;
+  /* contain, not cover: these are real chat captures and cropping them would hide
+     actual conversation content. The deck aspect ratio matches the capture, so
+     this normally fills the frame edge to edge with no letterboxing at all. */
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  border-radius: 24px !important;
+  pointer-events: none;
+}
+
+.real-screenshot-overlay-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.real-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+.real-live-dot.audio { background: #0284c7; box-shadow: 0 0 8px #0284c7; }
+.real-live-dot.bomb { background: #f97316; box-shadow: 0 0 8px #f97316; }
+.real-live-dot.skip { background: #eab308; box-shadow: 0 0 8px #eab308; }
+
+/* Real Chat Frame (Obsidian Dark iPhone / Device Screen) */
+.real-chat-frame {
+  background: #090b10;
+  color: #f8fafc;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+  padding: 20px;
+  box-shadow: 0 25px 65px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(14, 116, 144, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Chat Header */
+.real-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.real-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.real-avatar {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #181b28;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.real-avatar.audio-glow {
+  border-color: rgba(33, 210, 237, 0.4);
+  box-shadow: 0 0 10px rgba(33, 210, 237, 0.25);
+}
+
+.real-avatar.bomb-glow {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
+}
+
+.real-active-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid #090b10;
+}
+
+.real-header-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.real-peer-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.real-peer-sub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.real-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.real-badge-pill {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  color: #94a3b8;
+}
+
+.real-badge-pill.cyan {
+  background: rgba(33, 210, 237, 0.12);
+  border-color: rgba(33, 210, 237, 0.3);
+  color: #21d2ed;
+}
+
+.real-badge-pill.orange {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: #fb923c;
+}
+
+.real-badge-pill.green {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.real-header-btn {
+  background: #ffffff;
+  border: none;
+  color: #090b10;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.real-header-btn:hover {
+  transform: scale(1.04);
+}
+
+/* Pinned Bar */
+.real-pinned-bar {
+  background: rgba(18, 21, 32, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.real-pinned-bar svg {
+  color: #21d2ed;
+  flex-shrink: 0;
+}
+
+/* Messages Stream */
+.real-messages-stream {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.real-messages-stream.center-stage {
+  align-items: center;
+  text-align: center;
+}
+
+.real-sys-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+}
+
+.real-bubble {
+  padding: 11px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.real-bubble.stranger-bubble {
+  background: #141724;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  max-width: 88%;
+}
+
+.real-bubble.user-bubble {
+  background: #1e243d;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+  max-width: 88%;
+}
+
+.real-bubble-text {
+  margin: 0 0 4px 0;
+}
+
+.real-quote-preview {
+  background: rgba(0, 0, 0, 0.35);
+  border-left: 3px solid #21d2ed;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.real-quote-author {
+  font-weight: 700;
+  color: #21d2ed;
+}
+
+.real-quote-text {
+  color: #cbd5e1;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.real-bubble-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.real-bubble-footer.user-meta {
+  justify-content: flex-end;
+}
+
+.real-msg-time {
+  font-size: 10.5px;
+  color: #64748b;
+}
+
+.real-seen-ticks {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-left: 4px;
+}
+
+.real-reaction-dock {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.reaction-tag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1px 6px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+}
+
+/* Voice Note Player Mockup */
+.real-voice-player-bubble {
+  background: #141724;
+  border: 1px solid rgba(33, 210, 237, 0.3);
+  border-radius: 9999px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  max-width: 90%;
+}
+
+.voice-play-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0e7490;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(14, 116, 144, 0.5);
+}
+
+.voice-waveform-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 18px;
+}
+
+.w-bar {
+  width: 2.5px;
+  background: #21d2ed;
+  border-radius: 2px;
+  animation: wavePulse 1.2s infinite ease-in-out alternate;
+}
+
+.b-1 { height: 6px; animation-delay: 0.1s; }
+.b-2 { height: 14px; animation-delay: 0.25s; }
+.b-3 { height: 9px; animation-delay: 0.15s; }
+.b-4 { height: 18px; animation-delay: 0.35s; }
+.b-5 { height: 12px; animation-delay: 0.2s; }
+.b-6 { height: 16px; animation-delay: 0.4s; }
+.b-7 { height: 8px; animation-delay: 0.1s; }
+.b-8 { height: 15px; animation-delay: 0.3s; }
+.b-9 { height: 10px; animation-delay: 0.15s; }
+.b-10 { height: 17px; animation-delay: 0.45s; }
+.b-11 { height: 11px; animation-delay: 0.2s; }
+.b-12 { height: 7px; animation-delay: 0.1s; }
+.b-13 { height: 13px; animation-delay: 0.3s; }
+.b-14 { height: 5px; animation-delay: 0.05s; }
+
+.voice-duration {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.voice-spec-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(33, 210, 237, 0.15);
+  color: #21d2ed;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  margin-left: auto;
+}
+
+/* View Once Card */
+.real-view-once-card {
+  background: #141724;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 85%;
+  align-self: flex-start;
+}
+
+.view-once-thumb {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+}
+
+.view-once-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
+  transform: scale(1.05);
+}
+
+.view-once-overlay-badge {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 11, 16, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.view-once-meta {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.v-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.v-sub {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+/* Bomb Banner & Smoke Dissolve */
+.real-bomb-banner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #fca5a5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.bomb-bubble {
+  position: relative;
+  background: #1a1524 !important;
+  border-color: rgba(249, 115, 22, 0.35) !important;
+}
+
+.bomb-countdown-pill {
+  background: rgba(249, 115, 22, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #fb923c;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.real-safe-link-chip {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 11.5px;
+}
+
+.link-text {
+  color: #34d399;
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-tag {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.smoke-dissolving {
+  animation: smokeDissolveAnim 4s infinite alternate ease-in-out;
+}
+
+@keyframes smokeDissolveAnim {
+  0% { filter: blur(0px); opacity: 1; transform: scale(1); }
+  60% { filter: blur(1.5px); opacity: 0.85; transform: scale(0.99); }
+  100% { filter: blur(4px); opacity: 0.55; transform: scale(0.97) translateY(-3px); }
+}
+
+.bubble-vapor-mist {
+  position: relative;
+  width: 100%;
+  height: 20px;
+}
+
+.v-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fb923c;
+  opacity: 0.6;
+  animation: vaporParticle 2.5s infinite ease-out;
+}
+
+.p1 { left: 25%; animation-delay: 0.1s; }
+.p2 { left: 55%; animation-delay: 0.8s; }
+.p3 { left: 80%; animation-delay: 1.4s; }
+
+@keyframes vaporParticle {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(-24px) scale(0); opacity: 0; }
+}
+
+@keyframes laserTravel {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+@keyframes vaporDrift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate(-8px, -18px) scale(1.08); opacity: 0.4; }
+  100% { transform: translate(6px, -36px) scale(1.18); opacity: 0; }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(8deg); }
+}
+
+/* Skip Grace Protection & Honeycomb */
+.real-skip-grace-bar {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.skip-countdown-ring {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #090b10;
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skip-text {
+  font-size: 11.5px;
+  color: #fde68a;
+  flex: 1;
+}
+
+.skip-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.skip-btn-cancel {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.skip-btn-now {
+  background: #f59e0b;
+  border: none;
+  color: #090b10;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* Mini Honeycomb */
+.real-honeycomb-mini {
+  position: relative;
+  width: 80px;
+  height: 70px;
+  margin: 12px auto;
+}
+
+.mini-gel {
+  position: absolute;
+  width: 20px;
+  height: 12px;
+  background: rgba(33, 210, 237, 0.85);
+  box-shadow: 0 0 10px rgba(33, 210, 237, 0.5);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: miniGelPulse 2s infinite ease-in-out;
+}
+
+.g-center { top: 29px; left: 30px; animation-delay: 0s; }
+.g-1 { top: 12px; left: 30px; animation-delay: 0.15s; }
+.g-2 { top: 20px; left: 45px; animation-delay: 0.3s; }
+.g-3 { top: 38px; left: 45px; animation-delay: 0.45s; }
+.g-4 { top: 46px; left: 30px; animation-delay: 0.6s; }
+.g-5 { top: 38px; left: 15px; animation-delay: 0.75s; }
+.g-6 { top: 20px; left: 15px; animation-delay: 0.9s; }
+
+@keyframes miniGelPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(0.7); opacity: 0.3; }
+}
+
+.match-stage-text h4 {
+  font-family: var(--ed-font-display);
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.match-stage-text p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 12px 0;
+  max-width: 320px;
+}
+
+.real-privacy-callout {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 11px;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.real-privacy-callout svg {
+  color: #10b981;
+}
+
+/* Capsule Dock Mockup */
+.real-capsule-dock {
+  background: #121522;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.real-capsule-dock.disabled {
+  opacity: 0.6;
+}
+
+.dock-btn-prompts {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dock-input-sim {
+  flex: 1;
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dock-btn-tool {
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.dock-btn-tool.active {
+  opacity: 1;
+}
+
+.dock-btn-send {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0e7490;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dock-btn-send.disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+/* CONTINUOUS HORIZONTAL JOURNEY RIBBON (Ticker Tape Scroll Flow) */
+.horizontal-journey-ribbon {
+  position: relative;
+  background-color: var(--ed-bg-cherry) !important;
+  border-top: 1px solid var(--ed-border-light);
+  border-bottom: 1px solid rgba(14, 116, 144, 0.12);
+  width: 100%;
+  padding: clamp(14px, 2.5vh, 26px) 0;
+  margin-top: auto;
+  overflow: hidden;
+  contain: paint;
+}
+
+/* The plain sentence. This is the accessible, no-JS, and reduced-motion version:
+   the full thought is always in the DOM as real text, never animation-only. */
+.journey-sentence-static {
+  margin: 0 auto;
+  max-width: 62ch;
+  padding: 0 28px;
+  font-family: var(--ed-font-display);
+  font-size: clamp(19px, 2.1vw, 28px);
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+  color: var(--ed-primary-text);
+  text-align: center;
+}
+
+/* Once GSAP takes over, the sentence becomes one very long travelling strip and
+   the static copy steps back to screen-reader only (it keeps the real text). */
+.story-motion .journey-sentence-static {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* One flex row, one continuous sentence - not a deck of slides.
+   Hidden by default so the readable sentence shows first; JS reveals it only
+   once it can actually drive it. */
+.journey-ribbon-track {
+  display: none;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+  padding-left: 4vw;
+  will-change: transform;
+}
+.story-motion .journey-ribbon-track { display: flex; }
+.story-static .journey-ribbon-track { display: none !important; }
+
+/* Every gap is driven by its own --lead token on a deliberately uneven scale,
+   so the rhythm reads as art-directed rather than a repeating grid. */
+.ribbon-phrase {
+  font-family: var(--ed-font-display);
+  font-size: clamp(23px, 2.6vw, 38px);
+  line-height: 1.16;
+  letter-spacing: -0.8px;
+  color: var(--ed-primary-text);
+  margin-left: var(--lead, 22px);
+}
+.ribbon-phrase:first-child { margin-left: 0; }
+
+.ribbon-accent {
+  color: #0e7490;
+  font-style: italic;
+}
+
+/* Inline connectors: they act as the punctuation of the sentence, never as
+   separate UI blocks. */
+.ribbon-link {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  color: #0e7490;
+  opacity: 0.45;
+  margin-left: var(--lead, 18px);
+}
+.ribbon-link svg {
+  display: block;
+  width: var(--reach, 40px);
+  height: 14px;
+  overflow: visible;
+}
+
+.ribbon-pill {
+  background: #ffffff;
+  border: 1px solid rgba(14, 116, 144, 0.18);
+  color: var(--ed-primary-text);
+  border-radius: 9999px;
+  padding: 7px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  flex: none;
+  margin-left: var(--lead, 22px);
+  white-space: nowrap;
+}
+
+.ribbon-pill svg {
+  stroke: var(--ed-primary-text);
+}
+
+.ribbon-pill.cyan {
+  border-color: rgba(33, 210, 237, 0.35);
+  background: rgba(33, 210, 237, 0.08);
+  color: #0e7490;
+}
+
+.ribbon-pill.cyan svg { stroke: #0e7490; }
+
+.ribbon-pill.indigo {
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.08);
+  color: #4f46e5;
+}
+
+.ribbon-pill.indigo svg { stroke: #4f46e5; }
+
+.ribbon-pill.green {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.08);
+  color: #059669;
+}
+
+.ribbon-pill.green svg { stroke: #059669; }
+
+.ribbon-pill.orange {
+  border-color: rgba(249, 115, 22, 0.35);
+  background: rgba(249, 115, 22, 0.08);
+  color: #ea580c;
+}
+
+.ribbon-pill.orange svg { stroke: #ea580c; }
+
+/* Responsive composition.
+   The pinned, scrubbed, 3D deck now runs on EVERY breakpoint - the old rules
+   used to flatten the deck into a plain vertical list under 992px, which is why
+   the effect vanished on scaled laptops and tablets. Only sizing changes here. */
+@media (max-width: 991px) {
+  .scroll-story-container {
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 2vh, 24px);
+    padding: 0 22px;
+  }
+  .story-sticky-content { padding-right: 0; }
+  .story-headline { font-size: clamp(25px, 5.2vw, 36px); margin: 10px 0 10px; }
+  .story-subheadline { font-size: 13.5px; line-height: 1.5; margin-bottom: 14px; }
+  .story-journey-wrapper { margin-bottom: 14px; }
+  .journey-svg-rail { display: none; }
+  .story-step-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .card-swap-deck { --deck-w: clamp(250px, min(65vw, 52dvh), 440px); }
+  .real-chat-frame { padding: 16px; border-radius: 20px; }
+  .ribbon-phrase { font-size: clamp(20px, 5.4vw, 30px); }
+  .ribbon-pill { font-size: 12px; padding: 6px 13px; }
+  .journey-sentence-static { padding: 0 22px; }
+}
+
+/* Phone: the step rail becomes a compact, still-tappable row of beat numbers so
+   the pinned stage stays inside the viewport without losing the control. */
+@media (max-width: 719px) {
+  .story-step-track {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+  }
+  .story-step-item {
+    flex: 1 1 0;
+    justify-content: center;
+    padding: 6px 4px;
+    gap: 0;
+  }
+  .step-meta { display: none; }
+  .step-num { font-size: 12px; }
+  .story-headline { font-size: clamp(23px, 6.4vw, 30px); }
+  .story-subheadline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-swap-deck { --deck-w: clamp(220px, min(80vw, 42dvh), 360px); }
+  .story-live-pulse { animation: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   REDUCED MOTION / NO-GSAP FALLBACK
+   The pinned stage collapses back to an ordinary, fully readable document
+   flow: cards stack vertically at full opacity, the sentence becomes a normal
+   paragraph. Nothing is hidden behind an animation that will never run.
+   --------------------------------------------------------------------------- */
+.story-static .sticky-stage {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(36px, 6vh, 64px) 0;
+  overflow: visible;
+}
+.story-static .scroll-story-container {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 1240px;
+  align-items: center;
+}
+.story-static .story-journey-wrapper { display: block; }
+.story-static .story-left-actions { display: flex; }
+.story-static .card-swap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+.story-static .card-swap-deck {
+  --deck-w: clamp(280px, min(48vw, 65dvh), 560px);
+  position: relative;
+  width: var(--deck-w);
+  max-width: 100%;
+  aspect-ratio: 938 / 906;
+  transform-style: preserve-3d;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+.story-static .swap-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+.story-static .real-chat-frame {
+  aspect-ratio: 938 / 906;
+  height: 100%;
+}
+.story-static .journey-sentence-static {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 34px auto 0;
+  clip: auto;
+  clip-path: none;
+}
+
+/* Short viewports (scaled 1366x768 laptops, landscape phones). The stage is
+   locked to 100dvh, so the composition has to compress rather than overflow -
+   otherwise the tail of the sentence would be clipped by the pin. */
+@media (max-height: 660px) {
+  .sticky-stage {
+    gap: clamp(10px, 2vh, 18px);
+    padding: 22px 0 14px;
+  }
+  .story-headline {
+    font-size: clamp(22px, 2.6vw, 32px);
+    margin: 8px 0 8px;
+  }
+  .story-subheadline {
+    display: none;
+  }
+  .story-journey-wrapper {
+    margin-bottom: 10px;
+  }
+  .story-badge {
+    font-size: 10px;
+    padding: 5px 11px;
+  }
+  .card-swap-deck {
+    --deck-w: clamp(190px, min(30vw, 42dvh), 320px);
+  }
+  .horizontal-journey-ribbon {
+    padding: 10px 0;
+  }
+  .ribbon-phrase {
+    font-size: clamp(19px, 2.2vw, 30px);
+  }
+}
+
+/* Tablet-narrow: the beat rail drops to a single column above the deck. */
+@media (max-width: 860px) {
+  .story-step-track {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   SCROLL EFFECT PACK - ROUND 1
+   Prismic "50 CSS Scroll Effects" adaptation for the live AnonChat landing.
+
+   Everything in this file follows three rules, so the additions below can
+   never regress the page:
+
+   1. STATIC FIRST. Every effect is pure decoration layered on markup that is
+      already complete and readable. Turn off JS, turn on reduced motion, or
+      load it in a browser without scroll-driven animation support, and the
+      content still reads correctly - it just stops moving.
+
+   2. NO NEW DEPENDENCIES. Scroll effects reuse the GSAP + ScrollTrigger build
+      that is already vendored locally, plus native CSS scroll-driven animations
+      where the browser can do the work itself and skip the main thread.
+
+   3. NO NEW ALWAYS-ON LISTENERS. Scroll work is either a scrubbed
+      ScrollTrigger (batched off the single ticker Lenis already drives) or a
+      pure-CSS `animation-timeline: view()`. No new scroll listeners.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   EFFECT 1 - SCROLL-DRAWN LIFECYCLE TIMELINE  (article #50)
+   A four-beat "How it works". The connector rail draws itself from the
+   section's own scroll progress and each node wakes as the line reaches it.
+   ========================================================================== */
+
+/* `.fab-section` paints an opaque background and is position:relative without a
+   z-index, so it does NOT establish a stacking context. Without isolation here a
+   z-index:-1 tint layer (added in round 3) would paint behind the section's own
+   background and be invisible. This one declaration future-proofs both effects. */
+.fab-section {
+  isolation: isolate;
+}
+
+.ed-tl-section {
+  padding-bottom: 112px !important;
+}
+
+/* Six nav links instead of five: tighten the gutter so the pill row and the
+   status pill never collide at the 1280px navbar max-width. */
+.editorial-nav-center {
+  gap: 32px;
+}
+
+.ed-tl {
+  position: relative;
+  padding: 8px 0;
+}
+
+.ed-tl-rail {
+  position: absolute;
+  top: 26px;
+  bottom: 26px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.ed-tl-rail-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: rgba(14, 116, 144, 0.14);
+}
+
+/* The drawn portion. transform-origin is pinned to the top so scaleY(0) is an
+   empty rail and scaleY(1) is a fully drawn one - no layout, no repaint, and
+   reversing the scroll reverses it for free. */
+.ed-tl-rail-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #0e7490 0%, #21d2ed 52%, #6366f1 100%);
+  transform-origin: top center;
+  transform: scaleY(0);
+  will-change: transform;
+}
+
+.ed-tl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 6.5vh, 84px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Three columns: card | rail gutter | card, so alternating beats can swap
+   sides without any absolute positioning. */
+.ed-tl-step {
+  display: grid;
+  grid-template-columns: 1fr 92px 1fr;
+  align-items: center;
+  gap: 0;
+}
+
+.ed-tl-card {
+  grid-column: 1;
+  background: var(--ed-bg-white);
+  border: 1px solid var(--ed-border-medium);
+  border-radius: 22px;
+  padding: 26px 28px;
+  box-shadow: 0 10px 30px -14px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.55s ease;
+}
+
+/* Beats 2 and 4 flip to the far column, so the eye zig-zags down the rail. */
+.ed-tl-step:nth-child(even) .ed-tl-card {
+  grid-column: 3;
+}
+
+.ed-tl-step.is-live .ed-tl-card {
+  transform: translateY(-4px);
+  border-color: rgba(14, 116, 144, 0.42);
+  box-shadow: 0 22px 48px -18px rgba(14, 116, 144, 0.30), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+}
+
+.ed-tl-node {
+  grid-column: 2;
+  justify-self: center;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ed-bg-white);
+  border: 2px solid rgba(14, 116, 144, 0.22);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+.ed-tl-node-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: background 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Wake state: ring expands, core fills with the section's brand teal. */
+.ed-tl-step.is-live .ed-tl-node {
+  border-color: #0e7490;
+  transform: scale(1.16);
+  box-shadow: 0 0 0 7px rgba(14, 116, 144, 0.10);
+}
+
+.ed-tl-step.is-live .ed-tl-node-core {
+  background: #0e7490;
+  transform: scale(1.3);
+}
+
+/* Passed state: core cools to the mid-gradient stop so finished beats read as
+   history rather than as the current one. */
+.ed-tl-step.is-done .ed-tl-node-core {
+  background: #21d2ed;
+}
+
+.ed-tl-index {
+  display: inline-block;
+  font-family: var(--ed-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0e7490;
+  margin-bottom: 8px;
+}
+
+.ed-tl-title {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ed-primary-text);
+  margin: 0 0 8px;
+}
+
+.ed-tl-copy {
+  font-family: var(--ed-font-body);
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--ed-muted-text);
+  margin: 0 0 12px;
+}
+
+.ed-tl-meta {
+  display: inline-block;
+  font-family: var(--ed-font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0f172a;
+  background: rgba(14, 116, 144, 0.09);
+  border: 1px solid rgba(14, 116, 144, 0.16);
+  border-radius: 9999px;
+  padding: 5px 12px;
+}
+
+/* Tablet and below: the rail moves to the left edge and every beat stacks to
+   its right, which is the only shape that survives a 320px viewport. */
+@media (max-width: 860px) {
+  .ed-tl-rail {
+    left: 13px;
+    transform: none;
+  }
+
+  .ed-tl-step {
+    grid-template-columns: 26px 1fr;
+    gap: 0 18px;
+  }
+
+  .ed-tl-node {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .ed-tl-card,
+  .ed-tl-step:nth-child(even) .ed-tl-card {
+    grid-column: 2;
+    padding: 20px 20px;
+    border-radius: 18px;
+  }
+
+  .ed-tl-copy {
+    font-size: 14.5px;
+  }
+}
+
+/* ==========================================================================
+   EFFECT 2 - STACKED CARDS  (article #13)
+   The #story deck is now a real pile instead of a side-by-side fan, so each
+   card's shadow has to describe its depth in that pile. JS writes
+   data-stack-depth (0 = top card, 3 = deepest buried card) from the same beat
+   value that drives the rest of the story, and these rules do the rest.
+
+   Without this the pile reads flat: four identical drop shadows stacked on top
+   of each other look like a printing mistake, not like sheets of paper.
+   ========================================================================== */
+
+/* The cascade hangs below the deck box, so the column reserves room for it.
+   Without this padding the deepest card's exposed edge is clipped by the
+   pinned stage on short laptop screens. */
+.story-right-col {
+  padding-bottom: 44px;
+}
+
+/* Depth 0 - the active card, sitting proud of the pile. */
+.swap-card[data-stack-depth="0"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 30px 60px -18px rgba(15, 23, 42, 0.32), 0 0 0 1px rgba(14, 116, 144, 0.26) !important;
+}
+
+/* Depth 1 - one card in. */
+.swap-card[data-stack-depth="1"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.24), 0 0 0 1px rgba(14, 116, 144, 0.20) !important;
+}
+
+/* Depth 2 - two cards in. */
+.swap-card[data-stack-depth="2"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 13px 26px -18px rgba(15, 23, 42, 0.17), 0 0 0 1px rgba(14, 116, 144, 0.15) !important;
+}
+
+/* Depth 3 - the bottom of the pile, almost flat against the cards above it. */
+.swap-card[data-stack-depth="3"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 7px 14px -12px rgba(15, 23, 42, 0.13), 0 0 0 1px rgba(14, 116, 144, 0.11) !important;
+}
+
+/* ---- First frame ----------------------------------------------------------
+   These run before JS claims the deck (delayed script, reduced motion, or a
+   failed CDN). They now mirror STACK_PRESETS.desktop exactly, so the very first
+   paint is already a correct pile and there is no visible snap into place. The
+   old values fanned the cards out to the right and dropped them to 62% opacity,
+   which is precisely the flat look this effect set out to remove. */
+.swap-card:nth-child(1) {
+  z-index: 40;
+}
+.swap-card:nth-child(2) {
+  z-index: 30;
+  transform: translate3d(-4px, 13px, -46px) scale(0.985) rotateY(-0.7deg);
+  opacity: 1;
+}
+.swap-card:nth-child(3) {
+  z-index: 20;
+  transform: translate3d(-8px, 26px, -92px) scale(0.97) rotateY(-1.4deg);
+  opacity: 1;
+}
+.swap-card:nth-child(4) {
+  z-index: 10;
+  transform: translate3d(-12px, 39px, -138px) scale(0.955) rotateY(-2.1deg);
+  opacity: 1;
+}
+
+/* The cascade is a stack of real screenshots, so the exposed edges need a hair
+   line to read as separate sheets rather than as one ragged silhouette. */
+.swap-card .real-chat-frame.has-screenshot {
+  border-color: rgba(14, 116, 144, 0.22) !important;
+}
+
+/* Tablet and phone: the deck shrinks, so the cascade tightens with it. The
+   shadow steps stay as authored because they are absolute lengths and still
+   read correctly at a smaller card size. */
+@media (max-width: 991px) {
+  .story-right-col {
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 719px) {
+  .story-right-col {
+    padding-bottom: 30px;
+  }
+}
+
+/* ==========================================================================
+   EFFECT 2b - REDESIGNED REDUCED-MOTION FALLBACK FOR #story
+   The old fallback was the reason the section read as "weak": it dropped the
+   beat rail entirely and poured four full-width screenshots into one tall
+   column, which is just an image dump, not a narrative.
+
+   This is a genuine user path, not an error state - OS-level "reduce motion"
+   is on for plenty of visitors, and every headless browser enables it by
+   default. So it gets the same editorial care as the animated version:
+
+     - the beat rail stays, as real scroll-to navigation (wired in fabale.js)
+     - the four captures become a two-up gallery instead of one tall stack
+     - the connector rail renders complete rather than parked undrawn
+     - the continuous sentence stays a centred paragraph
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   STICKY STACKING DECK ARCHITECTURE (Prismic Scroll Effects #8 & #14)
+   Cards cascade neatly with subtle depth offsets and elevation shadows.
+   Even in fallback or static modes, cards stay in an elegant stack rather
+   than breaking into a disjointed 2x2 grid.
+   --------------------------------------------------------------------------- */
+.story-static .scroll-story-container {
+  display: grid !important;
+  grid-template-columns: 1fr 1.15fr !important;
+  gap: clamp(24px, 4vw, 56px) !important;
+  max-width: 1240px !important;
+  align-items: center !important;
+}
+
+@media (max-width: 991px) {
+  .story-static .scroll-story-container {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+.story-static .card-swap-deck {
+  --deck-w: clamp(280px, min(48vw, 65dvh), 560px) !important;
+  position: relative !important;
+  width: var(--deck-w) !important;
+  max-width: 100% !important;
+  aspect-ratio: 938 / 906 !important;
+  transform-style: preserve-3d !important;
+  perspective: 1200px !important;
+  margin: 0 auto !important;
+  display: block !important;
+  height: auto !important;
+}
+
+.story-static .swap-card {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 26px !important;
+  cursor: pointer !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease !important;
+}
+
+/* Fallback stacked positions when GSAP is not running */
+.story-static .swap-card.active,
+.story-static .swap-card[data-stack-depth="0"] {
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  opacity: 1 !important;
+  z-index: 25 !important;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.24) !important;
+  filter: brightness(1) !important;
+}
+
+.story-static .swap-card[data-stack-depth="1"] {
+  transform: translate3d(16px, -12px, -35px) scale(0.96) !important;
+  opacity: 0.92 !important;
+  z-index: 20 !important;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.16) !important;
+  filter: brightness(0.96) !important;
+}
+
+.story-static .swap-card[data-stack-depth="2"] {
+  transform: translate3d(32px, -24px, -70px) scale(0.92) !important;
+  opacity: 0.8 !important;
+  z-index: 15 !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12) !important;
+  filter: brightness(0.92) !important;
+}
+
+.story-static .swap-card[data-stack-depth="3"] {
+  transform: translate3d(48px, -36px, -105px) scale(0.88) !important;
+  opacity: 0.65 !important;
+  z-index: 10 !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+  filter: brightness(0.88) !important;
+}
+
+.story-static .real-chat-frame {
+  aspect-ratio: 938 / 906;
+  height: 100% !important;
+}
+
+.story-static .story-journey-wrapper {
+  display: block !important;
+  margin-bottom: 22px !important;
+}
+
+.story-static .journey-svg-rail {
+  display: block !important;
+  max-width: 34px !important;
+}
+
+.story-static .story-step-track {
+  gap: 12px !important;
+}
+
+.story-static .story-step-item {
+  padding: 10px 14px !important;
+  border-radius: 14px;
+}
+
+.story-static .step-title {
+  font-size: 15px !important;
+}
+
+.story-static .step-desc {
+  font-size: 12px !important;
+}
+
+.story-static .story-left-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.story-static .story-swap-btn {
+  display: inline-flex !important;
 }
