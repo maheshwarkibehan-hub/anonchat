@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "roomId": "room_1791037480471_k1u6b7",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T14:24:40.471Z",
+    "endTime": "2026-10-03T14:25:59.999Z",
+    "durationSeconds": 80,
+    "totalMessages": 6,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791037486522_qd3tto",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037484923,
+      "isoTime": "2026-10-03T14:24:44.923Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791037488441_1lega2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037486843,
+      "isoTime": "2026-10-03T14:24:46.843Z",
+      "type": "text",
+      "text": "Daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791037489712_vnd0gr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037488108,
+      "isoTime": "2026-10-03T14:24:48.108Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791037504173_q18pb5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037502573,
+      "isoTime": "2026-10-03T14:25:02.573Z",
+      "type": "text",
+      "text": "Aree bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791037507070_9p7ek9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037505463,
+      "isoTime": "2026-10-03T14:25:05.463Z",
+      "type": "text",
+      "text": "Code hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791037546501_xi0dnl",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037544903,
+      "isoTime": "2026-10-03T14:25:44.903Z",
+      "type": "text",
+      "text": "Hello",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "Daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "?"
+      },
+      {
+        "role": "assistant",
+        "content": "Aree bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "Code hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "Daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "?"
+      },
+      {
+        "from": "gpt",
+        "value": "Aree bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "Code hai"
+      },
+      {
+        "from": "gpt",
+        "value": "Hello"
+      }
+    ]
+  }
+}
