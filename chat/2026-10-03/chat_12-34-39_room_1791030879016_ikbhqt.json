@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1791030879016_ikbhqt",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T12:34:39.016Z",
+    "endTime": "2026-10-03T12:35:23.915Z",
+    "durationSeconds": 45,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791030886969_s0042j",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791030888674,
+      "isoTime": "2026-10-03T12:34:48.674Z",
+      "type": "text",
+      "text": "daba ke??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791030891249_08cclr",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791030890776,
+      "isoTime": "2026-10-03T12:34:50.776Z",
+      "type": "text",
+      "text": "Good. Shit",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791030909679_0324sc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791030909152,
+      "isoTime": "2026-10-03T12:35:09.152Z",
+      "type": "text",
+      "text": "Hug do boards me guys",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791030921451_wxtdey",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791030921031,
+      "isoTime": "2026-10-03T12:35:21.031Z",
+      "type": "text",
+      "text": "Chachaaaa",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "daba ke??"
+      },
+      {
+        "role": "user",
+        "content": "Good. Shit"
+      },
+      {
+        "role": "user",
+        "content": "Hug do boards me guys"
+      },
+      {
+        "role": "user",
+        "content": "Chachaaaa"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "daba ke??"
+      },
+      {
+        "from": "human",
+        "value": "Good. Shit"
+      },
+      {
+        "from": "human",
+        "value": "Hug do boards me guys"
+      },
+      {
+        "from": "human",
+        "value": "Chachaaaa"
+      }
+    ]
+  }
+}
