@@ -1,0 +1,446 @@
+{
+  "metadata": {
+    "roomId": "room_1791027467891_pqbwgp",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T11:37:47.891Z",
+    "endTime": "2026-10-03T11:40:18.593Z",
+    "durationSeconds": 151,
+    "totalMessages": 21,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791027474355_7bgxla",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027477221,
+      "isoTime": "2026-10-03T11:37:57.221Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791027478175_35eix3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027479833,
+      "isoTime": "2026-10-03T11:37:59.833Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791027481581_hqlvne",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027484440,
+      "isoTime": "2026-10-03T11:38:04.440Z",
+      "type": "text",
+      "text": "kon",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791027490037_c857po",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027491713,
+      "isoTime": "2026-10-03T11:38:11.713Z",
+      "type": "text",
+      "text": "kyu batau",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791027498452_1h2zyd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027500114,
+      "isoTime": "2026-10-03T11:38:20.114Z",
+      "type": "text",
+      "text": "section A ka hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791027502958_zw6hvv",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027504646,
+      "isoTime": "2026-10-03T11:38:24.646Z",
+      "type": "text",
+      "text": "and you",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791027501952_xumwbk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027504810,
+      "isoTime": "2026-10-03T11:38:24.810Z",
+      "type": "text",
+      "text": "kam hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791027515990_eome1k",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027518850,
+      "isoTime": "2026-10-03T11:38:38.850Z",
+      "type": "text",
+      "text": "anmol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791027518767_769q3w",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027520433,
+      "isoTime": "2026-10-03T11:38:40.433Z",
+      "type": "text",
+      "text": "section??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791027523281_lxwfcu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027524945,
+      "isoTime": "2026-10-03T11:38:44.945Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "anmol",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791027524352_4jcbw8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027527210,
+      "isoTime": "2026-10-03T11:38:47.210Z",
+      "type": "text",
+      "text": "z",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791027528368_dkfpa1",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027530065,
+      "isoTime": "2026-10-03T11:38:50.065Z",
+      "type": "text",
+      "text": "maheswar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791027529735_kujm6g",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027531432,
+      "isoTime": "2026-10-03T11:38:51.432Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1791027533791_hlk7g0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027536650,
+      "isoTime": "2026-10-03T11:38:56.650Z",
+      "type": "text",
+      "text": "nooooooooooooooo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1791027545621_ocw9qs",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027548470,
+      "isoTime": "2026-10-03T11:39:08.470Z",
+      "type": "text",
+      "text": "section z",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1791027550734_w58cqu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027552393,
+      "isoTime": "2026-10-03T11:39:12.393Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1791027570692_xjsdn8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027573545,
+      "isoTime": "2026-10-03T11:39:33.545Z",
+      "type": "text",
+      "text": "mai futur se aaya hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1791027576557_pphx19",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027578226,
+      "isoTime": "2026-10-03T11:39:38.226Z",
+      "type": "text",
+      "text": "thk",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "mai futur se aaya hu",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1791027598031_c0cd2m",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027600890,
+      "isoTime": "2026-10-03T11:40:00.890Z",
+      "type": "text",
+      "text": "by 1999 me jana hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1791027609609_vosz3r",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027611273,
+      "isoTime": "2026-10-03T11:40:11.273Z",
+      "type": "text",
+      "text": "to jao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1791027615124_d5pnhe",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027616793,
+      "isoTime": "2026-10-03T11:40:16.793Z",
+      "type": "text",
+      "text": "bye",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "kon"
+      },
+      {
+        "role": "assistant",
+        "content": "kyu batau"
+      },
+      {
+        "role": "assistant",
+        "content": "section A ka hu"
+      },
+      {
+        "role": "assistant",
+        "content": "and you"
+      },
+      {
+        "role": "user",
+        "content": "kam hai"
+      },
+      {
+        "role": "user",
+        "content": "anmol"
+      },
+      {
+        "role": "assistant",
+        "content": "section??"
+      },
+      {
+        "role": "assistant",
+        "content": "ha"
+      },
+      {
+        "role": "user",
+        "content": "z"
+      },
+      {
+        "role": "assistant",
+        "content": "maheswar"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "nooooooooooooooo"
+      },
+      {
+        "role": "user",
+        "content": "section z"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "user",
+        "content": "mai futur se aaya hu"
+      },
+      {
+        "role": "assistant",
+        "content": "thk"
+      },
+      {
+        "role": "user",
+        "content": "by 1999 me jana hai"
+      },
+      {
+        "role": "assistant",
+        "content": "to jao"
+      },
+      {
+        "role": "assistant",
+        "content": "bye"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "kon"
+      },
+      {
+        "from": "gpt",
+        "value": "kyu batau"
+      },
+      {
+        "from": "gpt",
+        "value": "section A ka hu"
+      },
+      {
+        "from": "gpt",
+        "value": "and you"
+      },
+      {
+        "from": "human",
+        "value": "kam hai"
+      },
+      {
+        "from": "human",
+        "value": "anmol"
+      },
+      {
+        "from": "gpt",
+        "value": "section??"
+      },
+      {
+        "from": "gpt",
+        "value": "ha"
+      },
+      {
+        "from": "human",
+        "value": "z"
+      },
+      {
+        "from": "gpt",
+        "value": "maheswar"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "nooooooooooooooo"
+      },
+      {
+        "from": "human",
+        "value": "section z"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "human",
+        "value": "mai futur se aaya hu"
+      },
+      {
+        "from": "gpt",
+        "value": "thk"
+      },
+      {
+        "from": "human",
+        "value": "by 1999 me jana hai"
+      },
+      {
+        "from": "gpt",
+        "value": "to jao"
+      },
+      {
+        "from": "gpt",
+        "value": "bye"
+      }
+    ]
+  }
+}
