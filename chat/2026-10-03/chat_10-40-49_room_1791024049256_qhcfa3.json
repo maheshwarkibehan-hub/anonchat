@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "roomId": "room_1791024049256_qhcfa3",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T10:40:49.256Z",
+    "endTime": "2026-10-03T10:42:15.513Z",
+    "durationSeconds": 86,
+    "totalMessages": 11,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791024054845_xq7rd5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791024056482,
+      "isoTime": "2026-10-03T10:40:56.482Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791024061212_2lpx5s",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791024062380,
+      "isoTime": "2026-10-03T10:41:02.380Z",
+      "type": "text",
+      "text": "Hlooooooo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791024066747_181dd0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791024068392,
+      "isoTime": "2026-10-03T10:41:08.392Z",
+      "type": "text",
+      "text": "section??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791024074362_666vyg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791024075523,
+      "isoTime": "2026-10-03T10:41:15.523Z",
+      "type": "text",
+      "text": "Why",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791024081310_j1nwfo",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791024082952,
+      "isoTime": "2026-10-03T10:41:22.952Z",
+      "type": "text",
+      "text": "bass aise hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791024099026_712lyk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791024100193,
+      "isoTime": "2026-10-03T10:41:40.193Z",
+      "type": "text",
+      "text": "Kyu mind your own business",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791024108033_5ip2k8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791024109227,
+      "isoTime": "2026-10-03T10:41:49.227Z",
+      "type": "text",
+      "text": "Don't interfere",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791024118621_lx0sfh",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791024120272,
+      "isoTime": "2026-10-03T10:42:00.272Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791024120085_8ethdn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791024121705,
+      "isoTime": "2026-10-03T10:42:01.705Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791024130320_il3x2x",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791024131482,
+      "isoTime": "2026-10-03T10:42:11.482Z",
+      "type": "text",
+      "text": "Fuck off",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "event_1791024132684",
+      "sender": "System",
+      "role": "system",
+      "timestamp": 1791024132684,
+      "isoTime": "2026-10-03T10:42:12.684Z",
+      "type": "teacher_intervention",
+      "text": "Joby Sir: i told you beta gali nahi dene ka meet tommarow"
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "Hlooooooo"
+      },
+      {
+        "role": "assistant",
+        "content": "section??"
+      },
+      {
+        "role": "user",
+        "content": "Why"
+      },
+      {
+        "role": "assistant",
+        "content": "bass aise hi"
+      },
+      {
+        "role": "user",
+        "content": "Kyu mind your own business"
+      },
+      {
+        "role": "user",
+        "content": "Don't interfere"
+      },
+      {
+        "role": "assistant",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Fuck off"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "Hlooooooo"
+      },
+      {
+        "from": "gpt",
+        "value": "section??"
+      },
+      {
+        "from": "human",
+        "value": "Why"
+      },
+      {
+        "from": "gpt",
+        "value": "bass aise hi"
+      },
+      {
+        "from": "human",
+        "value": "Kyu mind your own business"
+      },
+      {
+        "from": "human",
+        "value": "Don't interfere"
+      },
+      {
+        "from": "gpt",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Fuck off"
+      }
+    ]
+  }
+}
