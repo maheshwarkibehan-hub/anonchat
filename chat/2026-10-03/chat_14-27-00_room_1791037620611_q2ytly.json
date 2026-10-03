@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1791037620611_q2ytly",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T14:27:00.611Z",
+    "endTime": "2026-10-03T14:29:32.415Z",
+    "durationSeconds": 152,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791037628066_9ct8ma",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037626470,
+      "isoTime": "2026-10-03T14:27:06.470Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791037636538_tbr87l",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037634940,
+      "isoTime": "2026-10-03T14:27:14.940Z",
+      "type": "text",
+      "text": "Daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791037692264_h9wrib",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037690650,
+      "isoTime": "2026-10-03T14:28:10.650Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791037733901_rhdxw3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037732300,
+      "isoTime": "2026-10-03T14:28:52.300Z",
+      "type": "text",
+      "text": "Areeee kon ho yrrr",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "?"
+      },
+      {
+        "role": "assistant",
+        "content": "Areeee kon ho yrrr"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "Daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "?"
+      },
+      {
+        "from": "gpt",
+        "value": "Areeee kon ho yrrr"
+      }
+    ]
+  }
+}
