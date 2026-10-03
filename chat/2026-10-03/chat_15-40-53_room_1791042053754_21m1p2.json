@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "roomId": "room_1791042053754_21m1p2",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T15:40:53.754Z",
+    "endTime": "2026-10-03T15:41:30.456Z",
+    "durationSeconds": 37,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791042064208_362wja",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791042066654,
+      "isoTime": "2026-10-03T15:41:06.654Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791042082052_0rri59",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791042080444,
+      "isoTime": "2026-10-03T15:41:20.444Z",
+      "type": "text",
+      "text": "Kya appp bhi apni gand ka ched bada karna chahte hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "event_1791042081645",
+      "sender": "System",
+      "role": "system",
+      "timestamp": 1791042081645,
+      "isoTime": "2026-10-03T15:41:21.645Z",
+      "type": "teacher_intervention",
+      "text": "Joby Sir: i told you beta gali nahi dene ka meet tommarow"
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "?"
+      },
+      {
+        "role": "user",
+        "content": "Kya appp bhi apni gand ka ched bada karna chahte hai"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "?"
+      },
+      {
+        "from": "human",
+        "value": "Kya appp bhi apni gand ka ched bada karna chahte hai"
+      }
+    ]
+  }
+}
