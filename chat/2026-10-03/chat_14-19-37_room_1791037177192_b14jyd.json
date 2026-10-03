@@ -1,0 +1,220 @@
+{
+  "metadata": {
+    "roomId": "room_1791037177192_b14jyd",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T14:19:37.192Z",
+    "endTime": "2026-10-03T14:22:27.857Z",
+    "durationSeconds": 171,
+    "totalMessages": 10,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791037191825_d0nyti",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037190223,
+      "isoTime": "2026-10-03T14:19:50.223Z",
+      "type": "text",
+      "text": "Hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791037204206_z1fb66",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037202603,
+      "isoTime": "2026-10-03T14:20:02.603Z",
+      "type": "text",
+      "text": "Hello",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791037244582_wgluqt",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037242980,
+      "isoTime": "2026-10-03T14:20:42.980Z",
+      "type": "text",
+      "text": "Hai koi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791037246924_lnwpc3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037245328,
+      "isoTime": "2026-10-03T14:20:45.328Z",
+      "type": "text",
+      "text": "Helllo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791037280340_s55kcn",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037278736,
+      "isoTime": "2026-10-03T14:21:18.736Z",
+      "type": "text",
+      "text": "Kon hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791037282805_2jlhm0",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037281193,
+      "isoTime": "2026-10-03T14:21:21.193Z",
+      "type": "text",
+      "text": "Oyeeeeeee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791037287551_bdhbxq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037285943,
+      "isoTime": "2026-10-03T14:21:25.943Z",
+      "type": "text",
+      "text": "Bol de behan",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791037288481_x17qxz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037286873,
+      "isoTime": "2026-10-03T14:21:26.873Z",
+      "type": "text",
+      "text": "Bhai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791037343335_e0axui",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037341718,
+      "isoTime": "2026-10-03T14:22:21.718Z",
+      "type": "text",
+      "text": "Hello",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791037345026_kyopo3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791037343423,
+      "isoTime": "2026-10-03T14:22:23.423Z",
+      "type": "text",
+      "text": "Ghanta",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Hi"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Hai koi"
+      },
+      {
+        "role": "assistant",
+        "content": "Helllo"
+      },
+      {
+        "role": "assistant",
+        "content": "Kon hai"
+      },
+      {
+        "role": "assistant",
+        "content": "Oyeeeeeee"
+      },
+      {
+        "role": "assistant",
+        "content": "Bol de behan"
+      },
+      {
+        "role": "assistant",
+        "content": "Bhai"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello"
+      },
+      {
+        "role": "assistant",
+        "content": "Ghanta"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Hi"
+      },
+      {
+        "from": "gpt",
+        "value": "Hello"
+      },
+      {
+        "from": "gpt",
+        "value": "Hai koi"
+      },
+      {
+        "from": "gpt",
+        "value": "Helllo"
+      },
+      {
+        "from": "gpt",
+        "value": "Kon hai"
+      },
+      {
+        "from": "gpt",
+        "value": "Oyeeeeeee"
+      },
+      {
+        "from": "gpt",
+        "value": "Bol de behan"
+      },
+      {
+        "from": "gpt",
+        "value": "Bhai"
+      },
+      {
+        "from": "gpt",
+        "value": "Hello"
+      },
+      {
+        "from": "gpt",
+        "value": "Ghanta"
+      }
+    ]
+  }
+}
