@@ -1,0 +1,303 @@
+{
+  "metadata": {
+    "roomId": "room_1791027628245_oehkbi",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T11:40:28.245Z",
+    "endTime": "2026-10-03T11:42:29.105Z",
+    "durationSeconds": 121,
+    "totalMessages": 14,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791027634567_0se8xa",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027636233,
+      "isoTime": "2026-10-03T11:40:36.233Z",
+      "type": "text",
+      "text": "badi jaldi aagye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791027636968_bt8ltb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027639830,
+      "isoTime": "2026-10-03T11:40:39.830Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791027645727_fwent7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027647401,
+      "isoTime": "2026-10-03T11:40:47.401Z",
+      "type": "text",
+      "text": "1999 se",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791027649026_i5eudc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027651870,
+      "isoTime": "2026-10-03T11:40:51.870Z",
+      "type": "text",
+      "text": "ji",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791027662944_2jvl4u",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027665806,
+      "isoTime": "2026-10-03T11:41:05.806Z",
+      "type": "text",
+      "text": "maja aa raha hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791027670946_bl6mbp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027672595,
+      "isoTime": "2026-10-03T11:41:12.595Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791027677381_45fi73",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027680240,
+      "isoTime": "2026-10-03T11:41:20.240Z",
+      "type": "text",
+      "text": "noooooooooooooooo",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "hmm",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791027687507_fjqhdd",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027689193,
+      "isoTime": "2026-10-03T11:41:29.193Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791027698489_u5jjnc",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027701341,
+      "isoTime": "2026-10-03T11:41:41.341Z",
+      "type": "text",
+      "text": "very naughty",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791027717570_egweaj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027719240,
+      "isoTime": "2026-10-03T11:41:59.240Z",
+      "type": "text",
+      "text": "dimag mattt kharab kar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791027730117_p4ess2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027732961,
+      "isoTime": "2026-10-03T11:42:12.961Z",
+      "type": "text",
+      "text": "by pathne ja raha hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791027738495_pg1z4z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027741350,
+      "isoTime": "2026-10-03T11:42:21.350Z",
+      "type": "text",
+      "text": "..................",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791027744669_vufbhl",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027746358,
+      "isoTime": "2026-10-03T11:42:26.358Z",
+      "type": "text",
+      "text": "to jao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1791027745522_cfg91o",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027748375,
+      "isoTime": "2026-10-03T11:42:28.375Z",
+      "type": "text",
+      "text": "ok",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "badi jaldi aagye"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "1999 se"
+      },
+      {
+        "role": "user",
+        "content": "ji"
+      },
+      {
+        "role": "user",
+        "content": "maja aa raha hi"
+      },
+      {
+        "role": "assistant",
+        "content": "hmm"
+      },
+      {
+        "role": "user",
+        "content": "noooooooooooooooo"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "user",
+        "content": "very naughty"
+      },
+      {
+        "role": "assistant",
+        "content": "dimag mattt kharab kar"
+      },
+      {
+        "role": "user",
+        "content": "by pathne ja raha hu"
+      },
+      {
+        "role": "user",
+        "content": ".................."
+      },
+      {
+        "role": "assistant",
+        "content": "to jao"
+      },
+      {
+        "role": "user",
+        "content": "ok"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "badi jaldi aagye"
+      },
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "1999 se"
+      },
+      {
+        "from": "human",
+        "value": "ji"
+      },
+      {
+        "from": "human",
+        "value": "maja aa raha hi"
+      },
+      {
+        "from": "gpt",
+        "value": "hmm"
+      },
+      {
+        "from": "human",
+        "value": "noooooooooooooooo"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "human",
+        "value": "very naughty"
+      },
+      {
+        "from": "gpt",
+        "value": "dimag mattt kharab kar"
+      },
+      {
+        "from": "human",
+        "value": "by pathne ja raha hu"
+      },
+      {
+        "from": "human",
+        "value": ".................."
+      },
+      {
+        "from": "gpt",
+        "value": "to jao"
+      },
+      {
+        "from": "human",
+        "value": "ok"
+      }
+    ]
+  }
+}
