@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "roomId": "room_1791015326812_rvo0e7",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T08:15:26.812Z",
+    "endTime": "2026-10-03T08:16:01.331Z",
+    "durationSeconds": 35,
+    "totalMessages": 4,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791015337049_xicdfw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791015339232,
+      "isoTime": "2026-10-03T08:15:39.232Z",
+      "type": "text",
+      "text": "tum usko message kardo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791015340088_2ssa27",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791015342313,
+      "isoTime": "2026-10-03T08:15:42.313Z",
+      "type": "text",
+      "text": "ki aajye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791015349526_bl35bh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791015347576,
+      "isoTime": "2026-10-03T08:15:47.576Z",
+      "type": "text",
+      "text": "Ghop ghop ghop",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791015359838_ob8r2i",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791015357876,
+      "isoTime": "2026-10-03T08:15:57.876Z",
+      "type": "text",
+      "text": "I don't know him",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "tum usko message kardo"
+      },
+      {
+        "role": "assistant",
+        "content": "ki aajye"
+      },
+      {
+        "role": "user",
+        "content": "Ghop ghop ghop"
+      },
+      {
+        "role": "user",
+        "content": "I don't know him"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "tum usko message kardo"
+      },
+      {
+        "from": "gpt",
+        "value": "ki aajye"
+      },
+      {
+        "from": "human",
+        "value": "Ghop ghop ghop"
+      },
+      {
+        "from": "human",
+        "value": "I don't know him"
+      }
+    ]
+  }
+}
