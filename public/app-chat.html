@@ -230,9 +230,21 @@
 			
 		</div>
           <!-- Content Below Honeycomb -->
-          <div class="finding-caption-area">
-            <h2 class="finding-title">Finding a classmate...</h2>
-            <p class="finding-subtitle">Looking for an active peer on campus</p>
+          <div class="finding-caption-area" aria-live="polite">
+            <h2 class="finding-title" id="findingTitle">Finding a peer...</h2>
+            <p class="finding-subtitle" id="findingSubtitle">Connecting you with someone on campus</p>
+            <div id="searchTimeoutActions" class="search-timeout-actions hidden">
+              <p class="search-timeout-msg">No peers available right now. You can keep searching or try again in a moment.</p>
+              <div class="search-timeout-btns">
+                <button type="button" id="retrySearchBtn" class="finding-cancel-btn search-retry-btn" title="Retry matchmaking" aria-label="Retry matchmaking">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"/>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                  </svg>
+                  <span>Retry Search</span>
+                </button>
+              </div>
+            </div>
             <button type="button" id="cancelSearchBtn" class="finding-cancel-btn" title="Cancel matchmaking" aria-label="Cancel matchmaking">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"/>
@@ -245,6 +257,19 @@
       </section>
 
   <div class="app-shell">
+    <!-- Socket Connection Error Alert Banner -->
+    <div id="connectionErrorBanner" class="connection-error-banner hidden" role="alert">
+      <div class="connection-error-content">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span id="connectionErrorMsg">Unable to connect to chat server. Retrying...</span>
+      </div>
+      <button type="button" id="retryConnectionBtn" class="connection-retry-btn" aria-label="Retry connection">Retry</button>
+    </div>
+
     <!-- Live Render Build Update Alert Banner -->
     <div id="updateBanner" class="update-banner hidden" role="alert">
       <div class="update-banner-body">
@@ -268,8 +293,8 @@
           <!-- Full-Bleed Background Video Layer -->
           <div class="editorial-video-layer">
             <video class="editorial-hero-video" id="heroVideo" autoplay loop muted playsinline preload="auto" poster="hero-poster.jpg" onloadeddata="this.playbackRate=1.0;" onplay="this.playbackRate=1.0;">
+              <source src="river-valley-hero.mp4" type="video/mp4" />
               <source src="serene-art-hero.mp4" type="video/mp4" />
-              <source src="https://designerstephen.github.io/public-assets/videos/serene-art-hero.mp4" type="video/mp4" />
             </video>
             <div class="editorial-video-overlay"></div>
           </div>
@@ -495,15 +520,15 @@
             </div>
 
             <!-- Tab Pills -->
-            <div class="fab-tabs-nav fab-reveal">
-              <button type="button" class="fab-tab-btn active" data-tab="confessions">Late Night Confessions</button>
-              <button type="button" class="fab-tab-btn" data-tab="study">Exam Prep & Homework</button>
-              <button type="button" class="fab-tab-btn" data-tab="banter">Campus Banter & Buzz</button>
-              <button type="button" class="fab-tab-btn" data-tab="vent">Safe Vent & Chill</button>
+            <div class="fab-tabs-nav fab-reveal" role="tablist" aria-label="AnonChat use cases">
+              <button type="button" class="fab-tab-btn active" role="tab" id="tab-btn-confessions" aria-selected="true" aria-controls="tab-panel-confessions" data-tab="confessions">Late Night Confessions</button>
+              <button type="button" class="fab-tab-btn" role="tab" id="tab-btn-study" aria-selected="false" aria-controls="tab-panel-study" tabindex="-1" data-tab="study">Exam Prep & Homework</button>
+              <button type="button" class="fab-tab-btn" role="tab" id="tab-btn-banter" aria-selected="false" aria-controls="tab-panel-banter" tabindex="-1" data-tab="banter">Campus Banter & Buzz</button>
+              <button type="button" class="fab-tab-btn" role="tab" id="tab-btn-vent" aria-selected="false" aria-controls="tab-panel-vent" tabindex="-1" data-tab="vent">Safe Vent & Chill</button>
             </div>
 
             <!-- Tab Panel 1: Confessions -->
-            <div class="fab-tab-panel active" id="tab-panel-confessions">
+            <div class="fab-tab-panel active" id="tab-panel-confessions" role="tabpanel" aria-labelledby="tab-btn-confessions" tabindex="0">
               <div class="fab-tab-details">
                 <h3>Share what you can't tell your friend group.</h3>
                 <ul class="fab-checklist">
@@ -517,15 +542,15 @@
                   <li class="fab-check-item">
                     <div class="fab-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="fab-check-text">
-                      <strong>Immediate Purge on Exit</strong>
-                      <span>The moment either person clicks Next, all text permanently evaporates.</span>
+                      <strong>Screen Cleared on Exit</strong>
+                      <span>The moment either person clicks Next, the conversation is wiped clean from both active screens.</span>
                     </div>
                   </li>
                   <li class="fab-check-item">
                     <div class="fab-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="fab-check-text">
-                      <strong>Zero Screenshot Tracing</strong>
-                      <span>Protected ephemeral chat room environment for open expression.</span>
+                      <strong>Ephemeral Media in RAM</strong>
+                      <span>Photos and voice recordings are held ephemerally in active memory and never archived to disk.</span>
                     </div>
                   </li>
                 </ul>
@@ -572,7 +597,7 @@
             </div>
 
             <!-- Tab Panel 2: Study -->
-            <div class="fab-tab-panel" id="tab-panel-study">
+            <div class="fab-tab-panel" id="tab-panel-study" role="tabpanel" aria-labelledby="tab-btn-study" tabindex="0" aria-hidden="true">
               <div class="fab-tab-details">
                 <h3>Solve tough problems together without awkwardness.</h3>
                 <ul class="fab-checklist">
@@ -634,7 +659,7 @@
             </div>
 
             <!-- Tab Panel 3: Banter -->
-            <div class="fab-tab-panel" id="tab-panel-banter">
+            <div class="fab-tab-panel" id="tab-panel-banter" role="tabpanel" aria-labelledby="tab-btn-banter" tabindex="0" aria-hidden="true">
               <div class="fab-tab-details">
                 <h3>Laugh at campus drama, memes, and hot takes.</h3>
                 <ul class="fab-checklist">
@@ -696,15 +721,15 @@
             </div>
 
             <!-- Tab Panel 4: Vent -->
-            <div class="fab-tab-panel" id="tab-panel-vent">
+            <div class="fab-tab-panel" id="tab-panel-vent" role="tabpanel" aria-labelledby="tab-btn-vent" tabindex="0" aria-hidden="true">
               <div class="fab-tab-details">
                 <h3>A safe ear when you just need to let it all out.</h3>
                 <ul class="fab-checklist">
                   <li class="fab-check-item">
                     <div class="fab-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="fab-check-text">
-                      <strong>Zero Record, Pure Release</strong>
-                      <span>No archives or logs. Just release your thoughts and breathe.</span>
+                      <strong>No Judgment, Pure Release</strong>
+                      <span>100% registration-free. Just release your thoughts and breathe without anyone knowing your identity.</span>
                     </div>
                   </li>
                   <li class="fab-check-item">
@@ -771,61 +796,61 @@
 
             <div class="fab-faq-wrap">
               <div class="fab-accordion fab-reveal">
-                <div class="fab-accordion-header">
+                <div class="fab-accordion-header" role="button" tabindex="0" aria-expanded="false" id="faq-header-1" aria-controls="faq-body-1">
                   <h4 class="fab-accordion-question">Is AnonChat really 100% anonymous?</h4>
                   <div class="fab-accordion-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                 </div>
-                <div class="fab-accordion-body">
+                <div class="fab-accordion-body" id="faq-body-1" role="region" aria-labelledby="faq-header-1">
                   <p>Yes. We have zero user registration, no cookies, no tracking pixels, and no database for user accounts. When you join, you are given a temporary random socket token that expires the moment your tab closes.</p>
                 </div>
               </div>
 
               <div class="fab-accordion fab-reveal">
-                <div class="fab-accordion-header">
+                <div class="fab-accordion-header" role="button" tabindex="0" aria-expanded="false" id="faq-header-2" aria-controls="faq-body-2">
                   <h4 class="fab-accordion-question">Where are my messages stored?</h4>
                   <div class="fab-accordion-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                 </div>
-                <div class="fab-accordion-body">
+                <div class="fab-accordion-body" id="faq-body-2" role="region" aria-labelledby="faq-header-2">
                   <p>AnonChat requires zero accounts or registration. Audio notes and photos are ephemeral in RAM and never written to disk. Text message transcripts, turn order, and timestamps are recorded in private server session files for community safety, platform quality, and AI training, without attaching personal user profiles.</p>
                 </div>
               </div>
 
               <div class="fab-accordion fab-reveal">
-                <div class="fab-accordion-header">
+                <div class="fab-accordion-header" role="button" tabindex="0" aria-expanded="false" id="faq-header-3" aria-controls="faq-body-3">
                   <h4 class="fab-accordion-question">Can I send images or screenshots?</h4>
                   <div class="fab-accordion-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                 </div>
-                <div class="fab-accordion-body">
+                <div class="fab-accordion-body" id="faq-body-3" role="region" aria-labelledby="faq-header-3">
                   <p>Yes! You can drag & drop photos or click the paperclip icon. You can also turn on "View Once" mode so the image self-destructs after 8 seconds of viewing.</p>
                 </div>
               </div>
 
               <div class="fab-accordion fab-reveal">
-                <div class="fab-accordion-header">
+                <div class="fab-accordion-header" role="button" tabindex="0" aria-expanded="false" id="faq-header-4" aria-controls="faq-body-4">
                   <h4 class="fab-accordion-question">What is the "Joby Sir" Discipline Alert?</h4>
                   <div class="fab-accordion-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                 </div>
-                <div class="fab-accordion-body">
+                <div class="fab-accordion-body" id="faq-body-4" role="region" aria-labelledby="faq-header-4">
                   <p>A fun campus meme feature! If severe profanity or harassment is detected, Joby Sir's emergency siren goes off and the chat can be immediately terminated.</p>
                 </div>
               </div>
 
               <div class="fab-accordion fab-reveal">
-                <div class="fab-accordion-header">
+                <div class="fab-accordion-header" role="button" tabindex="0" aria-expanded="false" id="faq-header-5" aria-controls="faq-body-5">
                   <h4 class="fab-accordion-question">How does skipping work?</h4>
                   <div class="fab-accordion-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                 </div>
-                <div class="fab-accordion-body">
+                <div class="fab-accordion-body" id="faq-body-5" role="region" aria-labelledby="faq-header-5">
                   <p>Just click the "Next" button in the chat header or press the 'Esc' key on your keyboard. We have a 3-second accidental skip protection bar so you don't lose a great chat by mistake.</p>
                 </div>
               </div>
 
               <div class="fab-accordion fab-reveal">
-                <div class="fab-accordion-header">
+                <div class="fab-accordion-header" role="button" tabindex="0" aria-expanded="false" id="faq-header-6" aria-controls="faq-body-6">
                   <h4 class="fab-accordion-question">Do I need to install an app?</h4>
                   <div class="fab-accordion-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                 </div>
-                <div class="fab-accordion-body">
+                <div class="fab-accordion-body" id="faq-body-6" role="region" aria-labelledby="faq-header-6">
                   <p>Not at all! AnonChat is a Progressive Web Application that works smoothly across any mobile phone, tablet, laptop, or desktop browser.</p>
                 </div>
               </div>
@@ -1212,7 +1237,7 @@
               </div>
 
               <!-- Send Button -->
-              <button type="submit" id="sendBtn" class="send-action send-circle-btn" title="Send message" aria-label="Send message">
+              <button type="submit" id="sendBtn" class="send-action send-circle-btn" title="Send message" aria-label="Send message" disabled aria-disabled="true">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
@@ -1241,7 +1266,7 @@
   </div>
 
   <!-- Transparent Archive & Storage Disclosure Dialog -->
-  <div id="archiveModal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-labelledby="archiveModalTitle">
+  <div id="archiveModal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle">
     <div class="modal-dialog card archive-modal-dialog" id="archiveModalDialog" data-lenis-prevent>
       <div class="modal-header">
         <div class="modal-title-with-badge">
@@ -1307,7 +1332,7 @@
   </div>
 
   <!-- Informational Modal Backdrop & Dialogs -->
-  <div id="infoModalOverlay" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+  <div id="infoModalOverlay" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-dialog card" id="modalDialog">
       <div class="modal-header">
         <h3 id="modalTitle" class="modal-title">How It Works</h3>
@@ -1325,7 +1350,7 @@
   </div>
 
   <!-- Fullscreen Lightbox / View Once Photo Modal -->
-  <div id="mediaModal" class="media-modal hidden" role="dialog" aria-modal="true">
+  <div id="mediaModal" class="media-modal hidden" role="dialog" aria-modal="true" aria-label="Photo preview lightbox">
     <div class="media-modal-backdrop" id="mediaModalBackdrop"></div>
     <div class="media-modal-content">
       <button type="button" id="closeMediaModalBtn" class="media-modal-close" aria-label="Close photo">

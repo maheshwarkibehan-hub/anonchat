@@ -119,27 +119,50 @@
     }
   }
 
-  // 2. Interactive Use Cases Tabs
+  // 2. Interactive Use Cases Tabs with ARIA and Arrow Navigation
   function initTabShowcase() {
-    const tabBtns = document.querySelectorAll('.fab-tab-btn');
+    const tabBtns = Array.from(document.querySelectorAll('.fab-tab-btn'));
     const tabPanels = document.querySelectorAll('.fab-tab-panel');
 
     if (!tabBtns.length || !tabPanels.length) return;
 
-    tabBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const targetTab = btn.getAttribute('data-tab');
+    function activateTab(btn) {
+      const targetTab = btn.getAttribute('data-tab');
 
-        tabBtns.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
+      tabBtns.forEach((b) => {
+        const isSelected = b === btn;
+        b.classList.toggle('active', isSelected);
+        b.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        b.setAttribute('tabindex', isSelected ? '0' : '-1');
+      });
 
-        tabPanels.forEach((panel) => {
-          if (panel.getAttribute('id') === `tab-panel-${targetTab}`) {
-            panel.classList.add('active');
-          } else {
-            panel.classList.remove('active');
-          }
-        });
+      tabPanels.forEach((panel) => {
+        const isMatch = panel.getAttribute('id') === `tab-panel-${targetTab}`;
+        panel.classList.toggle('active', isMatch);
+        panel.setAttribute('aria-hidden', isMatch ? 'false' : 'true');
+      });
+    }
+
+    tabBtns.forEach((btn, index) => {
+      btn.addEventListener('click', () => activateTab(btn));
+
+      btn.addEventListener('keydown', (e) => {
+        let newIndex = null;
+        if (e.key === 'ArrowRight') {
+          newIndex = (index + 1) % tabBtns.length;
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (index - 1 + tabBtns.length) % tabBtns.length;
+        } else if (e.key === 'Home') {
+          newIndex = 0;
+        } else if (e.key === 'End') {
+          newIndex = tabBtns.length - 1;
+        }
+
+        if (newIndex !== null) {
+          e.preventDefault();
+          tabBtns[newIndex].focus();
+          activateTab(tabBtns[newIndex]);
+        }
       });
     });
   }
@@ -173,27 +196,41 @@
     });
   }
 
-  // 4. FAQ Accordions (Expand / Collapse)
+  // 4. FAQ Accordions (Expand / Collapse with Keyboard Activation & ARIA)
   function initFaqAccordions() {
     const accordions = document.querySelectorAll('.fab-accordion');
     if (!accordions.length) return;
+
+    function toggleAccordion(acc, header) {
+      const isOpen = acc.classList.contains('open');
+
+      accordions.forEach((other) => {
+        if (other !== acc) {
+          other.classList.remove('open');
+          const otherHeader = other.querySelector('.fab-accordion-header');
+          if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        acc.classList.remove('open');
+        if (header) header.setAttribute('aria-expanded', 'false');
+      } else {
+        acc.classList.add('open');
+        if (header) header.setAttribute('aria-expanded', 'true');
+      }
+    }
 
     accordions.forEach((acc) => {
       const header = acc.querySelector('.fab-accordion-header');
       if (!header) return;
 
-      header.addEventListener('click', () => {
-        const isOpen = acc.classList.contains('open');
+      header.addEventListener('click', () => toggleAccordion(acc, header));
 
-        // Optional: close other accordions
-        accordions.forEach((other) => {
-          if (other !== acc) other.classList.remove('open');
-        });
-
-        if (isOpen) {
-          acc.classList.remove('open');
-        } else {
-          acc.classList.add('open');
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleAccordion(acc, header);
         }
       });
     });

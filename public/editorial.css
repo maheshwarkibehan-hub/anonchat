@@ -4,23 +4,23 @@
    ========================================================================== */
 
 :root {
-  --ed-primary-text: #1c1917;
-  --ed-muted-text: #57534e;
-  --ed-action-bg: #000000;
+  --ed-primary-text: #0f172a;
+  --ed-muted-text: #475569;
+  --ed-action-bg: #0f172a;
   --ed-action-text: #ffffff;
-  --ed-bg-cherry: #faf1f2;
-  --ed-bg-basis: #faf1f2;
-  --ed-bg-cream: #faf1f2;
+  --ed-bg-cherry: #f1f7f6;
+  --ed-bg-basis: #f1f7f6;
+  --ed-bg-cream: #f1f7f6;
   --ed-bg-white: #ffffff;
   --ed-bg-stone: #ffffff;
   --ed-bg-subtle: #ffffff;
-  --ed-border-light: rgba(45, 35, 25, 0.08);
-  --ed-border-medium: rgba(45, 35, 25, 0.14);
+  --ed-border-light: rgba(14, 116, 144, 0.10);
+  --ed-border-medium: rgba(14, 116, 144, 0.18);
   --ed-font-display: 'Instrument Serif', Georgia, serif;
   --ed-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --ed-shadow-sm: 0 2px 8px rgba(45, 35, 25, 0.04);
-  --ed-shadow-md: 0 8px 24px rgba(45, 35, 25, 0.06);
-  --ed-shadow-lg: 0 16px 40px rgba(45, 35, 25, 0.08);
+  --ed-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --ed-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --ed-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
 
 /* 1. Global Reset & Elimination of Purple / Cosmic Canvas Artifacts */
@@ -103,11 +103,11 @@ body.on-landing .viewport,
   display: block;
 }
 
-/* Subtle Dark Overlay (alpha 0.2) ensuring crisp text legibility */
+/* Clean Subtle Dark Overlay with ZERO white bottom shadow */
 .editorial-video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.2);
+  background: rgba(15, 23, 42, 0.16);
   pointer-events: none;
   z-index: 1;
 }
@@ -1627,27 +1627,27 @@ html.lenis body {
 
 
 /* ==========================================================================
-   FRESH TEAL MESSAGING DESIGN SYSTEM (Conversational UI Spec)
-   Theme: Light Ground, Fresh Teal (#0d9488) Outgoing, Soft Grey (#f1f5f9) Incoming
-   Single Hero Accent: Fresh Teal / Emerald (#0d9488)
+   ALPIN RIVER VALLEY MESSAGING DESIGN SYSTEM (Conversational UI Spec)
+   Theme: Light Alpine Mist Ground, Glacial River Azure (#0284c7) Outgoing, Soft Grey (#f1f5f9) Incoming
+   Hero Accent: Glacial River Azure (#0284c7) & Valley Meadow (#16a34a)
    ========================================================================== */
 
 :root {
-  --teal-hero: #0d9488;
-  --teal-hero-hover: #0f766e;
-  --teal-hero-active: #115e59;
-  --teal-hero-subtle: rgba(13, 148, 136, 0.12);
-  --teal-hero-glow: rgba(13, 148, 136, 0.28);
+  --teal-hero: #0284c7;
+  --teal-hero-hover: #0369a1;
+  --teal-hero-active: #075985;
+  --teal-hero-subtle: rgba(2, 132, 199, 0.12);
+  --teal-hero-glow: rgba(2, 132, 199, 0.28);
   --ink-primary: #0f172a;
-  --ink-secondary: #475569;
+  --ink-secondary: #334155;
   --ink-muted: #64748b;
   --chat-ground: #ffffff;
-  --chat-page-bg: #faf1f2;
+  --chat-page-bg: #f1f7f6;
   --bubble-incoming: #f1f5f9;
   --bubble-incoming-text: #0f172a;
-  --bubble-outgoing: #0d9488;
+  --bubble-outgoing: #0284c7;
   --bubble-outgoing-text: #ffffff;
-  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-subtle: rgba(14, 116, 144, 0.10);
 }
 
 /* Chat Screen Ground */
@@ -1739,7 +1739,7 @@ html.lenis body {
   background: var(--bubble-incoming) !important;
   color: var(--teal-hero) !important;
   border: 2px solid var(--teal-hero) !important;
-  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.15) !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1814,14 +1814,14 @@ html.lenis body {
   padding: 6px 14px !important;
   font-size: 13px !important;
   font-weight: 600 !important;
-  box-shadow: 0 2px 10px rgba(13, 148, 136, 0.28) !important;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.28) !important;
   transition: all 0.2s ease !important;
 }
 
 .chat-controls .next-action:hover {
   background: var(--teal-hero-hover) !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.38) !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.38) !important;
 }
 
 .chat-controls .next-action .key-hint {
@@ -1835,7 +1835,7 @@ html.lenis body {
 /* Pinned Message Bar */
 .pinned-message-bar {
   background: #f8fafc !important;
-  border-bottom: 1px solid rgba(13, 148, 136, 0.2) !important;
+  border-bottom: 1px solid rgba(2, 132, 199, 0.2) !important;
   color: var(--ink-primary) !important;
 }
 
@@ -1911,7 +1911,7 @@ html.lenis body {
   color: var(--bubble-outgoing-text) !important;
   border-radius: 18px 18px 4px 18px !important;
   border: none !important;
-  box-shadow: 0 2px 12px rgba(13, 148, 136, 0.22) !important;
+  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.22) !important;
   padding: 11px 16px !important;
   font-size: 14.5px !important;
   line-height: 1.5 !important;
@@ -1955,7 +1955,7 @@ html.lenis body {
   background: #ffffff !important;
   border: 1.5px solid var(--teal-hero) !important;
   color: var(--teal-hero) !important;
-  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.15) !important;
+  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.15) !important;
 }
 
 /* Quoted Reply inside Outgoing Bubble */
@@ -2002,7 +2002,7 @@ html.lenis body {
 /* Link Preview Card */
 .safe-link-chip, .link-preview-card {
   background: #ffffff !important;
-  border: 1px solid rgba(13, 148, 136, 0.25) !important;
+  border: 1px solid rgba(2, 132, 199, 0.25) !important;
   border-radius: 12px !important;
   padding: 10px 14px !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
@@ -2065,7 +2065,7 @@ html.lenis body {
 
 .chat-input-bar .capsule-dock:focus-within {
   border-color: var(--teal-hero) !important;
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
 }
 
 /* Circular + Action Button */
@@ -2138,7 +2138,7 @@ html.lenis body {
   align-items: center !important;
   justify-content: center !important;
   border: none !important;
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
   cursor: pointer !important;
   transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease !important;
 }
@@ -2146,12 +2146,28 @@ html.lenis body {
 #sendBtn:hover, .send-action:hover, .send-circle-btn:hover {
   background: var(--teal-hero-hover) !important;
   transform: scale(1.05) !important;
-  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.45) !important;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45) !important;
 }
 
 #sendBtn:active, .send-action:active, .send-circle-btn:active {
   background: var(--teal-hero-active) !important;
   transform: scale(0.96) !important;
+}
+
+#sendBtn:disabled,
+.send-action:disabled,
+.send-circle-btn:disabled,
+#sendBtn[aria-disabled="true"],
+.send-action[aria-disabled="true"],
+.send-circle-btn[aria-disabled="true"],
+#sendBtn.disabled,
+.send-action.disabled,
+.send-circle-btn.disabled {
+  opacity: 0.42 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 /* Voice Note Player */
@@ -2212,7 +2228,7 @@ html.lenis body {
 .new-msg-pill {
   background: var(--teal-hero) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
 }
 
 /* ==========================================================================
@@ -2321,7 +2337,7 @@ body:not(.on-landing) .app-footer,
 }
 
 .hex-brick {
-  background: #1c1917 !important;
+  background: #0f172a !important;
   width: 30px !important;
   height: 17px !important;
   position: absolute !important;
@@ -2544,6 +2560,48 @@ body:not(.on-landing) .app-footer,
   box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* Search Timeout State & Actions */
+.search-timeout-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 12px auto 16px auto !important;
+  max-width: 380px !important;
+  animation: fadeIn 0.3s ease !important;
+}
+
+.search-timeout-actions.hidden {
+  display: none !important;
+}
+
+.search-timeout-msg {
+  font-family: var(--ed-font-body) !important;
+  font-size: 13.5px !important;
+  color: #dc2626 !important;
+  margin: 0 !important;
+  line-height: 1.45 !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+}
+
+.search-retry-btn {
+  background: var(--teal-hero, #0284c7) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--teal-hero, #0284c7) !important;
+  padding: 8px 22px !important;
+  font-size: 13px !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
+}
+
+.search-retry-btn:hover {
+  background: var(--teal-hero-hover, #0369a1) !important;
+  border-color: var(--teal-hero-hover, #0369a1) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4) !important;
+}
+
 /* Horizontal Expanding Transition Layer When Match is Found */
 .match-expand-bar {
   position: fixed !important;
@@ -2754,7 +2812,7 @@ body:has(#searchingScreen.active) .viewport {
 }
 
 .partner-info .partner-name {
-  color: var(--ed-primary-text, #1c1917) !important;
+  color: var(--ed-primary-text, #0f172a) !important;
   font-family: var(--ed-font-body), 'Inter', sans-serif !important;
   font-size: 15px !important;
   font-weight: 700 !important;
@@ -2808,7 +2866,7 @@ body:has(#searchingScreen.active) .viewport {
 
 .chat-header-btn:hover {
   background: #ebe6e0 !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
   border-color: rgba(45, 35, 25, 0.16) !important;
 }
 
@@ -2867,7 +2925,7 @@ body:has(#searchingScreen.active) .viewport {
 .skip-grace-text {
   font-size: 13px !important;
   font-weight: 600 !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
 }
 
 .skip-grace-actions {
@@ -2878,7 +2936,7 @@ body:has(#searchingScreen.active) .viewport {
 
 .skip-cancel-btn {
   background: #f5f2ee !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
   border: 1px solid rgba(45, 35, 25, 0.12) !important;
   border-radius: 9999px !important;
   padding: 5px 12px !important;
@@ -2917,7 +2975,7 @@ body:has(#searchingScreen.active) .viewport {
   align-items: center !important;
   gap: 12px !important;
   font-size: 13px !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
 }
 
 .pinned-message-bar.hidden {
@@ -2929,7 +2987,7 @@ body:has(#searchingScreen.active) .viewport {
   align-items: center !important;
   gap: 5px !important;
   background: #f0ebe6 !important;
-  color: #0f766e !important;
+  color: #0369a1 !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -2946,7 +3004,7 @@ body:has(#searchingScreen.active) .viewport {
   white-space: nowrap !important;
   font-size: 13px !important;
   font-weight: 500 !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
 }
 
 .unpin-btn {
@@ -2964,7 +3022,7 @@ body:has(#searchingScreen.active) .viewport {
 
 .unpin-btn:hover {
   background: rgba(45, 35, 25, 0.08) !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
 }
 
 /* Self-Destruct Active Banner */
@@ -3071,7 +3129,7 @@ body:has(#searchingScreen.active) .viewport {
 }
 
 .archive-shield-icon {
-  color: #0f766e !important;
+  color: #0369a1 !important;
   flex-shrink: 0 !important;
 }
 
@@ -3101,7 +3159,7 @@ body:has(#searchingScreen.active) .viewport {
 .disclosure-section-title {
   font-size: 13.5px !important;
   font-weight: 700 !important;
-  color: #1c1917 !important;
+  color: #0f172a !important;
   margin: 0 0 6px 0 !important;
   display: flex !important;
   align-items: center !important;
@@ -3146,7 +3204,7 @@ body:has(#searchingScreen.active) .viewport {
 }
 
 .archive-ack-btn {
-  background: #1c1917 !important;
+  background: #0f172a !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 9999px !important;
@@ -3165,7 +3223,7 @@ body:has(#searchingScreen.active) .viewport {
 /* Accessibility & Focus-Visible Standards */
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #0f766e !important;
+  outline: 2px solid #0369a1 !important;
   outline-offset: 2px !important;
 }
 
@@ -3501,6 +3559,125 @@ body.on-chat main.viewport,
     width: 30px !important;
     height: 30px !important;
     padding: 0 !important;
+  }
+}
+
+/* Socket Connection Error Alert Banner */
+.connection-error-banner {
+  position: sticky !important;
+  top: 10px !important;
+  z-index: 1100 !important;
+  width: calc(100% - 24px) !important;
+  max-width: 680px !important;
+  margin: 0 auto 12px auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 10px 16px !important;
+  border-radius: 12px !important;
+  background: #fef2f2 !important;
+  border: 1px solid #fecaca !important;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.08) !important;
+}
+
+.connection-error-banner.hidden {
+  display: none !important;
+}
+
+.connection-error-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  color: #991b1b !important;
+  font-size: 0.86rem !important;
+  font-weight: 500 !important;
+  font-family: var(--ed-font-body) !important;
+}
+
+.connection-error-content svg {
+  color: #dc2626 !important;
+  flex-shrink: 0 !important;
+}
+
+.connection-retry-btn {
+  background: #ffffff !important;
+  border: 1px solid #fca5a5 !important;
+  color: #991b1b !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.connection-retry-btn:hover {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+/* Editorial Message Action Buttons & Mobile Tap Accessibility */
+.msg-actions {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.msg-reply-btn,
+.msg-copy-btn,
+.msg-pin-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(2, 132, 199, 0.18) !important;
+  color: var(--ed-muted-text, #57534e) !important;
+  cursor: pointer !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease, transform 0.15s ease, background 0.15s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.msg-row:hover .msg-reply-btn,
+.msg-row:hover .msg-copy-btn,
+.msg-row:hover .msg-pin-btn,
+.msg-row:focus-within .msg-reply-btn,
+.msg-row:focus-within .msg-copy-btn,
+.msg-row:focus-within .msg-pin-btn,
+.msg-row.show-actions .msg-reply-btn,
+.msg-row.show-actions .msg-copy-btn,
+.msg-row.show-actions .msg-pin-btn,
+.msg-reply-btn:focus-visible,
+.msg-copy-btn:focus-visible,
+.msg-pin-btn:focus-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.msg-reply-btn:hover,
+.msg-copy-btn:hover,
+.msg-pin-btn:hover {
+  background: var(--teal-hero, #0284c7) !important;
+  color: #ffffff !important;
+  border-color: var(--teal-hero, #0284c7) !important;
+  transform: scale(1.08) !important;
+}
+
+@media (hover: none) {
+  .msg-reply-btn,
+  .msg-copy-btn,
+  .msg-pin-btn {
+    opacity: 0.65 !important;
+    pointer-events: auto !important;
   }
 }
 

@@ -23,8 +23,32 @@ const onlineCountText = document.getElementById('onlineCountText');
 const messagesContainer = document.getElementById('messagesContainer');
 const chatForm = document.getElementById('chatForm');
 const messageInput = document.getElementById('messageInput');
+const sendBtn = document.getElementById('sendBtn');
+const connectionErrorBanner = document.getElementById('connectionErrorBanner');
+const connectionErrorMsg = document.getElementById('connectionErrorMsg');
+const retryConnectionBtn = document.getElementById('retryConnectionBtn');
+const retrySearchBtn = document.getElementById('retrySearchBtn');
+const findingTitle = document.getElementById('findingTitle');
+const findingSubtitle = document.getElementById('findingSubtitle');
+const searchTimeoutActions = document.getElementById('searchTimeoutActions');
 const typingIndicator = document.getElementById('typingIndicator');
 const strangerSubstatus = document.getElementById('strangerSubstatus');
+
+function updateSendButtonState() {
+  if (!sendBtn) return;
+  const hasText = messageInput && messageInput.value.trim().length > 0;
+  const hasAttachment = typeof pendingAttachment !== 'undefined' && !!pendingAttachment;
+  const canSend = (hasText || hasAttachment) && isPartnerConnected;
+
+  sendBtn.disabled = !canSend;
+  if (!canSend) {
+    sendBtn.setAttribute('aria-disabled', 'true');
+    sendBtn.classList.add('disabled');
+  } else {
+    sendBtn.removeAttribute('aria-disabled');
+    sendBtn.classList.remove('disabled');
+  }
+}
 
 const newMsgPill = document.getElementById('newMsgPill');
 const newMsgPillText = document.getElementById('newMsgPillText');
@@ -1366,6 +1390,10 @@ function appendMessage(text, sender = 'me', timestamp = Date.now(), replyTo = nu
   let lastTapTime = 0;
   let longPressTimeout = null;
 
+  bubble.addEventListener('click', () => {
+    row.classList.toggle('show-actions');
+  });
+
   bubble.addEventListener('dblclick', (e) => {
     e.stopPropagation();
     openReactionDock(row, bubble, id);
@@ -1762,6 +1790,44 @@ function resetChatUI() {
   `;
 }
 
+let searchTimeoutTimer = null;
+const SEARCH_TIMEOUT_MS = 45000;
+
+function startSearchTimeout() {
+  clearSearchTimeout();
+  if (searchTimeoutActions) searchTimeoutActions.classList.add('hidden');
+  if (findingTitle) findingTitle.textContent = 'Finding a peer...';
+  if (findingSubtitle) findingSubtitle.textContent = 'Connecting you with someone on campus';
+
+  searchTimeoutTimer = setTimeout(() => {
+    if (searchingScreen && searchingScreen.classList.contains('active')) {
+      if (searchTimeoutActions) searchTimeoutActions.classList.remove('hidden');
+      if (findingTitle) findingTitle.textContent = 'No peers available right now';
+      if (findingSubtitle) findingSubtitle.textContent = 'Matchmaking is taking longer than expected. You can keep waiting or retry.';
+    }
+  }, SEARCH_TIMEOUT_MS);
+}
+
+function clearSearchTimeout() {
+  if (searchTimeoutTimer) {
+    clearTimeout(searchTimeoutTimer);
+    searchTimeoutTimer = null;
+  }
+  if (searchTimeoutActions) searchTimeoutActions.classList.add('hidden');
+  if (findingTitle) findingTitle.textContent = 'Finding a peer...';
+  if (findingSubtitle) findingSubtitle.textContent = 'Connecting you with someone on campus';
+}
+
+if (retrySearchBtn) {
+  retrySearchBtn.addEventListener('click', () => {
+    clearSearchTimeout();
+    socket.emit('cancel_search');
+    setTimeout(() => {
+      startSearch();
+    }, 150);
+  });
+}
+
 function startSearch() {
   cancelSkipGrace();
   clearReply();
@@ -1771,12 +1837,14 @@ function startSearch() {
   stopVoiceRecording(false);
   stopActiveMediaAndTimers();
   triggerDimensionalWarp(900);
+  startSearchTimeout();
   showScreen(searchingScreen);
   socket.emit('find_partner');
 }
 window.startSearch = startSearch;
 
 function cancelSearch() {
+  clearSearchTimeout();
   socket.emit('cancel_search');
   showScreen(landingScreen);
 }
@@ -1790,11 +1858,13 @@ function nextPartner() {
   stopVoiceRecording(false);
   stopActiveMediaAndTimers();
   triggerDimensionalWarp(900);
+  startSearchTimeout();
   socket.emit('next_partner');
   showScreen(searchingScreen);
 }
 
 function endChat() {
+  clearSearchTimeout();
   cancelSkipGrace();
   clearReply();
   clearUnreadPill();
@@ -1907,6 +1977,7 @@ function clearAttachment() {
   if (viewOnceToggleBtn) viewOnceToggleBtn.classList.remove('active');
   if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
   if (mediaFileInput) mediaFileInput.value = '';
+  updateSendButtonState();
 }
 
 function handleImageFile(file) {
@@ -1928,6 +1999,7 @@ function handleImageFile(file) {
       if (viewOnceStatusText) viewOnceStatusText.textContent = "Standard (Tap '1' for View Once)";
       if (messageInput) messageInput.focus();
       triggerHaptic('light');
+      updateSendButtonState();
     });
   };
   reader.readAsDataURL(file);
@@ -2033,6 +2105,76 @@ if (removeAttachmentBtn) {
   removeAttachmentBtn.addEventListener('click', clearAttachment);
 }
 
+// Accessible Modal Focus Trap & Restoration Engine
+let activeModalTrapCleanup = null;
+let lastFocusedBeforeModal = null;
+
+function setupModalFocusTrap(modalEl, closeCallback, defaultFocusEl, returnFocusEl) {
+  if (typeof activeModalTrapCleanup === 'function') {
+    activeModalTrapCleanup();
+    activeModalTrapCleanup = null;
+  }
+
+  lastFocusedBeforeModal = returnFocusEl || document.activeElement;
+  modalEl.classList.remove('hidden');
+  modalEl.setAttribute('aria-hidden', 'false');
+  modalEl.setAttribute('aria-modal', 'true');
+
+  const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  const getFocusables = () => Array.from(modalEl.querySelectorAll(focusableSelectors)).filter(
+    (el) => !el.disabled && el.offsetParent !== null
+  );
+
+  setTimeout(() => {
+    const focusables = getFocusables();
+    if (defaultFocusEl && typeof defaultFocusEl.focus === 'function') {
+      defaultFocusEl.focus();
+    } else if (focusables.length > 0) {
+      focusables[0].focus();
+    }
+  }, 40);
+
+  function handleKeydown(e) {
+    if (e.key === 'Tab') {
+      const focusables = getFocusables();
+      if (!focusables.length) {
+        e.preventDefault();
+        return;
+      }
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first || !modalEl.contains(document.activeElement)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last || !modalEl.contains(document.activeElement)) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      if (typeof closeCallback === 'function') closeCallback();
+    }
+  }
+
+  modalEl.addEventListener('keydown', handleKeydown);
+
+  return () => {
+    modalEl.removeEventListener('keydown', handleKeydown);
+    modalEl.classList.add('hidden');
+    modalEl.setAttribute('aria-hidden', 'true');
+    modalEl.removeAttribute('aria-modal');
+    if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
+      try { lastFocusedBeforeModal.focus(); } catch (err) {}
+    }
+    lastFocusedBeforeModal = null;
+  };
+}
+
 // Fullscreen Media Modal & View Once Auto-Destruct
 let activeViewOnceMsgId = null;
 let viewOnceTimerInterval = null;
@@ -2042,11 +2184,12 @@ function openMediaModal(src, isViewOnce = false, msgId = null) {
   const img = document.getElementById('mediaModalImg');
   const timerWrap = document.getElementById('viewOnceModalTimer');
   const secEl = document.getElementById('viewOnceSec');
+  const closeBtn = document.getElementById('closeMediaModalBtn');
 
   if (!modal || !img) return;
 
   img.src = src;
-  modal.classList.remove('hidden');
+  activeModalTrapCleanup = setupModalFocusTrap(modal, closeMediaModal, closeBtn, document.activeElement);
 
   if (isViewOnce && msgId) {
     activeViewOnceMsgId = msgId;
@@ -2078,7 +2221,13 @@ function closeMediaModal() {
     viewOnceTimerInterval = null;
   }
 
-  modal.classList.add('hidden');
+  if (typeof activeModalTrapCleanup === 'function') {
+    activeModalTrapCleanup();
+    activeModalTrapCleanup = null;
+  } else {
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+  }
 
   if (activeViewOnceMsgId) {
     const targetId = activeViewOnceMsgId;
@@ -2184,16 +2333,16 @@ const modalContents = {
         Hit "Start Chat" to immediately enter the peer matchmaking pool.
       </div>
       <div class="modal-step">
-        <strong>2. Random Classmate Pairing</strong>
-        You are paired 1-on-1 with another student from our school currently online.
+        <strong>2. Random Campus Peer Pairing</strong>
+        You are paired 1-on-1 with another student from our campus currently online.
       </div>
       <div class="modal-step">
         <strong>3. Express Freely</strong>
         Chat with text, quoted replies, emoji reactions, voice memos, and self-destructing bombs.
       </div>
       <div class="modal-step">
-        <strong>4. 100% RAM State & Ephemeral</strong>
-        Zero chat history is saved. When either student leaves, the room and messages dissolve from server memory instantly.
+        <strong>4. Ephemeral Media & Session Archiving</strong>
+        Raw voice notes and photo bytes exist only temporarily in server RAM. Text message transcripts and timestamps are recorded in private session archive files on the server for community safety, quality review, and dataset training, with zero public user profiles.
       </div>
     `
   },
@@ -2201,12 +2350,12 @@ const modalContents = {
     title: 'Student Safety & Privacy',
     html: `
       <div class="modal-step">
-        <strong>🛡️ Identity Shield</strong>
-        No real names, student roll numbers, or accounts. You are completely anonymous.
+        <strong>🛡️ 100% Registration-Free</strong>
+        No user accounts, emails, passwords, or roll numbers. You chat anonymously without any personal profile.
       </div>
       <div class="modal-step">
-        <strong>⚡ Zero Data Retention</strong>
-        We don't maintain a database. Everything exists strictly in temporary server RAM.
+        <strong>⚡ Storage Transparency</strong>
+        Voice notes and images vanish from RAM when transmitted. Text transcripts are saved strictly to private server archives accessible only by the administrator.
       </div>
       <div class="modal-step">
         <strong>💣 5-Second Ephemeral Bombs</strong>
@@ -2225,7 +2374,7 @@ const modalContents = {
         <strong>Same School. Real Conversations.</strong>
         AnonChat was created for our student community to break social barriers, talk honestly about school life, collaborate on thoughts, and make genuine friends without fear of social judgment.
       </div>
-      <div class="modal-step" style="text-align: center; margin-top: 20px; color: #818cf8; font-weight: 600;">
+      <div class="modal-step" style="text-align: center; margin-top: 20px; color: #0d9488; font-weight: 600;">
         Better Conversations &nbsp;•&nbsp; Brighter School Days :)
       </div>
     `
@@ -2236,14 +2385,17 @@ function openInfoModal(type) {
   if (!modalContents[type] || !infoModalOverlay) return;
   modalTitle.textContent = modalContents[type].title;
   modalBody.innerHTML = modalContents[type].html;
-  infoModalOverlay.classList.remove('hidden');
-  infoModalOverlay.setAttribute('aria-hidden', 'false');
+  activeModalTrapCleanup = setupModalFocusTrap(infoModalOverlay, closeInfoModal, modalCloseBtn, document.activeElement);
 }
 
 function closeInfoModal() {
-  if (!infoModalOverlay) return;
-  infoModalOverlay.classList.add('hidden');
-  infoModalOverlay.setAttribute('aria-hidden', 'true');
+  if (typeof activeModalTrapCleanup === 'function') {
+    activeModalTrapCleanup();
+    activeModalTrapCleanup = null;
+  } else if (infoModalOverlay) {
+    infoModalOverlay.classList.add('hidden');
+    infoModalOverlay.setAttribute('aria-hidden', 'true');
+  }
 }
 
 if (navHowBtn) navHowBtn.addEventListener('click', () => openInfoModal('how'));
@@ -2315,10 +2467,12 @@ chatForm.addEventListener('submit', (e) => {
   clearTimeout(typingTimeout);
 
   messageInput.value = '';
+  updateSendButtonState();
   messageInput.focus();
 });
 
 messageInput.addEventListener('input', () => {
+  updateSendButtonState();
   if (!isPartnerConnected) return;
 
   if (!isTypingSent) {
@@ -2394,15 +2548,19 @@ socket.on('online_count', (data) => {
 });
 
 socket.on('waiting_for_partner', () => {
+  startSearchTimeout();
   showScreen(searchingScreen);
 });
 
 socket.on('search_cancelled', () => {
+  clearSearchTimeout();
   showScreen(landingScreen);
 });
 
 socket.on('chat_start', (data) => {
+  clearSearchTimeout();
   isPartnerConnected = true;
+  updateSendButtonState();
   playChime('connected');
   triggerHaptic('connected');
 
@@ -2536,6 +2694,7 @@ socket.on('partner_disconnected', () => {
     <span style="color: #ef4444;">Disconnected</span>
   `;
   messageInput.disabled = true;
+  updateSendButtonState();
   typingIndicator.classList.add('hidden');
   appendDisconnectBanner();
   playChime('disconnected');
@@ -2544,6 +2703,7 @@ socket.on('partner_disconnected', () => {
 
 socket.on('chat_ended', () => {
   isPartnerConnected = false;
+  updateSendButtonState();
   cancelSkipGrace();
   clearReply();
   clearUnreadPill();
@@ -2558,6 +2718,7 @@ socket.on('disconnect', () => {
   isPartnerConnected = false;
   isTypingSent = false;
   clearTimeout(typingTimeout);
+  updateSendButtonState();
   if (chatScreen.classList.contains('active')) {
     messageInput.disabled = true;
     strangerSubstatus.innerHTML = `
@@ -2567,6 +2728,35 @@ socket.on('disconnect', () => {
     appendDisconnectBanner();
   }
 });
+
+function showConnectionError(msg) {
+  if (connectionErrorBanner) {
+    if (connectionErrorMsg && msg) connectionErrorMsg.textContent = msg;
+    connectionErrorBanner.classList.remove('hidden');
+  }
+}
+
+function hideConnectionError() {
+  if (connectionErrorBanner) {
+    connectionErrorBanner.classList.add('hidden');
+  }
+}
+
+socket.on('connect_error', () => {
+  showConnectionError('Unable to connect to chat server. Check your network or retry.');
+});
+
+socket.on('connect', () => {
+  hideConnectionError();
+});
+
+if (retryConnectionBtn) {
+  retryConnectionBtn.addEventListener('click', () => {
+    if (socket && !socket.connected) {
+      socket.connect();
+    }
+  });
+}
 
 // ==========================================================================
 // Joby Sir Discipline Easter Egg Engine (Client-Side & Socket Synchronized)
@@ -2737,6 +2927,7 @@ if (messageInput && charCounter) {
     if (len >= 1350) {
       charCounter.textContent = `${len}/1500`;
       charCounter.classList.remove('hidden');
+      charCounter.setAttribute('aria-hidden', 'false');
       if (len >= 1480) {
         charCounter.classList.add('near-limit');
       } else {
@@ -2744,6 +2935,7 @@ if (messageInput && charCounter) {
       }
     } else {
       charCounter.classList.add('hidden');
+      charCounter.setAttribute('aria-hidden', 'true');
     }
   });
 }
@@ -2756,18 +2948,22 @@ const closeArchiveModalBtn = document.getElementById('closeArchiveModalBtn');
 const ackArchiveModalBtn = document.getElementById('ackArchiveModalBtn');
 
 function openArchiveModal() {
-  if (archiveModal) {
-    archiveModal.classList.remove('hidden');
-    archiveModal.setAttribute('aria-hidden', 'false');
-    if (ackArchiveModalBtn) ackArchiveModalBtn.focus();
-  }
+  if (!archiveModal) return;
+  activeModalTrapCleanup = setupModalFocusTrap(
+    archiveModal,
+    closeArchiveModal,
+    ackArchiveModalBtn || closeArchiveModalBtn,
+    archiveDisclosureBtn
+  );
 }
 
 function closeArchiveModal() {
-  if (archiveModal) {
+  if (typeof activeModalTrapCleanup === 'function') {
+    activeModalTrapCleanup();
+    activeModalTrapCleanup = null;
+  } else if (archiveModal) {
     archiveModal.classList.add('hidden');
     archiveModal.setAttribute('aria-hidden', 'true');
-    if (archiveDisclosureBtn) archiveDisclosureBtn.focus();
   }
 }
 

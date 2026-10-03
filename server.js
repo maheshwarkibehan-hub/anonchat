@@ -101,6 +101,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Route root to main chat app
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'app-chat.html'));
+});
+
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
 
