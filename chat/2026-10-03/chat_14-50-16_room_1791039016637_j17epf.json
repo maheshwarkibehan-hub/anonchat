@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "roomId": "room_1791039016637_j17epf",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T14:50:16.637Z",
+    "endTime": "2026-10-03T14:50:36.628Z",
+    "durationSeconds": 20,
+    "totalMessages": 1,
+    "aiTrainingReady": false
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791039034543_r86k1v",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791039036050,
+      "isoTime": "2026-10-03T14:50:36.050Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hlo"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hlo"
+      }
+    ]
+  }
+}
