@@ -1,0 +1,286 @@
+{
+  "metadata": {
+    "roomId": "room_1791022778940_lzy1za",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T10:19:38.940Z",
+    "endTime": "2026-10-03T10:21:07.885Z",
+    "durationSeconds": 89,
+    "totalMessages": 13,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791022787073_rcgngk",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022787352,
+      "isoTime": "2026-10-03T10:19:47.352Z",
+      "type": "text",
+      "text": "Hlw",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791022787710_xou48e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791022789334,
+      "isoTime": "2026-10-03T10:19:49.334Z",
+      "type": "text",
+      "text": "hlo\\",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791022791002_boq0xf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791022792625,
+      "isoTime": "2026-10-03T10:19:52.625Z",
+      "type": "text",
+      "text": "maheswar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791022791895_djcfvs",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791022793513,
+      "isoTime": "2026-10-03T10:19:53.513Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791022796544_epztlv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022796830,
+      "isoTime": "2026-10-03T10:19:56.830Z",
+      "type": "text",
+      "text": "Nope",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791022801507_t6ga1e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791022803133,
+      "isoTime": "2026-10-03T10:20:03.133Z",
+      "type": "text",
+      "text": "oo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791022806513_vcj3up",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022806811,
+      "isoTime": "2026-10-03T10:20:06.811Z",
+      "type": "text",
+      "text": "Yupp",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791022813152_81zsr9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791022814775,
+      "isoTime": "2026-10-03T10:20:14.775Z",
+      "type": "text",
+      "text": "section",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791022818009_yvdj8v",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022818290,
+      "isoTime": "2026-10-03T10:20:18.290Z",
+      "type": "text",
+      "text": "How r uhh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791022821401_v0rj4e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022821700,
+      "isoTime": "2026-10-03T10:20:21.700Z",
+      "type": "text",
+      "text": "A",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "section",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791022826449_lihcda",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791022828072,
+      "isoTime": "2026-10-03T10:20:28.072Z",
+      "type": "text",
+      "text": "all good",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "How r uhh",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791022840475_wo49au",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022840765,
+      "isoTime": "2026-10-03T10:20:40.765Z",
+      "type": "text",
+      "text": "Okhh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791022860135_eo2f14",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791022860421,
+      "isoTime": "2026-10-03T10:21:00.421Z",
+      "type": "text",
+      "text": "Kaisa chl raha h",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hlw"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo\\"
+      },
+      {
+        "role": "assistant",
+        "content": "maheswar"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Nope"
+      },
+      {
+        "role": "assistant",
+        "content": "oo"
+      },
+      {
+        "role": "user",
+        "content": "Yupp"
+      },
+      {
+        "role": "assistant",
+        "content": "section"
+      },
+      {
+        "role": "user",
+        "content": "How r uhh"
+      },
+      {
+        "role": "user",
+        "content": "A"
+      },
+      {
+        "role": "assistant",
+        "content": "all good"
+      },
+      {
+        "role": "user",
+        "content": "Okhh"
+      },
+      {
+        "role": "user",
+        "content": "Kaisa chl raha h"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hlw"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo\\"
+      },
+      {
+        "from": "gpt",
+        "value": "maheswar"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Nope"
+      },
+      {
+        "from": "gpt",
+        "value": "oo"
+      },
+      {
+        "from": "human",
+        "value": "Yupp"
+      },
+      {
+        "from": "gpt",
+        "value": "section"
+      },
+      {
+        "from": "human",
+        "value": "How r uhh"
+      },
+      {
+        "from": "human",
+        "value": "A"
+      },
+      {
+        "from": "gpt",
+        "value": "all good"
+      },
+      {
+        "from": "human",
+        "value": "Okhh"
+      },
+      {
+        "from": "human",
+        "value": "Kaisa chl raha h"
+      }
+    ]
+  }
+}
