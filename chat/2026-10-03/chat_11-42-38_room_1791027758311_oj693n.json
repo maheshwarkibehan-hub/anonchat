@@ -1,0 +1,406 @@
+{
+  "metadata": {
+    "roomId": "room_1791027758311_oj693n",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T11:42:38.311Z",
+    "endTime": "2026-10-03T11:47:08.153Z",
+    "durationSeconds": 270,
+    "totalMessages": 19,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791027763761_w562pm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027765426,
+      "isoTime": "2026-10-03T11:42:45.426Z",
+      "type": "text",
+      "text": "padh liye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791027764161_dt4c1o",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027767000,
+      "isoTime": "2026-10-03T11:42:47.000Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791027776037_2jlb3u",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027778896,
+      "isoTime": "2026-10-03T11:42:58.896Z",
+      "type": "text",
+      "text": "path leya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791027794216_m36z1c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027797061,
+      "isoTime": "2026-10-03T11:43:17.061Z",
+      "type": "text",
+      "text": "history 2 ch",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791027802622_51p22u",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027804306,
+      "isoTime": "2026-10-03T11:43:24.306Z",
+      "type": "text",
+      "text": "abi nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791027827974_o5ulld",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027830820,
+      "isoTime": "2026-10-03T11:43:50.820Z",
+      "type": "text",
+      "text": "qns and ans puchoo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791027847374_hewpq2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027849042,
+      "isoTime": "2026-10-03T11:44:09.042Z",
+      "type": "text",
+      "text": "are yrr , khud se padh lo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791027867997_5j495o",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027870850,
+      "isoTime": "2026-10-03T11:44:30.850Z",
+      "type": "text",
+      "text": "maja nahi aa raha",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "are yrr , khud se padh lo",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791027885490_v7g9vr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027887192,
+      "isoTime": "2026-10-03T11:44:47.192Z",
+      "type": "text",
+      "text": "to history me maza nahi padha jaata hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791027900122_zwsdtm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027902970,
+      "isoTime": "2026-10-03T11:45:02.970Z",
+      "type": "text",
+      "text": "bhai tum free ho kya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791027909429_31d6qm",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027911114,
+      "isoTime": "2026-10-03T11:45:11.114Z",
+      "type": "text",
+      "text": "abhi to nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791027939539_ckq5gj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027942380,
+      "isoTime": "2026-10-03T11:45:42.380Z",
+      "type": "text",
+      "text": "to yaha kya kar rahi ho",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "abhi to nahi",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791027949507_pahdno",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027952351,
+      "isoTime": "2026-10-03T11:45:52.351Z",
+      "type": "text",
+      "text": "kam karo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1791027955523_prdi0w",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791027957192,
+      "isoTime": "2026-10-03T11:45:57.192Z",
+      "type": "text",
+      "text": "mera mann",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1791027967152_uakyo7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027969985,
+      "isoTime": "2026-10-03T11:46:09.985Z",
+      "type": "text",
+      "text": "anmol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1791027973079_24bxc5",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791027975935,
+      "isoTime": "2026-10-03T11:46:15.935Z",
+      "type": "text",
+      "text": "😂",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1791027999508_wd98x3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791028002365,
+      "isoTime": "2026-10-03T11:46:42.365Z",
+      "type": "text",
+      "text": "??????",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1791028006690_91cjpy",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791028008346,
+      "isoTime": "2026-10-03T11:46:48.346Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1791028017677_131fry",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791028020515,
+      "isoTime": "2026-10-03T11:47:00.515Z",
+      "type": "text",
+      "text": "jao kam karo",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "padh liye"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "path leya"
+      },
+      {
+        "role": "user",
+        "content": "history 2 ch"
+      },
+      {
+        "role": "assistant",
+        "content": "abi nahi"
+      },
+      {
+        "role": "user",
+        "content": "qns and ans puchoo"
+      },
+      {
+        "role": "assistant",
+        "content": "are yrr , khud se padh lo"
+      },
+      {
+        "role": "user",
+        "content": "maja nahi aa raha"
+      },
+      {
+        "role": "assistant",
+        "content": "to history me maza nahi padha jaata hai"
+      },
+      {
+        "role": "user",
+        "content": "bhai tum free ho kya"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi to nahi"
+      },
+      {
+        "role": "user",
+        "content": "to yaha kya kar rahi ho"
+      },
+      {
+        "role": "user",
+        "content": "kam karo"
+      },
+      {
+        "role": "assistant",
+        "content": "mera mann"
+      },
+      {
+        "role": "user",
+        "content": "anmol"
+      },
+      {
+        "role": "user",
+        "content": "😂"
+      },
+      {
+        "role": "user",
+        "content": "??????"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "jao kam karo"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "padh liye"
+      },
+      {
+        "from": "human",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "path leya"
+      },
+      {
+        "from": "human",
+        "value": "history 2 ch"
+      },
+      {
+        "from": "gpt",
+        "value": "abi nahi"
+      },
+      {
+        "from": "human",
+        "value": "qns and ans puchoo"
+      },
+      {
+        "from": "gpt",
+        "value": "are yrr , khud se padh lo"
+      },
+      {
+        "from": "human",
+        "value": "maja nahi aa raha"
+      },
+      {
+        "from": "gpt",
+        "value": "to history me maza nahi padha jaata hai"
+      },
+      {
+        "from": "human",
+        "value": "bhai tum free ho kya"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi to nahi"
+      },
+      {
+        "from": "human",
+        "value": "to yaha kya kar rahi ho"
+      },
+      {
+        "from": "human",
+        "value": "kam karo"
+      },
+      {
+        "from": "gpt",
+        "value": "mera mann"
+      },
+      {
+        "from": "human",
+        "value": "anmol"
+      },
+      {
+        "from": "human",
+        "value": "😂"
+      },
+      {
+        "from": "human",
+        "value": "??????"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "jao kam karo"
+      }
+    ]
+  }
+}
