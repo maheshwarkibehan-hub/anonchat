@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "roomId": "room_1791023242359_mbhxjc",
+    "vibe": "Direct",
+    "date": "2026-10-03",
+    "startTime": "2026-10-03T10:27:22.359Z",
+    "endTime": "2026-10-03T10:28:15.689Z",
+    "durationSeconds": 53,
+    "totalMessages": 6,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791023247177_xhvy1k",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791023247769,
+      "isoTime": "2026-10-03T10:27:27.769Z",
+      "type": "text",
+      "text": "Hii",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791023251456_r89dyu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791023253092,
+      "isoTime": "2026-10-03T10:27:33.092Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791023259065_qr6opf",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791023259649,
+      "isoTime": "2026-10-03T10:27:39.649Z",
+      "type": "text",
+      "text": "On Monday all  student have to bring their original adhar",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791023266214_pu8s5o",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791023267832,
+      "isoTime": "2026-10-03T10:27:47.832Z",
+      "type": "text",
+      "text": "yes",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791023278002_xo6hfd",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791023278588,
+      "isoTime": "2026-10-03T10:27:58.588Z",
+      "type": "text",
+      "text": "Ok thanks you",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791023284797_me0ziu",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791023286433,
+      "isoTime": "2026-10-03T10:28:06.433Z",
+      "type": "text",
+      "text": "my pleasure",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hii"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "On Monday all  student have to bring their original adhar"
+      },
+      {
+        "role": "assistant",
+        "content": "yes"
+      },
+      {
+        "role": "user",
+        "content": "Ok thanks you"
+      },
+      {
+        "role": "assistant",
+        "content": "my pleasure"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hii"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "On Monday all  student have to bring their original adhar"
+      },
+      {
+        "from": "gpt",
+        "value": "yes"
+      },
+      {
+        "from": "human",
+        "value": "Ok thanks you"
+      },
+      {
+        "from": "gpt",
+        "value": "my pleasure"
+      }
+    ]
+  }
+}
