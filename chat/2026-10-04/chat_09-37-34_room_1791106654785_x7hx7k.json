@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "roomId": "room_1791106654785_x7hx7k",
+    "vibe": "Direct",
+    "date": "2026-10-04",
+    "startTime": "2026-10-04T09:37:34.785Z",
+    "endTime": "2026-10-04T09:38:35.985Z",
+    "durationSeconds": 61,
+    "totalMessages": 5,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791106658620_mtm68x",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791106661065,
+      "isoTime": "2026-10-04T09:37:41.065Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791106676248_uayawq",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791106677888,
+      "isoTime": "2026-10-04T09:37:57.888Z",
+      "type": "text",
+      "text": "Hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791106692774_o1qj3l",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791106694399,
+      "isoTime": "2026-10-04T09:38:14.399Z",
+      "type": "text",
+      "text": "Code",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791106698203_1fgbe4",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791106700673,
+      "isoTime": "2026-10-04T09:38:20.673Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791106699258_6ph3s6",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791106701717,
+      "isoTime": "2026-10-04T09:38:21.717Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "Hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "Code"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "user",
+        "content": "??"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "Hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "Code"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "human",
+        "value": "??"
+      }
+    ]
+  }
+}
