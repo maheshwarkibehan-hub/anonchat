@@ -1,0 +1,400 @@
+{
+  "metadata": {
+    "roomId": "room_1791107726248_bxzo1e",
+    "vibe": "Direct",
+    "date": "2026-10-04",
+    "startTime": "2026-10-04T09:55:26.248Z",
+    "endTime": "2026-10-04T09:57:51.248Z",
+    "durationSeconds": 145,
+    "totalMessages": 19,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791107735059_ov1jg2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107736703,
+      "isoTime": "2026-10-04T09:55:36.703Z",
+      "type": "text",
+      "text": "Hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791107757819_s1or19",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107760271,
+      "isoTime": "2026-10-04T09:56:00.271Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791107760636_had822",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107763144,
+      "isoTime": "2026-10-04T09:56:03.144Z",
+      "type": "text",
+      "text": "secret",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791107761448_xkxuck",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107763905,
+      "isoTime": "2026-10-04T09:56:03.905Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791107767120_sntoei",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107768777,
+      "isoTime": "2026-10-04T09:56:08.777Z",
+      "type": "text",
+      "text": "Hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791107777534_ap4z4n",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107779173,
+      "isoTime": "2026-10-04T09:56:19.173Z",
+      "type": "text",
+      "text": "Bolo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791107791467_2cxvsp",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107793991,
+      "isoTime": "2026-10-04T09:56:33.991Z",
+      "type": "text",
+      "text": "mujhe 100 % doubt aaraha hai tumpe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791107793674_614v3j",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107796151,
+      "isoTime": "2026-10-04T09:56:36.151Z",
+      "type": "text",
+      "text": "bcz",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791107799729_pvu82c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107801362,
+      "isoTime": "2026-10-04T09:56:41.362Z",
+      "type": "text",
+      "text": "Why",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791107800865_449o8e",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107802602,
+      "isoTime": "2026-10-04T09:56:42.602Z",
+      "type": "text",
+      "text": "?",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791107800761_s8m8r9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107803232,
+      "isoTime": "2026-10-04T09:56:43.232Z",
+      "type": "text",
+      "text": "aaj tak tumne apna name nahi bataya tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791107807134_8sfkzi",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107808777,
+      "isoTime": "2026-10-04T09:56:48.777Z",
+      "type": "text",
+      "text": "Mene kaha bataya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791107806505_5auf4a",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107808991,
+      "isoTime": "2026-10-04T09:56:48.991Z",
+      "type": "text",
+      "text": "but aaj bta rahi ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1791107809584_nbykfw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107811218,
+      "isoTime": "2026-10-04T09:56:51.218Z",
+      "type": "text",
+      "text": "Name",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1791107812232_gn4jdw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107813888,
+      "isoTime": "2026-10-04T09:56:53.888Z",
+      "type": "text",
+      "text": "Spna",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1791107817914_642t2b",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107820399,
+      "isoTime": "2026-10-04T09:57:00.399Z",
+      "type": "text",
+      "text": "abhi to bola tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1791107819502_xer72e",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107821959,
+      "isoTime": "2026-10-04T09:57:01.959Z",
+      "type": "text",
+      "text": "arya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1791107824563_qpyurz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107826212,
+      "isoTime": "2026-10-04T09:57:06.212Z",
+      "type": "text",
+      "text": "Woh toh me majak kar rahi thi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1791107830047_o4uk3h",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107832508,
+      "isoTime": "2026-10-04T09:57:12.508Z",
+      "type": "text",
+      "text": "nahi",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Hmm"
+      },
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "assistant",
+        "content": "secret"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Hmm"
+      },
+      {
+        "role": "user",
+        "content": "Bolo"
+      },
+      {
+        "role": "assistant",
+        "content": "mujhe 100 % doubt aaraha hai tumpe"
+      },
+      {
+        "role": "assistant",
+        "content": "bcz"
+      },
+      {
+        "role": "user",
+        "content": "Why"
+      },
+      {
+        "role": "user",
+        "content": "?"
+      },
+      {
+        "role": "assistant",
+        "content": "aaj tak tumne apna name nahi bataya tha"
+      },
+      {
+        "role": "user",
+        "content": "Mene kaha bataya"
+      },
+      {
+        "role": "assistant",
+        "content": "but aaj bta rahi ho"
+      },
+      {
+        "role": "user",
+        "content": "Name"
+      },
+      {
+        "role": "user",
+        "content": "Spna"
+      },
+      {
+        "role": "assistant",
+        "content": "abhi to bola tha"
+      },
+      {
+        "role": "assistant",
+        "content": "arya"
+      },
+      {
+        "role": "user",
+        "content": "Woh toh me majak kar rahi thi"
+      },
+      {
+        "role": "assistant",
+        "content": "nahi"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Hmm"
+      },
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "gpt",
+        "value": "secret"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Hmm"
+      },
+      {
+        "from": "human",
+        "value": "Bolo"
+      },
+      {
+        "from": "gpt",
+        "value": "mujhe 100 % doubt aaraha hai tumpe"
+      },
+      {
+        "from": "gpt",
+        "value": "bcz"
+      },
+      {
+        "from": "human",
+        "value": "Why"
+      },
+      {
+        "from": "human",
+        "value": "?"
+      },
+      {
+        "from": "gpt",
+        "value": "aaj tak tumne apna name nahi bataya tha"
+      },
+      {
+        "from": "human",
+        "value": "Mene kaha bataya"
+      },
+      {
+        "from": "gpt",
+        "value": "but aaj bta rahi ho"
+      },
+      {
+        "from": "human",
+        "value": "Name"
+      },
+      {
+        "from": "human",
+        "value": "Spna"
+      },
+      {
+        "from": "gpt",
+        "value": "abhi to bola tha"
+      },
+      {
+        "from": "gpt",
+        "value": "arya"
+      },
+      {
+        "from": "human",
+        "value": "Woh toh me majak kar rahi thi"
+      },
+      {
+        "from": "gpt",
+        "value": "nahi"
+      }
+    ]
+  }
+}
