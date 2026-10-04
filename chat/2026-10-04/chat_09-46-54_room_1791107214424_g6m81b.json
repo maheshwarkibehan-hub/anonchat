@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "roomId": "room_1791107214424_g6m81b",
+    "vibe": "Direct",
+    "date": "2026-10-04",
+    "startTime": "2026-10-04T09:46:54.424Z",
+    "endTime": "2026-10-04T09:47:18.184Z",
+    "durationSeconds": 24,
+    "totalMessages": 6,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791107218314_l0nibs",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107219977,
+      "isoTime": "2026-10-04T09:46:59.977Z",
+      "type": "text",
+      "text": "Kaha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791107218765_heci74",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107221231,
+      "isoTime": "2026-10-04T09:47:01.231Z",
+      "type": "text",
+      "text": "daba ke",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791107224793_9wc5q5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107226466,
+      "isoTime": "2026-10-04T09:47:06.466Z",
+      "type": "text",
+      "text": "Ghnata",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791107227077_7mnty8",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107228739,
+      "isoTime": "2026-10-04T09:47:08.739Z",
+      "type": "text",
+      "text": "Tumhara",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791107230208_a0j2lz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107231868,
+      "isoTime": "2026-10-04T09:47:11.868Z",
+      "type": "text",
+      "text": "🤣🤣🤣🤣",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791107234749_c6fvrj",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107237231,
+      "isoTime": "2026-10-04T09:47:17.231Z",
+      "type": "text",
+      "text": "kon",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Kaha"
+      },
+      {
+        "role": "user",
+        "content": "daba ke"
+      },
+      {
+        "role": "assistant",
+        "content": "Ghnata"
+      },
+      {
+        "role": "assistant",
+        "content": "Tumhara"
+      },
+      {
+        "role": "assistant",
+        "content": "🤣🤣🤣🤣"
+      },
+      {
+        "role": "user",
+        "content": "kon"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Kaha"
+      },
+      {
+        "from": "human",
+        "value": "daba ke"
+      },
+      {
+        "from": "gpt",
+        "value": "Ghnata"
+      },
+      {
+        "from": "gpt",
+        "value": "Tumhara"
+      },
+      {
+        "from": "gpt",
+        "value": "🤣🤣🤣🤣"
+      },
+      {
+        "from": "human",
+        "value": "kon"
+      }
+    ]
+  }
+}
