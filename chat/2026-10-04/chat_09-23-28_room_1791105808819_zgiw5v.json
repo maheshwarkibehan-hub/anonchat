@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "roomId": "room_1791105808819_zgiw5v",
+    "vibe": "Direct",
+    "date": "2026-10-04",
+    "startTime": "2026-10-04T09:23:28.819Z",
+    "endTime": "2026-10-04T09:24:30.019Z",
+    "durationSeconds": 61,
+    "totalMessages": 6,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791105814350_u4bnp9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791105816819,
+      "isoTime": "2026-10-04T09:23:36.819Z",
+      "type": "text",
+      "text": "hlo",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791105822948_ve1rm1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791105823610,
+      "isoTime": "2026-10-04T09:23:43.610Z",
+      "type": "text",
+      "text": "Hmm",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "hlo",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791105831088_a9f0sz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791105831760,
+      "isoTime": "2026-10-04T09:23:51.760Z",
+      "type": "text",
+      "text": "Kya hua",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791105834815_o29nub",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791105837306,
+      "isoTime": "2026-10-04T09:23:57.306Z",
+      "type": "text",
+      "text": "kisko",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791105843144_yaz32q",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791105843845,
+      "isoTime": "2026-10-04T09:24:03.845Z",
+      "type": "text",
+      "text": "Tumko",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "kisko",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791105858719_5v0yvw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791105861147,
+      "isoTime": "2026-10-04T09:24:21.147Z",
+      "type": "text",
+      "text": "kuch to nahi",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hlo"
+      },
+      {
+        "role": "user",
+        "content": "Hmm"
+      },
+      {
+        "role": "user",
+        "content": "Kya hua"
+      },
+      {
+        "role": "assistant",
+        "content": "kisko"
+      },
+      {
+        "role": "user",
+        "content": "Tumko"
+      },
+      {
+        "role": "assistant",
+        "content": "kuch to nahi"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hlo"
+      },
+      {
+        "from": "human",
+        "value": "Hmm"
+      },
+      {
+        "from": "human",
+        "value": "Kya hua"
+      },
+      {
+        "from": "gpt",
+        "value": "kisko"
+      },
+      {
+        "from": "human",
+        "value": "Tumko"
+      },
+      {
+        "from": "gpt",
+        "value": "kuch to nahi"
+      }
+    ]
+  }
+}
