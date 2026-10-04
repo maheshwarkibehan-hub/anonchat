@@ -1,0 +1,803 @@
+{
+  "metadata": {
+    "roomId": "room_1791107399384_qu6rny",
+    "vibe": "Direct",
+    "date": "2026-10-04",
+    "startTime": "2026-10-04T09:49:59.384Z",
+    "endTime": "2026-10-04T09:55:47.241Z",
+    "durationSeconds": 348,
+    "totalMessages": 39,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791107403443_m1o47k",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107405071,
+      "isoTime": "2026-10-04T09:50:05.071Z",
+      "type": "text",
+      "text": "Tumhare net",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791107409827_pgbbku",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107411501,
+      "isoTime": "2026-10-04T09:50:11.501Z",
+      "type": "text",
+      "text": "Ki maa ch##d gayi hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791107412566_9hyrzl",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107414281,
+      "isoTime": "2026-10-04T09:50:14.281Z",
+      "type": "text",
+      "text": "Lagta hai mujhe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791107415810_5pxlqm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107417451,
+      "isoTime": "2026-10-04T09:50:17.451Z",
+      "type": "text",
+      "text": "Heheheheebeheheheheheeheh",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791107421738_6uscqv",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107424233,
+      "isoTime": "2026-10-04T09:50:24.233Z",
+      "type": "text",
+      "text": "mera to full hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791107425737_ic8ccz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107427381,
+      "isoTime": "2026-10-04T09:50:27.381Z",
+      "type": "text",
+      "text": "Sbe",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791107432999_ttykjm",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107434631,
+      "isoTime": "2026-10-04T09:50:34.631Z",
+      "type": "text",
+      "text": "Toh disconnect kyu ho rahe ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791107451371_q50alx",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107453011,
+      "isoTime": "2026-10-04T09:50:53.011Z",
+      "type": "text",
+      "text": "By the way chatpati photo bhejo apni",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791107452732_eq6ofb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107454371,
+      "isoTime": "2026-10-04T09:50:54.371Z",
+      "type": "text",
+      "text": "Pls",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791107454216_oquzru",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107456673,
+      "isoTime": "2026-10-04T09:50:56.673Z",
+      "type": "text",
+      "text": "pta nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791107470964_4nj5vf",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107472606,
+      "isoTime": "2026-10-04T09:51:12.606Z",
+      "type": "text",
+      "text": "Kuch toh kar rahe ho tum",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791107483430_kkvel2",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107485911,
+      "isoTime": "2026-10-04T09:51:25.911Z",
+      "type": "text",
+      "text": "nahi to",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791107488382_s839j7",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107490021,
+      "isoTime": "2026-10-04T09:51:30.021Z",
+      "type": "text",
+      "text": "Are areee",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 14,
+      "msgId": "msg_1791107487626_399p15",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107490110,
+      "isoTime": "2026-10-04T09:51:30.110Z",
+      "type": "text",
+      "text": "free hi hu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 15,
+      "msgId": "msg_1791107495085_jakom0",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107496721,
+      "isoTime": "2026-10-04T09:51:36.721Z",
+      "type": "text",
+      "text": "Camera chalu hai tumahra",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 16,
+      "msgId": "msg_1791107506195_4fx0l3",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107507831,
+      "isoTime": "2026-10-04T09:51:47.831Z",
+      "type": "text",
+      "text": "Aj se me tumhara ek name rakhi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 17,
+      "msgId": "msg_1791107510215_646xzh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107511864,
+      "isoTime": "2026-10-04T09:51:51.864Z",
+      "type": "text",
+      "text": "Rakhu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 18,
+      "msgId": "msg_1791107516458_faayij",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107518952,
+      "isoTime": "2026-10-04T09:51:58.952Z",
+      "type": "text",
+      "text": "okay",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 19,
+      "msgId": "msg_1791107522903_7814qz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107524541,
+      "isoTime": "2026-10-04T09:52:04.541Z",
+      "type": "text",
+      "text": "Kya rakho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 20,
+      "msgId": "msg_1791107525450_nw6p1s",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107527081,
+      "isoTime": "2026-10-04T09:52:07.081Z",
+      "type": "text",
+      "text": "Kya rakho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 21,
+      "msgId": "msg_1791107560429_vlko6g",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107562063,
+      "isoTime": "2026-10-04T09:52:42.063Z",
+      "type": "text",
+      "text": "precious",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 22,
+      "msgId": "msg_1791107568220_riz0qh",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107569851,
+      "isoTime": "2026-10-04T09:52:49.851Z",
+      "type": "text",
+      "text": "Oki",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 23,
+      "msgId": "msg_1791107586035_m1gv5x",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107587676,
+      "isoTime": "2026-10-04T09:53:07.676Z",
+      "type": "text",
+      "text": "Tum rakho mera koi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 24,
+      "msgId": "msg_1791107586061_ex6ol5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107588550,
+      "isoTime": "2026-10-04T09:53:08.550Z",
+      "type": "text",
+      "text": "ye to easy sa hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 25,
+      "msgId": "msg_1791107599729_utxcvy",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107601366,
+      "isoTime": "2026-10-04T09:53:21.366Z",
+      "type": "text",
+      "text": "Toh kya kalua lulla rakhu",
+      "ephemeral": false,
+      "replyTo": {
+        "text": "ye to easy sa hai",
+        "author": "partner"
+      }
+    },
+    {
+      "turn": 26,
+      "msgId": "msg_1791107601374_kysh6y",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107603830,
+      "isoTime": "2026-10-04T09:53:23.830Z",
+      "type": "text",
+      "text": "secret kaisa hai tumhare liye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 27,
+      "msgId": "msg_1791107610804_vqtbk2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107612431,
+      "isoTime": "2026-10-04T09:53:32.431Z",
+      "type": "text",
+      "text": "Hein",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 28,
+      "msgId": "msg_1791107645503_errlfo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107647146,
+      "isoTime": "2026-10-04T09:54:07.146Z",
+      "type": "text",
+      "text": "Ye fir bhura baklol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 29,
+      "msgId": "msg_1791107648038_ws5oew",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107649671,
+      "isoTime": "2026-10-04T09:54:09.671Z",
+      "type": "text",
+      "text": "Batso",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 30,
+      "msgId": "msg_1791107650475_6qsfmi",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107652121,
+      "isoTime": "2026-10-04T09:54:12.121Z",
+      "type": "text",
+      "text": "Ye kaisa hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 31,
+      "msgId": "msg_1791107654906_g24sxj",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107657391,
+      "isoTime": "2026-10-04T09:54:17.391Z",
+      "type": "text",
+      "text": "bhkkk",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 32,
+      "msgId": "msg_1791107661596_xl43ma",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107663241,
+      "isoTime": "2026-10-04T09:54:23.241Z",
+      "type": "text",
+      "text": "Yeh fir pyaar se annu rakhu",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 33,
+      "msgId": "msg_1791107673826_rmuxlz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107676310,
+      "isoTime": "2026-10-04T09:54:36.310Z",
+      "type": "text",
+      "text": "ha ye thk hai",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 34,
+      "msgId": "msg_1791107700060_c0553i",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107701711,
+      "isoTime": "2026-10-04T09:55:01.711Z",
+      "type": "text",
+      "text": "Tum mera kuch rakho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 35,
+      "msgId": "msg_1791107702814_lzk826",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107704471,
+      "isoTime": "2026-10-04T09:55:04.471Z",
+      "type": "text",
+      "text": "Name",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 36,
+      "msgId": "msg_1791107707250_g59l22",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107708890,
+      "isoTime": "2026-10-04T09:55:08.890Z",
+      "type": "text",
+      "text": "Pyaar se",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 37,
+      "msgId": "msg_1791107707985_mg9uce",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107710471,
+      "isoTime": "2026-10-04T09:55:10.471Z",
+      "type": "text",
+      "text": "secret",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 38,
+      "msgId": "msg_1791107709205_vfl53i",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107711710,
+      "isoTime": "2026-10-04T09:55:11.710Z",
+      "type": "text",
+      "text": "??",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 39,
+      "msgId": "msg_1791107713007_wigt6c",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107714651,
+      "isoTime": "2026-10-04T09:55:14.651Z",
+      "type": "text",
+      "text": "Hmm hmm",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "Tumhare net"
+      },
+      {
+        "role": "user",
+        "content": "Ki maa ch##d gayi hai"
+      },
+      {
+        "role": "user",
+        "content": "Lagta hai mujhe"
+      },
+      {
+        "role": "user",
+        "content": "Heheheheebeheheheheheeheh"
+      },
+      {
+        "role": "assistant",
+        "content": "mera to full hai"
+      },
+      {
+        "role": "user",
+        "content": "Sbe"
+      },
+      {
+        "role": "user",
+        "content": "Toh disconnect kyu ho rahe ho"
+      },
+      {
+        "role": "user",
+        "content": "By the way chatpati photo bhejo apni"
+      },
+      {
+        "role": "user",
+        "content": "Pls"
+      },
+      {
+        "role": "assistant",
+        "content": "pta nahi"
+      },
+      {
+        "role": "user",
+        "content": "Kuch toh kar rahe ho tum"
+      },
+      {
+        "role": "assistant",
+        "content": "nahi to"
+      },
+      {
+        "role": "user",
+        "content": "Are areee"
+      },
+      {
+        "role": "assistant",
+        "content": "free hi hu"
+      },
+      {
+        "role": "user",
+        "content": "Camera chalu hai tumahra"
+      },
+      {
+        "role": "user",
+        "content": "Aj se me tumhara ek name rakhi"
+      },
+      {
+        "role": "user",
+        "content": "Rakhu"
+      },
+      {
+        "role": "assistant",
+        "content": "okay"
+      },
+      {
+        "role": "user",
+        "content": "Kya rakho"
+      },
+      {
+        "role": "user",
+        "content": "Kya rakho"
+      },
+      {
+        "role": "user",
+        "content": "precious"
+      },
+      {
+        "role": "user",
+        "content": "Oki"
+      },
+      {
+        "role": "user",
+        "content": "Tum rakho mera koi"
+      },
+      {
+        "role": "assistant",
+        "content": "ye to easy sa hai"
+      },
+      {
+        "role": "user",
+        "content": "Toh kya kalua lulla rakhu"
+      },
+      {
+        "role": "assistant",
+        "content": "secret kaisa hai tumhare liye"
+      },
+      {
+        "role": "user",
+        "content": "Hein"
+      },
+      {
+        "role": "user",
+        "content": "Ye fir bhura baklol"
+      },
+      {
+        "role": "user",
+        "content": "Batso"
+      },
+      {
+        "role": "user",
+        "content": "Ye kaisa hai"
+      },
+      {
+        "role": "assistant",
+        "content": "bhkkk"
+      },
+      {
+        "role": "user",
+        "content": "Yeh fir pyaar se annu rakhu"
+      },
+      {
+        "role": "assistant",
+        "content": "ha ye thk hai"
+      },
+      {
+        "role": "user",
+        "content": "Tum mera kuch rakho"
+      },
+      {
+        "role": "user",
+        "content": "Name"
+      },
+      {
+        "role": "user",
+        "content": "Pyaar se"
+      },
+      {
+        "role": "assistant",
+        "content": "secret"
+      },
+      {
+        "role": "assistant",
+        "content": "??"
+      },
+      {
+        "role": "user",
+        "content": "Hmm hmm"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "Tumhare net"
+      },
+      {
+        "from": "human",
+        "value": "Ki maa ch##d gayi hai"
+      },
+      {
+        "from": "human",
+        "value": "Lagta hai mujhe"
+      },
+      {
+        "from": "human",
+        "value": "Heheheheebeheheheheheeheh"
+      },
+      {
+        "from": "gpt",
+        "value": "mera to full hai"
+      },
+      {
+        "from": "human",
+        "value": "Sbe"
+      },
+      {
+        "from": "human",
+        "value": "Toh disconnect kyu ho rahe ho"
+      },
+      {
+        "from": "human",
+        "value": "By the way chatpati photo bhejo apni"
+      },
+      {
+        "from": "human",
+        "value": "Pls"
+      },
+      {
+        "from": "gpt",
+        "value": "pta nahi"
+      },
+      {
+        "from": "human",
+        "value": "Kuch toh kar rahe ho tum"
+      },
+      {
+        "from": "gpt",
+        "value": "nahi to"
+      },
+      {
+        "from": "human",
+        "value": "Are areee"
+      },
+      {
+        "from": "gpt",
+        "value": "free hi hu"
+      },
+      {
+        "from": "human",
+        "value": "Camera chalu hai tumahra"
+      },
+      {
+        "from": "human",
+        "value": "Aj se me tumhara ek name rakhi"
+      },
+      {
+        "from": "human",
+        "value": "Rakhu"
+      },
+      {
+        "from": "gpt",
+        "value": "okay"
+      },
+      {
+        "from": "human",
+        "value": "Kya rakho"
+      },
+      {
+        "from": "human",
+        "value": "Kya rakho"
+      },
+      {
+        "from": "human",
+        "value": "precious"
+      },
+      {
+        "from": "human",
+        "value": "Oki"
+      },
+      {
+        "from": "human",
+        "value": "Tum rakho mera koi"
+      },
+      {
+        "from": "gpt",
+        "value": "ye to easy sa hai"
+      },
+      {
+        "from": "human",
+        "value": "Toh kya kalua lulla rakhu"
+      },
+      {
+        "from": "gpt",
+        "value": "secret kaisa hai tumhare liye"
+      },
+      {
+        "from": "human",
+        "value": "Hein"
+      },
+      {
+        "from": "human",
+        "value": "Ye fir bhura baklol"
+      },
+      {
+        "from": "human",
+        "value": "Batso"
+      },
+      {
+        "from": "human",
+        "value": "Ye kaisa hai"
+      },
+      {
+        "from": "gpt",
+        "value": "bhkkk"
+      },
+      {
+        "from": "human",
+        "value": "Yeh fir pyaar se annu rakhu"
+      },
+      {
+        "from": "gpt",
+        "value": "ha ye thk hai"
+      },
+      {
+        "from": "human",
+        "value": "Tum mera kuch rakho"
+      },
+      {
+        "from": "human",
+        "value": "Name"
+      },
+      {
+        "from": "human",
+        "value": "Pyaar se"
+      },
+      {
+        "from": "gpt",
+        "value": "secret"
+      },
+      {
+        "from": "gpt",
+        "value": "??"
+      },
+      {
+        "from": "human",
+        "value": "Hmm hmm"
+      }
+    ]
+  }
+}
