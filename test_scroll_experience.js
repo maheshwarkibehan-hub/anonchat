@@ -58,6 +58,24 @@ assert(indexHtml.includes('smoke-dissolving'), 'Card 2 features real 5s self-des
 assert(indexHtml.includes('real-safe-link-chip'), 'Card 2 contains verified safe link chip');
 assert(indexHtml.includes('real-skip-grace-bar'), 'Card 3 contains 3-second accidental skip grace bar');
 
+// Sticky Content Switch Checks
+assert(indexHtml.includes('story-heading-switch-container'), 'index.html has story-heading-switch-container');
+assert(indexHtml.includes('id="storyDynamicTitle"'), 'index.html has dynamic switchable headline id');
+assert(indexHtml.includes('id="storyDynamicDesc"'), 'index.html has dynamic switchable subheadline id');
+assert(indexHtml.includes('id="storyBadgeText"'), 'index.html has dynamic switchable badge id');
+// Gallery showcase: its own section, never folded into #features.
+assert(indexHtml.includes('id="gallery"'), 'index.html has a dedicated #gallery showcase section');
+assert(indexHtml.includes('id="galleryPin"'), 'index.html has #galleryPin, a full-viewport pinned stage');
+assert(indexHtml.includes('id="galleryViewport"'), 'index.html has the gallery viewport that clips the travel');
+assert(indexHtml.includes('id="galleryTrack"'), 'index.html has the horizontal gallery track');
+assert(indexHtml.includes('gallery-copy-item'), 'index.html has four real, switchable heading copies');
+assert(indexHtml.includes('id="galleryCopyNum"'), 'index.html has the live slide counter');
+assert(indexHtml.includes('data-gallery-goto'), 'index.html gallery slides are keyboard-reachable buttons');
+assert((indexHtml.match(/class="gallery-slide"/g) || []).length === 4, 'index.html has exactly 4 gallery slides');
+// The regression this replaces: the showcase must NOT live inside #features.
+assert(!indexHtml.includes('sticky-feature-showcase'), 'broken sticky-feature-showcase markup is gone');
+assert(indexHtml.includes('fab-features-grid'), 'index.html keeps the original #features card grid');
+
 // Continuous Horizontal Journey Ribbon Checks
 assert(indexHtml.includes('horizontal-journey-ribbon'), 'index.html has horizontal-journey-ribbon section');
 assert(indexHtml.includes('id="journeyRibbonTrack"'), 'index.html has journeyRibbonTrack element');
@@ -85,6 +103,16 @@ assert(css.includes('laserTravel'), 'editorial.css has laserTravel keyframe anim
 assert(css.includes('vaporDrift'), 'editorial.css has vaporDrift dissolve animation');
 assert(css.includes('particleFloat'), 'editorial.css has particleFloat animation');
 assert(css.includes('smokeDissolveAnim'), 'editorial.css has smokeDissolveAnim animation');
+assert(css.includes('.story-heading-switch-container'), 'editorial.css styles .story-heading-switch-container');
+assert(css.includes('.gallery-pin-section'), 'editorial.css styles .gallery-pin-section');
+assert(css.includes('.gallery-pin'), 'editorial.css styles the pinned .gallery-pin stage');
+assert(css.includes('--gallery-slide-w'), 'editorial.css drives slide width from one custom property');
+assert(!css.includes('.sticky-showcase-section'), 'dead .sticky-showcase CSS is removed');
+// Percentage flex-basis inside a max-content row is what produced the 5.5k px
+// pin range and the blank slide, so guard against it coming back.
+const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, '');
+assert(!/\.gallery-track[^{]*\{[^}]*width:\s*max-content/.test(cssNoComments), 'gallery track never uses width:max-content');
+assert(!/\.gallery-slide[^{]*\{[^}]*flex:[^}]*\b100%/.test(cssNoComments), 'gallery slides never use percentage flex-basis');
 assert(css.includes('@media (max-width: 991px)'), 'editorial.css has mobile adaptive rules for story section');
 
 let braceCount = 0;
@@ -110,6 +138,17 @@ assert(js.includes('initScreenLifecycle'), 'fabale.js implements initScreenLifec
 assert(js.includes('requestAnimationFrame'), 'fabale.js includes layout measurement safety delay');
 assert(js.includes('strokeDashoffset'), 'fabale.js animates SVG journey line strokeDashoffset');
 assert(js.includes('manualSwapBtn'), 'fabale.js handles manual card swap button');
+assert(js.includes('updateStickyContent'), 'fabale.js implements the story Sticky Content Switch');
+assert(js.includes('function initGalleryPin'), 'fabale.js implements the gallery sticky content switch');
+assert(js.includes('galleryShowcase'), 'fabale.js registers the gallery ScrollTrigger');
+assert(js.includes("start: 'top top'"), 'fabale.js pins the gallery stage at the viewport top');
+assert(js.includes('function measure'), 'fabale.js re-measures travel instead of trusting a stale width');
+assert(js.includes('function indexAtX'), 'fabale.js picks the slide that owns the viewport centre');
+assert(js.includes('whenMeasurable'), 'fabale.js defers gallery init until layout is measurable');
+assert(js.includes('document.fonts'), 'gallery init waits for webfonts before pinning');
+assert(js.includes('gsap.matchMedia()'), 'gallery build is scoped to breakpoints and reverts cleanly');
+assert(!js.includes('initStickyShowcase'), 'dead initStickyShowcase controller is removed');
+assert(js.includes('STORY_BEATS'), 'fabale.js defines dynamic story beats copy array');
 
 // 5. Check React Component Port
 const reactComponent = fs.readFileSync(path.join(__dirname, 'src', 'components', 'CardSwapShowcase.tsx'), 'utf8');

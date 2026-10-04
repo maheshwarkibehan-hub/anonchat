@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Fabale Interactive Controller - AnonChat Edition (Oct 2026)
    Immersive Scroll Experience: GSAP ScrollTrigger + Lenis Smooth Scroll
    Parallax Storytelling, Pinned Narrative Beats, Multi-Plane Card Depth,
@@ -28,6 +28,7 @@
     // master timeline, so it must not build a second ScrollTrigger here.
     initHowTimeline();
     initFeatureCardsDepth();
+    initGalleryPin();
     initChatPreviewScrub();
     initTabShowcase();
     initPricingSwitcher();
@@ -69,18 +70,17 @@
       }
     }
 
-    const isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || window.innerWidth < 800;
-
-    if (!isTouch && typeof Lenis !== 'undefined') {
+    if (typeof Lenis !== 'undefined') {
       try {
         const lenis = new Lenis({
-          duration: 1.15,
+          duration: 1.2,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           orientation: 'vertical',
           gestureOrientation: 'vertical',
           smoothWheel: true,
-          wheelMultiplier: 1.0,
-          touchMultiplier: 1.2
+          wheelMultiplier: 1.1,
+          touchMultiplier: 1.5,
+          infinite: false
         });
 
         // Sync with GSAP ScrollTrigger
@@ -179,8 +179,8 @@
       ease: 'none',
     });
 
-    // Background video subtle parallax depth (slower downward glide)
-    if (heroVideo) {
+    // Background video subtle parallax depth (desktop only to prevent mobile scroll re-composite stutter)
+    if (heroVideo && window.innerWidth > 768) {
       gsap.to(heroVideo, {
         scrollTrigger: {
           trigger: heroWrapper,
@@ -258,6 +258,60 @@
     const ribbonTrack = document.getElementById('journeyRibbonTrack');
     const manualSwapBtn = document.getElementById('manualSwapBtn');
 
+    const dynamicTitleEl = document.getElementById('storyDynamicTitle');
+    const dynamicDescEl = document.getElementById('storyDynamicDesc');
+    const dynamicBadgeText = document.getElementById('storyBadgeText');
+
+    const STORY_BEATS = [
+      {
+        badge: '01 &bull; Late Night Confessions',
+        title: 'Late Night <span class="serif-italic">Confessions</span>',
+        desc: 'Scroll to peel through real campus conversations. Swipe-to-reply, emoji reactions, and contextual quotes without leaving a digital trace.'
+      },
+      {
+        badge: '02 &bull; 15s Ephemeral Voice Notes',
+        title: '15s Ephemeral <span class="serif-italic">Voice Notes</span>',
+        desc: 'Real-time Web Audio waveforms with 15-second expiring voice clips and single-tap view-once media that melt the moment you listen.'
+      },
+      {
+        badge: '03 &bull; 5s Self-Destruct Smoke Bombs',
+        title: '5s Self-Destruct <span class="serif-italic">Smoke Bombs</span>',
+        desc: 'Sensitive messages and private links vaporize with dynamic smoke particles in 5 seconds. Zero screenshots, zero server logs.'
+      },
+      {
+        badge: '04 &bull; Sub-10ms Matchmaking & Grace',
+        title: 'Sub-10ms Match, <span class="serif-italic">3s Skip Grace</span>',
+        desc: 'Instant in-memory RAM matchmaking with zero disk footprint, plus a 3-second reconnect grace buffer if you accidentally hit skip.'
+      }
+    ];
+
+    const switchItems = Array.from(document.querySelectorAll('.story-switch-item'));
+
+    let currentStickyStep = -1;
+    function updateStickyContent(stepIndex, immediate = false) {
+      if (stepIndex === currentStickyStep && !immediate) return;
+      currentStickyStep = stepIndex;
+
+      const beatData = STORY_BEATS[stepIndex];
+      if (!beatData) return;
+
+      // Pure HTML/CSS class toggling with CSS transitions
+      if (switchItems.length) {
+        switchItems.forEach((item, idx) => {
+          item.classList.toggle('active', idx === stepIndex);
+        });
+      }
+
+      if (dynamicBadgeText) {
+        dynamicBadgeText.innerHTML = beatData.badge;
+      }
+
+      if (dynamicTitleEl && (!switchItems.length || immediate)) {
+        dynamicTitleEl.innerHTML = beatData.title;
+        if (dynamicDescEl) dynamicDescEl.innerHTML = beatData.desc;
+      }
+    }
+
     const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -290,6 +344,7 @@
         if (trackFill) {
           trackFill.style.height = `${((currentStaticStep / Math.max(1, cards.length - 1)) * 100).toFixed(1)}%`;
         }
+        updateStickyContent(currentStaticStep, true);
       }
 
       stepItems.forEach((item, index) => {
@@ -318,6 +373,7 @@
     }
 
     storySection.classList.add('story-motion');
+    updateStickyContent(0, true);
 
     // The travelling strip is the decorative layer; the real, always-present
     // sentence lives in .journey-sentence-static and stays available to
@@ -354,6 +410,9 @@
           card.setAttribute('data-stack-depth', String(depth));
         }
       });
+
+      // Sticky Content Switch: Pin heading and morph copy with scroll progression
+      updateStickyContent(stepIndex);
     }
 
     // Scroll to a specific beat without breaking reverse scrubbing: this moves
@@ -426,8 +485,8 @@
     //     the first buried level and ~29px by the last.
     const STACK_PRESETS = {
       desktop: { dx: -4, dy: 13, dz: -46, scale: 0.985, rot: -0.7, travel: 2500, scrub: 0.8 },
-      tablet:  { dx: -3, dy: 11, dz: -38, scale: 0.985, rot: -0.6, travel: 2150, scrub: 0.65 },
-      mobile:  { dx: -2, dy: 9,  dz: -30, scale: 0.985, rot: -0.5, travel: 1750, scrub: 0.55 }
+      tablet:  { dx: -3, dy: 11, dz: -38, scale: 0.985, rot: -0.6, travel: 1400, scrub: 0.5 },
+      mobile:  { dx: -2, dy: 9,  dz: -30, scale: 0.985, rot: -0.5, travel: 950, scrub: 0.4 }
     };
 
     function buildSlots(preset) {
@@ -680,8 +739,11 @@
   // backwards is identical work and nothing is ever left half-lit.
   function initHowTimeline() {
     const section = document.getElementById('how-it-works');
+    const svgPath = document.getElementById('howJourneySvgPath');
+    const svgGlow = document.getElementById('howJourneySvgGlow');
+    const beaconGroup = document.getElementById('howJourneyBeaconGroup');
     const fill = document.getElementById('howTimelineFill');
-    if (!section || !fill) return;
+    if (!section) return;
 
     const steps = Array.from(section.querySelectorAll('.ed-tl-step'));
     if (!steps.length) return;
@@ -690,34 +752,69 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
 
-    // Fully lit is always a valid end state: with no motion budget the section
-    // simply reads as a finished list instead of a frozen progress bar.
+    // Measure SVG path length safely (SVG viewBox length is 1000)
+    let pathLength = 1000;
+    if (svgPath) {
+      try {
+        const measured = svgPath.getTotalLength();
+        if (measured && measured > 0) pathLength = measured;
+      } catch (e) {
+        pathLength = 1000;
+      }
+      svgPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+      svgPath.style.strokeDashoffset = `${pathLength}`;
+      if (svgGlow) {
+        svgGlow.style.strokeDasharray = `${pathLength} ${pathLength}`;
+        svgGlow.style.strokeDashoffset = `${pathLength}`;
+      }
+    }
+
+    // Fully lit state when motion is reduced
     function lightEverything() {
-      fill.style.transform = 'scaleY(1)';
+      if (svgPath) svgPath.style.strokeDashoffset = '0';
+      if (svgGlow) svgGlow.style.strokeDashoffset = '0';
+      if (beaconGroup) {
+        beaconGroup.setAttribute('transform', 'translate(20, 1000)');
+        beaconGroup.style.opacity = '1';
+      }
+      if (fill) fill.style.transform = 'scaleY(1)';
       steps.forEach((step) => step.classList.add('is-live', 'is-done'));
     }
 
-    if (reduceMotion || !hasGsap) {
+    if (reduceMotion) {
       lightEverything();
       return;
     }
 
-    // Mirrors the last applied class state so we only touch the DOM on a real
-    // change - the scrub fires on every frame, and blind classList.toggle calls
-    // would dirty the element needlessly.
     const applied = steps.map(() => ({ live: false, done: false }));
     const proxy = { p: 0 };
 
-    function render() {
-      const p = proxy.p;
-      fill.style.transform = `scaleY(${p.toFixed(4)})`;
+    function renderProgress(p) {
+      const clamped = Math.max(0, Math.min(1, p));
 
+      // Fast, snappy SVG line drawing based on user's scroll percentage
+      if (svgPath) {
+        const offset = Math.max(0, pathLength * (1 - clamped));
+        svgPath.style.strokeDashoffset = offset.toFixed(2);
+        if (svgGlow) svgGlow.style.strokeDashoffset = offset.toFixed(2);
+      }
+
+      // Dynamic beacon positioning at the leading tip of the drawn line
+      if (beaconGroup) {
+        const yPos = (clamped * 1000).toFixed(1);
+        beaconGroup.setAttribute('transform', `translate(20, ${yPos})`);
+        beaconGroup.style.opacity = clamped > 0.015 ? '1' : '0';
+      }
+
+      if (fill) {
+        fill.style.transform = `scaleY(${clamped.toFixed(4)})`;
+      }
+
+      // Step activation synchronized with line tip reaching each node
       for (let i = 0; i < total; i++) {
-        // A beat goes live once the line has entered its slice of the rail, and
-        // is marked done once the line has left it. The 0.08 overlap stops the
-        // hand-off from looking like a hard switch on a single frame.
-        const live = p >= (i / total) - 0.08;
-        const done = p >= (i + 1) / total;
+        const threshold = total > 1 ? i / (total - 1) : 0;
+        const live = clamped >= Math.max(0, threshold - 0.08);
+        const done = i < total - 1 ? clamped >= threshold + 0.16 : clamped >= 0.98;
 
         if (applied[i].live !== live) {
           steps[i].classList.toggle('is-live', live);
@@ -730,23 +827,53 @@
       }
     }
 
+    if (!hasGsap) {
+      // Snappy vanilla scroll fallback with requestAnimationFrame
+      let ticking = false;
+      function onVanillaScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const rect = section.getBoundingClientRect();
+            const vh = window.innerHeight || 800;
+            const start = vh * 0.78;
+            const end = vh * 0.3 - rect.height;
+            const progress = (start - rect.top) / (start - end);
+            renderProgress(progress);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onVanillaScroll, { passive: true });
+      onVanillaScroll();
+      return;
+    }
+
+    // High-velocity snappy scrubbed ScrollTrigger ("jaldi" scroll animation)
     gsap.to(proxy, {
       p: 1,
       ease: 'none',
       scrollTrigger: {
         trigger: section,
-        // Start while the header is still settling, finish once the last beat
-        // has cleared the lower third - the line is fully drawn by then.
-        start: 'top 74%',
-        end: 'bottom 62%',
-        scrub: 0.6,
+        start: 'top 78%',
+        end: 'bottom 68%',
+        // scrub: 0.18 gives instantaneous, butter-smooth scroll tracking
+        scrub: 0.18,
         invalidateOnRefresh: true,
-        onRefresh: render,
+        onRefresh: () => {
+          if (svgPath) {
+            try {
+              const measured = svgPath.getTotalLength();
+              if (measured && measured > 0) pathLength = measured;
+            } catch (e) {}
+          }
+          renderProgress(proxy.p);
+        },
       },
-      onUpdate: render,
+      onUpdate: () => renderProgress(proxy.p),
     });
 
-    render();
+    renderProgress(0);
   }
 
   // 6. Feature & Why Cards: Multi-Plane Depth & Staggered Scroll Reveals
@@ -799,10 +926,26 @@
               end: 'bottom top',
               scrub: true,
             },
-            y: -10,
+            y: -14,
             ease: 'none',
           });
         }
+      });
+
+      // Prismic #11: Why Cards Multi-Speed Parallax Float
+      const whyCards = gsap.utils.toArray('.fab-why-card');
+      const speeds = [-18, 12, -22];
+      whyCards.forEach((card, idx) => {
+        gsap.to(card, {
+          y: speeds[idx % speeds.length],
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#why',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.2
+          }
+        });
       });
     }
 
@@ -826,7 +969,378 @@
     });
   }
 
-  // 7. Chat Preview Bubbles Scrub Entrance in Use Cases
+  // 6b. GALLERY - STICKY CONTENT SWITCH
+  //
+  // The headline on the left stays pinned while the captures on the right travel
+  // horizontally, and the headline re-writes itself the moment a new capture
+  // crosses the centre of the viewport. Vertical scroll is never hijacked: one
+  // pinned stage, one scrubbed X translation.
+  //
+  // This replaces an earlier version that pinned a ~60%-viewport-tall block
+  // *inside* #features. Three things were wrong with it, and all three are
+  // structural:
+  //   1. A pinned block shorter than the viewport leaves the uncovered strip
+  //      showing the rest of the page scrolling past behind it. That was the
+  //      overlap that got reported.
+  //   2. The slides were `flex: 0 0 100%` inside a `width:max-content` row, so
+  //      the percentage basis resolved against an indefinite container and the
+  //      measured travel distance came out around 5600px. The pin range was
+  //      therefore ~5.5k px long and the slide rendered as a blank over-wide box.
+  //   3. It was wired into the navbar's "Features" target, so a feature list
+  //      link landed on a pinned scroll stage.
+  //
+  // Init is deliberately deferred. ScrollTrigger measures real pixels, so it must
+  // not run while webfonts or images are still changing the rendered width: the
+  // block waits for two committed frames, resolved fonts and decoded images, with
+  // a hard ceiling so a stalled asset can never leave the section dead.
+  function initGalleryPin() {
+    const section = document.getElementById('gallery');
+    const stage = document.getElementById('galleryPin');
+    const viewport = document.getElementById('galleryViewport');
+    const track = document.getElementById('galleryTrack');
+    if (!section || !stage || !viewport || !track) return;
+
+    const slides = Array.from(track.querySelectorAll('.gallery-slide'));
+    const copies = Array.from(section.querySelectorAll('.gallery-copy-item'));
+    const dots = Array.from(section.querySelectorAll('.gallery-dot'));
+    const numEl = document.getElementById('galleryCopyNum');
+    const hintEl = document.getElementById('galleryHint');
+    if (!slides.length) return;
+
+    const lastIndex = slides.length - 1;
+
+    // TAIL is the FRACTION of the pinned scroll range given over to holding the
+    // final capture, rather than travelling further. Without it the last slide
+    // arrives at the exact instant the pin releases and is never readable.
+    //
+    // It has to stay consistent across three places, or slide N stops lining up
+    // with its own copy: the x tween's duration, the empty tail tween, and the
+    // progress -> x mapping below. Travel happens across the first (1 - TAIL) of
+    // the pin; x = -travel * min(1, progress / (1 - TAIL)).
+    const TAIL = 0.18;
+
+    let media = null;        // gsap.matchMedia() owning the pinned build
+    let trigger = null;      // live ScrollTrigger, used by the dot navigation
+    let activeIndex = -1;
+    let travel = 0;          // measured distance the track has to cover
+    let centres = [];        // each slide's centre in untransformed track space
+    let resizeTimer = null;
+    let disposed = false;
+
+    /* -------------------------------------------------------------------- */
+    /* Copy switching. Class toggles only - CSS owns every transition, so    */
+    /* the switch still works with GSAP absent and cannot desync from the   */
+    /* timeline the way a second tween on the same properties would.        */
+    /* -------------------------------------------------------------------- */
+    function applyIndex(index) {
+      const next = Math.max(0, Math.min(lastIndex, index));
+      if (next === activeIndex) return;
+      activeIndex = next;
+
+      copies.forEach((el, i) => {
+        const on = i === next;
+        el.classList.toggle('is-active', on);
+        // Hidden copies are removed from the accessibility tree and from the
+        // tab order by the same `visibility:hidden` the transition animates.
+        if (on) el.removeAttribute('aria-hidden');
+        else el.setAttribute('aria-hidden', 'true');
+      });
+      slides.forEach((el, i) => el.classList.toggle('is-active', i === next));
+      dots.forEach((el, i) => {
+        el.classList.toggle('is-active', i === next);
+        el.classList.toggle('is-past', i < next);
+        el.setAttribute('aria-current', i === next ? 'true' : 'false');
+      });
+      if (numEl) numEl.textContent = String(next + 1).padStart(2, '0');
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Measurement. Re-read on every build AND on every ScrollTrigger        */
+    /* refresh, because webfonts, image decode and resize all change it. A   */
+    /* stale number is what produces a pin range thousands of pixels too long.*/
+    /* -------------------------------------------------------------------- */
+    function measure() {
+      centres = slides.map((slide) => slide.offsetLeft + slide.offsetWidth / 2);
+
+      // Travel is the gap between the first and last slide CENTRES, not the
+      // full track width. Combined with the track's centring padding this means
+      // slide N sits dead centre exactly when the track has moved N spacings,
+      // which is what the copy switch keys off. Using the track's right edge
+      // here is what used to leave the final slide hanging off-centre.
+      travel = Math.max(0, centres[lastIndex] - centres[0]);
+      return travel;
+    }
+
+    /**
+     * Which capture owns the centre right now.
+     * Pure geometry on cached centres, so it is exact in both scroll
+     * directions and independent of easing, scrub smoothing or the tail.
+     */
+    function indexAtX(x) {
+      const mid = viewport.clientWidth / 2;
+      let best = 0;
+      let bestGap = Infinity;
+      for (let i = 0; i < centres.length; i++) {
+        const gap = Math.abs(centres[i] + x - mid);
+        if (gap < bestGap) { bestGap = gap; best = i; }
+      }
+      return best;
+    }
+
+    /** Progress of the pinned range -> the track's current X offset. */
+    function xAtProgress(progress) {
+      // The tween occupies the first (1 - TAIL) of the range; the rest is the
+      // hold. Both clamps matter: progress never exceeds 1, and the ratio must
+      // match the tween's own duration or the copy drifts off its slide.
+      return -travel * Math.min(1, progress / (1 - TAIL));
+    }
+
+    /** Progress at which slide `index` sits exactly centred. */
+    function progressForIndex(index) {
+      const fraction = lastIndex === 0 ? 0 : index / lastIndex;
+      return fraction * (1 - TAIL);
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Teardown. matchMedia().revert() removes the pin, its spacer and the    */
+    /* transform, so switching breakpoints can never leave two pinned stages. */
+    /* -------------------------------------------------------------------- */
+    function leavePinnedMode() {
+      // Reverting the matchMedia context is what removes the pin, its spacer and the
+      // timeline. It has to happen BEFORE the classes change, otherwise the teardown
+      // measures itself against the wrong layout.
+      if (media) { media.revert(); media = null; }
+      section.classList.remove('is-horizontal', 'is-static');
+      if (hintEl) hintEl.classList.remove('is-done');
+      if (typeof gsap !== 'undefined') gsap.set(track, { clearProps: 'transform' });
+      trigger = null;
+    }
+
+    function enterStaticMode() {
+      leavePinnedMode();
+      section.classList.add('is-static');
+      applyIndex(0);
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* The pinned horizontal build                                          */
+    /* -------------------------------------------------------------------- */
+    function buildPinned() {
+      const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+      if (!hasGsap) { enterStaticMode(); return; }
+
+      // A rebuild after a breakpoint change must never stack a second pin on top
+      // of the first one.
+      leavePinnedMode();
+      section.classList.add('is-horizontal');
+
+      measure();
+
+      // Nothing to travel: either the slides already fit (a very wide window,
+      // or a viewport too short for the stage) or the layout has not settled.
+      // Pinning here would only create a multi-thousand-pixel dead zone.
+      if (travel < 40 || viewport.clientWidth < 240) { enterStaticMode(); return; }
+
+      media = gsap.matchMedia();
+
+      media.add('(min-width: 900px)', () => {
+        const timeline = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            id: 'galleryShowcase',
+            // Pin the stage itself, and start the pin when the STAGE reaches the
+            // top of the screen - not when the section header does.
+            trigger: stage,
+            pin: stage,
+            start: 'top top',
+            // Function-based so the pin range is recomputed from real pixels on
+            // every refresh: measure() and this length can never disagree.
+            end: () => '+=' + Math.round(measure() / (1 - TAIL)),
+            scrub: 0.5,
+            anticipatePin: 1,
+            pinSpacing: true,
+            invalidateOnRefresh: true,
+            onRefresh: () => {
+              // Keep the copy in step after a resize or font swap even when the
+              // trigger has not been scrolled since.
+              if (trigger) applyIndex(indexAtX(xAtProgress(trigger.progress)));
+            },
+            onUpdate: (self) => {
+              const x = xAtProgress(self.progress);
+              applyIndex(indexAtX(x));
+              if (hintEl) hintEl.classList.toggle('is-done', self.progress > 0.02);
+            }
+          }
+        });
+
+        timeline.to(track, { x: () => -measure(), duration: 1 - TAIL }, 0);
+        // Empty tail tween: extends the timeline without moving anything, which
+        // is what holds the final capture centred before the pin releases.
+        timeline.to({}, { duration: TAIL }, 1 - TAIL);
+
+        trigger = timeline.scrollTrigger;
+        applyIndex(indexAtX(xAtProgress(trigger.progress)));
+
+        return () => {
+          const dead = trigger;
+          trigger = null;
+          if (dead) dead.kill(true);
+          timeline.kill();
+        };
+      });
+
+      // Pinning changes the document height, so every other trigger in the page
+      // is now measured against a different page. One refresh settles it all.
+      ScrollTrigger.refresh();
+    }
+
+    /* -------------------------------------------------------------------- */
+    /* Deferred, safe init                                                   */
+    /* -------------------------------------------------------------------- */
+
+    /**
+     * Runs `done` only once the section can be measured honestly:
+     * two committed animation frames, resolved webfonts and decoded images,
+     * plus one more frame to flush the reflow those two cause.
+     * `budget` is a hard ceiling, so a slow or broken asset can never leave the
+     * showcase unbuilt.
+     */
+    function whenMeasurable(el, done, budget) {
+      // settled is the one-shot latch, and cancel() deliberately trips it: a
+      // measurement abandoned by a mode flip must never fire through its promise
+      // chain afterwards and rebuild a pin the user has already left behind.
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        if (!disposed) done();
+      };
+      const timer = window.setTimeout(finish, budget);
+
+      const painted = () => new Promise((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
+      });
+
+      const fontsReady = document.fonts && document.fonts.ready
+        ? document.fonts.ready.catch(() => {})
+        : Promise.resolve();
+
+      const imagesReady = Promise.all(
+        Array.from(el.querySelectorAll('img')).map((img) => {
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve) => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+          });
+        })
+      );
+
+      Promise.all([painted(), fontsReady, imagesReady]).then(
+        () => requestAnimationFrame(finish),
+        () => finish()
+      );
+
+      return () => {
+        settled = true;
+        window.clearTimeout(timer);
+      };
+    }
+
+    // A late-arriving image changes the slide metrics, so re-measure and let
+    // ScrollTrigger recompute the pin range instead of trusting the first read.
+    Array.from(track.querySelectorAll('img')).forEach((img) => {
+      if (img.complete) return;
+      img.addEventListener('load', () => {
+        if (disposed) return;
+        measure();
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      }, { once: true });
+    });
+
+    /* -------------------------------------------------------------------- */
+    /* Dot navigation. Moves the scroll position rather than animating the    */
+    /* track, so the scrubbed timeline stays the single source of truth and    */
+    /* reverse scrolling behaves identically.                                  */
+    /* -------------------------------------------------------------------- */
+    function scrollToSlide(index) {
+      const clamped = Math.max(0, Math.min(lastIndex, index));
+
+      if (!trigger) {
+        const slide = slides[clamped];
+        if (slide && slide.scrollIntoView) {
+          slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        return;
+      }
+
+      // The progress at which slide N is centred, derived from the same
+      // geometry the trigger itself uses - never from a hand-tuned pixel value.
+      const progress = progressForIndex(clamped);
+      const y = Math.round(trigger.start + progress * (trigger.end - trigger.start));
+
+      if (window._lenis) window._lenis.scrollTo(y, { duration: 1.1 });
+      else window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => scrollToSlide(i));
+    });
+
+    /* -------------------------------------------------------------------- */
+    /* Boot                                                                  */
+    /* -------------------------------------------------------------------- */
+
+    // The pinned mode is a LIVE decision, not a one-shot boot check.
+    //
+    // Deciding only once was a real bug: a window dragged across 900px left the
+    // section still carrying is-horizontal, where the desktop rules hide both the
+    // slide captions and the copy column. The section was then on screen with no
+    // text anywhere in it. The OS flipping reduce-motion mid-session had the same
+    // effect, and nothing switched back when motion came back either.
+    const wideMotion = window.matchMedia('(min-width: 900px) and (prefers-reduced-motion: no-preference)');
+
+    let cancelMeasure = null;
+
+    function syncMode() {
+      if (disposed) return;
+
+      // Never leave a measurement in flight while the mode flips underneath it.
+      if (cancelMeasure) { cancelMeasure(); cancelMeasure = null; }
+
+      if (wideMotion.matches) {
+        // Exactly the deferred, measure-safe path used on the very first boot.
+        cancelMeasure = whenMeasurable(section, () => {
+          cancelMeasure = null;
+          if (!disposed && wideMotion.matches) buildPinned();
+          else enterStaticMode();
+        }, 1200);
+      } else {
+        enterStaticMode();
+      }
+    }
+
+    if (typeof wideMotion.addEventListener === 'function') {
+      wideMotion.addEventListener('change', syncMode);
+    } else if (typeof wideMotion.addListener === 'function') {
+      wideMotion.addListener(syncMode);
+    }
+
+    syncMode();
+
+    // Resize only needs a refresh: every value the pin depends on is
+    // function-based, so ScrollTrigger re-measures it on its own. Rebuilding
+    // here instead would re-pin mid-scroll, which is exactly what made the old
+    // version jump around while the window was being dragged.
+    window.addEventListener('resize', () => {
+      if (disposed) return;
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        if (!disposed && typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      }, 200);
+    }, { passive: true });
+  }
+
+// 7. Chat Preview Bubbles Scrub Entrance in Use Cases
   function initChatPreviewScrub() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

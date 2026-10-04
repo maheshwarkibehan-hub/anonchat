@@ -4,9 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content" />
   <title>AnonChat - Pure Anonymous Realtime Chat</title>
-  <link rel="stylesheet" href="style.css?v=2.4.1" />
-  <link rel="stylesheet" href="fabale.css?v=2.4.0" />
-  <link rel="stylesheet" href="editorial.css?v=1.0.3" />
+  <script>
+    if (sessionStorage.getItem('anonchat_entered')) {
+      document.documentElement.classList.add('skip-preloader');
+    }
+  </script>
+  <link rel="stylesheet" href="style.css?v=2.4.2" />
+  <link rel="stylesheet" href="fabale.css?v=2.4.2" />
+  <link rel="stylesheet" href="editorial.css?v=2.5.0" />
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -267,6 +272,24 @@
         </div>
       </section>
 
+  <!-- Soft Light Green Cinematic Preloader (Uiverse by andrew-manzyk) -->
+  <div id="appPreloader" class="app-preloader" aria-hidden="false" role="dialog" aria-label="Loading AnonChat">
+    <div class="loader">
+      <div class="text-frame">
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+        <div class="text"><span>Loading</span></div>
+      </div>
+      <div class="line"></div>
+    </div>
+  </div>
+
   <div class="app-shell">
     <!-- Socket Connection Error Alert Banner -->
     <div id="connectionErrorBanner" class="connection-error-banner hidden" role="alert">
@@ -303,8 +326,9 @@
         <section class="editorial-hero-wrapper">
           <!-- Full-Bleed Background Video Layer -->
           <div class="editorial-video-layer">
-            <video class="editorial-hero-video" id="heroVideo" autoplay loop muted playsinline preload="auto" poster="hero-poster.jpg" onloadeddata="this.playbackRate=1.0;" onplay="this.playbackRate=1.0;">
-              <source src="serene-art-hero.mp4" type="video/mp4" />
+            <video class="editorial-hero-video" id="heroVideo" autoplay loop muted playsinline preload="metadata" poster="hero-poster.jpg" onloadeddata="this.playbackRate=1.0;" onplay="this.playbackRate=1.0;">
+              <source src="hero-1080p.webm" type="video/webm" />
+              <source src="hero-1080p.mp4" type="video/mp4" />
             </video>
             <div class="editorial-video-overlay"></div>
           </div>
@@ -356,10 +380,6 @@
             <h1 class="editorial-hero-h1 fade-rise-0">
               Talk to Classmates with <em>Pure</em> Anonymity
             </h1>
-
-            <p class="editorial-hero-desc fade-rise-2">
-              Connect instantly with friends and classmates on campus. Zero logins, zero phone numbers, zero awkwardness. Just pure conversations.
-            </p>
 
             <div class="fade-rise-4">
               <button type="button" class="editorial-btn-pill pill-hero" id="startChatBtn">
@@ -419,19 +439,55 @@
         <section class="scroll-story-section" id="story">
           <div class="sticky-stage" id="storyStage">
             <div class="scroll-story-container">
-            <!-- Left Column: Pinned Story Track with Dynamic SVG Journey Line -->
+            <!-- Left Column: Pinned Story Track with Dynamic SVG Journey Line & Sticky Content Switch -->
             <div class="story-left-col">
               <div class="story-sticky-content">
                 <div class="fab-badge-pill story-badge">
                   <span class="story-live-pulse"></span>
-                  Interactive Card Deck &bull; Real Chat Experience
+                  <span id="storyBadgeText">01 &bull; Late Night Confessions</span>
                 </div>
-                <h2 class="story-headline">
-                  Talk Freely, <span class="serif-italic">Vanish Completely</span>
-                </h2>
-                <p class="story-subheadline">
-                  Scroll to peel through real campus conversations. Watch how cards slide and stack in real-time, audio waveforms pulse, and messages dissolve without leaving a trace.
-                </p>
+                <!-- ALL 4 HEADINGS DIRECTLY PRESENT IN HTML -->
+                <div class="story-heading-switch-container" id="storyHeadingContainer">
+                  <!-- Step 01 Heading -->
+                  <div class="story-switch-item active" data-step="0">
+                    <h2 class="story-headline" id="storyDynamicTitle">
+                      Late Night <span class="serif-italic">Confessions</span>
+                    </h2>
+                    <p class="story-subheadline" id="storyDynamicDesc">
+                      Scroll to peel through real campus conversations. Swipe-to-reply, emoji reactions, and contextual quotes without leaving a digital trace.
+                    </p>
+                  </div>
+
+                  <!-- Step 02 Heading -->
+                  <div class="story-switch-item" data-step="1">
+                    <h2 class="story-headline">
+                      15s Ephemeral <span class="serif-italic">Voice Notes</span>
+                    </h2>
+                    <p class="story-subheadline">
+                      Real-time Web Audio waveforms with 15-second expiring voice clips and single-tap view-once media that melt the moment you listen.
+                    </p>
+                  </div>
+
+                  <!-- Step 03 Heading -->
+                  <div class="story-switch-item" data-step="2">
+                    <h2 class="story-headline">
+                      5s Self-Destruct <span class="serif-italic">Smoke Bombs</span>
+                    </h2>
+                    <p class="story-subheadline">
+                      Sensitive messages and private links vaporize with dynamic smoke particles in 5 seconds. Zero screenshots, zero server logs.
+                    </p>
+                  </div>
+
+                  <!-- Step 04 Heading -->
+                  <div class="story-switch-item" data-step="3">
+                    <h2 class="story-headline">
+                      Sub-10ms Match, <span class="serif-italic">3s Skip Grace</span>
+                    </h2>
+                    <p class="story-subheadline">
+                      Instant in-memory RAM matchmaking with zero disk footprint, plus a 3-second reconnect grace buffer if you accidentally hit skip.
+                    </p>
+                  </div>
+                </div>
 
                 <!-- Interactive SVG Journey Connector Rail -->
                 <div class="story-journey-wrapper" role="navigation" aria-label="Story steps">
@@ -657,16 +713,49 @@
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
               <div class="fab-badge-pill">How It Works</div>
-              <h2 class="fab-section-title">Four Steps to <span class="serif-italic">Total Disappearance</span></h2>
+              <h2 class="fab-section-title">Four Steps to <span class="serif-italic prismic-scroll-highlight">Total Disappearance</span></h2>
               <p class="fab-section-desc">No forms, no logins, no friction. This is the entire lifecycle of a single AnonChat conversation, start to finish.</p>
             </div>
 
             <div class="ed-tl" id="howTimeline">
-              <!-- Decorative connector rail. The base track is static; the gradient
-                   fill is scrubbed by JS from the section's own scroll progress. -->
+              <!-- Animated SVG Journey Connector Rail: Draws itself forward based on scroll percentage -->
               <div class="ed-tl-rail" aria-hidden="true">
-                <span class="ed-tl-rail-base"></span>
-                <span class="ed-tl-rail-fill" id="howTimelineFill"></span>
+                <svg class="ed-tl-svg-rail" id="howJourneySvg" viewBox="0 0 40 1000" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="howJourneyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#0e7490" />
+                      <stop offset="35%" stop-color="#21d2ed" />
+                      <stop offset="75%" stop-color="#6366f1" />
+                      <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                    <filter id="howJourneyGlow" x="-50%" y="-20%" width="200%" height="140%">
+                      <feGaussianBlur stdDeviation="3.5" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <radialGradient id="howBeaconRadial" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#ffffff" />
+                      <stop offset="45%" stop-color="#21d2ed" />
+                      <stop offset="100%" stop-color="rgba(33, 210, 237, 0)" />
+                    </radialGradient>
+                  </defs>
+                  <!-- Static background track -->
+                  <path class="ed-tl-svg-base" d="M 20 0 L 20 1000" vector-effect="non-scaling-stroke" stroke="rgba(14, 116, 144, 0.16)" stroke-width="2.5" stroke-linecap="round" />
+                  <!-- Ambient neon blur glow path -->
+                  <path id="howJourneySvgGlow" class="ed-tl-svg-glow" d="M 20 0 L 20 1000" vector-effect="non-scaling-stroke" stroke="url(#howJourneyGradient)" stroke-width="7" stroke-linecap="round" opacity="0.4" filter="url(#howJourneyGlow)" />
+                  <!-- Animated drawing path -->
+                  <path id="howJourneySvgPath" class="ed-tl-svg-draw" d="M 20 0 L 20 1000" vector-effect="non-scaling-stroke" stroke="url(#howJourneyGradient)" stroke-width="3.5" stroke-linecap="round" pathLength="1000" />
+                  <!-- Traveling beacon / laser head at tip of drawn line -->
+                  <g id="howJourneyBeaconGroup" class="ed-tl-beacon-group" transform="translate(20, 0)">
+                    <circle class="ed-tl-beacon-halo" r="9" fill="url(#howBeaconRadial)" />
+                    <circle class="ed-tl-beacon-ring" r="6" fill="none" stroke="#21d2ed" stroke-width="1.5" />
+                    <circle class="ed-tl-beacon-core" r="3" fill="#ffffff" />
+                  </g>
+                </svg>
+                <span class="ed-tl-rail-base" style="display:none;"></span>
+                <span class="ed-tl-rail-fill" id="howTimelineFill" style="display:none;"></span>
               </div>
 
               <ol class="ed-tl-list">
@@ -714,7 +803,9 @@
           </div>
         </section>
 
-        <!-- FEATURES SECTION (3 Luxury Cards with extracted Fabale graphics) -->
+        <!-- ==========================================================================
+             FEATURES SECTION (3 Luxury Cards with extracted Fabale graphics)
+             ========================================================================== -->
         <section class="fab-section" id="features">
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
@@ -744,7 +835,7 @@
                   </svg>
                 </div>
                 <span class="editorial-card-tag">Ephemeral Media</span>
-                <h3 class="fab-feature-title">Ephemeral Media & Private Logs</h3>
+                <h3 class="fab-feature-title">Ephemeral Media &amp; Private Logs</h3>
                 <p class="fab-feature-desc">Voice notes and photos exist only in active RAM. Text transcripts are saved in private session archives without accounts or profiles.</p>
               </div>
 
@@ -758,9 +849,183 @@
                   </svg>
                 </div>
                 <span class="editorial-card-tag">Self-Destruct Bombs</span>
-                <h3 class="fab-feature-title">Rich Media & Sound Chimes</h3>
+                <h3 class="fab-feature-title">Rich Media &amp; Sound Chimes</h3>
                 <p class="fab-feature-desc">Drop screenshots, toggle self-destructing view-once photos, and hear synthetic Web Audio chime feedback.</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             GALLERY - STICKY CONTENT SWITCH (Pinned Heading + Horizontal Showcase)
+
+             This is a SECTION OF ITS OWN on purpose. It used to be crammed into
+             #features, which was wrong twice over: the navbar "Features" link landed
+             on a pinned scroll stage instead of a feature list, and a pinned block
+             that is only ~60% of the viewport tall leaves the rest of the screen
+             showing whatever scrolls past behind it - which is exactly the overlap
+             bug that was reported.
+
+             The fix is structural, not cosmetic:
+               1. The stage below (#galleryPin) is its OWN element, exactly one
+                  viewport tall, so while it is pinned it fills the screen completely
+                  and nothing can be seen sliding past behind it.
+               2. ScrollTrigger pins #galleryPin itself with start "top top", so the
+                  pin begins the moment the stage actually reaches the top of the
+                  screen - not when the section header does.
+               3. Slides use explicit pixel widths. A percentage flex-basis inside a
+                  max-content row is what blew the measured travel distance up to
+                  ~5600px and produced a 5.5k px pin range.
+               4. The left column lives inside the pinned stage, so "sticky heading"
+                  is structural rather than a second, competing position:sticky.
+               5. As each capture's centre crosses the viewport centre, the heading
+                  copy, the counter and the dots switch to match it.
+
+             Everything degrades without JavaScript: all four copies and all four
+             captions are real text in the DOM, and the slides fall back to a
+             readable vertical stack / native scroll-snap carousel on small screens.
+             ========================================================================== -->
+        <section class="fab-section gallery-pin-section" id="gallery">
+          <!-- The header stays OUT of the pinned stage, so it reads as a normal
+               section intro and scrolls away before the showcase takes over. -->
+          <div class="fab-container">
+            <div class="fab-section-header fab-reveal">
+              <div class="fab-badge-pill">Inside A Real Room</div>
+              <h2 class="fab-section-title">Four Rooms, <span class="serif-italic gradient-headline">Zero Names</span></h2>
+              <p class="fab-section-desc">Every frame below is a real AnonChat capture. Keep scrolling and the rooms slide past sideways while the headline on the left re-writes itself for whichever one is in the middle.</p>
+            </div>
+          </div>
+
+          <!-- THE PINNED STAGE. Exactly one viewport tall, pinned by ScrollTrigger. -->
+          <div class="gallery-pin" id="galleryPin">
+            <div class="gallery-pin-inner">
+
+              <!-- LEFT: the pinned heading. It never moves; only its copy changes. -->
+              <div class="gallery-copy-col">
+                <div class="gallery-copy-index" aria-hidden="true">
+                  <span class="gallery-copy-num" id="galleryCopyNum">01</span>
+                  <span class="gallery-copy-total">/ 04</span>
+                </div>
+
+                <!-- All four copies are real DOM. The grid overlap (grid-area: 1/1)
+                     keeps the column exactly as tall as the tallest copy, so
+                     switching copy can never nudge the layout. -->
+                <div class="gallery-copy-stack">
+                  <article class="gallery-copy-item is-active" data-gallery-copy="0">
+                    <span class="gallery-copy-time">02:14 AM &bull; Lights out</span>
+                    <h3 class="gallery-copy-title">Confessions <span class="serif-italic">After Midnight</span></h3>
+                    <p class="gallery-copy-desc">The hostel Wi-Fi is lying again and the floor is empty. That is exactly when people type the honest thing. Swipe to quote, tap to react, never type a name.</p>
+                    <span class="gallery-copy-meta">Stranger #4092 &bull; quote chips &bull; reaction dock</span>
+                  </article>
+
+                  <article class="gallery-copy-item" data-gallery-copy="1">
+                    <span class="gallery-copy-time">11:40 PM &bull; Too tired to type</span>
+                    <h3 class="gallery-copy-title">Type Less, <span class="serif-italic">Press Once</span></h3>
+                    <p class="gallery-copy-desc">Hold the mic and say it out loud. A live Web&nbsp;Audio waveform travels to the other side, plays once, and deletes itself before either of you can keep it.</p>
+                    <span class="gallery-copy-meta">Stranger #1877 &bull; 15s waveform &bull; view-once photo</span>
+                  </article>
+
+                  <article class="gallery-copy-item" data-gallery-copy="2">
+                    <span class="gallery-copy-time">12:05 AM &bull; Said too much</span>
+                    <h3 class="gallery-copy-title">Send It, <span class="serif-italic">Then Erase It</span></h3>
+                    <p class="gallery-copy-desc">Flip the bomb and the message dissolves into smoke in five seconds. Regret is not a feature we are willing to ship.</p>
+                    <span class="gallery-copy-meta">Stranger #3310 &bull; 5s vapour &bull; safe link shield</span>
+                  </article>
+
+                  <article class="gallery-copy-item" data-gallery-copy="3">
+                    <span class="gallery-copy-time">11:58 PM &bull; Wrong vibe</span>
+                    <h3 class="gallery-copy-title">Leave <span class="serif-italic">Cleanly</span></h3>
+                    <p class="gallery-copy-desc">Hit Next and you get three full seconds to change your mind. Cancel and the same stranger is still waiting; confirm and the next one is already queued.</p>
+                    <span class="gallery-copy-meta">Stranger #7754 &bull; 3s grace &bull; in-RAM queue</span>
+                  </article>
+                </div>
+
+                <!-- Slide navigation. Real buttons, so keyboard access is free.
+                     Clicking one moves the scroll position, which keeps the scrubbed
+                     timeline the single source of truth in both directions. -->
+                <nav class="gallery-dots" id="galleryDots" aria-label="Gallery rooms">
+                  <button type="button" class="gallery-dot is-active" data-gallery-goto="0">
+                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                    <span class="sr-only">Room 1: Confessions After Midnight</span>
+                  </button>
+                  <button type="button" class="gallery-dot" data-gallery-goto="1">
+                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                    <span class="sr-only">Room 2: Type Less, Press Once</span>
+                  </button>
+                  <button type="button" class="gallery-dot" data-gallery-goto="2">
+                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                    <span class="sr-only">Room 3: Send It, Then Erase It</span>
+                  </button>
+                  <button type="button" class="gallery-dot" data-gallery-goto="3">
+                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                    <span class="sr-only">Room 4: Leave Cleanly</span>
+                  </button>
+                </nav>
+              </div>
+
+              <!-- RIGHT: the horizontal showcase. GSAP translates #galleryTrack on the
+                   X axis only; the vertical scroll always stays a real document scroll. -->
+              <div class="gallery-viewport" id="galleryViewport">
+                <ul class="gallery-track" id="galleryTrack" aria-label="AnonChat conversation captures">
+                  <li class="gallery-slide" data-gallery-slide="0">
+                    <span class="gallery-frame-index" aria-hidden="true">01</span>
+                    <figure class="gallery-frame">
+                      <img src="chat-screenshot-real-1.png" width="938" height="906"
+                           alt="AnonChat conversation at 2am using quoted replies and emoji reactions"
+                           loading="eager" decoding="async" draggable="false" />
+                      <figcaption class="gallery-slide-caption">
+                        <strong>Confessions After Midnight</strong>
+                        <span>02:14 AM &bull; quoted replies &amp; reaction dock</span>
+                      </figcaption>
+                    </figure>
+                  </li>
+
+                  <li class="gallery-slide" data-gallery-slide="1">
+                    <span class="gallery-frame-index" aria-hidden="true">02</span>
+                    <figure class="gallery-frame">
+                      <img src="chat-screenshot-real-2.png" width="938" height="906"
+                           alt="AnonChat conversation playing a 15 second voice note next to a view-once photo"
+                           loading="lazy" decoding="async" draggable="false" />
+                      <figcaption class="gallery-slide-caption">
+                        <strong>Type Less, Press Once</strong>
+                        <span>11:40 PM &bull; 15s audio note &amp; view-once photo</span>
+                      </figcaption>
+                    </figure>
+                  </li>
+
+                  <li class="gallery-slide" data-gallery-slide="2">
+                    <span class="gallery-frame-index" aria-hidden="true">03</span>
+                    <figure class="gallery-frame">
+                      <img src="chat-screenshot-real-3.png" width="938" height="906"
+                           alt="AnonChat conversation with a self destruct message dissolving in smoke"
+                           loading="lazy" decoding="async" draggable="false" />
+                      <figcaption class="gallery-slide-caption">
+                        <strong>Send It, Then Erase It</strong>
+                        <span>12:05 AM &bull; 5s self destruct vapour</span>
+                      </figcaption>
+                    </figure>
+                  </li>
+
+                  <li class="gallery-slide" data-gallery-slide="3">
+                    <span class="gallery-frame-index" aria-hidden="true">04</span>
+                    <figure class="gallery-frame">
+                      <img src="chat-screenshot-real-4.png" width="938" height="906"
+                           alt="AnonChat conversation showing the three second accidental skip grace bar"
+                           loading="lazy" decoding="async" draggable="false" />
+                      <figcaption class="gallery-slide-caption">
+                        <strong>Leave Cleanly</strong>
+                        <span>11:58 PM &bull; 3s skip grace protection</span>
+                      </figcaption>
+                    </figure>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Scroll hint. Fades out the instant the gallery starts moving. -->
+            <div class="gallery-hint" id="galleryHint" aria-hidden="true">
+              <span class="gallery-hint-line"></span>
+              <span class="gallery-hint-label">Keep scrolling</span>
             </div>
           </div>
         </section>
@@ -770,7 +1035,7 @@
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
               <div class="fab-badge-pill">Why AnonChat</div>
-              <h2 class="fab-section-title">Why Students Choose <span class="serif-italic">AnonChat</span></h2>
+              <h2 class="fab-section-title">Why Students Choose <span class="serif-italic prismic-scroll-highlight">AnonChat</span></h2>
               <p class="fab-section-desc">Reduce social anxiety, skip awkward small talk, and connect genuinely with peers on your campus.</p>
             </div>
 
@@ -1683,7 +1948,7 @@
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="fabale.js?v=2.4.1"></script>
+  <script src="fabale.js?v=2.5.0"></script>
   <script src="client.js?v=2.4.4"></script>
 </body>
 </html>

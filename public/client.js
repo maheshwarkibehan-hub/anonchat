@@ -111,14 +111,34 @@ function updateSoundUI() {
 }
 updateSoundUI();
 
+function syncHeroVideoSound() {
+  const heroVideo = document.getElementById('heroVideo');
+  if (!heroVideo) return;
+  heroVideo.muted = !soundEnabled;
+  if (soundEnabled && heroVideo.paused) {
+    heroVideo.play().catch(() => {});
+  }
+}
+
 function toggleSound() {
   soundEnabled = !soundEnabled;
   localStorage.setItem('anonchat_sound', soundEnabled);
   updateSoundUI();
+  syncHeroVideoSound();
 }
 
 if (soundToggleBtn) soundToggleBtn.addEventListener('click', toggleSound);
 if (chatSoundBtn) chatSoundBtn.addEventListener('click', toggleSound);
+
+// Unmute video on first user interaction if sound is enabled
+document.addEventListener('click', function unmuteHeroOnFirstGesture() {
+  if (soundEnabled) {
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo && heroVideo.muted) {
+      heroVideo.muted = false;
+    }
+  }
+}, { once: true });
 
 // Precision Web Audio API Synthesizer (Micro-chimes & Dimensional Swells)
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -2975,4 +2995,58 @@ if (archiveModal) {
     if (e.target === archiveModal) closeArchiveModal();
   });
 }
+
+// Cinematic Soft Green Preloader Controller (Smooth 1080p Video Buffer & Session Skip)
+(function initCinematicPreloader() {
+  const preloader = document.getElementById('appPreloader');
+  if (!preloader) return;
+
+  // If already entered during this browser session, skip immediately (no flash on refresh)
+  if (sessionStorage.getItem('anonchat_entered')) {
+    preloader.remove();
+    return;
+  }
+
+  const heroVideo = document.getElementById('heroVideo');
+  const startTime = Date.now();
+  const MIN_DISPLAY_MS = 1400; // Let smooth 3D lens animation breathe so entrance is silky
+
+  let hasFinished = false;
+  function finishPreloader() {
+    if (hasFinished) return;
+    hasFinished = true;
+
+    const elapsed = Date.now() - startTime;
+    const remainingTime = Math.max(0, MIN_DISPLAY_MS - elapsed);
+
+    setTimeout(() => {
+      // Mark session so any page refresh directly loads landing screen without preloader
+      sessionStorage.setItem('anonchat_entered', 'true');
+      preloader.classList.add('loaded');
+      setTimeout(() => {
+        try { preloader.remove(); } catch (_) {}
+      }, 850);
+    }, remainingTime);
+  }
+
+  if (heroVideo) {
+    if (heroVideo.readyState >= 3) {
+      finishPreloader();
+    } else {
+      heroVideo.addEventListener('canplay', finishPreloader, { once: true });
+      heroVideo.addEventListener('loadeddata', finishPreloader, { once: true });
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    finishPreloader();
+  } else {
+    window.addEventListener('load', finishPreloader, { once: true });
+  }
+
+  // Safety fallback ceiling (3.2s)
+  setTimeout(finishPreloader, 3200);
+})();
+
+
 
