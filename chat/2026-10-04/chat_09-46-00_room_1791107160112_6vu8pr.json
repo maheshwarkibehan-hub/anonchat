@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "roomId": "room_1791107160112_6vu8pr",
+    "vibe": "Direct",
+    "date": "2026-10-04",
+    "startTime": "2026-10-04T09:46:00.112Z",
+    "endTime": "2026-10-04T09:47:01.420Z",
+    "durationSeconds": 61,
+    "totalMessages": 9,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791107165731_4gw7cz",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107167380,
+      "isoTime": "2026-10-04T09:46:07.380Z",
+      "type": "text",
+      "text": "Raat me ki thi baat",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791107166631_io3v5d",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107168261,
+      "isoTime": "2026-10-04T09:46:08.261Z",
+      "type": "text",
+      "text": "Kal",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791107169671_9jomaz",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107172130,
+      "isoTime": "2026-10-04T09:46:12.130Z",
+      "type": "text",
+      "text": "ha to",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791107172602_s4tgic",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107174230,
+      "isoTime": "2026-10-04T09:46:14.230Z",
+      "type": "text",
+      "text": "8:30 par shayad",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791107172914_7dw9o1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107175384,
+      "isoTime": "2026-10-04T09:46:15.384Z",
+      "type": "text",
+      "text": "kitne baje ki thi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791107175047_xkaaj2",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107177520,
+      "isoTime": "2026-10-04T09:46:17.520Z",
+      "type": "text",
+      "text": "vo batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791107177551_q5ezk1",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107180033,
+      "isoTime": "2026-10-04T09:46:20.033Z",
+      "type": "text",
+      "text": "last time",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791107188518_tr9djb",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791107190160,
+      "isoTime": "2026-10-04T09:46:30.160Z",
+      "type": "text",
+      "text": "8 se 9 ke bench me",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791107199392_0gtxrs",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791107201872,
+      "isoTime": "2026-10-04T09:46:41.872Z",
+      "type": "text",
+      "text": "padke gyi",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "Raat me ki thi baat"
+      },
+      {
+        "role": "assistant",
+        "content": "Kal"
+      },
+      {
+        "role": "user",
+        "content": "ha to"
+      },
+      {
+        "role": "assistant",
+        "content": "8:30 par shayad"
+      },
+      {
+        "role": "user",
+        "content": "kitne baje ki thi"
+      },
+      {
+        "role": "user",
+        "content": "vo batao"
+      },
+      {
+        "role": "user",
+        "content": "last time"
+      },
+      {
+        "role": "assistant",
+        "content": "8 se 9 ke bench me"
+      },
+      {
+        "role": "user",
+        "content": "padke gyi"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "Raat me ki thi baat"
+      },
+      {
+        "from": "gpt",
+        "value": "Kal"
+      },
+      {
+        "from": "human",
+        "value": "ha to"
+      },
+      {
+        "from": "gpt",
+        "value": "8:30 par shayad"
+      },
+      {
+        "from": "human",
+        "value": "kitne baje ki thi"
+      },
+      {
+        "from": "human",
+        "value": "vo batao"
+      },
+      {
+        "from": "human",
+        "value": "last time"
+      },
+      {
+        "from": "gpt",
+        "value": "8 se 9 ke bench me"
+      },
+      {
+        "from": "human",
+        "value": "padke gyi"
+      }
+    ]
+  }
+}
