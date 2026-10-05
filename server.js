@@ -124,6 +124,11 @@ app.get('/shutdown', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'shutdown.html'));
 });
 
+// Clearly labeled fictional AI agent showcase
+app.get('/girl-agent', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'girl-agent.html'));
+});
+
 // Trust proxy for accurate client IP detection behind proxies / cloud hosts
 app.set('trust proxy', true);
 
