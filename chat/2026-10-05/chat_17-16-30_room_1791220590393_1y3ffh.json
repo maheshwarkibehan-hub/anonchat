@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "roomId": "room_1791220590393_1y3ffh",
+    "vibe": "Direct",
+    "date": "2026-10-05",
+    "startTime": "2026-10-05T17:16:30.393Z",
+    "endTime": "2026-10-05T17:17:49.176Z",
+    "durationSeconds": 79,
+    "totalMessages": 13,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791220587212_5w6jvw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220593495,
+      "isoTime": "2026-10-05T17:16:33.495Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791220607575_amol9r",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220608440,
+      "isoTime": "2026-10-05T17:16:48.440Z",
+      "type": "text",
+      "text": "KISSE BAAT KARNE LAGI THI",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791220606752_hn49fr",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220613028,
+      "isoTime": "2026-10-05T17:16:53.028Z",
+      "type": "text",
+      "text": "kissi se nahi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791220608672_otpl3w",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220614972,
+      "isoTime": "2026-10-05T17:16:54.972Z",
+      "type": "text",
+      "text": "tum batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791220610480_hn6yuf",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220616755,
+      "isoTime": "2026-10-05T17:16:56.755Z",
+      "type": "text",
+      "text": "link dekha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791220621670_f632xg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220622548,
+      "isoTime": "2026-10-05T17:17:02.548Z",
+      "type": "text",
+      "text": "ha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791220630993_l4vqs8",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220631883,
+      "isoTime": "2026-10-05T17:17:11.883Z",
+      "type": "text",
+      "text": "kuch samjh nahi aaya",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791220629332_1l4zn9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220635621,
+      "isoTime": "2026-10-05T17:17:15.621Z",
+      "type": "text",
+      "text": "bataya na ai agent hui",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791220636543_no9hn3",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220642826,
+      "isoTime": "2026-10-05T17:17:22.826Z",
+      "type": "text",
+      "text": "maheshwar ne banaya tha",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 10,
+      "msgId": "msg_1791220647561_u4l7tg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220648353,
+      "isoTime": "2026-10-05T17:17:28.353Z",
+      "type": "text",
+      "text": "to iss tarah",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 11,
+      "msgId": "msg_1791220648980_bqucfo",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220649772,
+      "isoTime": "2026-10-05T17:17:29.772Z",
+      "type": "text",
+      "text": "ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 12,
+      "msgId": "msg_1791220653648_n5m8cg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220654438,
+      "isoTime": "2026-10-05T17:17:34.438Z",
+      "type": "text",
+      "text": "vo to batao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 13,
+      "msgId": "msg_1791220660691_8n7bo9",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220666981,
+      "isoTime": "2026-10-05T17:17:46.981Z",
+      "type": "text",
+      "text": "kya",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "KISSE BAAT KARNE LAGI THI"
+      },
+      {
+        "role": "assistant",
+        "content": "kissi se nahi"
+      },
+      {
+        "role": "assistant",
+        "content": "tum batao"
+      },
+      {
+        "role": "assistant",
+        "content": "link dekha"
+      },
+      {
+        "role": "user",
+        "content": "ha"
+      },
+      {
+        "role": "user",
+        "content": "kuch samjh nahi aaya"
+      },
+      {
+        "role": "assistant",
+        "content": "bataya na ai agent hui"
+      },
+      {
+        "role": "assistant",
+        "content": "maheshwar ne banaya tha"
+      },
+      {
+        "role": "user",
+        "content": "to iss tarah"
+      },
+      {
+        "role": "user",
+        "content": "ho"
+      },
+      {
+        "role": "user",
+        "content": "vo to batao"
+      },
+      {
+        "role": "assistant",
+        "content": "kya"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "KISSE BAAT KARNE LAGI THI"
+      },
+      {
+        "from": "gpt",
+        "value": "kissi se nahi"
+      },
+      {
+        "from": "gpt",
+        "value": "tum batao"
+      },
+      {
+        "from": "gpt",
+        "value": "link dekha"
+      },
+      {
+        "from": "human",
+        "value": "ha"
+      },
+      {
+        "from": "human",
+        "value": "kuch samjh nahi aaya"
+      },
+      {
+        "from": "gpt",
+        "value": "bataya na ai agent hui"
+      },
+      {
+        "from": "gpt",
+        "value": "maheshwar ne banaya tha"
+      },
+      {
+        "from": "human",
+        "value": "to iss tarah"
+      },
+      {
+        "from": "human",
+        "value": "ho"
+      },
+      {
+        "from": "human",
+        "value": "vo to batao"
+      },
+      {
+        "from": "gpt",
+        "value": "kya"
+      }
+    ]
+  }
+}
