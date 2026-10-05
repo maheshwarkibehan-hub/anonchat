@@ -1,0 +1,3673 @@
+/* ==========================================================================
+   AnonChat Design System - Archived Scroll Sections & Prismic Effect Pack
+   (Ticker, 3D Cards, Features, Why, Use Cases, FAQ, Footer, Prismic Effects)
+   Preserved for reference / future feature restoration
+   ========================================================================== */
+
+/* ==========================================================================
+   3. Ticker Section (Clean Light Editorial)
+   ========================================================================== */
+.fab-ticker-section {
+  background-color: var(--ed-bg-cherry) !important;
+  border-top: 1px solid var(--ed-border-light) !important;
+  border-bottom: 1px solid var(--ed-border-light) !important;
+  padding: 32px 0 !important;
+}
+
+.fab-ticker-label {
+  color: hsl(215, 25%, 45%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 18px !important;
+  text-align: center;
+}
+
+.fab-ticker-track {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.fab-ticker-chip {
+  background: var(--ed-bg-stone) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  color: var(--ed-primary-text) !important;
+  border-radius: 9999px !important;
+  padding: 8px 18px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.fab-ticker-chip svg {
+  stroke: var(--ed-primary-text) !important;
+}
+
+/* ==========================================================================
+   4. Features Section (Pure Minimalist Luxury, Zero Purple)
+   ========================================================================== */
+.fab-section {
+  background-color: var(--ed-bg-cherry) !important;
+  padding: 96px 0 !important;
+  color: var(--ed-primary-text) !important;
+  position: relative !important;
+}
+
+.fab-container {
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 32px !important;
+}
+
+.fab-section-header {
+  text-align: center !important;
+  margin-bottom: 56px !important;
+}
+
+.fab-badge-pill {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 5px 16px !important;
+  margin-bottom: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.fab-section-title {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: clamp(36px, 4.5vw, 56px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -1.5px !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 auto !important;
+}
+
+.serif-italic,
+.fab-section-title .serif-italic,
+.fab-section-title em,
+.editorial-hero-h1 em {
+  font-style: italic !important;
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  color: var(--ed-primary-text) !important;
+  -webkit-text-fill-color: var(--ed-primary-text) !important;
+  background: none !important;
+  display: inline !important;
+}
+
+.gradient-headline,
+.fab-section-title .gradient-headline {
+  background: none !important;
+  -webkit-text-fill-color: var(--ed-primary-text) !important;
+  color: var(--ed-primary-text) !important;
+}
+
+.fab-cta-banner .serif-italic,
+.fab-cta-banner .gradient-headline {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.fab-section-desc {
+  color: var(--ed-muted-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 17px !important;
+  line-height: 1.625 !important;
+  max-width: 620px !important;
+  margin: 16px auto 0 auto !important;
+}
+
+.fab-features-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 28px !important;
+}
+
+.fab-feature-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 20px !important;
+  padding: 36px 30px !important;
+  box-shadow: var(--ed-shadow-sm) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.fab-feature-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--ed-shadow-md) !important;
+}
+
+.editorial-card-icon {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 14px !important;
+  background: var(--ed-bg-subtle) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  color: var(--ed-primary-text) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px !important;
+}
+
+.editorial-card-tag {
+  display: inline-block !important;
+  background: var(--ed-bg-stone) !important;
+  color: var(--ed-primary-text) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.fab-feature-title {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 26px !important;
+  letter-spacing: -0.5px !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.fab-feature-desc {
+  font-family: var(--ed-font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: hsl(215, 25%, 35%) !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   5. Why Section (Warm Minimalist Stone)
+   ========================================================================== */
+#why {
+  background: var(--ed-bg-cherry) !important;
+  border-top: 1px solid var(--ed-border-light) !important;
+  border-bottom: 1px solid var(--ed-border-light) !important;
+}
+
+.fab-why-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 28px !important;
+}
+
+.fab-why-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 20px !important;
+  padding: 36px 30px !important;
+  box-shadow: var(--ed-shadow-sm) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.fab-why-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--ed-shadow-md) !important;
+}
+
+.fab-why-content h4 {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 26px !important;
+  letter-spacing: -0.5px !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.fab-why-content p {
+  color: hsl(215, 25%, 35%) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin-bottom: 20px !important;
+}
+
+.fab-why-link {
+  color: #000000 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   6. Use Cases (Tabs + Minimalist Details)
+   ========================================================================== */
+.fab-tabs-nav {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  margin-bottom: 36px !important;
+  flex-wrap: wrap !important;
+}
+
+.fab-tab-btn {
+  background: var(--ed-bg-subtle) !important;
+  color: var(--ed-primary-text) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 9999px !important;
+  font-family: var(--ed-font-body) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  padding: 10px 22px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.fab-tab-btn.active {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
+}
+
+.fab-tab-panel {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 24px !important;
+  padding: 44px 40px !important;
+  box-shadow: var(--ed-shadow-md) !important;
+}
+
+.fab-tab-details h3 {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 32px !important;
+  letter-spacing: -0.8px !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 0 24px 0 !important;
+}
+
+.fab-checklist {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 32px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.fab-check-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+}
+
+.fab-check-icon {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+.fab-check-text strong {
+  display: block !important;
+  color: var(--ed-primary-text) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  margin-bottom: 2px !important;
+}
+
+.fab-check-text span {
+  color: hsl(215, 25%, 35%) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.fab-btn-primary {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  border: none !important;
+  padding: 12px 28px !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.fab-btn-primary:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ==========================================================================
+   7. Pricing / Tiers Section
+   ========================================================================== */
+#tiers {
+  background: var(--ed-bg-cherry) !important;
+  border-top: 1px solid var(--ed-border-light) !important;
+  border-bottom: 1px solid var(--ed-border-light) !important;
+}
+
+.fab-pricing-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 28px !important;
+}
+
+.fab-tier-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 20px !important;
+  padding: 36px 30px !important;
+  box-shadow: var(--ed-shadow-sm) !important;
+}
+
+.fab-tier-card.featured {
+  border: 2px solid #000000 !important;
+  box-shadow: var(--ed-shadow-lg) !important;
+}
+
+.fab-tier-name {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 26px !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.fab-tier-price {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--ed-primary-text) !important;
+  margin-bottom: 24px !important;
+}
+
+.fab-tier-feat {
+  color: hsl(215, 25%, 32%) !important;
+  font-size: 14px !important;
+  margin-bottom: 12px !important;
+}
+
+.fab-tier-feat svg {
+  stroke: #10b981 !important;
+}
+
+/* ==========================================================================
+   8. Testimonials Section
+   ========================================================================== */
+.fab-testimonial-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 20px !important;
+  padding: 32px 28px !important;
+  box-shadow: var(--ed-shadow-sm) !important;
+}
+
+.fab-testimonial-quote {
+  font-family: var(--ed-font-display) !important;
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+  color: var(--ed-primary-text) !important;
+  margin-bottom: 16px !important;
+}
+
+.fab-testimonial-author strong {
+  color: var(--ed-primary-text) !important;
+  font-weight: 600 !important;
+}
+
+.fab-testimonial-author span {
+  color: hsl(215, 25%, 45%) !important;
+}
+
+/* ==========================================================================
+   9. FAQ Section
+   ========================================================================== */
+.fab-faq-grid {
+  max-width: 840px !important;
+  margin: 0 auto !important;
+}
+
+.fab-accordion-item {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  border-radius: 16px !important;
+  margin-bottom: 14px !important;
+  box-shadow: var(--ed-shadow-sm) !important;
+  overflow: hidden !important;
+}
+
+.fab-accordion-header {
+  padding: 20px 24px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  cursor: pointer !important;
+}
+
+.fab-accordion-question {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+.fab-accordion-icon svg {
+  stroke: var(--ed-primary-text) !important;
+}
+
+.fab-accordion-body p {
+  color: hsl(215, 25%, 35%) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  padding: 0 24px 20px 24px !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   10. Footer (Clean Light Editorial)
+   ========================================================================== */
+.fab-footer {
+  background: var(--ed-bg-cherry) !important;
+  border-top: 1px solid var(--ed-border-light) !important;
+  color: var(--ed-primary-text) !important;
+  padding: 72px 0 32px 0 !important;
+}
+
+.fab-footer-brand .fab-brand-title {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: 26px !important;
+  color: var(--ed-primary-text) !important;
+}
+
+.fab-footer-brand p {
+  color: hsl(215, 25%, 38%) !important;
+  font-size: 14px !important;
+}
+
+.fab-footer-col h5 {
+  color: var(--ed-primary-text) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin-bottom: 16px !important;
+}
+
+.fab-footer-links a {
+  color: hsl(215, 25%, 38%) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  line-height: 2 !important;
+  transition: color 0.2s ease !important;
+}
+
+.fab-footer-links a:hover {
+  color: #000000 !important;
+}
+
+.fab-footer-bottom {
+  border-top: 1px solid var(--ed-border-light) !important;
+  padding-top: 28px !important;
+  margin-top: 48px !important;
+  color: hsl(215, 25%, 45%) !important;
+  font-size: 13px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+
+
+/* ==========================================================================
+   Lenis Smooth Scroll Core (2026 Industry Standard)
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+  height: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden !important;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none !important;
+}
+
+/* ==========================================================================
+   Editorial Luxury Cards Overhaul (Metrics, Pricing, Testimonials, FAQ, CTA)
+   ========================================================================== */
+
+/* 1. Universal Section Header & Badge Pill */
+.fab-badge-pill {
+  background: rgba(15, 23, 42, 0.05) !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+}
+
+.fab-section-title {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.fab-section-desc {
+  color: hsl(215, 25%, 45%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 16px !important;
+}
+
+/* 2. Results / Metrics Cards (Crisp Clean White Editorial) */
+.fab-metric-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-medium) !important;
+  border-radius: 24px !important;
+  padding: 36px 28px !important;
+  text-align: center !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.03) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.fab-metric-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+}
+
+.fab-metric-num {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-display) !important;
+  font-size: clamp(42px, 4.5vw, 60px) !important;
+  font-weight: 400 !important;
+  letter-spacing: -1.5px !important;
+  margin-bottom: 6px !important;
+  line-height: 1 !important;
+}
+
+.fab-metric-title {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  margin-bottom: 6px !important;
+}
+
+.fab-metric-sub {
+  color: hsl(215, 25%, 48%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+
+/* 3. Pricing Section (Clean Stone & Pure White Luxury) */
+.fab-switch-box {
+  background: var(--ed-bg-stone) !important;
+  border: 1px solid var(--ed-border-medium) !important;
+  border-radius: 9999px !important;
+  padding: 4px !important;
+}
+
+.fab-switch-btn {
+  color: hsl(215, 25%, 45%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 8px 20px !important;
+  border-radius: 9999px !important;
+  border: none !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.fab-switch-btn.active {
+  background: #000000 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fab-discount-pill {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  font-family: var(--ed-font-body) !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+}
+
+.fab-pricing-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-medium) !important;
+  border-radius: 26px !important;
+  padding: 40px 32px !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.03) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.fab-pricing-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+  box-shadow: 0 24px 50px -15px rgba(15, 23, 42, 0.09), 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+}
+
+.fab-pricing-card.featured {
+  border: 1.5px solid #0f172a !important;
+  box-shadow: 0 20px 50px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.08) !important;
+  background: var(--ed-bg-white) !important;
+}
+
+.fab-popular-badge {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  padding: 5px 16px !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fab-tier-header h4 {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.fab-tier-desc {
+  color: hsl(215, 25%, 45%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  min-height: 42px !important;
+}
+
+.fab-tier-amount {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-display) !important;
+  font-size: 48px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+}
+
+.fab-tier-period {
+  color: hsl(215, 25%, 52%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 13.5px !important;
+}
+
+.fab-tier-feat {
+  color: hsl(215, 25%, 32%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 13.5px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.fab-tier-feat svg {
+  color: #0f172a !important;
+  flex-shrink: 0 !important;
+}
+
+.fab-btn-secondary {
+  background: var(--ed-bg-stone) !important;
+  color: var(--ed-primary-text) !important;
+  border: 1px solid var(--ed-border-medium) !important;
+  border-radius: 9999px !important;
+  font-family: var(--ed-font-body) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 12px 24px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.fab-btn-secondary:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  transform: scale(1.02) !important;
+}
+
+/* 4. Testimonials (Editorial Editorialist Cards) */
+.fab-testi-card {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-medium) !important;
+  border-radius: 24px !important;
+  padding: 34px 30px !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.03) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.fab-testi-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+  box-shadow: 0 22px 45px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+}
+
+.fab-testi-quote {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 15.5px !important;
+  line-height: 1.65 !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.fab-testi-name {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+}
+
+.fab-testi-role {
+  color: hsl(215, 25%, 50%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 12.5px !important;
+}
+
+.fab-testi-avatar {
+  border: 1.5px solid var(--ed-border-medium) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* 5. FAQ Accordions (Clean Rounded Collapsibles) */
+.fab-accordion {
+  background: var(--ed-bg-white) !important;
+  border: 1px solid var(--ed-border-medium) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.03) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+  overflow: hidden !important;
+}
+
+.fab-accordion:hover {
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.06) !important;
+}
+
+.fab-accordion-header {
+  padding: 22px 26px !important;
+}
+
+.fab-accordion-question {
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 16.5px !important;
+  font-weight: 600 !important;
+}
+
+.fab-accordion-icon {
+  background: var(--ed-bg-stone) !important;
+  border: 1px solid var(--ed-border-light) !important;
+  color: var(--ed-primary-text) !important;
+}
+
+.fab-accordion.open .fab-accordion-icon {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.fab-accordion-body p {
+  color: hsl(215, 25%, 38%) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 14.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* 6. Final High-Impact CTA Banner (Architectural Navy Minimalist Box) */
+.fab-cta-banner {
+  background: #0f172a !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  border-radius: 32px !important;
+  padding: 72px 40px !important;
+  color: #ffffff !important;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25) !important;
+  text-align: center !important;
+}
+
+.fab-cta-title {
+  color: #ffffff !important;
+  font-family: var(--ed-font-display) !important;
+  font-size: clamp(34px, 4.2vw, 54px) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 16px !important;
+}
+
+.fab-cta-sub {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 16px !important;
+  max-width: 580px !important;
+  margin: 0 auto 36px auto !important;
+}
+
+.fab-cta-banner .fab-btn-primary {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.fab-cta-banner .fab-btn-primary:hover {
+  transform: scale(1.03) !important;
+  background: #f1f5f9 !important;
+}
+
+
+
+
+
+/* ==========================================================================
+   ELEMENT CARDS: PURE CRISP WHITE (#ffffff) WITH ZERO CREAM / STONE
+   ========================================================================== */
+.fab-feature-card,
+.fab-why-card,
+.fab-tier-card,
+.editorial-preview-card,
+.preview-card-header,
+.fab-accordion,
+.fab-ticker-chip,
+.editorial-card-icon,
+.editorial-card-tag,
+.fab-accordion-icon:not(.open),
+.fab-tab-btn:not(.active),
+.editorial-stat-pill,
+.fab-check-icon {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.04) !important;
+}
+
+.preview-card-header {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06) !important;
+}
+
+.fab-tab-btn.active {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+
+
+/* ==========================================================================
+   Oct 2026 Scroll Experience Architecture (GSAP ScrollTrigger + Lenis)
+   ========================================================================== */
+
+/* 1. Ultra-Precise Reading & Story Progress Indicator (Hidden: Zero-Scroll Landing) */
+.scroll-progress-bar {
+  display: none !important;
+}
+
+/* 2. 3D Stacking & Swapping Cards Showcase (Real AnonChat UI + SVG Journey Line) */
+.scroll-story-section {
+  position: relative;
+  background-color: var(--ed-bg-cherry) !important;
+  color: var(--ed-primary-text) !important;
+  padding: 0;
+  overflow: visible;
+  border-bottom: 1px solid var(--ed-border-light);
+  isolation: isolate;
+}
+
+/* The pinned stage. Height is locked to the viewport so ScrollTrigger can pin it
+   without ever clipping the deck or the journey sentence. Everything inside is
+   sized in dvh so the composition still fits on short laptop screens. */
+.sticky-stage {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(10px, 2vh, 24px);
+  padding: clamp(56px, 7.5vh, 84px) 0 0;
+
+  /* `hidden` alone is not enough. It still makes the stage a scroll container,
+     and Chrome reports a few pixels of scrollable overflow for the
+     perspective-transformed back cards, so the deck can be nudged sideways by
+     a focus change or a scrollIntoView call. `clip` clips identically but is
+     not a scroll container at all, which is what a pinned stage wants.
+     `hidden` is declared first so browsers without `clip` keep the old
+     behaviour instead of falling back to `visible` and spilling the deck. */
+  overflow: hidden;
+  overflow: clip;
+
+  isolation: isolate;
+}
+
+/* A quiet, generated atmosphere gives the deck depth without replacing the
+   genuine conversation captures inside the cards. It lives on the STAGE (not the
+   section) so it travels with the pinned element instead of scrolling away. */
+.sticky-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 246, 0.94), rgba(255, 250, 246, 0.84)),
+    url('story-atmosphere.png') center / cover no-repeat;
+  opacity: 0.44;
+}
+
+.scroll-story-container {
+  max-width: 1300px;
+  width: 100%;
+  margin: auto auto;
+  padding: 0 clamp(20px, 3.5vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr 1.26fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+/* Left Column: Story Track (the whole stage is already pinned, so no nested
+   sticky positioning is needed here any more). */
+.story-left-col {
+  position: relative;
+  height: 100%;
+}
+
+.story-sticky-content {
+  position: static;
+  padding-right: 20px;
+}
+
+.story-badge {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-live-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #21d2ed;
+  box-shadow: 0 0 8px #21d2ed;
+  animation: radarPing 2s infinite ease-out;
+}
+
+.story-headline {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.1vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -1.4px;
+  color: var(--ed-primary-text);
+  margin: 14px 0 12px 0;
+}
+
+.story-subheadline {
+  font-family: var(--ed-font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ed-muted-text);
+  max-width: 460px;
+  margin-bottom: 22px;
+}
+
+/* Sticky Content Switch: Pinned Heading in HTML and CSS */
+.story-left-col {
+  position: -webkit-sticky;
+  position: sticky;
+  top: clamp(80px, 14vh, 140px);
+  align-self: flex-start;
+  z-index: 10;
+}
+
+.story-heading-switch-container {
+  position: relative;
+  min-height: 140px;
+  margin: 14px 0 20px 0;
+}
+
+.story-switch-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1), transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.38s;
+  pointer-events: none;
+}
+
+.story-switch-item.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.story-switch-item .story-headline {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.1vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -1.4px;
+  color: var(--ed-primary-text);
+  margin: 0 0 12px 0;
+}
+
+.story-switch-item .story-subheadline {
+  font-family: var(--ed-font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ed-muted-text);
+  max-width: 460px;
+  margin-bottom: 0;
+}
+
+/* SVG Journey Connector Rail */
+.story-journey-wrapper {
+  position: relative;
+  margin-bottom: 22px;
+  padding-left: 10px;
+}
+
+.journey-svg-rail {
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  width: 34px;
+  height: 94%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.journey-base-path {
+  stroke: rgba(14, 116, 144, 0.14);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.journey-draw-path {
+  stroke: url(#journeyGradient);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 0.1s linear;
+  filter: drop-shadow(0 0 6px rgba(33, 210, 237, 0.5));
+}
+
+.story-step-track {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.1vh, 16px);
+}
+
+.story-step-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  padding: clamp(5px, 0.9vh, 10px) 14px;
+  border-radius: 14px;
+  transition: background 0.25s ease, transform 0.25s ease;
+  user-select: none;
+}
+
+.story-step-item:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.story-step-item .step-num {
+  position: relative;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ed-bg-white);
+  border: 1.5px solid rgba(14, 116, 144, 0.2);
+  color: var(--ed-muted-text);
+  font-family: var(--ed-font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+}
+
+.story-step-item.active .step-num {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(33, 210, 237, 0.28), 0 4px 12px rgba(15, 23, 42, 0.15);
+  transform: scale(1.08);
+}
+
+.story-step-item .step-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.story-step-item .step-title {
+  font-family: var(--ed-font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ed-primary-text);
+  transition: color 0.25s ease;
+}
+
+.story-step-item.active .step-title {
+  color: #0e7490;
+}
+
+.story-step-item .step-desc {
+  font-family: var(--ed-font-body);
+  font-size: 12.5px;
+  color: var(--ed-muted-text);
+}
+
+.story-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.story-swap-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(14, 116, 144, 0.2);
+  color: var(--ed-primary-text);
+  border-radius: 9999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.story-swap-btn:hover {
+  background: #ffffff;
+  border-color: #0e7490;
+  color: #0e7490;
+  transform: translateY(-1px);
+}
+
+/* Right Column: 3D Stacking & Swapping Cards Deck */
+.story-right-col {
+  position: relative;
+  width: 100%;
+}
+
+.card-swap-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+.card-swap-deck {
+  /* Deck width follows the viewport in both axes so the pinned stage always fits.
+     The aspect ratio mirrors the real 938x906 capture, which means object-fit:
+     contain shows the whole conversation - no cropping, no distortion. */
+  --deck-w: clamp(280px, min(48vw, 65dvh), 560px);
+  position: relative;
+  width: var(--deck-w);
+  max-width: 100%;
+  aspect-ratio: 938 / 906;
+  transform-style: preserve-3d;
+}
+
+.swap-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.35s ease;
+}
+
+/* A deliberate first frame: JS takes over these slots when GSAP is available,
+   while this still communicates a real deck if a browser delays animation JS. */
+.swap-card:nth-child(1) { z-index: 10; }
+.swap-card:nth-child(2) { z-index: 9; transform: translate3d(34px, -22px, -70px) scale(0.95) rotateY(-3deg) skewY(2.5deg); opacity: 0.92; }
+.swap-card:nth-child(3) { z-index: 8; transform: translate3d(68px, -44px, -140px) scale(0.90) rotateY(-6deg) skewY(5deg); opacity: 0.78; }
+.swap-card:nth-child(4) { z-index: 7; transform: translate3d(102px, -66px, -210px) scale(0.85) rotateY(-9deg) skewY(7.5deg); opacity: 0.62; }
+
+.swap-card:hover {
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Real Chat Screenshot Card Architecture */
+.real-chat-frame.has-screenshot {
+  padding: 0 !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(14, 116, 144, 0.18) !important;
+  border-radius: 26px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-shadow: 0 25px 65px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(14, 116, 144, 0.2) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.real-chat-screenshot-img {
+  width: 100% !important;
+  height: 100% !important;
+  /* contain, not cover: these are real chat captures and cropping them would hide
+     actual conversation content. The deck aspect ratio matches the capture, so
+     this normally fills the frame edge to edge with no letterboxing at all. */
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  border-radius: 24px !important;
+  pointer-events: none;
+}
+
+.real-screenshot-overlay-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.real-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+.real-live-dot.audio { background: #0284c7; box-shadow: 0 0 8px #0284c7; }
+.real-live-dot.bomb { background: #f97316; box-shadow: 0 0 8px #f97316; }
+.real-live-dot.skip { background: #eab308; box-shadow: 0 0 8px #eab308; }
+
+/* Real Chat Frame (Obsidian Dark iPhone / Device Screen) */
+.real-chat-frame {
+  background: #090b10;
+  color: #f8fafc;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+  padding: 20px;
+  box-shadow: 0 25px 65px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(14, 116, 144, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Chat Header */
+.real-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.real-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.real-avatar {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #181b28;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.real-avatar.audio-glow {
+  border-color: rgba(33, 210, 237, 0.4);
+  box-shadow: 0 0 10px rgba(33, 210, 237, 0.25);
+}
+
+.real-avatar.bomb-glow {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
+}
+
+.real-active-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid #090b10;
+}
+
+.real-header-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.real-peer-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.real-peer-sub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.real-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.real-badge-pill {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  color: #94a3b8;
+}
+
+.real-badge-pill.cyan {
+  background: rgba(33, 210, 237, 0.12);
+  border-color: rgba(33, 210, 237, 0.3);
+  color: #21d2ed;
+}
+
+.real-badge-pill.orange {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.3);
+  color: #fb923c;
+}
+
+.real-badge-pill.green {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.real-header-btn {
+  background: #ffffff;
+  border: none;
+  color: #090b10;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.real-header-btn:hover {
+  transform: scale(1.04);
+}
+
+/* Pinned Bar */
+.real-pinned-bar {
+  background: rgba(18, 21, 32, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.real-pinned-bar svg {
+  color: #21d2ed;
+  flex-shrink: 0;
+}
+
+/* Messages Stream */
+.real-messages-stream {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.real-messages-stream.center-stage {
+  align-items: center;
+  text-align: center;
+}
+
+.real-sys-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+}
+
+.real-bubble {
+  padding: 11px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.real-bubble.stranger-bubble {
+  background: #141724;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  max-width: 88%;
+}
+
+.real-bubble.user-bubble {
+  background: #1e243d;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+  max-width: 88%;
+}
+
+.real-bubble-text {
+  margin: 0 0 4px 0;
+}
+
+.real-quote-preview {
+  background: rgba(0, 0, 0, 0.35);
+  border-left: 3px solid #21d2ed;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.real-quote-author {
+  font-weight: 700;
+  color: #21d2ed;
+}
+
+.real-quote-text {
+  color: #cbd5e1;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.real-bubble-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.real-bubble-footer.user-meta {
+  justify-content: flex-end;
+}
+
+.real-msg-time {
+  font-size: 10.5px;
+  color: #64748b;
+}
+
+.real-seen-ticks {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-left: 4px;
+}
+
+.real-reaction-dock {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.reaction-tag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1px 6px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+}
+
+/* Voice Note Player Mockup */
+.real-voice-player-bubble {
+  background: #141724;
+  border: 1px solid rgba(33, 210, 237, 0.3);
+  border-radius: 9999px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  max-width: 90%;
+}
+
+.voice-play-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0e7490;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(14, 116, 144, 0.5);
+}
+
+.voice-waveform-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 18px;
+}
+
+.w-bar {
+  width: 2.5px;
+  background: #21d2ed;
+  border-radius: 2px;
+  animation: wavePulse 1.2s infinite ease-in-out alternate;
+}
+
+.b-1 { height: 6px; animation-delay: 0.1s; }
+.b-2 { height: 14px; animation-delay: 0.25s; }
+.b-3 { height: 9px; animation-delay: 0.15s; }
+.b-4 { height: 18px; animation-delay: 0.35s; }
+.b-5 { height: 12px; animation-delay: 0.2s; }
+.b-6 { height: 16px; animation-delay: 0.4s; }
+.b-7 { height: 8px; animation-delay: 0.1s; }
+.b-8 { height: 15px; animation-delay: 0.3s; }
+.b-9 { height: 10px; animation-delay: 0.15s; }
+.b-10 { height: 17px; animation-delay: 0.45s; }
+.b-11 { height: 11px; animation-delay: 0.2s; }
+.b-12 { height: 7px; animation-delay: 0.1s; }
+.b-13 { height: 13px; animation-delay: 0.3s; }
+.b-14 { height: 5px; animation-delay: 0.05s; }
+
+.voice-duration {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.voice-spec-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(33, 210, 237, 0.15);
+  color: #21d2ed;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  margin-left: auto;
+}
+
+/* View Once Card */
+.real-view-once-card {
+  background: #141724;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 85%;
+  align-self: flex-start;
+}
+
+.view-once-thumb {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+}
+
+.view-once-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
+  transform: scale(1.05);
+}
+
+.view-once-overlay-badge {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 11, 16, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.view-once-meta {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.v-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.v-sub {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+/* Bomb Banner & Smoke Dissolve */
+.real-bomb-banner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #fca5a5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.bomb-bubble {
+  position: relative;
+  background: #1a1524 !important;
+  border-color: rgba(249, 115, 22, 0.35) !important;
+}
+
+.bomb-countdown-pill {
+  background: rgba(249, 115, 22, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #fb923c;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.real-safe-link-chip {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 11.5px;
+}
+
+.link-text {
+  color: #34d399;
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-tag {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.smoke-dissolving {
+  animation: smokeDissolveAnim 4s infinite alternate ease-in-out;
+}
+
+@keyframes smokeDissolveAnim {
+  0% { filter: blur(0px); opacity: 1; transform: scale(1); }
+  60% { filter: blur(1.5px); opacity: 0.85; transform: scale(0.99); }
+  100% { filter: blur(4px); opacity: 0.55; transform: scale(0.97) translateY(-3px); }
+}
+
+.bubble-vapor-mist {
+  position: relative;
+  width: 100%;
+  height: 20px;
+}
+
+.v-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fb923c;
+  opacity: 0.6;
+  animation: vaporParticle 2.5s infinite ease-out;
+}
+
+.p1 { left: 25%; animation-delay: 0.1s; }
+.p2 { left: 55%; animation-delay: 0.8s; }
+.p3 { left: 80%; animation-delay: 1.4s; }
+
+@keyframes vaporParticle {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(-24px) scale(0); opacity: 0; }
+}
+
+@keyframes laserTravel {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+@keyframes vaporDrift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate(-8px, -18px) scale(1.08); opacity: 0.4; }
+  100% { transform: translate(6px, -36px) scale(1.18); opacity: 0; }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(8deg); }
+}
+
+/* Skip Grace Protection & Honeycomb */
+.real-skip-grace-bar {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.skip-countdown-ring {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #090b10;
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skip-text {
+  font-size: 11.5px;
+  color: #fde68a;
+  flex: 1;
+}
+
+.skip-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.skip-btn-cancel {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.skip-btn-now {
+  background: #f59e0b;
+  border: none;
+  color: #090b10;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* Mini Honeycomb */
+.real-honeycomb-mini {
+  position: relative;
+  width: 80px;
+  height: 70px;
+  margin: 12px auto;
+}
+
+.mini-gel {
+  position: absolute;
+  width: 20px;
+  height: 12px;
+  background: rgba(33, 210, 237, 0.85);
+  box-shadow: 0 0 10px rgba(33, 210, 237, 0.5);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: miniGelPulse 2s infinite ease-in-out;
+}
+
+.g-center { top: 29px; left: 30px; animation-delay: 0s; }
+.g-1 { top: 12px; left: 30px; animation-delay: 0.15s; }
+.g-2 { top: 20px; left: 45px; animation-delay: 0.3s; }
+.g-3 { top: 38px; left: 45px; animation-delay: 0.45s; }
+.g-4 { top: 46px; left: 30px; animation-delay: 0.6s; }
+.g-5 { top: 38px; left: 15px; animation-delay: 0.75s; }
+.g-6 { top: 20px; left: 15px; animation-delay: 0.9s; }
+
+@keyframes miniGelPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(0.7); opacity: 0.3; }
+}
+
+.match-stage-text h4 {
+  font-family: var(--ed-font-display);
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.match-stage-text p {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 12px 0;
+  max-width: 320px;
+}
+
+.real-privacy-callout {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 11px;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.real-privacy-callout svg {
+  color: #10b981;
+}
+
+/* Capsule Dock Mockup */
+.real-capsule-dock {
+  background: #121522;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.real-capsule-dock.disabled {
+  opacity: 0.6;
+}
+
+.dock-btn-prompts {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dock-input-sim {
+  flex: 1;
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dock-btn-tool {
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.dock-btn-tool.active {
+  opacity: 1;
+}
+
+.dock-btn-send {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0e7490;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dock-btn-send.disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+/* CONTINUOUS HORIZONTAL JOURNEY RIBBON (Ticker Tape Scroll Flow) */
+.horizontal-journey-ribbon {
+  position: relative;
+  background-color: var(--ed-bg-cherry) !important;
+  border-top: 1px solid var(--ed-border-light);
+  border-bottom: 1px solid rgba(14, 116, 144, 0.12);
+  width: 100%;
+  padding: clamp(14px, 2.5vh, 26px) 0;
+  margin-top: auto;
+  overflow: hidden;
+  contain: paint;
+}
+
+/* The plain sentence. This is the accessible, no-JS, and reduced-motion version:
+   the full thought is always in the DOM as real text, never animation-only. */
+.journey-sentence-static {
+  margin: 0 auto;
+  max-width: 62ch;
+  padding: 0 28px;
+  font-family: var(--ed-font-display);
+  font-size: clamp(19px, 2.1vw, 28px);
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+  color: var(--ed-primary-text);
+  text-align: center;
+}
+
+/* Once GSAP takes over, the sentence becomes one very long travelling strip and
+   the static copy steps back to screen-reader only (it keeps the real text). */
+.story-motion .journey-sentence-static {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* One flex row, one continuous sentence - not a deck of slides.
+   Hidden by default so the readable sentence shows first; JS reveals it only
+   once it can actually drive it. */
+.journey-ribbon-track {
+  display: none;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+  padding-left: 4vw;
+  will-change: transform;
+}
+.story-motion .journey-ribbon-track { display: flex; }
+.story-static .journey-ribbon-track { display: none !important; }
+
+/* Every gap is driven by its own --lead token on a deliberately uneven scale,
+   so the rhythm reads as art-directed rather than a repeating grid. */
+.ribbon-phrase {
+  font-family: var(--ed-font-display);
+  font-size: clamp(23px, 2.6vw, 38px);
+  line-height: 1.16;
+  letter-spacing: -0.8px;
+  color: var(--ed-primary-text);
+  margin-left: var(--lead, 22px);
+}
+.ribbon-phrase:first-child { margin-left: 0; }
+
+.ribbon-accent {
+  color: #0e7490;
+  font-style: italic;
+}
+
+/* Inline connectors: they act as the punctuation of the sentence, never as
+   separate UI blocks. */
+.ribbon-link {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  color: #0e7490;
+  opacity: 0.45;
+  margin-left: var(--lead, 18px);
+}
+.ribbon-link svg {
+  display: block;
+  width: var(--reach, 40px);
+  height: 14px;
+  overflow: visible;
+}
+
+.ribbon-pill {
+  background: #ffffff;
+  border: 1px solid rgba(14, 116, 144, 0.18);
+  color: var(--ed-primary-text);
+  border-radius: 9999px;
+  padding: 7px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  flex: none;
+  margin-left: var(--lead, 22px);
+  white-space: nowrap;
+}
+
+.ribbon-pill svg {
+  stroke: var(--ed-primary-text);
+}
+
+.ribbon-pill.cyan {
+  border-color: rgba(33, 210, 237, 0.35);
+  background: rgba(33, 210, 237, 0.08);
+  color: #0e7490;
+}
+
+.ribbon-pill.cyan svg { stroke: #0e7490; }
+
+.ribbon-pill.indigo {
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.08);
+  color: #4f46e5;
+}
+
+.ribbon-pill.indigo svg { stroke: #4f46e5; }
+
+.ribbon-pill.green {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.08);
+  color: #059669;
+}
+
+.ribbon-pill.green svg { stroke: #059669; }
+
+.ribbon-pill.orange {
+  border-color: rgba(249, 115, 22, 0.35);
+  background: rgba(249, 115, 22, 0.08);
+  color: #ea580c;
+}
+
+.ribbon-pill.orange svg { stroke: #ea580c; }
+
+/* Responsive composition.
+   The pinned, scrubbed, 3D deck now runs on EVERY breakpoint - the old rules
+   used to flatten the deck into a plain vertical list under 992px, which is why
+   the effect vanished on scaled laptops and tablets. Only sizing changes here. */
+
+
+/* ---------------------------------------------------------------------------
+   REDUCED MOTION / NO-GSAP FALLBACK
+   The pinned stage collapses back to an ordinary, fully readable document
+   flow: cards stack vertically at full opacity, the sentence becomes a normal
+   paragraph. Nothing is hidden behind an animation that will never run.
+   --------------------------------------------------------------------------- */
+.story-static .sticky-stage {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(36px, 6vh, 64px) 0;
+  overflow: visible;
+}
+.story-static .scroll-story-container {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 1240px;
+  align-items: center;
+}
+.story-static .story-journey-wrapper { display: block; }
+.story-static .story-left-actions { display: flex; }
+.story-static .card-swap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+.story-static .card-swap-deck {
+  --deck-w: clamp(280px, min(48vw, 65dvh), 560px);
+  position: relative;
+  width: var(--deck-w);
+  max-width: 100%;
+  aspect-ratio: 938 / 906;
+  transform-style: preserve-3d;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+.story-static .swap-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+.story-static .real-chat-frame {
+  aspect-ratio: 938 / 906;
+  height: 100%;
+}
+.story-static .journey-sentence-static {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 34px auto 0;
+  clip: auto;
+  clip-path: none;
+}
+
+/* Short viewports (scaled 1366x768 laptops, landscape phones). The stage is
+   locked to 100dvh, so the composition has to compress rather than overflow -
+   otherwise the tail of the sentence would be clipped by the pin. */
+@media (max-height: 660px) {
+  .sticky-stage {
+    gap: clamp(10px, 2vh, 18px);
+    padding: 22px 0 14px;
+  }
+  .story-headline {
+    font-size: clamp(22px, 2.6vw, 32px);
+    margin: 8px 0 8px;
+  }
+  .story-subheadline {
+    display: none;
+  }
+  .story-heading-switch-container {
+    min-height: auto;
+  }
+  .story-journey-wrapper {
+    margin-bottom: 10px;
+  }
+  .story-badge {
+    font-size: 10px;
+    padding: 5px 11px;
+  }
+  .card-swap-deck {
+    --deck-w: clamp(190px, min(30vw, 42dvh), 320px);
+  }
+  .horizontal-journey-ribbon {
+    padding: 10px 0;
+  }
+  .ribbon-phrase {
+    font-size: clamp(19px, 2.2vw, 30px);
+  }
+}
+
+/* Tablet-narrow: the beat rail drops to a single column above the deck. */
+@media (max-width: 860px) {
+  .story-step-track {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   SCROLL EFFECT PACK - ROUND 1
+   Prismic "50 CSS Scroll Effects" adaptation for the live AnonChat landing.
+
+   Everything in this file follows three rules, so the additions below can
+   never regress the page:
+
+   1. STATIC FIRST. Every effect is pure decoration layered on markup that is
+      already complete and readable. Turn off JS, turn on reduced motion, or
+      load it in a browser without scroll-driven animation support, and the
+      content still reads correctly - it just stops moving.
+
+   2. NO NEW DEPENDENCIES. Scroll effects reuse the GSAP + ScrollTrigger build
+      that is already vendored locally, plus native CSS scroll-driven animations
+      where the browser can do the work itself and skip the main thread.
+
+   3. NO NEW ALWAYS-ON LISTENERS. Scroll work is either a scrubbed
+      ScrollTrigger (batched off the single ticker Lenis already drives) or a
+      pure-CSS `animation-timeline: view()`. No new scroll listeners.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   EFFECT 1 - SCROLL-DRAWN LIFECYCLE TIMELINE  (article #50)
+   A four-beat "How it works". The connector rail draws itself from the
+   section's own scroll progress and each node wakes as the line reaches it.
+   ========================================================================== */
+
+/* `.fab-section` paints an opaque background and is position:relative without a
+   z-index, so it does NOT establish a stacking context. Without isolation here a
+   z-index:-1 tint layer (added in round 3) would paint behind the section's own
+   background and be invisible. This one declaration future-proofs both effects. */
+.fab-section {
+  isolation: isolate;
+}
+
+.ed-tl-section {
+  padding-bottom: 112px !important;
+}
+
+/* Six nav links instead of five: tighten the gutter so the pill row and the
+   status pill never collide at the 1280px navbar max-width. */
+.editorial-nav-center {
+  gap: 32px;
+}
+
+.ed-tl {
+  position: relative;
+  padding: 8px 0;
+}
+
+.ed-tl-rail {
+  position: absolute;
+  top: 13px;
+  bottom: 13px;
+  left: 50%;
+  width: 40px;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ed-tl-svg-rail {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.ed-tl-svg-base {
+  stroke: rgba(14, 116, 144, 0.16);
+  stroke-dasharray: 4 6;
+}
+
+.ed-tl-svg-glow {
+  stroke-dasharray: 1000 1000;
+  stroke-dashoffset: 1000;
+  will-change: stroke-dashoffset;
+  transition: opacity 0.2s ease;
+}
+
+.ed-tl-svg-draw {
+  stroke-dasharray: 1000 1000;
+  stroke-dashoffset: 1000;
+  will-change: stroke-dashoffset;
+  filter: drop-shadow(0 0 8px rgba(33, 210, 237, 0.7));
+}
+
+.ed-tl-beacon-group {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+
+.ed-tl-beacon-halo {
+  animation: howBeaconPulse 1.8s ease-in-out infinite alternate;
+}
+
+.ed-tl-beacon-ring {
+  animation: howBeaconRingPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes howBeaconPulse {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.35); opacity: 1; }
+}
+
+@keyframes howBeaconRingPing {
+  0% { r: 5px; opacity: 1; }
+  100% { r: 12px; opacity: 0; }
+}
+
+.ed-tl-rail-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: rgba(14, 116, 144, 0.14);
+}
+
+/* The drawn portion. transform-origin is pinned to the top so scaleY(0) is an
+   empty rail and scaleY(1) is a fully drawn one - no layout, no repaint, and
+   reversing the scroll reverses it for free. */
+.ed-tl-rail-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #0e7490 0%, #21d2ed 52%, #6366f1 100%);
+  transform-origin: top center;
+  transform: scaleY(0);
+  will-change: transform;
+}
+
+.ed-tl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 6.5vh, 84px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Three columns: card | rail gutter | card, so alternating beats can swap
+   sides without any absolute positioning. */
+.ed-tl-step {
+  display: grid;
+  grid-template-columns: 1fr 92px 1fr;
+  align-items: center;
+  gap: 0;
+}
+
+.ed-tl-card {
+  grid-column: 1;
+  background: var(--ed-bg-white);
+  border: 1px solid var(--ed-border-medium);
+  border-radius: 22px;
+  padding: 26px 28px;
+  box-shadow: 0 10px 30px -14px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.55s ease;
+}
+
+/* Beats 2 and 4 flip to the far column, so the eye zig-zags down the rail. */
+.ed-tl-step:nth-child(even) .ed-tl-card {
+  grid-column: 3;
+}
+
+.ed-tl-step.is-live .ed-tl-card {
+  transform: translateY(-4px);
+  border-color: rgba(14, 116, 144, 0.42);
+  box-shadow: 0 22px 48px -18px rgba(14, 116, 144, 0.30), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+}
+
+.ed-tl-node {
+  grid-column: 2;
+  justify-self: center;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ed-bg-white);
+  border: 2px solid rgba(14, 116, 144, 0.22);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+.ed-tl-node-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: background 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Wake state: ring expands, core fills with the section's brand teal. */
+.ed-tl-step.is-live .ed-tl-node {
+  border-color: #0e7490;
+  transform: scale(1.16);
+  box-shadow: 0 0 0 7px rgba(14, 116, 144, 0.10);
+}
+
+.ed-tl-step.is-live .ed-tl-node-core {
+  background: #0e7490;
+  transform: scale(1.3);
+}
+
+/* Passed state: core cools to the mid-gradient stop so finished beats read as
+   history rather than as the current one. */
+.ed-tl-step.is-done .ed-tl-node-core {
+  background: #21d2ed;
+}
+
+.ed-tl-index {
+  display: inline-block;
+  font-family: var(--ed-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0e7490;
+  margin-bottom: 8px;
+}
+
+.ed-tl-title {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ed-primary-text);
+  margin: 0 0 8px;
+}
+
+.ed-tl-copy {
+  font-family: var(--ed-font-body);
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--ed-muted-text);
+  margin: 0 0 12px;
+}
+
+.ed-tl-meta {
+  display: inline-block;
+  font-family: var(--ed-font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #0f172a;
+  background: rgba(14, 116, 144, 0.09);
+  border: 1px solid rgba(14, 116, 144, 0.16);
+  border-radius: 9999px;
+  padding: 5px 12px;
+}
+
+/* Tablet and below: the rail moves to the left edge and every beat stacks to
+   its right, which is the only shape that survives a 320px viewport. */
+@media (max-width: 860px) {
+  .ed-tl-rail {
+    left: 13px;
+    transform: translateX(-50%);
+  }
+
+  .ed-tl-step {
+    grid-template-columns: 26px 1fr;
+    gap: 0 18px;
+  }
+
+  .ed-tl-node {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .ed-tl-card,
+  .ed-tl-step:nth-child(even) .ed-tl-card {
+    grid-column: 2;
+    padding: 20px 20px;
+    border-radius: 18px;
+  }
+
+  .ed-tl-copy {
+    font-size: 14.5px;
+  }
+}
+
+/* ==========================================================================
+   EFFECT 2 - STACKED CARDS  (article #13)
+   The #story deck is now a real pile instead of a side-by-side fan, so each
+   card's shadow has to describe its depth in that pile. JS writes
+   data-stack-depth (0 = top card, 3 = deepest buried card) from the same beat
+   value that drives the rest of the story, and these rules do the rest.
+
+   Without this the pile reads flat: four identical drop shadows stacked on top
+   of each other look like a printing mistake, not like sheets of paper.
+   ========================================================================== */
+
+/* The cascade hangs below the deck box, so the column reserves room for it.
+   Without this padding the deepest card's exposed edge is clipped by the
+   pinned stage on short laptop screens. */
+.story-right-col {
+  padding-bottom: 44px;
+}
+
+/* Depth 0 - the active card, sitting proud of the pile. */
+.swap-card[data-stack-depth="0"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 30px 60px -18px rgba(15, 23, 42, 0.32), 0 0 0 1px rgba(14, 116, 144, 0.26) !important;
+}
+
+/* Depth 1 - one card in. */
+.swap-card[data-stack-depth="1"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.24), 0 0 0 1px rgba(14, 116, 144, 0.20) !important;
+}
+
+/* Depth 2 - two cards in. */
+.swap-card[data-stack-depth="2"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 13px 26px -18px rgba(15, 23, 42, 0.17), 0 0 0 1px rgba(14, 116, 144, 0.15) !important;
+}
+
+/* Depth 3 - the bottom of the pile, almost flat against the cards above it. */
+.swap-card[data-stack-depth="3"] .real-chat-frame.has-screenshot {
+  box-shadow: 0 7px 14px -12px rgba(15, 23, 42, 0.13), 0 0 0 1px rgba(14, 116, 144, 0.11) !important;
+}
+
+/* ---- First frame ----------------------------------------------------------
+   These run before JS claims the deck (delayed script, reduced motion, or a
+   failed CDN). They now mirror STACK_PRESETS.desktop exactly, so the very first
+   paint is already a correct pile and there is no visible snap into place. The
+   old values fanned the cards out to the right and dropped them to 62% opacity,
+   which is precisely the flat look this effect set out to remove. */
+.swap-card:nth-child(1) {
+  z-index: 40;
+}
+.swap-card:nth-child(2) {
+  z-index: 30;
+  transform: translate3d(-4px, 13px, -46px) scale(0.985) rotateY(-0.7deg);
+  opacity: 1;
+}
+.swap-card:nth-child(3) {
+  z-index: 20;
+  transform: translate3d(-8px, 26px, -92px) scale(0.97) rotateY(-1.4deg);
+  opacity: 1;
+}
+.swap-card:nth-child(4) {
+  z-index: 10;
+  transform: translate3d(-12px, 39px, -138px) scale(0.955) rotateY(-2.1deg);
+  opacity: 1;
+}
+
+/* The cascade is a stack of real screenshots, so the exposed edges need a hair
+   line to read as separate sheets rather than as one ragged silhouette. */
+.swap-card .real-chat-frame.has-screenshot {
+  border-color: rgba(14, 116, 144, 0.22) !important;
+}
+
+/* Tablet and phone: the deck shrinks, so the cascade tightens with it. The
+   shadow steps stay as authored because they are absolute lengths and still
+   read correctly at a smaller card size. */
+@media (max-width: 991px) {
+  .story-right-col {
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 719px) {
+  .story-right-col {
+    padding-bottom: 30px;
+  }
+}
+
+/* ==========================================================================
+   EFFECT 2b - REDESIGNED REDUCED-MOTION FALLBACK FOR #story
+   The old fallback was the reason the section read as "weak": it dropped the
+   beat rail entirely and poured four full-width screenshots into one tall
+   column, which is just an image dump, not a narrative.
+
+   This is a genuine user path, not an error state - OS-level "reduce motion"
+   is on for plenty of visitors, and every headless browser enables it by
+   default. So it gets the same editorial care as the animated version:
+
+     - the beat rail stays, as real scroll-to navigation (wired in fabale.js)
+     - the four captures become a two-up gallery instead of one tall stack
+     - the connector rail renders complete rather than parked undrawn
+     - the continuous sentence stays a centred paragraph
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   STICKY STACKING DECK ARCHITECTURE (Prismic Scroll Effects #8 & #14)
+   Cards cascade neatly with subtle depth offsets and elevation shadows.
+   Even in fallback or static modes, cards stay in an elegant stack rather
+   than breaking into a disjointed 2x2 grid.
+   --------------------------------------------------------------------------- */
+.story-static .scroll-story-container {
+  display: grid !important;
+  grid-template-columns: 1fr 1.15fr !important;
+  gap: clamp(24px, 4vw, 56px) !important;
+  max-width: 1240px !important;
+  align-items: center !important;
+}
+
+@media (max-width: 991px) {
+  .story-static .scroll-story-container {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+.story-static .card-swap-deck {
+  --deck-w: clamp(280px, min(48vw, 65dvh), 560px) !important;
+  position: relative !important;
+  width: var(--deck-w) !important;
+  max-width: 100% !important;
+  aspect-ratio: 938 / 906 !important;
+  transform-style: preserve-3d !important;
+  perspective: 1200px !important;
+  margin: 0 auto !important;
+  display: block !important;
+  height: auto !important;
+}
+
+.story-static .swap-card {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 26px !important;
+  cursor: pointer !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease !important;
+}
+
+/* Fallback stacked positions when GSAP is not running */
+.story-static .swap-card.active,
+.story-static .swap-card[data-stack-depth="0"] {
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  opacity: 1 !important;
+  z-index: 25 !important;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.24) !important;
+  filter: brightness(1) !important;
+}
+
+.story-static .swap-card[data-stack-depth="1"] {
+  transform: translate3d(16px, -12px, -35px) scale(0.96) !important;
+  opacity: 0.92 !important;
+  z-index: 20 !important;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.16) !important;
+  filter: brightness(0.96) !important;
+}
+
+.story-static .swap-card[data-stack-depth="2"] {
+  transform: translate3d(32px, -24px, -70px) scale(0.92) !important;
+  opacity: 0.8 !important;
+  z-index: 15 !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12) !important;
+  filter: brightness(0.92) !important;
+}
+
+.story-static .swap-card[data-stack-depth="3"] {
+  transform: translate3d(48px, -36px, -105px) scale(0.88) !important;
+  opacity: 0.65 !important;
+  z-index: 10 !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+  filter: brightness(0.88) !important;
+}
+
+.story-static .real-chat-frame {
+  aspect-ratio: 938 / 906;
+  height: 100% !important;
+}
+
+.story-static .story-journey-wrapper {
+  display: block !important;
+  margin-bottom: 22px !important;
+}
+
+.story-static .journey-svg-rail {
+  display: block !important;
+  max-width: 34px !important;
+}
+
+.story-static .story-step-track {
+  gap: 12px !important;
+}
+
+.story-static .story-step-item {
+  padding: 10px 14px !important;
+  border-radius: 14px;
+}
+
+.story-static .step-title {
+  font-size: 15px !important;
+}
+
+.story-static .step-desc {
+  font-size: 12px !important;
+}
+
+.story-static .story-left-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.story-static .story-swap-btn {
+  display: inline-flex !important;
+}
+
+/* ==========================================================================
+   SCROLL EFFECTS SUITE (Curated from Prismic 50 CSS Scroll Effects)
+   #42 Highlight Text | #49 CSS Shadow on Scroll | #11 Parallax Floaters
+   #19 Scroll-Triggered Shimmer | #50 Pulsing Connector Node
+   ========================================================================== */
+
+/* 1. Prismic #42: Text Scroll Highlight Gradient Wash */
+.prismic-scroll-highlight,
+.fab-section-title span.prismic-scroll-highlight,
+.story-headline span.prismic-scroll-highlight {
+  background: linear-gradient(135deg, #0e7490 0%, #21d2ed 40%, #6366f1 80%, #ec4899 100%) !important;
+  background-size: 250% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  display: inline-block !important;
+  animation: prismicGradientShift 5s ease-in-out infinite alternate !important;
+}
+
+@keyframes prismicGradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* 2. Prismic #49 & #8: High-Visibility Scroll Cards (Float + Neon Accent Borders) */
+.fab-feature-card,
+.fab-why-card,
+.fab-tab-panel,
+.fab-accordion {
+  position: relative !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              background 0.4s ease !important;
+  will-change: transform, box-shadow;
+  border: 1.5px solid rgba(14, 116, 144, 0.15) !important;
+  background: #ffffff !important;
+}
+
+.fab-feature-card:hover,
+.fab-why-card:hover {
+  transform: translateY(-10px) scale(1.02) !important;
+  border-color: #0e7490 !important;
+  box-shadow: 0 20px 45px -10px rgba(14, 116, 144, 0.22), 0 0 0 1px #0e7490 inset !important;
+}
+
+/* Prismic #36: Section Badge Glow Pulse on Scroll */
+.fab-badge-pill {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px rgba(33, 210, 237, 0.15), 0 4px 12px rgba(14, 116, 144, 0.12) !important;
+  animation: badgePulse 3.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes badgePulse {
+  0% { box-shadow: 0 0 0 2px rgba(33, 210, 237, 0.15), 0 2px 8px rgba(14, 116, 144, 0.1); }
+  100% { box-shadow: 0 0 0 5px rgba(33, 210, 237, 0.35), 0 6px 18px rgba(14, 116, 144, 0.25); }
+}
+
+/* 3. Prismic #50: Glowing Animated Beam for Lifecycle Timeline */
+.ed-tl-node-core {
+  position: relative;
+}
+.ed-tl-step.is-live .ed-tl-node::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid #21d2ed;
+  box-shadow: 0 0 14px #21d2ed;
+  animation: radarPing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+/* 4. Prismic #19 & #27: High-Visibility Shimmer Sweep on Hover & Scroll Focus */
+.fab-accordion {
+  border-radius: 16px !important;
+  margin-bottom: 12px !important;
+  overflow: hidden !important;
+}
+.fab-accordion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(33, 210, 237, 0.22), transparent);
+  pointer-events: none;
+  transition: left 0.8s ease;
+}
+.fab-accordion:hover::before,
+.fab-accordion.open::before {
+  left: 150%;
+}
+.fab-accordion.open {
+  border-color: #0e7490 !important;
+  box-shadow: 0 12px 30px -8px rgba(14, 116, 144, 0.2) !important;
+}
+
+
+/* 5. Tablet & Mobile Story Viewport & Dimension Tuning */
+@media (max-width: 991px) {
+  .sticky-stage {
+    padding: 24px 0 0 !important;
+    gap: 10px !important;
+    justify-content: flex-start !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+  }
+  .scroll-story-container {
+    max-height: calc(100dvh - 85px) !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .story-sticky-content {
+    padding-right: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .story-headline {
+    font-size: 24px !important;
+    margin: 6px 0 !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+  }
+  .story-subheadline {
+    display: none !important;
+  }
+  .story-heading-switch-container {
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  .story-journey-wrapper {
+    margin-bottom: 6px !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .journey-svg-rail {
+    display: none !important;
+  }
+  .story-step-track {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin: 0 auto !important;
+  }
+  .story-step-item {
+    padding: 4px 8px !important;
+    gap: 0 !important;
+    border-radius: 9999px !important;
+    background: transparent !important;
+  }
+  .story-step-item .step-meta {
+    display: none !important;
+  }
+  .story-step-item .step-num {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 11px !important;
+  }
+  .story-left-actions {
+    display: none !important;
+  }
+  .story-right-col {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding-bottom: 8px !important;
+  }
+  .card-swap-deck {
+    --deck-w: clamp(230px, min(80vw, 44dvh), 360px) !important;
+    margin: 0 auto !important;
+  }
+  .real-chat-frame {
+    border-radius: 20px !important;
+  }
+  .horizontal-journey-ribbon {
+    padding: 6px 0 !important;
+  }
+}
+
+@media (max-width: 719px) {
+  .sticky-stage {
+    padding: 16px 0 0 !important;
+    gap: 6px !important;
+  }
+  .story-headline {
+    font-size: 20px !important;
+    margin: 4px 0 !important;
+  }
+  .story-badge {
+    font-size: 9.5px !important;
+    padding: 4px 8px !important;
+  }
+  .card-swap-deck {
+    --deck-w: clamp(210px, min(86vw, 42dvh), 330px) !important;
+  }
+  .story-step-item .step-num {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 10.5px !important;
+  }
+}
+
+/* ==========================================================================
+   GALLERY - STICKY CONTENT SWITCH (Pinned Heading + Horizontal Showcase)
+
+   Three layout modes, all driven from CSS so the page is readable before a
+   single line of JavaScript runs:
+
+   1. Default / no JS / narrow screens  -> vertical stack. Every copy and every
+      caption is real, visible text. Nothing is hidden behind an animation.
+   2. .gallery-pin-section.is-static    -> same stack, but explicitly locked
+      there by JS (reduced motion, no GSAP, or not enough room to travel).
+   3. .gallery-pin-section.is-horizontal -> the showcase. The stage is one
+      viewport tall and pinned by ScrollTrigger, the track becomes a single
+      horizontal row with EXPLICIT PIXEL slide widths, and the left column sits
+      inside the pinned stage so the heading is structurally stuck.
+
+   Why explicit pixel widths matter: `flex: 0 0 100%` inside a `width:max-content`
+   row resolves its percentage against an indefinite container. That is what made
+   the previous version measure a ~5600px travel distance, produce a 5.5k px pin
+   range, and render the slides as blank over-wide boxes. `flex: 0 0 auto` plus a
+   clamp() width has no circular percentage to resolve.
+   ========================================================================== */
+.gallery-pin-section {
+  position: relative;
+  /* One source of truth for the slide width. The track's centring padding is
+     derived from it, which is what guarantees slide N is EXACTLY centred when
+     the track has travelled N spacings - see the onUpdate geometry in fabale.js. */
+  --gallery-slide-w: clamp(300px, 34vw, 460px);
+  --gallery-gap: clamp(18px, 2vw, 30px);
+  /* No `overflow` override: a clipping ancestor would break `position:fixed`
+     pinning for the whole subtree, and this section has to pin its stage. */
+}
+
+/* Screen-reader-only text. The page has no `.sr-only` utility, and the dot
+   labels below need one: they are real <button> names, not visible captions. */
+.gallery-pin-section .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.gallery-pin-section .fab-section-header {
+  margin-bottom: clamp(32px, 5vh, 56px);
+}
+
+/* --------------------------------------------------------------------------
+   The pinned stage: exactly one viewport tall so it always FILLS the screen
+   while pinned. A shorter pin leaves the uncovered strip showing the page
+   scrolling past behind it, which is the overlap bug in its purest form.
+   -------------------------------------------------------------------------- */
+.gallery-pin {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(14px, 2.4vh, 28px);
+  padding: clamp(64px, 9vh, 96px) 0 clamp(20px, 4vh, 40px);
+  overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
+}
+
+/* Faint atmosphere so the stage does not read as a flat block while pinned. */
+.gallery-pin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 78% 12%, rgba(33, 210, 237, 0.10), rgba(33, 210, 237, 0) 60%),
+    radial-gradient(90% 80% at 12% 88%, rgba(99, 102, 241, 0.10), rgba(99, 102, 241, 0) 62%);
+}
+
+.gallery-pin-inner {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  align-items: center;
+  gap: clamp(28px, 4.5vw, 64px);
+}
+
+/* --------------------------------------------------------------------------
+   LEFT: pinned copy column
+   -------------------------------------------------------------------------- */
+.gallery-copy-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.gallery-copy-index {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--ed-font-body);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ed-primary-text);
+}
+
+.gallery-copy-num {
+  font-family: var(--ed-font-display);
+  font-size: 44px;
+  line-height: 1;
+  color: #0e7490;
+}
+
+.gallery-copy-total {
+  font-size: 13px;
+  color: var(--ed-muted-text);
+}
+
+/* Grid overlap, not absolute positioning: the stack stays exactly as tall as
+   the TALLEST copy, so switching copies can never change the column height and
+   shove the whole stage around. */
+.gallery-copy-stack {
+  display: grid;
+}
+
+.gallery-copy-item {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s;
+  pointer-events: none;
+}
+
+.gallery-copy-item.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.gallery-copy-time {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ed-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #0e7490;
+  background: rgba(14, 116, 144, 0.08);
+  border: 1px solid rgba(14, 116, 144, 0.18);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.gallery-copy-title {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.1vw, 44px);
+  line-height: 1.06;
+  letter-spacing: -1.2px;
+  color: var(--ed-primary-text);
+  margin: 0;
+}
+
+.gallery-copy-title .serif-italic {
+  font-style: italic;
+  color: #0e7490;
+  background: none;
+  -webkit-text-fill-color: #0e7490;
+}
+
+.gallery-copy-desc {
+  font-family: var(--ed-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ed-muted-text);
+  max-width: 44ch;
+  margin: 0;
+}
+
+.gallery-copy-meta {
+  font-family: var(--ed-font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: hsl(215, 22%, 52%);
+}
+
+/* Navigation controls (Arrows + Dots) */
+.gallery-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.gallery-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  background: rgba(14, 116, 144, 0.08);
+  border: 1px solid rgba(14, 116, 144, 0.24);
+  color: #0e7490;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.gallery-arrow-btn:hover {
+  background: #0e7490;
+  color: #ffffff;
+  border-color: #0e7490;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px -3px rgba(14, 116, 144, 0.35);
+}
+
+.gallery-arrow-btn:active {
+  transform: scale(0.95);
+}
+
+/* Dot rail */
+.gallery-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+}
+
+.gallery-dot {
+  flex: 1 1 0;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+.gallery-dot-bar {
+  display: block;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(14, 116, 144, 0.16);
+  overflow: hidden;
+}
+
+.gallery-dot-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0e7490, #21d2ed);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-dot:hover .gallery-dot-bar {
+  background: rgba(14, 116, 144, 0.3);
+}
+
+.gallery-dot.is-active .gallery-dot-fill,
+.gallery-dot.is-past .gallery-dot-fill {
+  width: 100%;
+}
+
+.gallery-dot:focus-visible {
+  outline: 2px solid #0e7490;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT: the horizontal track
+   -------------------------------------------------------------------------- */
+.gallery-viewport {
+  min-width: 0;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.gallery-viewport.is-dragging {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
+.gallery-viewport.is-dragging * {
+  user-select: none !important;
+}
+
+.gallery-track {
+  position: relative;
+  display: flex;
+  gap: var(--gallery-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* No width:max-content here. The row is laid out from the slide widths below,
+     so the measured travel distance is a number we can trust (see the note at
+     the top of this block). */
+}
+
+.gallery-slide {
+  position: relative;
+  /* EXPLICIT width + `flex: 0 0 auto`. No percentage basis anywhere. */
+  flex: 0 0 auto;
+  width: var(--gallery-slide-w);
+}
+
+.gallery-frame {
+  position: relative;
+  margin: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #0b0c10;
+  border: 1px solid var(--ed-border-medium);
+  box-shadow: 0 24px 60px -22px rgba(15, 23, 42, 0.4);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-slide.is-active .gallery-frame {
+  border-color: rgba(14, 116, 144, 0.42);
+  box-shadow: 0 30px 70px -20px rgba(14, 116, 144, 0.34);
+}
+
+/* The capture itself. A near-square source in a square box loses ~3% off the
+   sides, so no message is ever cut. */
+.gallery-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  background: #0b0c10;
+}
+
+/* Editorial index number. It sits OUTSIDE the frame's top-left corner rather
+   than over the capture: the real chat UI already has a back arrow and an avatar
+   in that corner, and a badge on top of them reads as a rendering fault. */
+.gallery-frame-index {
+  position: absolute;
+  top: 18px;
+  left: -18px;
+  z-index: 2;
+  font-family: var(--ed-font-display);
+  font-size: 22px;
+  line-height: 1;
+  color: #0e7490;
+  background: #ffffff;
+  border: 1px solid rgba(14, 116, 144, 0.28);
+  border-radius: 999px;
+  padding: 7px 13px 8px;
+  box-shadow: 0 10px 24px -12px rgba(15, 23, 42, 0.35);
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.gallery-slide.is-active .gallery-frame-index {
+  color: #0b0c10;
+  border-color: rgba(14, 116, 144, 0.5);
+}
+
+.gallery-slide-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px 18px;
+  background: #ffffff;
+  border-top: 1px solid var(--ed-border-light);
+}
+
+.gallery-slide-caption strong {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+  color: var(--ed-primary-text);
+}
+
+.gallery-slide-caption span {
+  font-family: var(--ed-font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: hsl(215, 20%, 48%);
+}
+
+/* Captions visible on cards across both desktop and mobile for consistent UI parity */
+.gallery-pin-section.is-horizontal .gallery-slide-caption {
+  display: block;
+}
+
+.gallery-hint {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  font-family: var(--ed-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(215, 20%, 55%);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-pin-section.is-horizontal .gallery-hint {
+  display: flex;
+}
+
+.gallery-hint-line {
+  display: block;
+  width: 46px;
+  height: 1px;
+  background: rgba(14, 116, 144, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-hint-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #0e7490;
+  transform-origin: left center;
+  animation: galleryHintRun 2.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes galleryHintRun {
+  0% { transform: translateX(-100%); }
+  60% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+.gallery-hint.is-done {
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   MODE 2 + 3: vertical stack -> horizontal showcase
+   -------------------------------------------------------------------------- */
+.gallery-pin-section.is-static .gallery-pin,
+.gallery-pin-section.is-static .gallery-copy-col {
+  height: auto;
+}
+
+.gallery-pin-section.is-static .gallery-pin {
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  display: block;
+}
+
+.gallery-pin-section.is-static .gallery-pin-inner {
+  display: block;
+  max-width: 1240px;
+  padding: 0 32px;
+}
+
+.gallery-pin-section.is-static .gallery-copy-col {
+  display: none;
+}
+
+/* ==========================================================================
+   MODE 3 - pinned horizontal showcase (desktop, motion allowed)
+   ========================================================================== */
+
+/* Reduced motion on a wide window: no pin, so the same four captures have to
+   read as an ordinary card grid. Scoped to min-width:900px on purpose - below
+   that the narrow-screen carousel rules own the layout, and this would fight
+   their overflow and scroll-snap. */
+@media (min-width: 900px) {
+  .gallery-pin-section.is-static .gallery-viewport {
+    overflow: visible;
+  }
+
+  .gallery-pin-section.is-static .gallery-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 0;
+  }
+
+  .gallery-pin-section.is-static .gallery-slide {
+    width: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .gallery-pin-section.is-horizontal .gallery-pin {
+    justify-content: center;
+  }
+
+  .gallery-pin-section.is-horizontal .gallery-viewport {
+    /* Second visual stop at the right edge: the next capture is always half
+       visible, so the horizontal travel reads before it happens. */
+    -webkit-mask-image: linear-gradient(90deg, #000 0 86%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0 86%, transparent 100%);
+  }
+
+  /* Centre the FIRST slide before a single pixel of travel, and keep the same
+     amount of space after the last one. Because every slide shares one width,
+     slide N is then perfectly centred exactly when the track has moved N
+     spacing widths - which is the contract the scroll math relies on. */
+  .gallery-pin-section.is-horizontal .gallery-track {
+    padding-left: calc((100% - var(--gallery-slide-w)) / 2);
+    padding-right: calc((100% - var(--gallery-slide-w)) / 2);
+  }
+}
+
+/* ==========================================================================
+   Responsive / static carousel fallback (below the pinned breakpoint)
+   ========================================================================== */
+@media (max-width: 899px) {
+  .gallery-pin {
+    height: auto;
+    padding: 0;
+    overflow: visible;
+    display: block;
+  }
+
+  .gallery-pin-inner {
+    display: block;
+    padding: 0 24px;
+  }
+
+  .gallery-copy-col {
+    display: none;
+  }
+
+  /* Native scroll-snap carousel: no JS, no pin, no hijacked scroll. */
+  .gallery-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 24px 8px;
+    margin: 0 -24px;
+  }
+
+  .gallery-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-track {
+    gap: 16px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 auto;
+    width: min(78vw, 340px);
+    scroll-snap-align: center;
+  }
+
+  .gallery-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 719px) {
+  .gallery-slide {
+    width: min(84vw, 300px);
+  }
+
+  .gallery-frame {
+    border-radius: 20px;
+  }
+
+  .gallery-slide-caption {
+    padding: 14px 16px 16px;
+  }
+}
+
+/* ==========================================================================
+   Reduced motion / no-JS: never a half-built deck
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-pin-section .gallery-copy-item,
+  .gallery-pin-section .gallery-dot-fill,
+  .gallery-pin-section .gallery-hint {
+    transition: none;
+  }
+
+  .gallery-hint-line::after {
+    animation: none;
+  }
+}
+
+/* No-scripting visitors need no extra rules: `is-horizontal` is only ever added
+   by JavaScript, so the default styles above (the readable vertical stack) are
+   already the no-JS layout. Nothing here is hidden behind the animation. */
+

@@ -1,11 +1,12 @@
-# AnonChat v2.0 - Complete Project Context & Architecture Masterfile
+# AnonChat v2.7.0 - Complete Project Context & Architecture Masterfile
 
 > **Document Created:** September 23, 2026  
+> **Document Last Updated:** October 5, 2026  
 > **Project Directory:** `C:\Users\mahes\Desktop\all projects\anon-chat`  
 > **Git Repository:** `https://github.com/maheshwarkibehan-hub/anonchat.git` (`main` branch)  
 > **Live Deployment:** Hosted on Render (Auto-deploys from GitHub `main`)  
-> **Version:** `v2.0.0`  
-> **Core Philosophy:** High-Performance, Zero-Overhead, Zero-Telemetry, In-Memory Only, Apple + Linear Obsidian Dark Aesthetic (`/ponytail` compliance).
+> **Version:** `v2.7.0`  
+> **Core Philosophy:** High-Performance, Zero-Overhead, Pure Video Landing, Modular CSS, In-Memory Only, Apple + Linear Obsidian Dark Aesthetic (`/ponytail` compliance).
 
 ---
 
@@ -164,6 +165,36 @@
 
 ---
 
+### 📍 Phase 9: Full-Screen Cinematic Video Landing & Zero-Scroll Architecture (Oct 2026)
+- **User Insight & Problem Statement**:
+  - Visitors rarely swiped or explored long, multi-section promotional landing blocks (`The Story` 3D card deck, `How It Works`, `Features`, `Why AnonChat`, `Campus Talks`, `FAQ`, `Footer`).
+  - Heavy DOM structures and image loads slowed down initial paint and mobile responsiveness.
+- **Architectural Shift to Pure Minimalist Hero**:
+  - **Single Fullscreen Screen**: Archived all promotional scroll sections, keeping strictly the high-impact cinematic greenery background video (`hero-1080p.webm` / `hero-1080p.mp4`).
+  - **Strict Zero-Scroll Lock**: `html`, `body.on-landing`, and `#landingScreen` locked with `overflow: hidden !important; max-height: 100dvh;` (`scrollHeight === clientHeight`).
+  - **Streamlined Navigation**: Cleaned header with `AnonChat®` brand serif wordmark on left, live peer count pill (`1 online`) and ambient audio toggle on right. Removed clutter links.
+  - **Instant Action Trigger**: Centered editorial headline (*"Talk to Classmates with Pure Anonymity"*) and obsidian pill CTA (*"Start Chatting Now"*), launching direct socket matchmaking with zero distraction.
+  - **Failsafe Archival**: Preserved raw marketing blocks in `scratch/landing-sections-backup.html` and commented cleanly inside `index.html` / `app-chat.html`.
+
+---
+
+### 📍 Phase 10: Modular CSS Architecture & 52% Payload Slashed (Oct 2026)
+- **Monolithic CSS Problem**:
+  - `editorial.css` had swelled to **6,840+ lines (~188 KB)**, bundling dead scroll triggers, Prismic animations, and multiple theme revisions into one monolithic blocking request.
+- **Modular Directory Decomposition (`public/css/`)**:
+  - `css/variables.css` (~4.1 KB): Core typography imports, color tokens, and root resets.
+  - `css/landing.css` (~12.3 KB): Pure video hero layer, navbar layout, brand logo, status pill, CTA button.
+  - `css/searching.css` (~17.6 KB): Full-screen matchmaking, tender-swan-29 honeycomb loader, pulse rings, cancel/retry states.
+  - `css/chat.css` (~48.3 KB): Alpine Forest & Meadow chat theme, message bubbles, swipe-to-reply, voice notes, bomb destruct, reactions, composer dock, modals.
+  - `css/preloader.css` (~7.1 KB): Soft light green lens loader and smooth entrance transitions.
+  - `css/archived-landing.css` (~100 KB): Archived marketing blocks and 3D card scroll engines safely isolated away from the active runtime payload.
+- **Performance Gains & Orchestration**:
+  - Active CSS bundle reduced from **188 KB down to ~89 KB (over 52% bandwidth reduction)**.
+  - Direct `<link rel="stylesheet">` tags in `index.html` & `app-chat.html` enable parallel HTTP/2 multiplexed streaming with independent browser caching per module.
+  - `editorial.css` retained as a high-level `@import` orchestrator for 100% backward compatibility across all existing subpages (`privacy.html`).
+
+---
+
 ## 4. 🔌 Socket.io Event Protocol Reference
 
 | Event Name | Direction | Payload | Description |
@@ -202,7 +233,7 @@
 anon-chat/
 ├── .git/                      # Git repository (synced with GitHub main)
 ├── .gitignore                 # Ignores node_modules, logs, .env
-├── package.json               # v2.0.0 metadata and dependencies
+├── package.json               # v2.7.0 metadata and dependencies
 ├── package-lock.json          # Dependency lockfile
 ├── server.js                  # Express & Socket.io server with isolated rate limiters
 ├── PROJECT_CONTEXT.md         # This master context and architectural document
@@ -210,11 +241,24 @@ anon-chat/
 ├── verify_audit.js            # Automated test suite for UI/UX, WCAG, and design tokens (44 tests)
 ├── test_chat_features.js      # Automated test suite for replies, reactions, voice notes, rate limits (61 tests)
 ├── test_suite.js              # Automated test suite for 3D engine, socket handshake, and HTTP (39 tests)
+├── scratch/
+│   └── landing-sections-backup.html # Complete raw backup of all promotional landing sections
 └── public/
-    ├── index.html             # Main Single Page App (Landing, Searching, Chat screens)
+    ├── index.html             # Main SPA entrypoint (Pure video hero, searching, chat)
+    ├── app-chat.html          # Route / target mirror of index.html
     ├── privacy.html           # Dedicated Privacy Policy & Transparency Manifesto page
     ├── style.css              # Obsidian dark theme, animations, responsive layouts
-    └── client.js              # Client state, WebSockets, Three.js warp engine, UI gestures
+    ├── fabale.css             # Fabale color tokens & typography
+    ├── editorial.css          # Modular CSS orchestrator (@import bundle for backwards compatibility)
+    ├── css/                   # High-performance modular CSS suite (v2.7.0)
+    │   ├── variables.css      # Core tokens, color palettes, and global zero-scroll resets (~4.1 KB)
+    │   ├── landing.css        # Pure video hero layer, navbar, brand logo, status pill, CTA (~12.3 KB)
+    │   ├── searching.css      # Matchmaking screen, honeycomb loader, pulse rings, cancel/retry (~17.6 KB)
+    │   ├── chat.css           # Alpine Forest & Meadow chat theme, bubbles, voice, composer (~48.3 KB)
+    │   ├── preloader.css      # Silk-smooth lens loader and entrance transition (~7.1 KB)
+    │   └── archived-landing.css # Isolated promotional scroll sections & Prismic pack (~100 KB)
+    ├── client.js              # Client state, WebSockets, Three.js warp engine, UI gestures
+    └── fabale.js              # Streamlined interactions (video playback, CTA matchmaking triggers)
 ```
 
 ---

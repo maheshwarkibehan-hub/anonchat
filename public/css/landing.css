@@ -1,0 +1,485 @@
+/* ==========================================================================
+   AnonChat Design System - Full-Screen Cinematic Video Landing
+   ========================================================================== */
+/* 2. Full-Screen Cinematic Video Hero */
+.editorial-hero-wrapper {
+  position: relative;
+  height: 100% !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  max-height: 100dvh !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--ed-bg-basis);
+  overflow: hidden !important;
+  box-sizing: border-box;
+  padding-top: 80px;
+  z-index: 2;
+}
+
+/* Cinematic fade from video into warm cream background */
+.editorial-hero-wrapper::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+/* Full-Bleed Background Video Layer */
+.editorial-video-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.editorial-video-layer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Ultra-clean transparent video overlay - keeps greenery video 100% vivid & crystal clear */
+.editorial-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 3-Column Distributed Navigation Bar (Oct 2026 Dynamic Floating Island Pill) */
+.editorial-navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 100%;
+  max-width: 100%;
+  padding: 24px 36px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  flex-shrink: 0;
+  background: transparent;
+  border-radius: 0;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  /* Deliberate smooth spring morph when the full-width bar becomes the floating island pill */
+  transition:
+    top 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 240ms ease,
+    border-color 240ms ease,
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 240ms ease,
+    -webkit-backdrop-filter 240ms ease;
+  will-change: transform, opacity;
+}
+
+/* Floating Island Pill on Scroll (Oct 2026 Dynamic Island / Floating Glass Morph) */
+.editorial-navbar.navbar-scrolled {
+  top: 14px;
+  width: min(92vw, 1020px);
+  max-width: 1020px;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  background: rgba(238, 244, 240, 0.90) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 12px 36px -4px rgba(15, 23, 42, 0.12),
+    0 4px 12px rgba(45, 90, 68, 0.08),
+    0 0 0 1px rgba(45, 90, 68, 0.06);
+}
+
+/* Left Col: Brand Logo */
+.editorial-nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.editorial-brand-logo {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1;
+  color: #0b1912 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85), 0 3px 12px rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  display: inline-flex;
+  align-items: baseline;
+  user-select: none;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+.editorial-navbar.navbar-scrolled .editorial-brand-logo {
+  font-size: 26px;
+  text-shadow: none;
+}
+
+.editorial-brand-logo:hover {
+  opacity: 0.85;
+}
+
+.editorial-brand-logo sup {
+  font-family: var(--ed-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 3px;
+  vertical-align: super;
+  color: #047857 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.editorial-navbar.navbar-scrolled .editorial-brand-logo sup {
+  text-shadow: none;
+}
+
+/* Center Col: Clean Links with zero frosted box at top level */
+.editorial-nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 0;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.editorial-navbar.navbar-scrolled .editorial-nav-center {
+  gap: 28px;
+}
+
+@media (max-width: 860px) {
+  .editorial-nav-center {
+    display: none !important;
+  }
+  .editorial-navbar {
+    grid-template-columns: 1fr auto;
+    padding: 16px 20px;
+  }
+  .editorial-navbar.navbar-scrolled {
+    width: min(92vw, 420px);
+    padding: 10px 18px;
+    background: rgba(238, 244, 240, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  #howJourneySvgGlow,
+  .ed-tl-svg-glow {
+    filter: none !important;
+    opacity: 0.25 !important;
+  }
+}
+
+.editorial-nav-link {
+  font-family: var(--ed-font-body);
+  font-weight: 600;
+  font-size: 13.5px;
+  line-height: 1;
+  color: #0b1912 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.editorial-navbar.navbar-scrolled .editorial-nav-link {
+  text-shadow: none;
+}
+
+.editorial-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #047857;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-nav-link:hover::after {
+  width: 100%;
+}
+
+.editorial-nav-link:hover {
+  color: #047857 !important;
+  opacity: 1;
+}
+
+/* Right Col: Pill-shaped CTA button & online pill */
+.editorial-nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+/* Live Online Status Pill */
+.editorial-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ed-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ed-primary-text);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 7px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+}
+
+.editorial-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: editorialPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes editorialPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.9); }
+}
+
+.editorial-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: var(--ed-primary-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.editorial-icon-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* Pill Action Button Component */
+.editorial-btn-pill {
+  border-radius: 9999px;
+  background-color: var(--ed-action-bg);
+  color: var(--ed-action-text);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ed-font-body);
+  text-decoration: none;
+  transform: scale(1);
+  transition: transform 200ms ease-in-out, background-color 200ms ease, box-shadow 200ms ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.editorial-btn-pill:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.editorial-btn-pill:active {
+  transform: scale(0.98);
+}
+
+.editorial-btn-pill.pill-sm {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.editorial-btn-pill.pill-hero {
+  padding: 20px 56px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 36px;
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) inset !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.editorial-btn-pill.pill-hero:hover {
+  transform: translateY(-2px) scale(1.03);
+  background-color: #022c22 !important;
+  border-color: rgba(52, 211, 153, 0.4) !important;
+  box-shadow: 0 20px 40px -8px rgba(2, 44, 34, 0.6), 0 0 24px rgba(52, 211, 153, 0.35) !important;
+}
+
+/* Hero Section Content Area: Perfectly optical-centered, no clipping */
+.editorial-hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 1280px;
+  width: 100%;
+  padding: 20px 32px 40px 32px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  flex: 1;
+}
+
+/* H1 Heading: Deep crisp obsidian with refined emerald accent that pops over the greenery video */
+.editorial-hero-h1 {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.8vw, 80px);
+  line-height: 0.96;
+  letter-spacing: -2.46px;
+  color: #0b1912 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8), 0 4px 16px rgba(255, 255, 255, 0.4);
+  margin: 0 auto;
+  max-width: 980px;
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .editorial-hero-h1 {
+    font-size: 46px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+}
+
+.editorial-hero-h1 em {
+  font-style: italic;
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  color: #047857 !important;
+  text-shadow: 0 0 20px rgba(5, 150, 105, 0.25), 0 1px 2px rgba(255, 255, 255, 0.9);
+  position: relative;
+  display: inline;
+}
+
+/* Hero description: Elegant translucent frosted glass pill badge - text is 100% sharp without darkening the video */
+.editorial-hero-desc {
+  max-width: 680px;
+  margin: 22px auto 0 auto;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  font-family: var(--ed-font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #1e293b !important;
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .editorial-hero-desc {
+    font-size: 14px;
+    margin-top: 16px;
+    padding: 10px 18px;
+    border-radius: 20px;
+  }
+  .editorial-btn-pill.pill-hero {
+    padding: 16px 36px;
+    margin-top: 28px;
+  }
+}
+
+/* Staggered Entrance Animations */
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-rise-0 {
+  animation: fadeRise 0.8s ease-out 0s both;
+}
+
+.fade-rise-2 {
+  animation: fadeRise 0.8s ease-out 0.2s both;
+}
+
+.fade-rise-4 {
+  animation: fadeRise 0.8s ease-out 0.4s both;
+}
+
+.editorial-hero-bottom {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.editorial-scroll-indicator {
+  color: var(--ed-primary-text);
+  opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editorial-scroll-indicator:hover {
+  opacity: 1;
+  transform: translateY(3px);
+}
+

@@ -1,0 +1,113 @@
+/* ==========================================================================
+   AnonChat Design System - Core Tokens & Global Resets
+   ========================================================================== */
+/* ==========================================================================
+   Editorial Cinematic Full-App Design System
+   Instrument Serif Typography • Deep Navy Palette • Clean Minimalist Luxury
+   ========================================================================== */
+
+:root {
+  --ed-primary-text: #0f172a;
+  --ed-muted-text: #475569;
+  --ed-action-bg: #0f172a;
+  --ed-action-text: #ffffff;
+  --ed-bg-cherry: #eef4f0;
+  --ed-bg-basis: #eef4f0;
+  --ed-bg-cream: #eef4f0;
+  --ed-bg-white: #ffffff;
+  --ed-bg-stone: #ffffff;
+  --ed-bg-subtle: #ffffff;
+  --ed-border-light: rgba(45, 90, 68, 0.10);
+  --ed-border-medium: rgba(45, 90, 68, 0.18);
+  --ed-font-display: 'Instrument Serif', Georgia, serif;
+  --ed-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ed-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --ed-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --ed-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+/* 1. Global Reset & Elimination of Purple / Cosmic Canvas Artifacts */
+#dimensionalCanvas,
+#spotlightCanvas,
+.subpixel-noise,
+.dimensional-flash,
+.dimensional-portal,
+.ambient-glow,
+.fab-hero-glow {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html:has(body.on-landing),
+body.on-landing {
+  overflow: hidden !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
+
+/* ---- CRITICAL: let the landing screen host fixed-position pins --------------
+   `style.css` gives every `.screen` this trio:
+
+       transform: scale(0.96) translateY(10px);
+       filter: blur(6px);
+       transform-style: preserve-3d;
+       will-change: transform, opacity, filter;
+
+   so screen switches can animate in 3D. `.screen.active` resets `transform` and
+   `filter`, but `transform-style: preserve-3d` and `will-change` were left in
+   place - and BOTH of those make the element a containing block for
+   `position: fixed` descendants, exactly as a real transform or filter would.
+
+   That is what silently broke every ScrollTrigger pin on this page. #storyStage
+   did get `position: fixed; top: 0`, but it was resolved against #landingScreen
+   (which starts at document y=0) instead of against the viewport, so it rendered
+   `scrollY` pixels above the fold. The pinned story simply scrolled off screen:
+   for roughly 1200px of the pin the viewport was blank except the progress bar,
+   while the deck transforms and the journey line kept scrubbing off-screen.
+
+   Flattening the landing screen costs nothing. It has no 3D children that need a
+   shared 3D rendering context - the story deck keeps its own `preserve-3d` on
+   `.card-swap-deck`, far below this element - and dropping the permanent
+   `will-change` also stops the browser holding a compositor layer for the entire
+   page, which is pure wasted memory for a wrapper this large. The searching and
+   chat screens keep their 3D treatment: neither contains a pinned trigger, so
+   they have no reason to be flattened. */
+#landingScreen {
+  transform-style: flat !important;
+  will-change: auto !important;
+}
+
+body.on-landing .app-shell,
+body.on-landing .viewport,
+#landingScreen.screen.active {
+  overflow: hidden !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body.on-landing,
+body.on-landing .app-shell,
+body.on-landing .viewport,
+#landingScreen,
+.editorial-hero-wrapper,
+.fab-ticker-section,
+.scroll-story-section,
+.fab-section,
+#features,
+#why,
+#use-cases,
+#faq,
+.fab-footer {
+  background-color: var(--ed-bg-cherry) !important;
+  background: var(--ed-bg-cherry) !important;
+  color: var(--ed-primary-text) !important;
+}
+

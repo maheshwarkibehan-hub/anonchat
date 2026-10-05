@@ -1,0 +1,537 @@
+/* ==========================================================================
+   AnonChat Design System - Full-Screen Matchmaking & Finding Screen
+   ========================================================================== */
+/* ==========================================================================
+   FULL-SCREEN SEARCHING VIEW WITH CHERRISH GROUND & TENDER-SWAN-29 HONEYCOMB
+   https://uiverse.io/Nawsome/tender-swan-29
+   ========================================================================== */
+#searchingScreen.screen {
+  display: none !important;
+}
+
+#searchingScreen.screen.active {
+  display: flex !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 999999 !important;
+  background-color: var(--ed-bg-cherry) !important;
+  background: var(--ed-bg-cherry) !important;
+  overflow: hidden !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Hide app footer completely when searchingScreen or chatScreen is active */
+body:not(.on-landing) .app-footer,
+.app-shell:has(#searchingScreen.active) .app-footer,
+.app-shell:has(#chatScreen.active) .app-footer,
+#searchingScreen.active ~ .app-footer {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+.finding-stage {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 32px !important;
+  margin: 0 auto !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* Honeycomb socket container: exactly 200px by 200px centered in flex flow */
+.socket {
+  width: 200px !important;
+  height: 200px !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  left: auto !important;
+  top: auto !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.4s ease, opacity 0.3s ease !important;
+}
+
+.socket.match-found {
+  transform: scale(1.6) !important;
+  opacity: 0 !important;
+}
+
+.hex-brick {
+  background: #0f172a !important;
+  width: 30px !important;
+  height: 17px !important;
+  position: absolute !important;
+  top: 5px !important;
+  animation-name: fade00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  -webkit-animation-name: fade00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.h2 {
+  transform: rotate(60deg) !important;
+  -webkit-transform: rotate(60deg) !important;
+}
+
+.h3 {
+  transform: rotate(-60deg) !important;
+  -webkit-transform: rotate(-60deg) !important;
+}
+
+.gel {
+  height: 30px !important;
+  width: 30px !important;
+  transition: all .3s !important;
+  -webkit-transition: all .3s !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+}
+
+.center-gel {
+  margin-left: -15px !important;
+  margin-top: -15px !important;
+  animation-name: pulse00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  -webkit-animation-name: pulse00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+}
+
+.c1 { margin-left: -47px !important; margin-top: -15px !important; }
+.c2 { margin-left: -31px !important; margin-top: -43px !important; }
+.c3 { margin-left: 1px !important; margin-top: -43px !important; }
+.c4 { margin-left: 17px !important; margin-top: -15px !important; }
+.c5 { margin-left: -31px !important; margin-top: 13px !important; }
+.c6 { margin-left: 1px !important; margin-top: 13px !important; }
+.c7 { margin-left: -63px !important; margin-top: -43px !important; }
+.c8 { margin-left: 33px !important; margin-top: -43px !important; }
+.c9 { margin-left: -15px !important; margin-top: 41px !important; }
+.c10 { margin-left: -63px !important; margin-top: 13px !important; }
+.c11 { margin-left: 33px !important; margin-top: 13px !important; }
+.c12 { margin-left: -15px !important; margin-top: -71px !important; }
+.c13 { margin-left: -47px !important; margin-top: -71px !important; }
+.c14 { margin-left: 17px !important; margin-top: -71px !important; }
+.c15 { margin-left: -47px !important; margin-top: 41px !important; }
+.c16 { margin-left: 17px !important; margin-top: 41px !important; }
+.c17 { margin-left: -79px !important; margin-top: -15px !important; }
+.c18 { margin-left: 49px !important; margin-top: -15px !important; }
+.c19 { margin-left: -63px !important; margin-top: -99px !important; }
+.c20 { margin-left: 33px !important; margin-top: -99px !important; }
+.c21 { margin-left: 1px !important; margin-top: -99px !important; }
+.c22 { margin-left: -31px !important; margin-top: -99px !important; }
+.c23 { margin-left: -63px !important; margin-top: 69px !important; }
+.c24 { margin-left: 33px !important; margin-top: 69px !important; }
+.c25 { margin-left: 1px !important; margin-top: 69px !important; }
+.c26 { margin-left: -31px !important; margin-top: 69px !important; }
+.c27 { margin-left: -79px !important; margin-top: -15px !important; }
+.c28 { margin-left: -95px !important; margin-top: -43px !important; }
+.c29 { margin-left: -95px !important; margin-top: 13px !important; }
+.c30 { margin-left: 49px !important; margin-top: 41px !important; }
+.c31 { margin-left: -79px !important; margin-top: -71px !important; }
+.c32 { margin-left: -111px !important; margin-top: -15px !important; }
+.c33 { margin-left: 65px !important; margin-top: -43px !important; }
+.c34 { margin-left: 65px !important; margin-top: 13px !important; }
+.c35 { margin-left: -79px !important; margin-top: 41px !important; }
+.c36 { margin-left: 49px !important; margin-top: -71px !important; }
+.c37 { margin-left: 81px !important; margin-top: -15px !important; }
+
+.r1 {
+  animation-name: pulse00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-delay: .2s !important;
+  -webkit-animation-name: pulse00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  -webkit-animation-delay: .2s !important;
+}
+
+.r2 {
+  animation-name: pulse00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-delay: .4s !important;
+  -webkit-animation-name: pulse00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  -webkit-animation-delay: .4s !important;
+}
+
+.r3 {
+  animation-name: pulse00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-delay: .6s !important;
+  -webkit-animation-name: pulse00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  -webkit-animation-delay: .6s !important;
+}
+
+.r1 > .hex-brick {
+  animation-name: fade00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-delay: .2s !important;
+  -webkit-animation-name: fade00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  -webkit-animation-delay: .2s !important;
+}
+
+.r2 > .hex-brick {
+  animation-name: fade00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-delay: .4s !important;
+  -webkit-animation-name: fade00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  -webkit-animation-delay: .4s !important;
+}
+
+.r3 > .hex-brick {
+  animation-name: fade00 !important;
+  animation-duration: 2s !important;
+  animation-iteration-count: infinite !important;
+  animation-delay: .6s !important;
+  -webkit-animation-name: fade00 !important;
+  -webkit-animation-duration: 2s !important;
+  -webkit-animation-iteration-count: infinite !important;
+  -webkit-animation-delay: .6s !important;
+}
+
+@keyframes pulse00 {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.01); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade00 {
+  0% { background: #292524; }
+  50% { background: #0c0a09; }
+  100% { background: #44403c; }
+}
+
+/* Content Area Below Honeycomb */
+.finding-caption-area {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  transition: all 0.35s ease !important;
+}
+
+.finding-caption-area.match-found {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+}
+
+.finding-title {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: clamp(30px, 4.5vw, 38px) !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.finding-subtitle {
+  font-family: var(--ed-font-body) !important;
+  font-size: 15px !important;
+  color: var(--ed-muted-text) !important;
+  margin: 0 0 24px 0 !important;
+  line-height: 1.5 !important;
+}
+
+.finding-cancel-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  padding: 10px 28px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08) !important;
+  transition: all 0.2s ease !important;
+}
+
+.finding-cancel-btn:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Search Timeout State & Actions */
+.search-timeout-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 12px auto 16px auto !important;
+  max-width: 380px !important;
+  animation: fadeIn 0.3s ease !important;
+}
+
+.search-timeout-actions.hidden {
+  display: none !important;
+}
+
+.search-timeout-msg {
+  font-family: var(--ed-font-body) !important;
+  font-size: 13.5px !important;
+  color: #dc2626 !important;
+  margin: 0 !important;
+  line-height: 1.45 !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+}
+
+.search-retry-btn {
+  background: var(--teal-hero, #059669) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--teal-hero, #059669) !important;
+  padding: 8px 22px !important;
+  font-size: 13px !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3) !important;
+}
+
+.search-retry-btn:hover {
+  background: var(--teal-hero-hover, #047857) !important;
+  border-color: var(--teal-hero-hover, #047857) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4) !important;
+}
+
+/* Horizontal Expanding Transition Layer When Match is Found */
+.match-expand-bar {
+  position: fixed !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 32px !important;
+  height: 18px !important;
+  background: #0f172a !important;
+  border-radius: 6px !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 9999999 !important;
+  transition: transform 0.58s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.2s ease, border-radius 0.4s ease !important;
+}
+
+.match-expand-bar.active {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(90) !important;
+  border-radius: 0 !important;
+}
+
+
+/* ==========================================================================
+   PERFECT FULLSCREEN FINDING VIEW (IMMUNE TO ALL ZOOM LEVELS & CONTAINER BLOCKS)
+   ========================================================================== */
+body.on-searching,
+body:has(#searchingScreen.active) {
+  display: block !important;
+  background-color: var(--ed-bg-cherry) !important;
+  background: var(--ed-bg-cherry) !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.on-searching .app-shell,
+body:has(#searchingScreen.active) .app-shell,
+body.on-searching .app-footer,
+body:has(#searchingScreen.active) .app-footer,
+body.on-searching .viewport,
+body:has(#searchingScreen.active) .viewport {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+#searchingScreen.screen {
+  display: none !important;
+}
+
+#searchingScreen.screen.active {
+  display: flex !important;
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 9999999 !important;
+  background-color: var(--ed-bg-cherry) !important;
+  background: var(--ed-bg-cherry) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.finding-stage {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 36px !important;
+  margin: 0 auto !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+}
+
+.socket {
+  width: 220px !important;
+  height: 200px !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  left: auto !important;
+  top: auto !important;
+  flex-shrink: 0 !important;
+  transform-origin: center center !important;
+  transition: transform 0.4s ease, opacity 0.3s ease !important;
+}
+
+@media (min-width: 768px) {
+  .socket {
+    transform: scale(1.15) !important;
+  }
+}
+
+.socket.match-found {
+  transform: scale(2) !important;
+  opacity: 0 !important;
+}
+
+.finding-caption-area {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 480px !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  transition: all 0.35s ease !important;
+}
+
+.finding-caption-area.match-found {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+}
+
+.finding-title {
+  font-family: var(--ed-font-display) !important;
+  font-weight: 400 !important;
+  font-size: clamp(32px, 4vw, 42px) !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ed-primary-text) !important;
+  margin: 0 0 10px 0 !important;
+  line-height: 1.15 !important;
+}
+
+.finding-subtitle {
+  font-family: var(--ed-font-body) !important;
+  font-size: 16px !important;
+  color: var(--ed-muted-text) !important;
+  margin: 0 0 26px 0 !important;
+  line-height: 1.5 !important;
+}
+
+.finding-cancel-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  color: var(--ed-primary-text) !important;
+  font-family: var(--ed-font-body) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 11px 32px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.finding-cancel-btn:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ==========================================================================
+   MOBILE LIGHTWEIGHT HARDWARE OPTIMIZATION
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Disable expensive GPU backdrop filters on mobile for buttery 120Hz scrolling */
+  .fab-card,
+  .fab-glass-pill,
+  .editorial-card,
+  .card,
+  .navbar,
+  .fab-navbar-wrap {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+
