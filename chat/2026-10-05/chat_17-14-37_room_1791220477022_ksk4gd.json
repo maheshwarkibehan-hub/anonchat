@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "roomId": "room_1791220477022_ksk4gd",
+    "vibe": "Direct",
+    "date": "2026-10-05",
+    "startTime": "2026-10-05T17:14:37.022Z",
+    "endTime": "2026-10-05T17:14:46.587Z",
+    "durationSeconds": 10,
+    "totalMessages": 2,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791220477969_4gww88",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220484243,
+      "isoTime": "2026-10-05T17:14:44.243Z",
+      "type": "text",
+      "text": "hey",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791220479564_vbaqcw",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220485838,
+      "isoTime": "2026-10-05T17:14:45.838Z",
+      "type": "text",
+      "text": "dekha",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hey"
+      },
+      {
+        "role": "assistant",
+        "content": "dekha"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hey"
+      },
+      {
+        "from": "gpt",
+        "value": "dekha"
+      }
+    ]
+  }
+}
