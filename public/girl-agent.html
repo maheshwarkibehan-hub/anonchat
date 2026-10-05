@@ -66,17 +66,17 @@
     .agent-meta strong, .agent-meta span { display: block; }
     .agent-meta span { margin-top: 4px; color: var(--muted); font-size: .82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .online { color: var(--green); font-size: .72rem; }
-    .chat { min-height: 570px; display: flex; flex-direction: column; }
-    .chat-header { justify-content: space-between; padding: 20px 22px; border-bottom: 1px solid var(--border); }
-    .chat-header p { margin: 5px 0 0; color: var(--muted); font-size: .82rem; }
-    .tag { padding: 6px 9px; border-radius: 999px; background: rgba(74, 222, 128, .1); color: var(--green); font-size: .72rem; }
-    .messages { flex: 1; min-height: 390px; padding: 22px; overflow: auto; }
-    .message { max-width: 78%; margin-bottom: 14px; padding: 12px 14px; border-radius: 16px; background: var(--panel-soft); color: #e5e7eb; line-height: 1.5; }
-    .message.me { margin-left: auto; background: linear-gradient(135deg, rgba(244,114,182,.24), rgba(167,139,250,.2)); }
-    .message small { display: block; margin-top: 5px; color: var(--muted); font-size: .7rem; }
-    .chat-footer { gap: 10px; padding: 16px 18px; border-top: 1px solid var(--border); }
-    input { min-width: 0; flex: 1; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; outline: none; color: var(--text); background: rgba(0,0,0,.22); }
-    input:focus { border-color: var(--pink); }
+    .overview { min-height: 470px; padding-bottom: 22px; }
+    .overview-header { padding: 22px; border-bottom: 1px solid var(--border); }
+    .overview-header p { margin: 7px 0 0; color: var(--muted); font-size: .84rem; }
+    .tag { display: inline-block; margin-top: 18px; padding: 6px 9px; border-radius: 999px; background: rgba(74, 222, 128, .1); color: var(--green); font-size: .72rem; }
+    .overview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 20px 22px 0; }
+    .overview-item { padding: 15px; border: 1px solid var(--border); border-radius: 15px; background: var(--panel-soft); }
+    .overview-item span { display: block; color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+    .overview-item strong { display: block; margin-top: 8px; font-size: .96rem; }
+    .capabilities { margin: 18px 22px 0; padding: 16px; border-radius: 15px; background: rgba(167,139,250,.08); }
+    .capabilities strong { font-size: .86rem; }
+    .capabilities p { margin: 7px 0 0; color: var(--muted); font-size: .8rem; line-height: 1.55; }
     .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
     .stat { padding: 15px; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); }
     .stat-label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
@@ -100,8 +100,8 @@
       .topbar { align-items: flex-start; }
       .layout { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
-      .chat { min-height: 520px; }
-      .messages { min-height: 320px; }
+      .overview { min-height: auto; }
+      .overview-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -153,23 +153,24 @@
         </div>
       </aside>
 
-      <section class="panel chat" aria-label="Selected agent chat">
-        <header class="chat-header">
+      <section class="panel overview" aria-label="Selected agent overview">
+        <header class="overview-header">
           <div>
-            <strong id="agentName">Anmol</strong>
-            <p id="agentDescription">Playful, warm, and curious · fictional AI agent</p>
+            <strong>Anmol</strong>
+            <p>Playful, warm, and curious · fictional AI agent profile</p>
           </div>
-          <span class="tag">SIMULATION</span>
+          <span class="tag">SIMULATION ONLY</span>
         </header>
-        <div class="messages" id="messages">
-          <div class="message">Hi! I’m Anmol, a fictional AI agent in the Agent Lab. What would you like to talk about?<small>AI simulation · transparent persona</small></div>
-          <div class="message me">Let’s test the conversation flow.</div>
-          <div class="message">Perfect. I can keep the tone playful and expressive while staying clear that I’m an AI demo.</div>
+        <div class="overview-grid">
+          <div class="overview-item"><span>Persona style</span><strong>Expressive &amp; playful</strong></div>
+          <div class="overview-item"><span>Primary tone</span><strong>Warm, friendly, witty</strong></div>
+          <div class="overview-item"><span>Relationship metadata</span><strong>Avika · fictional profile</strong></div>
+          <div class="overview-item"><span>Safety mode</span><strong style="color: var(--green);">Transparent AI</strong></div>
         </div>
-        <form class="chat-footer" id="chatForm">
-          <input id="messageInput" autocomplete="off" placeholder="Type a demo message..." aria-label="Demo message" />
-          <button class="button" type="submit">Send</button>
-        </form>
+        <div class="capabilities">
+          <strong>Agent capabilities</strong>
+          <p>Conversation style analysis, tone presets, relationship metadata review, and usage monitoring. Live chat is disabled in this dashboard view.</p>
+        </div>
       </section>
 
       <aside class="panel side-section">
@@ -187,44 +188,5 @@
       </aside>
     </section>
   </main>
-  <script>
-    const messages = document.getElementById('messages');
-    const input = document.getElementById('messageInput');
-    const name = document.getElementById('agentName');
-    const description = document.getElementById('agentDescription');
-    const replies = [
-      'That’s interesting — tell me a little more.',
-      'I’m following. Want to explore the idea together?',
-      'Nice prompt. I’ll keep the conversation playful, respectful, and clearly fictional.',
-      'Got it. What should we try next in this demo?'
-    ];
-
-    function addMessage(text, mine) {
-      const item = document.createElement('div');
-      item.className = `message${mine ? ' me' : ''}`;
-      item.textContent = text;
-      messages.appendChild(item);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    document.querySelectorAll('.agent-row').forEach((button) => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.agent-row').forEach((row) => row.classList.remove('active'));
-        button.classList.add('active');
-        name.textContent = button.dataset.name;
-        description.textContent = `${button.dataset.description} · fictional AI agent`;
-        addMessage(`You selected ${button.dataset.name}. I’m ready for a transparent AI demo conversation.`, false);
-      });
-    });
-
-    document.getElementById('chatForm').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const text = input.value.trim();
-      if (!text) return;
-      addMessage(text, true);
-      input.value = '';
-      window.setTimeout(() => addMessage(replies[Math.floor(Math.random() * replies.length)], false), 450);
-    });
-  </script>
 </body>
 </html>
