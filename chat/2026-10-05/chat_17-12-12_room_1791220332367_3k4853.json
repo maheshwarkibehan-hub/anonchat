@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "roomId": "room_1791220332367_3k4853",
+    "vibe": "Direct",
+    "date": "2026-10-05",
+    "startTime": "2026-10-05T17:12:12.367Z",
+    "endTime": "2026-10-05T17:12:49.212Z",
+    "durationSeconds": 37,
+    "totalMessages": 7,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791220331697_546srl",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220337977,
+      "isoTime": "2026-10-05T17:12:17.977Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791220341946_l7q43z",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220342728,
+      "isoTime": "2026-10-05T17:12:22.728Z",
+      "type": "text",
+      "text": "abhi tak ho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791220339445_hjaart",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220345723,
+      "isoTime": "2026-10-05T17:12:25.723Z",
+      "type": "text",
+      "text": "yes",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791220342869_p1ke0v",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220349143,
+      "isoTime": "2026-10-05T17:12:29.143Z",
+      "type": "text",
+      "text": "ek cheez dikhao",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791220349981_6r130c",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220356253,
+      "isoTime": "2026-10-05T17:12:36.253Z",
+      "type": "text",
+      "text": "maheshwar bahut marenga",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791220355606_j3zdog",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791220356447,
+      "isoTime": "2026-10-05T17:12:36.447Z",
+      "type": "text",
+      "text": "hmm",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791220352381_lgkt03",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791220358653,
+      "isoTime": "2026-10-05T17:12:38.653Z",
+      "type": "text",
+      "text": "sone nahi dega",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "user",
+        "content": "abhi tak ho"
+      },
+      {
+        "role": "assistant",
+        "content": "yes"
+      },
+      {
+        "role": "assistant",
+        "content": "ek cheez dikhao"
+      },
+      {
+        "role": "assistant",
+        "content": "maheshwar bahut marenga"
+      },
+      {
+        "role": "user",
+        "content": "hmm"
+      },
+      {
+        "role": "assistant",
+        "content": "sone nahi dega"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "human",
+        "value": "abhi tak ho"
+      },
+      {
+        "from": "gpt",
+        "value": "yes"
+      },
+      {
+        "from": "gpt",
+        "value": "ek cheez dikhao"
+      },
+      {
+        "from": "gpt",
+        "value": "maheshwar bahut marenga"
+      },
+      {
+        "from": "human",
+        "value": "hmm"
+      },
+      {
+        "from": "gpt",
+        "value": "sone nahi dega"
+      }
+    ]
+  }
+}
