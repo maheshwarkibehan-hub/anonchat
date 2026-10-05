@@ -11,7 +11,7 @@
   </script>
   <link rel="stylesheet" href="style.css?v=2.4.2" />
   <link rel="stylesheet" href="fabale.css?v=2.4.2" />
-  <link rel="stylesheet" href="editorial.css?v=2.5.0" />
+  <link rel="stylesheet" href="editorial.css?v=2.6.0" />
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -343,13 +343,15 @@
             </div>
 
             <!-- Center Col: Hidden on mobile. Horizontal flex list of links -->
-            <nav class="editorial-nav-center" id="navMenu">
+            <nav class="editorial-nav-center" id="navMenu" style="display:none;">
+              <!-- Archived landing navigation links
               <a href="#story" class="editorial-nav-link">The Story</a>
               <a href="#how-it-works" class="editorial-nav-link">How It Works</a>
               <a href="#features" class="editorial-nav-link">Features</a>
               <a href="#why" class="editorial-nav-link">Why AnonChat</a>
               <a href="#use-cases" class="editorial-nav-link">Campus Talks</a>
               <a href="#faq" class="editorial-nav-link">FAQ</a>
+              -->
             </nav>
 
             <!-- Right Col: Pill-shaped CTA button in solid black with white text -->
@@ -389,11 +391,13 @@
 
             <!-- Auxiliary status helper for client.js socket binding -->
             <span id="studentOnlineText" style="display:none;">1 student online right now</span>
+            <span id="schoolSubtext" style="display:none;">No names. No judgment.<br />Just students being real.</span>
             <button type="button" id="navHowBtn" style="display:none;"></button>
             <button type="button" id="navAboutBtn" style="display:none;"></button>
           </div>
 
-          <!-- Bottom Spacer / Subtle scroll anchor indicator -->
+          <!-- Bottom Spacer / Subtle scroll anchor indicator (Archived for pure zero-scroll video landing) -->
+          <!--
           <div class="editorial-hero-bottom">
             <a href="#story" class="editorial-scroll-indicator" id="heroScrollIndicator" aria-label="Scroll to explore narrative">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -401,9 +405,26 @@
               </svg>
             </a>
           </div>
-        </section>
+          -->
+          </section>
 
-        <!-- MARQUEE / TECH TICKER SECTION -->
+        <!-- =================================================================
+             ARCHIVED LANDING SECTIONS (COMMENTED OUT FOR ZERO SCROLL & MAX SPEED)
+             Sections archived:
+             - Ticker Section
+             - The Story (#story - 3D Card Deck)
+             - How It Works (#how-it-works)
+             - Features (#features)
+             - Chat Preview Showcase (#gallery)
+             - Why AnonChat (#why)
+             - Campus Talks & Use Cases (#use-cases)
+             - FAQ Accordion (#faq)
+             - Final CTA Section
+             - Minimalist Editorial Footer
+             Permanent raw backup preserved in: scratch/landing-sections-backup.html
+             =================================================================
+
+<!-- MARQUEE / TECH TICKER SECTION -- >
         <section class="fab-ticker-section">
           <div class="fab-container">
             <div class="fab-ticker-label">Engineered for Modern Web Speed & Zero-Footprint Privacy</div>
@@ -432,23 +453,23 @@
           </div>
         </section>
 
-        <!-- 3D STACKING & SWAPPING CARDS SHOWCASE (Real AnonChat UI + SVG Journey Line) -->
+        <!-- 3D STACKING & SWAPPING CARDS SHOWCASE (Real AnonChat UI + SVG Journey Line) -- >
         <!-- The whole block below is ONE pinned story: the deck, the journey rail and
              the continuous horizontal sentence are driven by a single scrubbed
-             ScrollTrigger timeline, so they can never drift out of sync. -->
+             ScrollTrigger timeline, so they can never drift out of sync. -- >
         <section class="scroll-story-section" id="story">
           <div class="sticky-stage" id="storyStage">
             <div class="scroll-story-container">
-            <!-- Left Column: Pinned Story Track with Dynamic SVG Journey Line & Sticky Content Switch -->
+            <!-- Left Column: Pinned Story Track with Dynamic SVG Journey Line & Sticky Content Switch -- >
             <div class="story-left-col">
               <div class="story-sticky-content">
                 <div class="fab-badge-pill story-badge">
                   <span class="story-live-pulse"></span>
                   <span id="storyBadgeText">01 &bull; Late Night Confessions</span>
                 </div>
-                <!-- ALL 4 HEADINGS DIRECTLY PRESENT IN HTML -->
+                <!-- ALL 4 HEADINGS DIRECTLY PRESENT IN HTML -- >
                 <div class="story-heading-switch-container" id="storyHeadingContainer">
-                  <!-- Step 01 Heading -->
+                  <!-- Step 01 Heading -- >
                   <div class="story-switch-item active" data-step="0">
                     <h2 class="story-headline" id="storyDynamicTitle">
                       Late Night <span class="serif-italic">Confessions</span>
@@ -458,7 +479,7 @@
                     </p>
                   </div>
 
-                  <!-- Step 02 Heading -->
+                  <!-- Step 02 Heading -- >
                   <div class="story-switch-item" data-step="1">
                     <h2 class="story-headline">
                       15s Ephemeral <span class="serif-italic">Voice Notes</span>
@@ -468,7 +489,7 @@
                     </p>
                   </div>
 
-                  <!-- Step 03 Heading -->
+                  <!-- Step 03 Heading -- >
                   <div class="story-switch-item" data-step="2">
                     <h2 class="story-headline">
                       5s Self-Destruct <span class="serif-italic">Smoke Bombs</span>
@@ -478,7 +499,7 @@
                     </p>
                   </div>
 
-                  <!-- Step 04 Heading -->
+                  <!-- Step 04 Heading -- >
                   <div class="story-switch-item" data-step="3">
                     <h2 class="story-headline">
                       Sub-10ms Match, <span class="serif-italic">3s Skip Grace</span>
@@ -489,7 +510,7 @@
                   </div>
                 </div>
 
-                <!-- Interactive SVG Journey Connector Rail -->
+                <!-- Interactive SVG Journey Connector Rail -- >
                 <div class="story-journey-wrapper" role="navigation" aria-label="Story steps">
                   <svg class="journey-svg-rail" viewBox="0 0 34 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <defs>
@@ -499,9 +520,9 @@
                         <stop offset="100%" stop-color="#6366f1" />
                       </linearGradient>
                     </defs>
-                    <!-- Background static track -->
+                    <!-- Background static track -- >
                     <path class="journey-base-path" d="M 17 16 C 17 90, 17 120, 17 190 C 17 240, 17 280, 17 304" stroke="rgba(14, 116, 144, 0.15)" stroke-width="3" stroke-linecap="round" />
-                    <!-- Animated drawing path -->
+                    <!-- Animated drawing path -- >
                     <path id="journeySvgPath" class="journey-draw-path" d="M 17 16 C 17 90, 17 120, 17 190 C 17 240, 17 280, 17 304" stroke="url(#journeyGradient)" stroke-width="3.5" stroke-linecap="round" />
                   </svg>
 
@@ -553,12 +574,12 @@
               </div>
             </div>
 
-            <!-- Right Column: 3D Stacking & Swapping Cards Deck (Real Chat UIs) -->
+            <!-- Right Column: 3D Stacking & Swapping Cards Deck (Real Chat UIs) -- >
             <div class="story-right-col">
               <div class="card-swap-container" id="cardSwapContainer">
                 <div class="card-swap-deck" id="cardSwapDeck">
                   
-                  <!-- REAL CHAT CARD 0: Quoted Replies & Campus Confessions -->
+                  <!-- REAL CHAT CARD 0: Quoted Replies & Campus Confessions -- >
                   <div class="swap-card story-card" id="swapCard0" data-card-id="storyCard0" data-index="0">
                     <div class="real-chat-frame has-screenshot">
                       <img src="chat-screenshot-real-1.png" alt="Late Night Confessions Real Chat" class="real-chat-screenshot-img" />
@@ -566,7 +587,7 @@
                         <span class="real-live-dot"></span>
                         <span>01 &bull; Late Night Confessions</span>
                       </div>
-                      <!-- Semantic accessibility structure -->
+                      <!-- Semantic accessibility structure -- >
                       <div class="sr-only" aria-hidden="true" style="display:none;">
                         <span class="real-peer-name">Stranger #4092</span>
                         <div class="real-quote-preview">"bro syllabus kitna cover hua?"</div>
@@ -575,7 +596,7 @@
                     </div>
                   </div>
 
-                  <!-- REAL CHAT CARD 1: 15s Ephemeral Audio Note & View Once -->
+                  <!-- REAL CHAT CARD 1: 15s Ephemeral Audio Note & View Once -- >
                   <div class="swap-card story-card" id="swapCard1" data-card-id="storyCard1" data-index="1">
                     <div class="real-chat-frame has-screenshot">
                       <img src="chat-screenshot-real-2.png" alt="15s Ephemeral Audio Note Real Chat" class="real-chat-screenshot-img" />
@@ -590,7 +611,7 @@
                     </div>
                   </div>
 
-                  <!-- REAL CHAT CARD 2: 5s Self-Destruct Bomb & Safe Links -->
+                  <!-- REAL CHAT CARD 2: 5s Self-Destruct Bomb & Safe Links -- >
                   <div class="swap-card story-card" id="swapCard2" data-card-id="storyCard2" data-index="2">
                     <div class="real-chat-frame has-screenshot">
                       <img src="chat-screenshot-real-3.png" alt="5s Self-Destruct Bombs Real Chat" class="real-chat-screenshot-img" />
@@ -605,7 +626,7 @@
                     </div>
                   </div>
 
-                  <!-- REAL CHAT CARD 3: 3-Second Skip Grace & 0.3s Matchmaking -->
+                  <!-- REAL CHAT CARD 3: 3-Second Skip Grace & 0.3s Matchmaking -- >
                   <div class="swap-card story-card" id="swapCard3" data-card-id="storyCard3" data-index="3">
                     <div class="real-chat-frame has-screenshot">
                       <img src="chat-screenshot-real-4.png" alt="3s Skip Grace Protection Real Chat" class="real-chat-screenshot-img" />
@@ -622,12 +643,12 @@
                 </div>
               </div>
             </div>
-            </div><!-- /.scroll-story-container -->
+            </div><!-- /.scroll-story-container -- >
 
             <!-- CONTINUOUS HORIZONTAL TEXT JOURNEY
                  One long editorial sentence, not a slide deck. Every connector below is
                  inline punctuation inside the same flex flow, and the gaps are
-                 deliberately uneven so the rhythm reads as designed, not repetitive. -->
+                 deliberately uneven so the rhythm reads as designed, not repetitive. -- >
             <div class="horizontal-journey-ribbon" id="journeyRibbon" aria-label="AnonChat continuous journey sentence">
               <p class="journey-sentence-static">
                 In every late-night silence, discover the undeniable freedom of sharing pure
@@ -697,7 +718,7 @@
                 <span class="ribbon-pill orange" style="--lead:16px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Vaporizes on Exit</span>
               </div>
             </div>
-          </div><!-- /.sticky-stage -->
+          </div><!-- /.sticky-stage -- >
         </section>
 
         <!-- ==========================================================================
@@ -708,7 +729,7 @@
              navbar no longer even exposes - the lifecycle now reads straight off the
              page. Purely decorative motion: every beat is in the DOM as real text, so
              with reduced motion or without GSAP the list is simply fully lit.
-             ========================================================================== -->
+             ========================================================================== -- >
         <section class="fab-section ed-tl-section" id="how-it-works" data-ed-tint="cyan">
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
@@ -718,7 +739,7 @@
             </div>
 
             <div class="ed-tl" id="howTimeline">
-              <!-- Animated SVG Journey Connector Rail: Draws itself forward based on scroll percentage -->
+              <!-- Animated SVG Journey Connector Rail: Draws itself forward based on scroll percentage -- >
               <div class="ed-tl-rail" aria-hidden="true">
                 <svg class="ed-tl-svg-rail" id="howJourneySvg" viewBox="0 0 40 1000" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
@@ -741,13 +762,13 @@
                       <stop offset="100%" stop-color="rgba(33, 210, 237, 0)" />
                     </radialGradient>
                   </defs>
-                  <!-- Static background track -->
+                  <!-- Static background track -- >
                   <path class="ed-tl-svg-base" d="M 20 0 L 20 1000" vector-effect="non-scaling-stroke" stroke="rgba(14, 116, 144, 0.16)" stroke-width="2.5" stroke-linecap="round" />
-                  <!-- Ambient neon blur glow path -->
+                  <!-- Ambient neon blur glow path -- >
                   <path id="howJourneySvgGlow" class="ed-tl-svg-glow" d="M 20 0 L 20 1000" vector-effect="non-scaling-stroke" stroke="url(#howJourneyGradient)" stroke-width="7" stroke-linecap="round" opacity="0.4" filter="url(#howJourneyGlow)" />
-                  <!-- Animated drawing path -->
+                  <!-- Animated drawing path -- >
                   <path id="howJourneySvgPath" class="ed-tl-svg-draw" d="M 20 0 L 20 1000" vector-effect="non-scaling-stroke" stroke="url(#howJourneyGradient)" stroke-width="3.5" stroke-linecap="round" pathLength="1000" />
-                  <!-- Traveling beacon / laser head at tip of drawn line -->
+                  <!-- Traveling beacon / laser head at tip of drawn line -- >
                   <g id="howJourneyBeaconGroup" class="ed-tl-beacon-group" transform="translate(20, 0)">
                     <circle class="ed-tl-beacon-halo" r="9" fill="url(#howBeaconRadial)" />
                     <circle class="ed-tl-beacon-ring" r="6" fill="none" stroke="#21d2ed" stroke-width="1.5" />
@@ -805,7 +826,7 @@
 
         <!-- ==========================================================================
              FEATURES SECTION (3 Luxury Cards with extracted Fabale graphics)
-             ========================================================================== -->
+             ========================================================================== -- >
         <section class="fab-section" id="features">
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
@@ -815,7 +836,7 @@
             </div>
 
             <div class="fab-features-grid">
-              <!-- Feature 1 -->
+              <!-- Feature 1 -- >
               <div class="fab-feature-card fab-reveal">
                 <div class="editorial-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -827,7 +848,7 @@
                 <p class="fab-feature-desc">Pair with a stranger or schoolmate in under half a second using low-latency FIFO Socket.io routing.</p>
               </div>
 
-              <!-- Feature 2 -->
+              <!-- Feature 2 -- >
               <div class="fab-feature-card fab-reveal">
                 <div class="editorial-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -839,7 +860,7 @@
                 <p class="fab-feature-desc">Voice notes and photos exist only in active RAM. Text transcripts are saved in private session archives without accounts or profiles.</p>
               </div>
 
-              <!-- Feature 3 -->
+              <!-- Feature 3 -- >
               <div class="fab-feature-card fab-reveal">
                 <div class="editorial-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -884,10 +905,10 @@
              Everything degrades without JavaScript: all four copies and all four
              captions are real text in the DOM, and the slides fall back to a
              readable vertical stack / native scroll-snap carousel on small screens.
-             ========================================================================== -->
+             ========================================================================== -- >
         <section class="fab-section gallery-pin-section" id="gallery">
           <!-- The header stays OUT of the pinned stage, so it reads as a normal
-               section intro and scrolls away before the showcase takes over. -->
+               section intro and scrolls away before the showcase takes over. -- >
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
               <div class="fab-badge-pill">Inside A Real Room</div>
@@ -896,11 +917,11 @@
             </div>
           </div>
 
-          <!-- THE PINNED STAGE. Exactly one viewport tall, pinned by ScrollTrigger. -->
+          <!-- THE PINNED STAGE. Exactly one viewport tall, pinned by ScrollTrigger. -- >
           <div class="gallery-pin" id="galleryPin">
             <div class="gallery-pin-inner">
 
-              <!-- LEFT: the pinned heading. It never moves; only its copy changes. -->
+              <!-- LEFT: the pinned heading. It never moves; only its copy changes. -- >
               <div class="gallery-copy-col">
                 <div class="gallery-copy-index" aria-hidden="true">
                   <span class="gallery-copy-num" id="galleryCopyNum">01</span>
@@ -909,7 +930,7 @@
 
                 <!-- All four copies are real DOM. The grid overlap (grid-area: 1/1)
                      keeps the column exactly as tall as the tallest copy, so
-                     switching copy can never nudge the layout. -->
+                     switching copy can never nudge the layout. -- >
                 <div class="gallery-copy-stack">
                   <article class="gallery-copy-item is-active" data-gallery-copy="0">
                     <span class="gallery-copy-time">02:14 AM &bull; Lights out</span>
@@ -942,29 +963,45 @@
 
                 <!-- Slide navigation. Real buttons, so keyboard access is free.
                      Clicking one moves the scroll position, which keeps the scrubbed
-                     timeline the single source of truth in both directions. -->
-                <nav class="gallery-dots" id="galleryDots" aria-label="Gallery rooms">
-                  <button type="button" class="gallery-dot is-active" data-gallery-goto="0">
-                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
-                    <span class="sr-only">Room 1: Confessions After Midnight</span>
+                     timeline the single source of truth in both directions. -- >
+                <div class="gallery-nav-controls">
+                  <button type="button" class="gallery-arrow-btn" id="galleryPrevBtn" aria-label="Previous feature room" title="Previous room">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="19" y1="12" x2="5" y2="12"></line>
+                      <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                   </button>
-                  <button type="button" class="gallery-dot" data-gallery-goto="1">
-                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
-                    <span class="sr-only">Room 2: Type Less, Press Once</span>
+
+                  <nav class="gallery-dots" id="galleryDots" aria-label="Gallery rooms">
+                    <button type="button" class="gallery-dot is-active" data-gallery-goto="0">
+                      <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                      <span class="sr-only">Room 1: Confessions After Midnight</span>
+                    </button>
+                    <button type="button" class="gallery-dot" data-gallery-goto="1">
+                      <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                      <span class="sr-only">Room 2: Type Less, Press Once</span>
+                    </button>
+                    <button type="button" class="gallery-dot" data-gallery-goto="2">
+                      <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                      <span class="sr-only">Room 3: Send It, Then Erase It</span>
+                    </button>
+                    <button type="button" class="gallery-dot" data-gallery-goto="3">
+                      <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
+                      <span class="sr-only">Room 4: Leave Cleanly</span>
+                    </button>
+                  </nav>
+
+                  <button type="button" class="gallery-arrow-btn" id="galleryNextBtn" aria-label="Next feature room" title="Next room">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </button>
-                  <button type="button" class="gallery-dot" data-gallery-goto="2">
-                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
-                    <span class="sr-only">Room 3: Send It, Then Erase It</span>
-                  </button>
-                  <button type="button" class="gallery-dot" data-gallery-goto="3">
-                    <span class="gallery-dot-bar"><span class="gallery-dot-fill"></span></span>
-                    <span class="sr-only">Room 4: Leave Cleanly</span>
-                  </button>
-                </nav>
+                </div>
               </div>
 
               <!-- RIGHT: the horizontal showcase. GSAP translates #galleryTrack on the
-                   X axis only; the vertical scroll always stays a real document scroll. -->
+                   X axis only; the vertical scroll always stays a real document scroll. -- >
               <div class="gallery-viewport" id="galleryViewport">
                 <ul class="gallery-track" id="galleryTrack" aria-label="AnonChat conversation captures">
                   <li class="gallery-slide" data-gallery-slide="0">
@@ -1022,7 +1059,7 @@
               </div>
             </div>
 
-            <!-- Scroll hint. Fades out the instant the gallery starts moving. -->
+            <!-- Scroll hint. Fades out the instant the gallery starts moving. -- >
             <div class="gallery-hint" id="galleryHint" aria-hidden="true">
               <span class="gallery-hint-line"></span>
               <span class="gallery-hint-label">Keep scrolling</span>
@@ -1030,7 +1067,7 @@
           </div>
         </section>
 
-        <!-- WHY SECTION (3 Value Prop Cards) -->
+        <!-- WHY SECTION (3 Value Prop Cards) -- >
         <section class="fab-section" id="why">
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
@@ -1040,7 +1077,7 @@
             </div>
 
             <div class="fab-why-grid">
-              <!-- Card 1 -->
+              <!-- Card 1 -- >
               <div class="fab-why-card fab-reveal">
                 <div class="fab-why-content">
                   <div class="editorial-card-icon">
@@ -1057,7 +1094,7 @@
                 </div>
               </div>
 
-              <!-- Card 2 -->
+              <!-- Card 2 -- >
               <div class="fab-why-card fab-reveal">
                 <div class="fab-why-content">
                   <div class="editorial-card-icon">
@@ -1071,7 +1108,7 @@
                 </div>
               </div>
 
-              <!-- Card 3 -->
+              <!-- Card 3 -- >
               <div class="fab-why-card fab-reveal">
                 <div class="fab-why-content">
                   <div class="editorial-card-icon">
@@ -1089,7 +1126,7 @@
           </div>
         </section>
 
-        <!-- USE CASES SECTION (Interactive Tabs with Showcase) -->
+        <!-- USE CASES SECTION (Interactive Tabs with Showcase) -- >
         <section class="fab-section" id="use-cases">
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
@@ -1098,7 +1135,7 @@
               <p class="fab-section-desc">From 2 AM homework emergencies to safe emotional venting, AnonChat fits every campus mood.</p>
             </div>
 
-            <!-- Tab Pills -->
+            <!-- Tab Pills -- >
             <div class="fab-tabs-nav fab-reveal" role="tablist" aria-label="AnonChat use cases">
               <button type="button" class="fab-tab-btn active" role="tab" id="tab-btn-confessions" aria-selected="true" aria-controls="tab-panel-confessions" data-tab="confessions">Late Night Confessions</button>
               <button type="button" class="fab-tab-btn" role="tab" id="tab-btn-study" aria-selected="false" aria-controls="tab-panel-study" tabindex="-1" data-tab="study">Exam Prep & Homework</button>
@@ -1106,7 +1143,7 @@
               <button type="button" class="fab-tab-btn" role="tab" id="tab-btn-vent" aria-selected="false" aria-controls="tab-panel-vent" tabindex="-1" data-tab="vent">Safe Vent & Chill</button>
             </div>
 
-            <!-- Tab Panel 1: Confessions -->
+            <!-- Tab Panel 1: Confessions -- >
             <div class="fab-tab-panel active" id="tab-panel-confessions" role="tabpanel" aria-labelledby="tab-btn-confessions" tabindex="0">
               <div class="fab-tab-details">
                 <h3>Share what you can't tell your friend group.</h3>
@@ -1175,7 +1212,7 @@
               </div>
             </div>
 
-            <!-- Tab Panel 2: Study -->
+            <!-- Tab Panel 2: Study -- >
             <div class="fab-tab-panel" id="tab-panel-study" role="tabpanel" aria-labelledby="tab-btn-study" tabindex="0" aria-hidden="true">
               <div class="fab-tab-details">
                 <h3>Solve tough problems together without awkwardness.</h3>
@@ -1237,7 +1274,7 @@
               </div>
             </div>
 
-            <!-- Tab Panel 3: Banter -->
+            <!-- Tab Panel 3: Banter -- >
             <div class="fab-tab-panel" id="tab-panel-banter" role="tabpanel" aria-labelledby="tab-btn-banter" tabindex="0" aria-hidden="true">
               <div class="fab-tab-details">
                 <h3>Laugh at campus drama, memes, and hot takes.</h3>
@@ -1299,7 +1336,7 @@
               </div>
             </div>
 
-            <!-- Tab Panel 4: Vent -->
+            <!-- Tab Panel 4: Vent -- >
             <div class="fab-tab-panel" id="tab-panel-vent" role="tabpanel" aria-labelledby="tab-btn-vent" tabindex="0" aria-hidden="true">
               <div class="fab-tab-details">
                 <h3>A safe ear when you just need to let it all out.</h3>
@@ -1364,7 +1401,7 @@
           </div>
         </section>
 
-        <!-- FAQ SECTION (Accordions with smooth spring expansion) -->
+        <!-- FAQ SECTION (Accordions with smooth spring expansion) -- >
         <section class="fab-section" id="faq">
           <div class="fab-container">
             <div class="fab-section-header fab-reveal">
@@ -1437,7 +1474,7 @@
           </div>
         </section>
 
-        <!-- HIGH-IMPACT FINAL CTA BANNER -->
+        <!-- HIGH-IMPACT FINAL CTA BANNER -- >
         <section class="fab-section" style="padding-bottom: 120px;">
           <div class="fab-container">
             <div class="fab-cta-banner fab-reveal">
@@ -1451,7 +1488,7 @@
           </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- FOOTER -- >
         <footer class="fab-footer">
           <div class="fab-container">
             <div class="fab-footer-grid">
@@ -1503,6 +1540,7 @@
             </div>
           </div>
         </footer>
+        ================================================================= -->
 
       </section>
 
@@ -1948,7 +1986,7 @@
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="fabale.js?v=2.5.0"></script>
+  <script src="fabale.js?v=2.6.0"></script>
   <script src="client.js?v=2.4.4"></script>
 </body>
 </html>

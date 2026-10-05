@@ -18,25 +18,7 @@
 
   function initFabaleInteractions() {
     initHeroVideoSpeed();
-    initLenisAndScrollTrigger();
-    initScrollProgress();
-    initNavbarScroll();
-    initHeroParallax();
-    initTickerScrub();
-    initParallaxStory();
-    // The horizontal journey sentence is part of initParallaxStory's single
-    // master timeline, so it must not build a second ScrollTrigger here.
-    initHowTimeline();
-    initFeatureCardsDepth();
-    initGalleryPin();
-    initChatPreviewScrub();
-    initTabShowcase();
-    initPricingSwitcher();
-    initFaqAccordions();
-    initStatCounters();
-    initMagneticCta();
     initCtaTriggers();
-    initSmoothAnchors();
     initScreenLifecycle();
   }
 
@@ -53,9 +35,17 @@
             if (e.isIntersecting) video.play().catch(() => {});
             else video.pause();
           });
-        }, { threshold: 0.05 });
+        }, { threshold: 0.02, rootMargin: '50px 0px 50px 0px' });
         obs.observe(video);
       }
+      // On mobile / low power devices, pause video immediately when scrolling down past hero to save massive GPU cycles
+      const checkVideoScroll = () => {
+        const y = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+        if (y > window.innerHeight * 0.85) {
+          if (!video.paused) video.pause();
+        }
+      };
+      window.addEventListener('scroll', checkVideoScroll, { passive: true });
     }
   }
 
@@ -72,14 +62,16 @@
 
     if (typeof Lenis !== 'undefined') {
       try {
+        // Disable touch hijacking on mobile so devices get buttery 120Hz native momentum scrolling
         const lenis = new Lenis({
-          duration: 1.2,
+          duration: 1.1,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           orientation: 'vertical',
           gestureOrientation: 'vertical',
           smoothWheel: true,
           wheelMultiplier: 1.1,
-          touchMultiplier: 1.5,
+          touchMultiplier: 0, // Disabled touch hijacking: pure native mobile hardware scroll
+          smoothTouch: false, // Prevents Lenis from fighting mobile compositor thread
           infinite: false
         });
 
@@ -87,6 +79,13 @@
         if (typeof ScrollTrigger !== 'undefined') {
           lenis.on('scroll', ScrollTrigger.update);
         }
+
+        // Real-time synchronous update for navbar floating pill on PC
+        lenis.on('scroll', (e) => {
+          if (typeof window._onLenisScroll === 'function') {
+            window._onLenisScroll(e.scroll);
+          }
+        });
 
         if (typeof gsap !== 'undefined') {
           gsap.ticker.add((time) => {
@@ -144,12 +143,24 @@
     const navbar = document.querySelector('.editorial-navbar');
     if (!navbar) return;
 
-    function checkNav() {
-      const scrolled = window.scrollY > 30;
+    function checkNav(currentScrollY) {
+      let y = 0;
+      if (typeof currentScrollY === 'number') {
+        y = currentScrollY;
+      } else if (window._lenis && typeof window._lenis.scroll === 'number') {
+        y = window._lenis.scroll;
+      } else {
+        y = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+      }
+      const scrolled = y > 24;
       navbar.classList.toggle('navbar-scrolled', scrolled);
     }
 
-    window.addEventListener('scroll', checkNav, { passive: true });
+    window._onLenisScroll = (scroll) => checkNav(scroll);
+    window.addEventListener('scroll', () => checkNav(), { passive: true });
+    if (window._lenis) {
+      window._lenis.on('scroll', (e) => checkNav(e.scroll));
+    }
     checkNav();
   }
 
@@ -1286,6 +1297,68 @@
       dot.addEventListener('click', () => scrollToSlide(i));
     });
 
+    // Prev / Next button navigation for desktop and tablet
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSlide((activeIndex <= 0 ? lastIndex : activeIndex - 1));
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSlide((activeIndex >= lastIndex ? 0 : activeIndex + 1));
+      });
+    }
+
+    // Desktop Mouse Drag to Swipe / Scroll feature cards (identical to mobile touch experience)
+    let isMouseDown = false;
+    let dragStartX = 0;
+    let dragDistance = 0;
+
+    viewport.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return; // Only primary mouse button
+      isMouseDown = true;
+      dragStartX = e.clientX;
+      dragDistance = 0;
+      viewport.classList.add('is-dragging');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isMouseDown) return;
+      dragDistance = e.clientX - dragStartX;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+      viewport.classList.remove('is-dragging');
+      if (Math.abs(dragDistance) > 45) {
+        if (dragDistance < 0) {
+          scrollToSlide(Math.min(lastIndex, activeIndex + 1));
+        } else {
+          scrollToSlide(Math.max(0, activeIndex - 1));
+        }
+      }
+      dragDistance = 0;
+    });
+
+    // Keyboard Arrow navigation when gallery is in view
+    window.addEventListener('keydown', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+      if (!inView) return;
+
+      if (e.key === 'ArrowRight') {
+        scrollToSlide(Math.min(lastIndex, activeIndex + 1));
+      } else if (e.key === 'ArrowLeft') {
+        scrollToSlide(Math.max(0, activeIndex - 1));
+      }
+    });
+
     /* -------------------------------------------------------------------- */
     /* Boot                                                                  */
     /* -------------------------------------------------------------------- */
@@ -1297,7 +1370,7 @@
     // slide captions and the copy column. The section was then on screen with no
     // text anywhere in it. The OS flipping reduce-motion mid-session had the same
     // effect, and nothing switched back when motion came back either.
-    const wideMotion = window.matchMedia('(min-width: 900px) and (prefers-reduced-motion: no-preference)');
+    const wideMotion = window.matchMedia('(min-width: 900px)');
 
     let cancelMeasure = null;
 

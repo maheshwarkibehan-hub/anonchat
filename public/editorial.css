@@ -37,18 +37,12 @@
   pointer-events: none !important;
 }
 
-html,
+html:has(body.on-landing),
 body.on-landing {
-  /* `overflow-x: clip` rather than `hidden`, because `hidden` cannot be paired
-     with `overflow-y: visible` - CSS Overflow 3 says visible computes to auto when
-     the other axis is neither visible nor clip, so `hidden` would quietly turn the
-     root into a scroll container in both axes. `clip` is explicitly allowed
-     alongside `visible`, so horizontal overflow is still contained while the
-     vertical axis stays untouched. */
-  overflow-x: clip !important;
-  overflow-y: visible !important;
-  height: auto !important;
-  min-height: 100vh !important;
+  overflow: hidden !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
 }
 
 /* ---- CRITICAL: let the landing screen host fixed-position pins --------------
@@ -86,12 +80,14 @@ body.on-landing {
 body.on-landing .app-shell,
 body.on-landing .viewport,
 #landingScreen.screen.active {
-  overflow: visible !important;
-  height: auto !important;
-  min-height: 100vh !important;
+  overflow: hidden !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
   position: relative !important;
   inset: auto !important;
-  display: block !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 body.on-landing,
@@ -115,15 +111,17 @@ body.on-landing .viewport,
 /* 2. Full-Screen Cinematic Video Hero */
 .editorial-hero-wrapper {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100% !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  max-height: 100dvh !important;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   background-color: var(--ed-bg-basis);
-  overflow: hidden;
+  overflow: hidden !important;
   box-sizing: border-box;
   padding-top: 80px;
   z-index: 2;
@@ -188,31 +186,31 @@ body.on-landing .viewport,
   box-shadow: 0 0 0 transparent;
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
-  /* Fast, deliberate morph when the full-width bar becomes the floating pill. */
+  /* Deliberate smooth spring morph when the full-width bar becomes the floating island pill */
   transition:
-    top 180ms cubic-bezier(0.16, 1, 0.3, 1),
-    width 220ms cubic-bezier(0.16, 1, 0.3, 1),
-    max-width 220ms cubic-bezier(0.16, 1, 0.3, 1),
-    padding 180ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-radius 220ms cubic-bezier(0.16, 1, 0.3, 1),
-    background 180ms ease,
-    border-color 180ms ease,
-    box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
-    backdrop-filter 180ms ease,
-    -webkit-backdrop-filter 180ms ease;
-  will-change: top, width, padding, border-radius, background, box-shadow;
+    top 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 240ms ease,
+    border-color 240ms ease,
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 240ms ease,
+    -webkit-backdrop-filter 240ms ease;
+  will-change: transform, opacity;
 }
 
 /* Floating Island Pill on Scroll (Oct 2026 Dynamic Island / Floating Glass Morph) */
 .editorial-navbar.navbar-scrolled {
   top: 14px;
-  width: min(94vw, 1140px);
-  max-width: 1140px;
+  width: min(92vw, 1020px);
+  max-width: 1020px;
   padding: 10px 24px;
   border-radius: 9999px;
-  background: rgba(238, 244, 240, 0.88) !important;
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  background: rgba(238, 244, 240, 0.90) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: 
     0 12px 36px -4px rgba(15, 23, 42, 0.12),
@@ -294,6 +292,14 @@ body.on-landing .viewport,
   .editorial-navbar.navbar-scrolled {
     width: min(92vw, 420px);
     padding: 10px 18px;
+    background: rgba(238, 244, 240, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  #howJourneySvgGlow,
+  .ed-tl-svg-glow {
+    filter: none !important;
+    opacity: 0.25 !important;
   }
 }
 
@@ -3845,28 +3851,8 @@ body.on-chat main.viewport,
    Oct 2026 Scroll Experience Architecture (GSAP ScrollTrigger + Lenis)
    ========================================================================== */
 
-/* 1. Ultra-Precise Reading & Story Progress Indicator */
+/* 1. Ultra-Precise Reading & Story Progress Indicator (Hidden: Zero-Scroll Landing) */
 .scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3.5px;
-  z-index: 999999;
-  pointer-events: none;
-  background: rgba(14, 116, 144, 0.08);
-}
-
-.scroll-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #0e7490 0%, #21d2ed 45%, #6366f1 100%);
-  box-shadow: 0 0 12px rgba(33, 210, 237, 0.6);
-  border-radius: 0 9999px 9999px 0;
-  transition: width 0.05s linear;
-}
-
-body:not(.on-landing) .scroll-progress-bar {
   display: none !important;
 }
 
@@ -6177,12 +6163,48 @@ body:not(.on-landing) .scroll-progress-bar {
   color: hsl(215, 22%, 52%);
 }
 
+/* Navigation controls (Arrows + Dots) */
+.gallery-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.gallery-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  background: rgba(14, 116, 144, 0.08);
+  border: 1px solid rgba(14, 116, 144, 0.24);
+  color: #0e7490;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.gallery-arrow-btn:hover {
+  background: #0e7490;
+  color: #ffffff;
+  border-color: #0e7490;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px -3px rgba(14, 116, 144, 0.35);
+}
+
+.gallery-arrow-btn:active {
+  transform: scale(0.95);
+}
+
 /* Dot rail */
 .gallery-dots {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 4px;
+  flex: 1 1 auto;
 }
 
 .gallery-dot {
@@ -6232,6 +6254,16 @@ body:not(.on-landing) .scroll-progress-bar {
 .gallery-viewport {
   min-width: 0;
   overflow: hidden;
+  cursor: grab;
+}
+
+.gallery-viewport.is-dragging {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
+.gallery-viewport.is-dragging * {
+  user-select: none !important;
 }
 
 .gallery-track {
@@ -6330,11 +6362,9 @@ body:not(.on-landing) .scroll-progress-bar {
   color: hsl(215, 20%, 48%);
 }
 
-/* On the pinned showcase the captions would be a second copy of the copy the
-   left column already shows, so they are hidden there. They remain the ONLY
-   copy in the stacked modes, which is why they exist at all. */
+/* Captions visible on cards across both desktop and mobile for consistent UI parity */
 .gallery-pin-section.is-horizontal .gallery-slide-caption {
-  display: none;
+  display: block;
 }
 
 .gallery-hint {
