@@ -69,8 +69,8 @@
   max-width: 100%;
   padding: 24px 36px;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
   background: transparent;
@@ -116,6 +116,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-shrink: 0;
 }
 
 .editorial-brand-logo {
@@ -179,7 +180,6 @@
     display: none !important;
   }
   .editorial-navbar {
-    grid-template-columns: 1fr auto;
     padding: 16px 20px;
   }
   .editorial-navbar.navbar-scrolled {
@@ -242,6 +242,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 14px;
+  margin-left: auto;
 }
 
 /* Live Online Status Pill */

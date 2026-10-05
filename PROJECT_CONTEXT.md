@@ -193,6 +193,11 @@
   - Direct `<link rel="stylesheet">` tags in `index.html` & `app-chat.html` enable parallel HTTP/2 multiplexed streaming with independent browser caching per module.
   - `editorial.css` retained as a high-level `@import` orchestrator for 100% backward compatibility across all existing subpages (`privacy.html`).
 
+### 📍 Phase 11: Top Navigation Bar Alignment Fix (Oct 2026)
+- **Problem**: The live online status pill and ambient sound/speaker toggle button were rendering in the top-center of the screen instead of the top-right corner on desktop.
+- **Root Cause**: `.editorial-navbar` used a 3-column CSS Grid (`grid-template-columns: 1fr auto 1fr`). When the center promotional links (`#navMenu`) were archived and hidden with `display: none`, the second child `.editorial-nav-right` was assigned to grid column 2 (`auto` width in center) while column 3 stayed empty.
+- **Fix Applied**: Modernized `.editorial-navbar` in `public/css/landing.css` from CSS Grid to resilient Flexbox (`display: flex; justify-content: space-between; align-items: center;`) with `margin-left: auto;` on `.editorial-nav-right` and `flex-shrink: 0;` on `.editorial-nav-left`. The brand logo now anchors to the far left corner and the online pill & speaker buttons pin to the far right corner across all viewport resolutions.
+
 ---
 
 ## 4. 🔌 Socket.io Event Protocol Reference
