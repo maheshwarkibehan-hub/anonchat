@@ -55,7 +55,7 @@
       margin: 22px 0 28px; padding: 13px 16px; border: 1px solid rgba(250, 204, 21, .28);
       border-radius: 14px; background: rgba(250, 204, 21, .07); color: #fde68a; font-size: .9rem;
     }
-    .layout { display: grid; grid-template-columns: 330px 1fr; gap: 18px; }
+    .layout { display: grid; grid-template-columns: 300px 1fr 270px; gap: 18px; align-items: start; }
     .panel { border: 1px solid var(--border); border-radius: 24px; background: var(--panel); box-shadow: 0 20px 80px rgba(0,0,0,.24); }
     .panel-title { padding: 21px 22px 14px; margin: 0; font-size: 1rem; }
     .agent-list { padding: 0 12px 14px; }
@@ -77,10 +77,29 @@
     .chat-footer { gap: 10px; padding: 16px 18px; border-top: 1px solid var(--border); }
     input { min-width: 0; flex: 1; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; outline: none; color: var(--text); background: rgba(0,0,0,.22); }
     input:focus { border-color: var(--pink); }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
+    .stat { padding: 15px; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); }
+    .stat-label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+    .stat-value { display: block; margin-top: 7px; font-size: 1.35rem; font-weight: 800; }
+    .stat-note { display: block; margin-top: 4px; color: var(--muted); font-size: .72rem; }
+    .progress { height: 6px; margin-top: 10px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.08); }
+    .progress span { display: block; width: 68%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--pink), var(--violet)); }
+    .side-section { padding: 0 16px 18px; }
+    .side-section h3 { margin: 4px 6px 12px; color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; }
+    .profile-card { margin: 0 16px 18px; padding: 16px; border: 1px solid rgba(244,114,182,.22); border-radius: 18px; background: linear-gradient(145deg, rgba(244,114,182,.12), rgba(167,139,250,.08)); }
+    .profile-card strong { display: block; font-size: 1.05rem; }
+    .profile-card p { margin: 6px 0 0; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+    .relationship { display: flex; justify-content: space-between; gap: 10px; margin-top: 13px; padding-top: 12px; border-top: 1px solid var(--border); font-size: .8rem; }
+    .relationship span:last-child { color: #f9a8d4; font-weight: 700; }
+    .friend-list { display: grid; gap: 8px; }
+    .friend { display: flex; justify-content: space-between; align-items: center; padding: 10px 11px; border-radius: 12px; background: var(--panel-soft); font-size: .84rem; }
+    .friend small { color: var(--muted); }
+    .section-kicker { margin-top: 28px !important; }
     @media (max-width: 760px) {
       .shell { width: min(100% - 22px, 620px); padding-top: 18px; }
       .topbar { align-items: flex-start; }
       .layout { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
       .chat { min-height: 520px; }
       .messages { min-height: 320px; }
     }
@@ -103,6 +122,11 @@
       <h1>Explore expressive AI conversation agents.</h1>
       <p class="intro">A small dashboard for testing fictional personalities, tone, and conversation flows. Every agent here is an AI simulation, not a real person.</p>
       <div class="notice">Demo boundary: agents must be introduced honestly. Do not use this interface to impersonate or deceive a real person.</div>
+      <div class="stats" aria-label="Anmol usage metrics">
+        <div class="stat"><span class="stat-label">Tokens used</span><strong class="stat-value">48.2k</strong><span class="stat-note">of 70k monthly budget</span><div class="progress"><span></span></div></div>
+        <div class="stat"><span class="stat-label">Chat sessions</span><strong class="stat-value">76</strong><span class="stat-note">fictional demo conversations</span></div>
+        <div class="stat"><span class="stat-label">Model status</span><strong class="stat-value" style="color: var(--green);">Online</strong><span class="stat-note">Persona engine ready</span></div>
+      </div>
     </section>
 
     <section class="layout" aria-label="Agent dashboard">
@@ -121,6 +145,11 @@
             <span class="avatar">Z</span>
             <span class="agent-meta"><span><strong>Zoya</strong><span>Energetic creative companion</span></span><span class="online">● ready</span></span>
           </button>
+        </div>
+        <div class="profile-card">
+          <strong>Anmol · persona profile</strong>
+          <p>Expressive, playful, and warm. This is fictional relationship metadata for the dashboard demo.</p>
+          <div class="relationship"><span>Girlfriend profile</span><span>Avika</span></div>
         </div>
       </aside>
 
@@ -142,6 +171,20 @@
           <button class="button" type="submit">Send</button>
         </form>
       </section>
+
+      <aside class="panel side-section">
+        <h2 class="panel-title">Friend list</h2>
+        <h3>Connected profiles</h3>
+        <div class="friend-list">
+          <div class="friend"><span>Kritika</span><small>active</small></div>
+          <div class="friend"><span>Saumya</span><small>active</small></div>
+          <div class="friend"><span>Maheshwar</span><small>idle</small></div>
+          <div class="friend"><span>Mitul</span><small>active</small></div>
+        </div>
+        <h3 class="section-kicker">Runtime</h3>
+        <div class="friend"><span>Context window</span><small>128k</small></div>
+        <div class="friend"><span>Temperature</span><small>0.82</small></div>
+      </aside>
     </section>
   </main>
   <script>
