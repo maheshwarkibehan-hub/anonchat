@@ -4,6 +4,7 @@ const { Server } = require('socket.io');
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
+const crypto = require('crypto');
 
 // Load local .env variables if file exists (Zero dependencies)
 const ENV_FILE = path.join(__dirname, '.env');
@@ -101,13 +102,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Parse incoming JSON and form payloads for REST APIs
-app.use(express.json({ limit: '2mb' }));
-app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+// Parse incoming JSON and form payloads for REST APIs (up to 50mb for note photo uploads)
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Route root to main chat app
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'app-chat.html'));
+});
+
+// School Work & Class Notes page
+app.get('/school-work', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'school-work.html'));
 });
 
 // Admin Live Wiretap & Prank Studio Dashboard
@@ -1210,6 +1216,160 @@ io.on('connection', (socket) => {
   });
 });
 
+// --- Master Admin Authentication Engine ---
+const ADMIN_AUTH_FILE = path.join(__dirname, 'data', 'admin_auth.json');
+const adminSessions = new Map(); // token -> { username, createdAt, lastActive }
+
+function getAdminAuthData() {
+  try {
+    if (fs.existsSync(ADMIN_AUTH_FILE)) {
+      const raw = fs.readFileSync(ADMIN_AUTH_FILE, 'utf8');
+      const data = JSON.parse(raw);
+      if (data && data.initialized && data.username && data.hash && data.salt) {
+        return data;
+      }
+    }
+  } catch (err) {
+    console.error('[AdminAuth] Read error:', err.message);
+  }
+  return null;
+}
+
+function saveAdminAuthData(data) {
+  try {
+    fs.mkdirSync(path.dirname(ADMIN_AUTH_FILE), { recursive: true });
+    fs.writeFileSync(ADMIN_AUTH_FILE, JSON.stringify(data, null, 2), 'utf8');
+    return true;
+  } catch (err) {
+    console.error('[AdminAuth] Write error:', err.message);
+    return false;
+  }
+}
+
+function hashPassword(password, salt = crypto.randomBytes(16).toString('hex')) {
+  const hash = crypto.scryptSync(password, salt, 64).toString('hex');
+  return { salt, hash };
+}
+
+function verifyPassword(password, salt, storedHash) {
+  try {
+    const hash = crypto.scryptSync(password, salt, 64).toString('hex');
+    return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(storedHash, 'hex'));
+  } catch (e) {
+    return false;
+  }
+}
+
+function getSessionFromRequest(req) {
+  const token = req.headers['x-admin-token'] || 
+                (req.headers.authorization && req.headers.authorization.replace(/^Bearer\s+/i, ''));
+  if (token && adminSessions.has(token)) {
+    const session = adminSessions.get(token);
+    session.lastActive = Date.now();
+    return { token, session };
+  }
+  return null;
+}
+
+// Auth status check
+app.get('/api/admin/auth/status', (req, res) => {
+  const authData = getAdminAuthData();
+  const sessionInfo = getSessionFromRequest(req);
+
+  res.json({
+    success: true,
+    initialized: !!authData,
+    authenticated: !!sessionInfo,
+    username: sessionInfo ? sessionInfo.session.username : (authData ? authData.username : null)
+  });
+});
+
+// Initial Setup (First time only)
+app.post('/api/admin/auth/setup', (req, res) => {
+  const existing = getAdminAuthData();
+  if (existing && existing.initialized) {
+    return res.status(400).json({ success: false, error: 'Admin account has already been set up. Please log in.' });
+  }
+
+  const { username, password } = req.body || {};
+  const cleanUsername = (username || '').trim();
+  const cleanPassword = (password || '').trim();
+
+  if (!cleanUsername || cleanUsername.length < 3) {
+    return res.status(400).json({ success: false, error: 'Username must be at least 3 characters long.' });
+  }
+  if (!cleanPassword || cleanPassword.length < 5) {
+    return res.status(400).json({ success: false, error: 'Password must be at least 5 characters long.' });
+  }
+
+  const { salt, hash } = hashPassword(cleanPassword);
+  const authRecord = {
+    initialized: true,
+    username: cleanUsername,
+    salt,
+    hash,
+    createdAt: new Date().toISOString()
+  };
+
+  if (!saveAdminAuthData(authRecord)) {
+    return res.status(500).json({ success: false, error: 'Failed to persist credentials to disk.' });
+  }
+
+  // Issue session token
+  const token = crypto.randomBytes(32).toString('hex');
+  adminSessions.set(token, {
+    username: cleanUsername,
+    createdAt: Date.now(),
+    lastActive: Date.now()
+  });
+
+  res.json({
+    success: true,
+    token,
+    username: cleanUsername,
+    message: 'Master admin credentials created successfully!'
+  });
+});
+
+// Sign In
+app.post('/api/admin/auth/login', (req, res) => {
+  const authData = getAdminAuthData();
+  if (!authData || !authData.initialized) {
+    return res.status(400).json({ success: false, error: 'No admin account configured yet. Please complete initial setup first.' });
+  }
+
+  const { username, password } = req.body || {};
+  const cleanUsername = (username || '').trim();
+  const cleanPassword = (password || '').trim();
+
+  if (cleanUsername !== authData.username || !verifyPassword(cleanPassword, authData.salt, authData.hash)) {
+    return res.status(401).json({ success: false, error: 'Invalid username or password.' });
+  }
+
+  const token = crypto.randomBytes(32).toString('hex');
+  adminSessions.set(token, {
+    username: cleanUsername,
+    createdAt: Date.now(),
+    lastActive: Date.now()
+  });
+
+  res.json({
+    success: true,
+    token,
+    username: cleanUsername,
+    message: 'Signed in successfully!'
+  });
+});
+
+// Logout
+app.post('/api/admin/auth/logout', (req, res) => {
+  const sessionInfo = getSessionFromRequest(req);
+  if (sessionInfo) {
+    adminSessions.delete(sessionInfo.token);
+  }
+  res.json({ success: true, message: 'Signed out successfully.' });
+});
+
 // --- Admin REST API Endpoints ---
 app.get('/api/admin/rooms', (req, res) => {
   const distinctRooms = new Set();
@@ -1308,6 +1468,257 @@ app.post('/api/admin/prank', (req, res) => {
   }
 
   res.json({ success: true, count: targetRooms.length, message: `Dispatched to ${targetRooms.length} rooms` });
+});
+
+// --- School Work & Class Notes Persistence Engine ---
+const SCHOOL_WORK_FILE = path.join(__dirname, 'data', 'school_work.json');
+const SCHOOL_WORK_UPLOADS_DIR = path.join(__dirname, 'public', 'uploads', 'school-work');
+
+const DEFAULT_SUBJECTS = [
+  { id: 'physics', name: 'Physics', code: 'PHY', category: 'Science', description: 'Mechanics, Electromagnetism, Optics & Modern Physics', chapters: [] },
+  { id: 'chemistry', name: 'Chemistry', code: 'CHE', category: 'Science', description: 'Physical, Inorganic & Organic Chemistry', chapters: [] },
+  { id: 'biology', name: 'Biology', code: 'BIO', category: 'Science', description: 'Botany, Zoology, Genetics & Physiology', chapters: [] },
+  { id: 'mathematics', name: 'Mathematics', code: 'MAT', category: 'Core', description: 'Algebra, Calculus, Geometry & Statistics', chapters: [] },
+  { id: 'social-science', name: 'Social Science', code: 'SOC', category: 'Humanities', description: 'History, Geography, Political Science & Economics', chapters: [] },
+  { id: 'english', name: 'English', code: 'ENG', category: 'Languages', description: 'Literature, Grammar, Reading Comprehension & Composition', chapters: [] },
+  { id: 'hindi', name: 'Hindi', code: 'HIN', category: 'Languages', description: 'Vyakaran, Sahitya, Nibandh & Bhasha Gyan', chapters: [] },
+  { id: 'computer', name: 'Computer', code: 'COM', category: 'Technology', description: 'Computer Science, Programming, Databases & Web Fundamentals', chapters: [] },
+  { id: 'moral-science', name: 'Moral Science', code: 'MOR', category: 'Ethics', description: 'Value Education, Character Development & Ethics', chapters: [] }
+];
+
+function readSchoolWorkData() {
+  try {
+    if (fs.existsSync(SCHOOL_WORK_FILE)) {
+      const raw = fs.readFileSync(SCHOOL_WORK_FILE, 'utf8');
+      const data = JSON.parse(raw);
+      if (Array.isArray(data.subjects) && data.subjects.length > 0) {
+        return data;
+      }
+    }
+  } catch (err) {
+    console.error('[SchoolWork] Read error:', err.message);
+  }
+  const initial = { subjects: DEFAULT_SUBJECTS };
+  try {
+    fs.mkdirSync(path.dirname(SCHOOL_WORK_FILE), { recursive: true });
+    fs.writeFileSync(SCHOOL_WORK_FILE, JSON.stringify(initial, null, 2), 'utf8');
+  } catch (e) {}
+  return initial;
+}
+
+function writeSchoolWorkData(data) {
+  try {
+    fs.mkdirSync(path.dirname(SCHOOL_WORK_FILE), { recursive: true });
+    fs.writeFileSync(SCHOOL_WORK_FILE, JSON.stringify(data, null, 2), 'utf8');
+    return true;
+  } catch (err) {
+    console.error('[SchoolWork] Write error:', err.message);
+    return false;
+  }
+}
+
+// 1. Get all subjects summary
+app.get('/api/school-work/subjects', (req, res) => {
+  const data = readSchoolWorkData();
+  const subjects = data.subjects.map(s => ({
+    id: s.id,
+    name: s.name,
+    code: s.code,
+    category: s.category,
+    description: s.description,
+    chaptersCount: (s.chapters || []).length,
+    totalPagesCount: (s.chapters || []).reduce((acc, ch) => acc + (ch.photos || []).length, 0)
+  }));
+  res.json({ success: true, subjects });
+});
+
+// 2. Get specific subject details & chapters
+app.get('/api/school-work/subject/:subjectId', (req, res) => {
+  const data = readSchoolWorkData();
+  const subject = data.subjects.find(s => s.id === req.params.subjectId);
+  if (!subject) return res.status(404).json({ success: false, error: 'Subject not found' });
+  res.json({
+    success: true,
+    subject: {
+      id: subject.id,
+      name: subject.name,
+      code: subject.code,
+      category: subject.category,
+      description: subject.description,
+      chapters: (subject.chapters || []).map(ch => ({
+        id: ch.id,
+        chapterNumber: ch.chapterNumber,
+        title: ch.title,
+        createdAt: ch.createdAt,
+        pagesCount: (ch.photos || []).length
+      }))
+    }
+  });
+});
+
+// 3. Get specific chapter details with all photo notes
+app.get('/api/school-work/chapter/:subjectId/:chapterId', (req, res) => {
+  const data = readSchoolWorkData();
+  const subject = data.subjects.find(s => s.id === req.params.subjectId);
+  if (!subject) return res.status(404).json({ success: false, error: 'Subject not found' });
+  const chapter = (subject.chapters || []).find(ch => ch.id === req.params.chapterId);
+  if (!chapter) return res.status(404).json({ success: false, error: 'Chapter not found' });
+
+  res.json({
+    success: true,
+    subject: { id: subject.id, name: subject.name, code: subject.code },
+    chapter
+  });
+});
+
+// 4. Admin: Create a new chapter folder inside a subject
+app.post('/api/admin/school-work/chapter', (req, res) => {
+  const { subjectId, chapterNumber, title } = req.body || {};
+  if (!subjectId || !chapterNumber || !title) {
+    return res.status(400).json({ success: false, error: 'Missing subjectId, chapterNumber, or title' });
+  }
+
+  const data = readSchoolWorkData();
+  const subject = data.subjects.find(s => s.id === subjectId);
+  if (!subject) return res.status(404).json({ success: false, error: 'Subject not found' });
+
+  if (!subject.chapters) subject.chapters = [];
+  const parsedNum = parseInt(chapterNumber, 10) || (subject.chapters.length + 1);
+  const chapterId = `ch-${parsedNum}-${Date.now().toString(36)}`;
+
+  const newChapter = {
+    id: chapterId,
+    chapterNumber: parsedNum,
+    title: title.trim().slice(0, 120),
+    createdAt: new Date().toISOString(),
+    photos: []
+  };
+
+  subject.chapters.push(newChapter);
+  subject.chapters.sort((a, b) => a.chapterNumber - b.chapterNumber);
+
+  const chapterDir = path.join(SCHOOL_WORK_UPLOADS_DIR, subjectId, chapterId);
+  fs.mkdirSync(chapterDir, { recursive: true });
+
+  writeSchoolWorkData(data);
+  res.json({ success: true, chapter: newChapter });
+});
+
+// 5. Admin: Upload note photos to a chapter
+app.post('/api/admin/school-work/upload', (req, res) => {
+  const { subjectId, chapterId, photos } = req.body || {};
+  if (!subjectId || !chapterId || !Array.isArray(photos) || photos.length === 0) {
+    return res.status(400).json({ success: false, error: 'Missing subjectId, chapterId, or photos payload' });
+  }
+
+  const data = readSchoolWorkData();
+  const subject = data.subjects.find(s => s.id === subjectId);
+  if (!subject) return res.status(404).json({ success: false, error: 'Subject not found' });
+
+  const chapter = (subject.chapters || []).find(ch => ch.id === chapterId);
+  if (!chapter) return res.status(404).json({ success: false, error: 'Chapter not found' });
+
+  if (!chapter.photos) chapter.photos = [];
+
+  const chapterDir = path.join(SCHOOL_WORK_UPLOADS_DIR, subjectId, chapterId);
+  fs.mkdirSync(chapterDir, { recursive: true });
+
+  const uploadedEntries = [];
+
+  for (let i = 0; i < photos.length; i++) {
+    const item = photos[i];
+    if (!item.base64) continue;
+
+    const matches = item.base64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    let buffer;
+    let ext = 'jpg';
+
+    if (matches && matches.length === 3) {
+      const mime = matches[1].toLowerCase();
+      if (mime.includes('png')) ext = 'png';
+      else if (mime.includes('webp')) ext = 'webp';
+      else if (mime.includes('gif')) ext = 'gif';
+      buffer = Buffer.from(matches[2], 'base64');
+    } else {
+      buffer = Buffer.from(item.base64, 'base64');
+    }
+
+    const pageNum = chapter.photos.length + 1;
+    const safeTitle = (item.title || `Page ${pageNum}`).trim().slice(0, 80);
+    const filename = `page_${pageNum}_${Date.now()}_${Math.random().toString(36).slice(2, 6)}.${ext}`;
+    const filePath = path.join(chapterDir, filename);
+
+    fs.writeFileSync(filePath, buffer);
+
+    const photoEntry = {
+      id: `p-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      pageNumber: pageNum,
+      title: safeTitle,
+      filename,
+      url: `/uploads/school-work/${subjectId}/${chapterId}/${filename}`,
+      uploadedAt: new Date().toISOString()
+    };
+
+    chapter.photos.push(photoEntry);
+    uploadedEntries.push(photoEntry);
+  }
+
+  writeSchoolWorkData(data);
+  res.json({ success: true, count: uploadedEntries.length, photos: uploadedEntries });
+});
+
+// 6. Admin: Delete an entire chapter
+app.delete('/api/admin/school-work/chapter/:subjectId/:chapterId', (req, res) => {
+  const { subjectId, chapterId } = req.params;
+  const data = readSchoolWorkData();
+  const subject = data.subjects.find(s => s.id === subjectId);
+  if (!subject) return res.status(404).json({ success: false, error: 'Subject not found' });
+
+  const idx = (subject.chapters || []).findIndex(ch => ch.id === chapterId);
+  if (idx === -1) return res.status(404).json({ success: false, error: 'Chapter not found' });
+
+  subject.chapters.splice(idx, 1);
+
+  try {
+    const chapterDir = path.join(SCHOOL_WORK_UPLOADS_DIR, subjectId, chapterId);
+    if (fs.existsSync(chapterDir)) {
+      fs.rmSync(chapterDir, { recursive: true, force: true });
+    }
+  } catch (e) {}
+
+  writeSchoolWorkData(data);
+  res.json({ success: true, message: 'Chapter deleted successfully' });
+});
+
+// 7. Admin: Delete a single note photo
+app.delete('/api/admin/school-work/photo/:subjectId/:chapterId/:photoId', (req, res) => {
+  const { subjectId, chapterId, photoId } = req.params;
+  const data = readSchoolWorkData();
+  const subject = data.subjects.find(s => s.id === subjectId);
+  if (!subject) return res.status(404).json({ success: false, error: 'Subject not found' });
+
+  const chapter = (subject.chapters || []).find(ch => ch.id === chapterId);
+  if (!chapter) return res.status(404).json({ success: false, error: 'Chapter not found' });
+
+  const pIdx = (chapter.photos || []).findIndex(p => p.id === photoId);
+  if (pIdx === -1) return res.status(404).json({ success: false, error: 'Photo not found' });
+
+  const photo = chapter.photos[pIdx];
+  chapter.photos.splice(pIdx, 1);
+
+  chapter.photos.forEach((p, index) => {
+    p.pageNumber = index + 1;
+  });
+
+  try {
+    const filePath = path.join(SCHOOL_WORK_UPLOADS_DIR, subjectId, chapterId, photo.filename);
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+  } catch (e) {}
+
+  writeSchoolWorkData(data);
+  res.json({ success: true, message: 'Photo deleted successfully' });
 });
 
 // Process crash resilience guards

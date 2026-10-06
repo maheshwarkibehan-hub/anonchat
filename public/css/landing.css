@@ -484,3 +484,37 @@
   transform: translateY(3px);
 }
 
+
+
+/* School Work Nav Capsule Button */
+.editorial-nav-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ed-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ed-primary-text);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 7px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.editorial-nav-link-btn svg {
+  color: #047857;
+}
+
+.editorial-nav-link-btn:hover {
+  background: rgba(255, 255, 255, 0.90);
+  border-color: rgba(4, 120, 87, 0.3);
+  color: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(4, 120, 87, 0.12);
+}

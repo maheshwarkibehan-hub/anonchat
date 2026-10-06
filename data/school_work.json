@@ -1,0 +1,76 @@
+{
+  "subjects": [
+    {
+      "id": "physics",
+      "name": "Physics",
+      "code": "PHY",
+      "category": "Science",
+      "description": "Mechanics, Electromagnetism, Optics & Modern Physics",
+      "chapters": []
+    },
+    {
+      "id": "chemistry",
+      "name": "Chemistry",
+      "code": "CHE",
+      "category": "Science",
+      "description": "Physical, Inorganic & Organic Chemistry",
+      "chapters": []
+    },
+    {
+      "id": "biology",
+      "name": "Biology",
+      "code": "BIO",
+      "category": "Science",
+      "description": "Botany, Zoology, Genetics & Physiology",
+      "chapters": []
+    },
+    {
+      "id": "mathematics",
+      "name": "Mathematics",
+      "code": "MAT",
+      "category": "Core",
+      "description": "Algebra, Calculus, Geometry & Statistics",
+      "chapters": []
+    },
+    {
+      "id": "social-science",
+      "name": "Social Science",
+      "code": "SOC",
+      "category": "Humanities",
+      "description": "History, Geography, Political Science & Economics",
+      "chapters": []
+    },
+    {
+      "id": "english",
+      "name": "English",
+      "code": "ENG",
+      "category": "Languages",
+      "description": "Literature, Grammar, Reading Comprehension & Composition",
+      "chapters": []
+    },
+    {
+      "id": "hindi",
+      "name": "Hindi",
+      "code": "HIN",
+      "category": "Languages",
+      "description": "Vyakaran, Sahitya, Nibandh & Bhasha Gyan",
+      "chapters": []
+    },
+    {
+      "id": "computer",
+      "name": "Computer",
+      "code": "COM",
+      "category": "Technology",
+      "description": "Computer Science, Programming, Databases & Web Fundamentals",
+      "chapters": []
+    },
+    {
+      "id": "moral-science",
+      "name": "Moral Science",
+      "code": "MOR",
+      "category": "Ethics",
+      "description": "Value Education, Character Development & Ethics",
+      "chapters": []
+    }
+  ]
+}

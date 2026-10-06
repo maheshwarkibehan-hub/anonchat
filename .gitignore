@@ -34,3 +34,8 @@ chat/
 
 # Stray output from a mistyped shell flag (created '--help' as a directory)
 --help/
+
+# Persistent data and user uploads
+data/admin_auth.json
+public/uploads/school-work/*
+!public/uploads/school-work/.gitkeep
