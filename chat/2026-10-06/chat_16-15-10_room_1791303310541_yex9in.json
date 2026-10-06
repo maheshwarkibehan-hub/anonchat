@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "roomId": "room_1791303310541_yex9in",
+    "vibe": "Direct",
+    "date": "2026-10-06",
+    "startTime": "2026-10-06T16:15:10.542Z",
+    "endTime": "2026-10-06T16:15:52.029Z",
+    "durationSeconds": 41,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791303314917_exylbw",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791303315792,
+      "isoTime": "2026-10-06T16:15:15.792Z",
+      "type": "text",
+      "text": "are yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791303316625_rmj9eg",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791303317492,
+      "isoTime": "2026-10-06T16:15:17.492Z",
+      "type": "text",
+      "text": "kisi ne",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791303324076_mdkqg7",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791303322595,
+      "isoTime": "2026-10-06T16:15:22.595Z",
+      "type": "text",
+      "text": "Kaha gaye the",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "are yrr"
+      },
+      {
+        "role": "user",
+        "content": "kisi ne"
+      },
+      {
+        "role": "assistant",
+        "content": "Kaha gaye the"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "are yrr"
+      },
+      {
+        "from": "human",
+        "value": "kisi ne"
+      },
+      {
+        "from": "gpt",
+        "value": "Kaha gaye the"
+      }
+    ]
+  }
+}
