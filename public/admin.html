@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnonChat Admin • Live Monitor & Prank Control</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0d111a;
+      --bg-elevated: #131926;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(99, 102, 241, 0.35);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent-cyan: #06b6d4;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-faint: #475569;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      background: rgba(13, 17, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      gap: 16px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo-title {
+      font-weight: 800;
+      font-size: 17px;
+      background: linear-gradient(to right, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .kpi-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .kpi-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .kpi-chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    .kpi-chip.warn .dot {
+      background: var(--accent-amber);
+      box-shadow: 0 0 8px var(--accent-amber);
+    }
+
+    .kpi-chip.live .dot {
+      background: var(--accent-red);
+      box-shadow: 0 0 8px var(--accent-red);
+    }
+
+    .kpi-label {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .kpi-val {
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Grid Layout */
+    .dashboard-layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 320px 1fr 380px;
+      height: calc(100vh - 65px);
+      overflow: hidden;
+    }
+
+    @media (max-width: 1280px) {
+      .dashboard-layout {
+        grid-template-columns: 280px 1fr 340px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-layout {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+      }
+      .panel {
+        height: auto !important;
+        max-height: 550px;
+      }
+    }
+
+    /* Column Panels */
+    .panel {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .panel:last-child {
+      border-right: none;
+    }
+
+    .panel-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(19, 25, 38, 0.5);
+      flex-shrink: 0;
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f1f5f9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .panel-count {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: var(--accent-cyan);
+    }
+
+    /* Left Panel: Active Rooms List */
+    .search-wrap {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      outline: none;
+      transition: border 0.15s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .rooms-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .room-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .room-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .room-card.selected {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: var(--primary);
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+    }
+
+    .room-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .room-id-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      max-width: 170px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .room-time-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .room-card-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .room-participants {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+    }
+
+    .student-tag {
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .tag-s1 {
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--accent-cyan);
+    }
+
+    .tag-s2 {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+    }
+
+    .room-msg-count {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-family: var(--font-mono);
+    }
+
+    .room-snippet {
+      font-size: 11px;
+      color: var(--text-faint);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    .empty-rooms {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .radar-pulse {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.1);
+      border: 2px solid rgba(99, 102, 241, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: radarScan 2.5s infinite linear;
+    }
+
+    /* Middle Panel: Live Chat Inspector */
+    .inspector-panel {
+      background: #090d15;
+    }
+
+    .inspector-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-view-feed {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      scroll-behavior: smooth;
+    }
+
+    .msg-wire-row {
+      display: flex;
+      flex-direction: column;
+      max-width: 82%;
+      animation: msgPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .msg-wire-row.s1 {
+      align-self: flex-start;
+    }
+
+    .msg-wire-row.s2 {
+      align-self: flex-end;
+    }
+
+    .msg-wire-row.prank {
+      align-self: center;
+      max-width: 92%;
+      width: 100%;
+    }
+
+    .msg-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+      font-size: 11px;
+    }
+
+    .msg-wire-row.s1 .msg-meta {
+      justify-content: flex-start;
+    }
+
+    .msg-wire-row.s2 .msg-meta {
+      justify-content: flex-end;
+    }
+
+    .msg-wire-row.prank .msg-meta {
+      justify-content: center;
+    }
+
+    .meta-sender {
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .msg-wire-row.s1 .meta-sender { color: var(--accent-cyan); }
+    .msg-wire-row.s2 .meta-sender { color: #c084fc; }
+    .msg-wire-row.prank .meta-sender { color: #f87171; }
+
+    .meta-time {
+      color: var(--text-faint);
+      font-size: 10px;
+      font-family: var(--font-mono);
+    }
+
+    .wire-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      word-break: break-word;
+      position: relative;
+    }
+
+    .msg-wire-row.s1 .wire-bubble {
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #e0f2fe;
+      border-bottom-left-radius: 2px;
+    }
+
+    .msg-wire-row.s2 .wire-bubble {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #f3e8ff;
+      border-bottom-right-radius: 2px;
+    }
+
+    /* Joby / Prank Injected Card inside wiretap */
+    .wire-prank-card {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.22) 0%, rgba(17, 24, 39, 0.95) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      box-shadow: 0 4px 20px rgba(220, 38, 38, 0.25);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .wire-prank-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #ef4444;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #1e1b4b;
+    }
+
+    .wire-prank-content {
+      flex: 1;
+    }
+
+    .wire-prank-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .wire-prank-name {
+      font-weight: 700;
+      font-size: 13px;
+      color: #fca5a5;
+    }
+
+    .wire-prank-tag {
+      font-size: 10px;
+      background: rgba(239, 68, 68, 0.3);
+      color: #fee2e2;
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .wire-prank-text {
+      color: #fef08a;
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .wire-prank-footer {
+      font-size: 10px;
+      color: #f87171;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .inspector-bottom-bar {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(13, 17, 26, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Right Panel: Prank & Intervention Studio */
+    .studio-panel {
+      background: var(--bg-card);
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .studio-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-select,
+    .form-input,
+    .form-textarea {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .form-select:focus,
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Persona Presets Grid */
+    .persona-presets {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .preset-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: var(--text-main);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+
+    .preset-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .preset-btn.active {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: #ef4444;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+    }
+
+    .preset-btn span.emoji {
+      font-size: 16px;
+    }
+
+    /* Quick Quote Templates */
+    .quote-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .quote-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .quote-chip:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Avatar preview row */
+    .avatar-preview-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #ef4444;
+      object-fit: cover;
+      background: #1e1b4b;
+      flex-shrink: 0;
+    }
+
+    /* Toggle switches */
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+
+    .switch-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: .2s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .2s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #ef4444;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+
+    /* Launch Button */
+    .btn-launch-prank {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      border: none;
+      border-radius: 10px;
+      padding: 14px 20px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 4px;
+    }
+
+    .btn-launch-prank:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 26px rgba(239, 68, 68, 0.5);
+    }
+
+    .btn-launch-prank:active {
+      transform: translateY(0);
+    }
+
+    .btn-test-siren {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-test-siren:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* Toast Notification */
+    .admin-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .admin-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .admin-toast.success {
+      border-color: #10b981;
+      background: #064e3b;
+    }
+
+    .admin-toast.error {
+      border-color: #ef4444;
+      background: #7f1d1d;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    @keyframes radarScan {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+      70% { box-shadow: 0 0 0 16px rgba(99, 102, 241, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
+
+    @keyframes msgPopIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="logo-group">
+      <div class="logo-badge">
+        <span>🚨</span>
+        <span>MISSION CONTROL</span>
+      </div>
+      <div>
+        <div class="logo-title">AnonChat God Mode</div>
+        <div class="logo-subtitle">Live Wiretap & Joby Sir Prank Studio</div>
+      </div>
+    </div>
+
+    <!-- Live KPIs -->
+    <div class="kpi-bar">
+      <div class="kpi-chip">
+        <span class="dot"></span>
+        <span class="kpi-label">Socket</span>
+        <span class="kpi-val" id="kpiSocket">Connecting...</span>
+      </div>
+      <div class="kpi-chip">
+        <span class="kpi-label">👥 Online</span>
+        <span class="kpi-val" id="kpiOnline">0</span>
+      </div>
+      <div class="kpi-chip live">
+        <span class="dot"></span>
+        <span class="kpi-label">💬 Active Rooms</span>
+        <span class="kpi-val" id="kpiRooms">0</span>
+      </div>
+      <div class="kpi-chip warn">
+        <span class="dot"></span>
+        <span class="kpi-label">⏳ Queue</span>
+        <span class="kpi-val" id="kpiQueue">0</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <button class="btn-secondary" id="btnRefresh" title="Refresh state">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <span>Refresh</span>
+      </button>
+      <a href="/" target="_blank" class="btn-secondary" title="Open user chat in new window">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        <span>Open Chat Tab</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Three-Column Layout -->
+  <main class="dashboard-layout">
+    
+    <!-- Left Column: Active Rooms -->
+    <section class="panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>Active Rooms</span>
+        </div>
+        <div class="panel-count" id="roomCountPill">0 LIVE</div>
+      </div>
+
+      <div class="search-wrap">
+        <input type="text" id="roomSearch" class="search-input" placeholder="Search room ID or vibe..." />
+      </div>
+
+      <div class="rooms-list" id="roomsListContainer">
+        <!-- Injected via JavaScript -->
+        <div class="empty-rooms">
+          <div class="radar-pulse">📡</div>
+          <div>No active conversations right now</div>
+          <div style="font-size: 11px; color: var(--text-faint);">Open the app in two tabs to start chatting!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Center Column: Live Chat Inspector -->
+    <section class="panel inspector-panel">
+      <div class="panel-header">
+        <div class="inspector-header-info">
+          <div class="panel-title" id="inspectorTitle">
+            <span>Inspector:</span>
+            <span id="selectedRoomIdText" style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 12px;">Select a room</span>
+          </div>
+          <span id="roomVibeBadge" style="display:none; font-size: 10px; background: rgba(99,102,241,0.2); color: #a5b4fc; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Direct</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button id="btnTerminateRoom" class="btn-secondary" style="color: #f87171; border-color: rgba(239,68,68,0.3); display: none;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Terminate Chat</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="chat-view-feed" id="chatFeed">
+        <div class="empty-rooms" id="emptyChatPlaceholder">
+          <div style="font-size: 32px;">👀</div>
+          <div>Select an ongoing chat from the left panel to watch live messages in real-time.</div>
+        </div>
+      </div>
+
+      <div class="inspector-bottom-bar">
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="autoScrollCheck" checked />
+          <span>Auto-scroll to latest message</span>
+        </label>
+        <span id="feedStatusText">Live wiretap enabled</span>
+      </div>
+    </section>
+
+    <!-- Right Column: Prank & Intervention Studio -->
+    <section class="panel studio-panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>Prank & Intervention Studio</span>
+        </div>
+        <div class="panel-count" style="background: rgba(239,68,68,0.2); color: #fca5a5;">JOBY MODE</div>
+      </div>
+
+      <div class="studio-body">
+        
+        <!-- Target Room Selector -->
+        <div class="form-group">
+          <label class="form-label">Target Chat Room</label>
+          <select id="targetRoomSelect" class="form-select">
+            <option value="">-- Choose Target Room --</option>
+            <option value="ALL">🚨 ALL ACTIVE ROOMS (Broadcast to Everyone)</option>
+          </select>
+        </div>
+
+        <!-- Persona Preset Picker -->
+        <div class="form-group">
+          <label class="form-label">
+            <span>Disguise / Persona</span>
+            <span style="color: var(--accent-cyan); font-size: 10px;">1-Click Preset</span>
+          </label>
+          <div class="persona-presets">
+            <button type="button" class="preset-btn active" data-preset="joby">
+              <span class="emoji">👨‍🏫</span>
+              <span>Joby Sir</span>
+            </button>
+            <button type="button" class="preset-btn" data-preset="principal">
+              <span class="emoji">🏫</span>
+              <span>Principal</span>
+            </button>
+            <button type="button" class="preset-btn" data-preset="police">
+              <span class="emoji">🚔</span>
+              <span>Cyber Police</span>
+            </button>
+            <button type="button" class="preset-btn" data-preset="hacker">
+              <span class="emoji">🦹</span>
+              <span>Hacker</span>
+            </button>
+            <button type="button" class="preset-btn" data-preset="ghost">
+              <span class="emoji">👻</span>
+              <span>Ghost/3rd Person</span>
+            </button>
+            <button type="button" class="preset-btn" data-preset="admin">
+              <span class="emoji">⚡</span>
+              <span>System Admin</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sender Persona Details -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div class="form-group">
+            <label class="form-label">Display Name</label>
+            <input type="text" id="prankSenderName" class="form-input" value="Joby Jacob Sir" placeholder="e.g. Joby Sir" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Badge / Role</label>
+            <input type="text" id="prankSenderRole" class="form-input" value="Discipline Incharge" placeholder="e.g. Discipline Head" />
+          </div>
+        </div>
+
+        <!-- Photo & Avatar Preview -->
+        <div class="form-group">
+          <label class="form-label">Avatar Photo URL</label>
+          <div class="avatar-preview-row">
+            <img id="avatarPreviewImg" src="/joby-sir.jpg" class="avatar-thumb" alt="Avatar" onerror="this.src='/joby-sir.jpg'" />
+            <input type="text" id="prankPhotoUrl" class="form-input" style="flex:1;" value="https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG" />
+          </div>
+        </div>
+
+        <!-- Quick Quote Templates -->
+        <div class="form-group">
+          <label class="form-label">
+            <span>Quick Catchphrases</span>
+            <span style="color: var(--accent-amber); font-size: 10px;">Click to load</span>
+          </label>
+          <div class="quote-chips">
+            <span class="quote-chip" data-quote="i told you beta gali nahi dene ka meet tommarow">"i told you beta gali nahi..."</span>
+            <span class="quote-chip" data-quote="Beta Principal cabin me turant aao kal subah with parents.">"Principal cabin me aao..."</span>
+            <span class="quote-chip" data-quote="🚨 WARNING: Your IP & device are logged for disciplinary action.">"IP logged warning"</span>
+            <span class="quote-chip" data-quote="Bhai tum dono ko lagta hai koi nahi dekh raha? CCTV is ON 👀">"CCTV is ON 👀"</span>
+            <span class="quote-chip" data-quote="Yeh sab baatein hostel me aake karo na beta.">"Hostel me aao beta"</span>
+          </div>
+        </div>
+
+        <!-- Message Body -->
+        <div class="form-group">
+          <label class="form-label">Prank Message Text</label>
+          <textarea id="prankMessageText" class="form-textarea" placeholder="Type message to inject into their live conversation...">i told you beta gali nahi dene ka meet tommarow</textarea>
+        </div>
+
+        <!-- Prank Options & FX -->
+        <div style="background: rgba(0,0,0,0.25); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 14px;">
+          <div class="switch-row">
+            <div class="switch-label">
+              <span>🚨 Prank Siren Audio</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggleSiren" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="switch-row">
+            <div class="switch-label">
+              <span>⏳ Show Typing Indicator First</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggleTyping" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="switch-row">
+            <div class="switch-label">
+              <span>Card Style: Dramatic Joby Card</span>
+            </div>
+            <select id="prankCardStyle" class="form-select" style="padding: 4px 8px; font-size: 11px; width: 140px;">
+              <option value="joby_card">🚨 Joby Card</option>
+              <option value="normal_msg">💬 Chat Bubble</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Test Siren Button -->
+        <button type="button" class="btn-test-siren" id="btnTestSiren">
+          <span>🔊 Test Siren Sound on Admin Speaker</span>
+        </button>
+
+        <!-- Big Launch Action Button -->
+        <button type="button" class="btn-launch-prank" id="btnLaunchPrank">
+          <span>⚡ BHEJ DO / DROP PRANK INTO CHAT</span>
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="adminToast" class="admin-toast">
+    <span id="toastIcon">✅</span>
+    <span id="toastMsg">Prank delivered successfully!</span>
+  </div>
+
+  <!-- Socket.IO Client Bundle -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // State management
+    let socket = null;
+    let activeRooms = [];
+    let selectedRoomId = null;
+    let roomMessageHistories = new Map(); // roomId -> array of messages
+    let autoScroll = true;
+
+    // Presets catalog
+    const PRESETS = {
+      joby: {
+        name: 'Joby Jacob Sir',
+        role: 'Discipline Incharge',
+        photo: 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG',
+        fallback: '/joby-sir.jpg',
+        text: 'i told you beta gali nahi dene ka meet tommarow',
+        footer: 'Staff Room / Discipline Alert • SJS Kaushambi',
+        style: 'joby_card'
+      },
+      principal: {
+        name: 'Father Sebastian',
+        role: 'Principal & Director',
+        photo: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=150',
+        fallback: '/joby-sir.jpg',
+        text: 'Beta Principal cabin me turant aao kal subah with your parents.',
+        footer: 'Office of the Principal • Official Summons',
+        style: 'joby_card'
+      },
+      police: {
+        name: 'Cyber Crime Inspector',
+        role: 'Anti-Harassment Unit',
+        photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+        fallback: '/joby-sir.jpg',
+        text: '🚨 WARNING: Unlawful communication detected. Your ISP and GPS coordinates are logged.',
+        footer: 'Cyber Intelligence Surveillance • Active Trace',
+        style: 'joby_card'
+      },
+      hacker: {
+        name: 'Anonymous 404',
+        role: 'Root Infiltrator',
+        photo: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
+        fallback: '/joby-sir.jpg',
+        text: 'Wake up, Neo... I see everything you two are writing here.',
+        footer: 'Encrypted Terminal Socket • Tunnel #89',
+        style: 'joby_card'
+      },
+      ghost: {
+        name: 'Third Wheel Stranger',
+        role: 'Uninvited Listener',
+        photo: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150',
+        fallback: '/joby-sir.jpg',
+        text: 'Excuse me, are you guys done flirting yet? It is my turn to chat.',
+        footer: 'Phantom Participant',
+        style: 'normal_msg'
+      },
+      admin: {
+        name: 'System Admin',
+        role: 'Server Master',
+        photo: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150',
+        fallback: '/joby-sir.jpg',
+        text: 'Attention users: Server maintenance will begin shortly. Wrap up your chat.',
+        footer: 'AnonChat Operations • Real-Time Broadcast',
+        style: 'joby_card'
+      }
+    };
+
+    // Synthesizer Siren for Testing
+    let audioCtx = null;
+    function playJobySiren() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.linearRampToValueAtTime(1100, now + 0.35);
+        osc.frequency.linearRampToValueAtTime(600, now + 0.7);
+        osc.frequency.linearRampToValueAtTime(1100, now + 1.05);
+        osc.frequency.linearRampToValueAtTime(450, now + 1.4);
+
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 1.45);
+      } catch (err) {
+        console.warn('Audio siren error:', err);
+      }
+    }
+
+    // Toast message helper
+    function showToast(msg, isSuccess = true) {
+      const toast = document.getElementById('adminToast');
+      const icon = document.getElementById('toastIcon');
+      const text = document.getElementById('toastMsg');
+      if (!toast) return;
+
+      toast.className = `admin-toast show ${isSuccess ? 'success' : 'error'}`;
+      icon.textContent = isSuccess ? '✅' : '❌';
+      text.textContent = msg;
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    // Format timestamp
+    function formatTime(timestamp) {
+      const d = new Date(timestamp || Date.now());
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    // Connect to Socket.IO engine
+    function initAdminSocket() {
+      socket = io();
+
+      socket.on('connect', () => {
+        document.getElementById('kpiSocket').textContent = 'Connected';
+        document.getElementById('kpiSocket').style.color = '#10b981';
+        // Register as admin
+        socket.emit('admin_init');
+      });
+
+      socket.on('disconnect', () => {
+        document.getElementById('kpiSocket').textContent = 'Disconnected';
+        document.getElementById('kpiSocket').style.color = '#ef4444';
+      });
+
+      // Initial state received
+      socket.on('admin_init_data', (data) => {
+        if (data.stats) updateStats(data.stats);
+        if (data.rooms) {
+          activeRooms = data.rooms;
+          renderRoomsList();
+          updateTargetDropdown();
+        }
+      });
+
+      // Stats broadcast
+      socket.on('admin_stats', (stats) => {
+        updateStats(stats);
+      });
+
+      // New room formed
+      socket.on('admin_room_created', (room) => {
+        const existingIdx = activeRooms.findIndex(r => r.roomId === room.roomId);
+        if (existingIdx !== -1) {
+          activeRooms[existingIdx] = room;
+        } else {
+          activeRooms.unshift(room);
+        }
+        renderRoomsList();
+        updateTargetDropdown();
+      });
+
+      // Room ended
+      socket.on('admin_room_closed', ({ roomId }) => {
+        activeRooms = activeRooms.filter(r => r.roomId !== roomId);
+        renderRoomsList();
+        updateTargetDropdown();
+        if (selectedRoomId === roomId) {
+          const feed = document.getElementById('chatFeed');
+          const notice = document.createElement('div');
+          notice.style.textAlign = 'center';
+          notice.style.color = '#ef4444';
+          notice.style.fontSize = '12px';
+          notice.style.padding = '8px';
+          notice.style.background = 'rgba(239,68,68,0.1)';
+          notice.style.borderRadius = '6px';
+          notice.innerHTML = `⚠️ <strong>Session Terminated</strong>: Stranger has disconnected from this room.`;
+          feed.appendChild(notice);
+        }
+      });
+
+      // Full room history loaded
+      socket.on('admin_room_history', ({ roomId, session }) => {
+        if (roomId !== selectedRoomId) return;
+        const messages = session && session.messages ? session.messages : [];
+        roomMessageHistories.set(roomId, messages);
+        renderRoomChatFeed(roomId);
+      });
+
+      // Live incoming message stream from active chats
+      socket.on('admin_message_feed', (msg) => {
+        const { roomId } = msg;
+
+        // Update room snippet in list
+        const room = activeRooms.find(r => r.roomId === roomId);
+        if (room) {
+          room.lastMessage = msg;
+          room.messageCount = (room.messageCount || 0) + 1;
+          renderRoomsList();
+        }
+
+        // Store in history
+        if (!roomMessageHistories.has(roomId)) {
+          roomMessageHistories.set(roomId, []);
+        }
+        roomMessageHistories.get(roomId).push(msg);
+
+        // If this room is currently active in inspector, append immediately
+        if (selectedRoomId === roomId) {
+          appendMessageToInspector(msg);
+        }
+      });
+
+      // Prank ACK
+      socket.on('admin_prank_ack', (res) => {
+        if (res.success) {
+          showToast(res.message || 'Prank successfully executed!', true);
+          playJobySiren();
+        } else {
+          showToast(res.message || 'Prank failed to send', false);
+        }
+      });
+    }
+
+    // Update KPIs
+    function updateStats(stats) {
+      if (stats.onlineCount !== undefined) document.getElementById('kpiOnline').textContent = stats.onlineCount;
+      if (stats.activeRoomsCount !== undefined) {
+        document.getElementById('kpiRooms').textContent = stats.activeRoomsCount;
+        document.getElementById('roomCountPill').textContent = `${stats.activeRoomsCount} LIVE`;
+      }
+      if (stats.waitingCount !== undefined) document.getElementById('kpiQueue').textContent = stats.waitingCount;
+    }
+
+    // Render rooms list
+    function renderRoomsList() {
+      const container = document.getElementById('roomsListContainer');
+      const searchTerm = document.getElementById('roomSearch').value.trim().toLowerCase();
+
+      let filtered = activeRooms;
+      if (searchTerm) {
+        filtered = activeRooms.filter(r => r.roomId.toLowerCase().includes(searchTerm) || (r.vibe && r.vibe.toLowerCase().includes(searchTerm)));
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-rooms">
+            <div class="radar-pulse">📡</div>
+            <div>${searchTerm ? 'No rooms match your search' : 'No active conversations right now'}</div>
+            <div style="font-size: 11px; color: var(--text-faint);">Matches will automatically appear here!</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(room => {
+        const isSelected = room.roomId === selectedRoomId;
+        const msgSnippet = room.lastMessage ? (room.lastMessage.text || 'Shared media') : 'Waiting for first message...';
+        return `
+          <div class="room-card ${isSelected ? 'selected' : ''}" onclick="selectRoom('${room.roomId}')">
+            <div class="room-card-head">
+              <span class="room-id-pill" title="${room.roomId}">#${room.roomId.slice(-8)}</span>
+              <span class="room-time-badge">${room.vibe || 'Direct'}</span>
+            </div>
+            <div class="room-card-body">
+              <div class="room-participants">
+                <span class="student-tag tag-s1">S1</span>
+                <span>↔</span>
+                <span class="student-tag tag-s2">S2</span>
+              </div>
+              <span class="room-msg-count">${room.messageCount || 0} msgs</span>
+            </div>
+            <div class="room-snippet">"${escapeHtml(msgSnippet)}"</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Update target rooms dropdown
+    function updateTargetDropdown() {
+      const select = document.getElementById('targetRoomSelect');
+      const currentVal = select.value;
+      
+      let html = `
+        <option value="">-- Choose Target Room --</option>
+        <option value="ALL">🚨 ALL ACTIVE ROOMS (Broadcast to Everyone)</option>
+      `;
+
+      activeRooms.forEach(room => {
+        html += `<option value="${room.roomId}">#${room.roomId.slice(-8)} (${room.vibe || 'Direct'} • ${room.messageCount || 0} msgs)</option>`;
+      });
+
+      select.innerHTML = html;
+      if (currentVal && (currentVal === 'ALL' || activeRooms.some(r => r.roomId === currentVal))) {
+        select.value = currentVal;
+      } else if (selectedRoomId) {
+        select.value = selectedRoomId;
+      }
+    }
+
+    // Select a room to inspect
+    window.selectRoom = function(roomId) {
+      selectedRoomId = roomId;
+      const room = activeRooms.find(r => r.roomId === roomId);
+      document.getElementById('selectedRoomIdText').textContent = roomId;
+      const vibeBadge = document.getElementById('roomVibeBadge');
+      if (room && room.vibe) {
+        vibeBadge.textContent = room.vibe;
+        vibeBadge.style.display = 'inline-block';
+      } else {
+        vibeBadge.style.display = 'none';
+      }
+
+      document.getElementById('btnTerminateRoom').style.display = 'inline-flex';
+      document.getElementById('targetRoomSelect').value = roomId;
+
+      renderRoomsList();
+
+      // Fetch full transcript from server
+      socket.emit('admin_get_room_history', { roomId });
+    };
+
+    // Render Chat Feed
+    function renderRoomChatFeed(roomId) {
+      const feed = document.getElementById('chatFeed');
+      const messages = roomMessageHistories.get(roomId) || [];
+
+      if (messages.length === 0) {
+        feed.innerHTML = `
+          <div class="empty-rooms">
+            <div style="font-size: 28px;">💬</div>
+            <div>No messages sent in this room yet.</div>
+            <div style="font-size: 11px; color: var(--text-faint);">Watching for live incoming messages...</div>
+          </div>
+        `;
+        return;
+      }
+
+      feed.innerHTML = '';
+      messages.forEach(msg => {
+        appendMessageToInspector(msg);
+      });
+    }
+
+    // Append single message to inspector
+    function appendMessageToInspector(msg) {
+      const feed = document.getElementById('chatFeed');
+      const placeholder = document.getElementById('emptyChatPlaceholder');
+      if (placeholder) placeholder.remove();
+
+      const isPrank = !!msg.extra?.isPrank || !!msg.isPrank;
+      const isS1 = msg.senderAlias === 'Student_1' || msg.sender === 'Student_1';
+
+      const row = document.createElement('div');
+      
+      if (isPrank) {
+        row.className = 'msg-wire-row prank';
+        const pName = msg.extra?.name || msg.senderAlias || 'Joby Jacob Sir';
+        const pRole = msg.extra?.role || 'Discipline Incharge';
+        const pPhoto = msg.extra?.photo || '/joby-sir.jpg';
+        const pText = msg.text || '';
+        const pTime = formatTime(msg.timestamp);
+
+        row.innerHTML = `
+          <div class="msg-meta">
+            <span class="meta-sender">🚨 PRANK INTERVENTION</span>
+            <span class="meta-time">${pTime}</span>
+          </div>
+          <div class="wire-prank-card">
+            <img src="${pPhoto}" class="wire-prank-avatar" alt="${escapeHtml(pName)}" onerror="this.src='/joby-sir.jpg'" />
+            <div class="wire-prank-content">
+              <div class="wire-prank-head">
+                <span class="wire-prank-name">${escapeHtml(pName)}</span>
+                <span class="wire-prank-tag">${escapeHtml(pRole)}</span>
+              </div>
+              <div class="wire-prank-text">"${escapeHtml(pText)}"</div>
+              <div class="wire-prank-footer">
+                <span>⚠️ Dropped by Admin via Prank Studio</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        const sideClass = isS1 ? 's1' : 's2';
+        const senderName = isS1 ? 'Student 1' : 'Student 2';
+        row.className = `msg-wire-row ${sideClass}`;
+
+        let bodyHtml = escapeHtml(msg.text || '');
+        if (msg.audio) {
+          bodyHtml = `🎙️ <em>[Voice Note Audio Shared]</em> ` + bodyHtml;
+        } else if (msg.image) {
+          bodyHtml = `📷 <em>[Photo Shared]</em> ` + bodyHtml;
+        }
+
+        row.innerHTML = `
+          <div class="msg-meta">
+            <span class="meta-sender">${senderName}</span>
+            <span class="meta-time">${formatTime(msg.timestamp)}</span>
+          </div>
+          <div class="wire-bubble">${bodyHtml}</div>
+        `;
+      }
+
+      feed.appendChild(row);
+
+      if (autoScroll) {
+        feed.scrollTop = feed.scrollHeight;
+      }
+    }
+
+    // HTML escape utility
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Set persona preset
+    function applyPreset(presetKey) {
+      const preset = PRESETS[presetKey];
+      if (!preset) return;
+
+      document.getElementById('prankSenderName').value = preset.name;
+      document.getElementById('prankSenderRole').value = preset.role;
+      document.getElementById('prankPhotoUrl').value = preset.photo;
+      document.getElementById('avatarPreviewImg').src = preset.photo;
+      document.getElementById('prankMessageText').value = preset.text;
+      document.getElementById('prankCardStyle').value = preset.style || 'joby_card';
+
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-preset') === presetKey);
+      });
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      initAdminSocket();
+
+      // Search room filter
+      document.getElementById('roomSearch').addEventListener('input', renderRoomsList);
+
+      // Auto scroll toggle
+      document.getElementById('autoScrollCheck').addEventListener('change', (e) => {
+        autoScroll = e.target.checked;
+      });
+
+      // Photo URL change
+      document.getElementById('prankPhotoUrl').addEventListener('input', (e) => {
+        document.getElementById('avatarPreviewImg').src = e.target.value;
+      });
+
+      // Preset click buttons
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-preset');
+          applyPreset(key);
+        });
+      });
+
+      // Quick quote click
+      document.querySelectorAll('.quote-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.getElementById('prankMessageText').value = chip.getAttribute('data-quote');
+        });
+      });
+
+      // Test Siren
+      document.getElementById('btnTestSiren').addEventListener('click', () => {
+        playJobySiren();
+        showToast('🔊 Siren sound played on admin speaker', true);
+      });
+
+      // Terminate Room button
+      document.getElementById('btnTerminateRoom').addEventListener('click', () => {
+        if (!selectedRoomId) return;
+        if (confirm(`Terminate Room #${selectedRoomId.slice(-8)} immediately?`)) {
+          socket.emit('admin_disconnect_room', { roomId: selectedRoomId });
+          showToast(`Room terminated by Admin`, true);
+        }
+      });
+
+      // Refresh Button
+      document.getElementById('btnRefresh').addEventListener('click', () => {
+        socket.emit('admin_init');
+        showToast('Refreshing rooms and stats...', true);
+      });
+
+      // Launch Prank Button!
+      document.getElementById('btnLaunchPrank').addEventListener('click', () => {
+        const targetRoomId = document.getElementById('targetRoomSelect').value;
+        const name = document.getElementById('prankSenderName').value.trim();
+        const role = document.getElementById('prankSenderRole').value.trim();
+        const photo = document.getElementById('prankPhotoUrl').value.trim();
+        const text = document.getElementById('prankMessageText').value.trim();
+        const siren = document.getElementById('toggleSiren').checked;
+        const typingBefore = document.getElementById('toggleTyping').checked;
+        const prankType = document.getElementById('prankCardStyle').value;
+
+        if (!targetRoomId) {
+          showToast('Please select a target room first!', false);
+          document.getElementById('targetRoomSelect').focus();
+          return;
+        }
+
+        if (!text) {
+          showToast('Please enter a prank message to send!', false);
+          document.getElementById('prankMessageText').focus();
+          return;
+        }
+
+        const payload = {
+          targetRoomId,
+          name: name || 'Joby Jacob Sir',
+          role: role || 'Discipline Incharge',
+          photo: photo || '/joby-sir.jpg',
+          text,
+          siren,
+          typingBefore,
+          prankType
+        };
+
+        socket.emit('admin_send_prank', payload);
+      });
+    });
+  </script>
+</body>
+</html>

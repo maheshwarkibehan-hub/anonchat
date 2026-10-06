@@ -2812,19 +2812,23 @@ function containsAbuse(text) {
 let lastJobyInterventionTime = 0;
 let jobyInterventionTimer = null;
 
-function scheduleJobySirIntervention() {
+function scheduleJobySirIntervention(incomingData = null) {
   const now = Date.now();
-  if (now - lastJobyInterventionTime < 7000) return;
+  if (!incomingData?.forced && now - lastJobyInterventionTime < 7000) return;
   lastJobyInterventionTime = now;
 
-  playJobySiren();
+  if (!incomingData || incomingData.siren !== false) {
+    playJobySiren();
+  }
   triggerHaptic('heavy');
+
+  const incomingName = incomingData?.name || 'Joby Sir';
 
   if (typingIndicator) {
     typingIndicator.innerHTML = `
       <div class="joby-typing-badge">
         <span class="joby-siren-icon">🚨</span>
-        <span><strong>Joby Sir</strong> is typing...</span>
+        <span><strong>${incomingName}</strong> is typing...</span>
       </div>
     `;
     typingIndicator.classList.remove('hidden');
@@ -2834,17 +2838,19 @@ function scheduleJobySirIntervention() {
   }
 
   clearTimeout(jobyInterventionTimer);
-  jobyInterventionTimer = setTimeout(() => {
-    renderJobySirMessage({
-      id: `joby_local_${Date.now()}`,
-      name: 'Joby Jacob Sir',
-      role: 'Discipline Incharge',
-      photo: 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG',
-      fallbackPhoto: '/joby-sir.jpg',
-      text: 'i told you beta gali nahi dene ka meet tommarow',
-      timestamp: Date.now()
-    });
-  }, 1100);
+  if (!incomingData) {
+    jobyInterventionTimer = setTimeout(() => {
+      renderJobySirMessage({
+        id: `joby_local_${Date.now()}`,
+        name: 'Joby Jacob Sir',
+        role: 'Discipline Incharge',
+        photo: 'https://www.sjskaushambi.org/Images/teaching_staff/2025AUG/JOBY%20JACOB.JPG',
+        fallbackPhoto: '/joby-sir.jpg',
+        text: 'i told you beta gali nahi dene ka meet tommarow',
+        timestamp: Date.now()
+      });
+    }, 1100);
+  }
 }
 
 function renderJobySirMessage(data) {
@@ -2852,9 +2858,9 @@ function renderJobySirMessage(data) {
   const msgId = data.id || `joby_${Date.now()}`;
   if (document.getElementById(msgId)) return;
 
-  // Don't duplicate if another Joby card rendered in the last 4 seconds
+  // Don't duplicate if another Joby card rendered in the last 4 seconds, unless forced by admin
   const recentCards = document.querySelectorAll('.joby-sir-row');
-  if (recentCards.length > 0) {
+  if (recentCards.length > 0 && !data.forced) {
     const lastCard = recentCards[recentCards.length - 1];
     const cardTime = parseInt(lastCard.getAttribute('data-time') || '0', 10);
     if (Date.now() - cardTime < 4500) return;
@@ -2875,9 +2881,11 @@ function renderJobySirMessage(data) {
   // 1. Entrance Chip
   const entranceChip = document.createElement('div');
   entranceChip.className = 'system-chip joby-entrance-chip';
+  const displayRole = (data.role || 'DISCIPLINE INCHARGE').toUpperCase();
+  const displayName = data.name || 'Joby Sir';
   entranceChip.innerHTML = `
     <span class="joby-siren-dot">🚨</span>
-    <span><strong>DISCIPLINE INCHARGE ALERT:</strong> Joby Sir joined the chat!</span>
+    <span><strong>${displayRole} ALERT:</strong> ${displayName} joined the chat!</span>
   `;
   messagesContainer.appendChild(entranceChip);
 
@@ -2892,11 +2900,12 @@ function renderJobySirMessage(data) {
   const name = data.name || 'Joby Jacob Sir';
   const role = data.role || 'Discipline Incharge';
   const text = data.text || 'i told you beta gali nahi dene ka meet tommarow';
+  const footer = data.footer || 'Staff Room / Discipline Alert • SJS Kaushambi';
   const timeStr = formatTime(data.timestamp || Date.now());
 
   row.innerHTML = `
     <div class="joby-avatar-wrap">
-      <img src="${photo}" onerror="this.onerror=null; this.src='${fallback}'" alt="Joby Sir" class="joby-avatar-img" />
+      <img src="${photo}" onerror="this.onerror=null; this.src='${fallback}'" alt="${name}" class="joby-avatar-img" />
       <span class="joby-badge-dot">🚨</span>
     </div>
     <div class="msg-bubble-wrap">
@@ -2914,7 +2923,7 @@ function renderJobySirMessage(data) {
             <line x1="12" y1="9" x2="12" y2="13"/>
             <line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          <span>Staff Room / Discipline Alert • SJS Kaushambi</span>
+          <span>${footer}</span>
         </div>
       </div>
       <div class="msg-timestamp">${timeStr}</div>
@@ -2931,11 +2940,12 @@ function renderJobySirMessage(data) {
 }
 
 // Socket Listeners for Joby Sir Events
-socket.on('joby_sir_incoming', () => {
-  scheduleJobySirIntervention();
+socket.on('joby_sir_incoming', (data) => {
+  scheduleJobySirIntervention(data);
 });
 
 socket.on('joby_sir_message', (data) => {
+  clearTimeout(jobyInterventionTimer);
   renderJobySirMessage(data);
 });
 

