@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "roomId": "room_1791309192224_aw24g4",
+    "vibe": "Direct",
+    "date": "2026-10-06",
+    "startTime": "2026-10-06T17:53:12.224Z",
+    "endTime": "2026-10-06T17:55:36.219Z",
+    "durationSeconds": 144,
+    "totalMessages": 9,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791309199350_wbbaly",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791309200294,
+      "isoTime": "2026-10-06T17:53:20.294Z",
+      "type": "text",
+      "text": "kya likha tha yrr",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791309200592_a0zpvp",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791309201536,
+      "isoTime": "2026-10-06T17:53:21.536Z",
+      "type": "text",
+      "text": "last me",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "msg_1791309212740_fh3gus",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791309211286,
+      "isoTime": "2026-10-06T17:53:31.286Z",
+      "type": "text",
+      "text": "Are sb tum gaye",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 4,
+      "msgId": "msg_1791309230155_mvh9e5",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791309228697,
+      "isoTime": "2026-10-06T17:53:48.697Z",
+      "type": "text",
+      "text": "Qnmol",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 5,
+      "msgId": "msg_1791309237065_439nzx",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791309235616,
+      "isoTime": "2026-10-06T17:53:55.616Z",
+      "type": "text",
+      "text": "Boys group par dekho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 6,
+      "msgId": "msg_1791309249309_77ytwb",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791309250254,
+      "isoTime": "2026-10-06T17:54:10.254Z",
+      "type": "text",
+      "text": "mai soch raha hu ki maheswar ko nikal du",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 7,
+      "msgId": "msg_1791309252756_z5k49f",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791309253703,
+      "isoTime": "2026-10-06T17:54:13.703Z",
+      "type": "text",
+      "text": "group se",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 8,
+      "msgId": "msg_1791309258715_a39vxv",
+      "sender": "Student_1",
+      "role": "user",
+      "timestamp": 1791309259669,
+      "isoTime": "2026-10-06T17:54:19.669Z",
+      "type": "text",
+      "text": "abb dekho",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 9,
+      "msgId": "msg_1791309310091_sm9er4",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791309308626,
+      "isoTime": "2026-10-06T17:55:08.626Z",
+      "type": "text",
+      "text": "Nikal do",
+      "ephemeral": false,
+      "replyTo": null
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "user",
+        "content": "kya likha tha yrr"
+      },
+      {
+        "role": "user",
+        "content": "last me"
+      },
+      {
+        "role": "assistant",
+        "content": "Are sb tum gaye"
+      },
+      {
+        "role": "assistant",
+        "content": "Qnmol"
+      },
+      {
+        "role": "assistant",
+        "content": "Boys group par dekho"
+      },
+      {
+        "role": "user",
+        "content": "mai soch raha hu ki maheswar ko nikal du"
+      },
+      {
+        "role": "user",
+        "content": "group se"
+      },
+      {
+        "role": "user",
+        "content": "abb dekho"
+      },
+      {
+        "role": "assistant",
+        "content": "Nikal do"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "human",
+        "value": "kya likha tha yrr"
+      },
+      {
+        "from": "human",
+        "value": "last me"
+      },
+      {
+        "from": "gpt",
+        "value": "Are sb tum gaye"
+      },
+      {
+        "from": "gpt",
+        "value": "Qnmol"
+      },
+      {
+        "from": "gpt",
+        "value": "Boys group par dekho"
+      },
+      {
+        "from": "human",
+        "value": "mai soch raha hu ki maheswar ko nikal du"
+      },
+      {
+        "from": "human",
+        "value": "group se"
+      },
+      {
+        "from": "human",
+        "value": "abb dekho"
+      },
+      {
+        "from": "gpt",
+        "value": "Nikal do"
+      }
+    ]
+  }
+}
