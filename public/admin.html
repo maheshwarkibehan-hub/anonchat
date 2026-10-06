@@ -1042,9 +1042,79 @@
       background: #dc2626;
     }
 
+    .sw-upload-actions-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sw-btn-camera {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #10b981;
+      color: #ffffff;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-height: 42px;
+      flex: 1;
+    }
+
+    .sw-btn-camera:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+
+    .sw-btn-browse {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-height: 42px;
+      flex: 1;
+    }
+
+    .sw-btn-browse:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-highlight);
+    }
+
     @media (max-width: 900px) {
       .schoolwork-dashboard {
         grid-template-columns: 1fr;
+        padding: 12px 14px calc(32px + env(safe-area-inset-bottom, 0px));
+        gap: 12px;
+      }
+      .sw-admin-card {
+        padding: 16px 14px;
+      }
+      .sw-upload-actions-row {
+        flex-direction: column;
+      }
+      .sw-btn-camera, .sw-btn-browse {
+        width: 100%;
+        min-height: 46px;
+      }
+      /* Prevent iOS browser auto-zoom by enforcing 16px font-size */
+      .sw-admin-subject-select,
+      .sw-admin-card input,
+      .sw-admin-card select {
+        font-size: 16px !important;
       }
     }
 
@@ -1558,16 +1628,36 @@
           </button>
         </div>
 
+        <!-- Action Row: Take Camera Photo & Browse Files -->
+        <div class="sw-upload-actions-row">
+          <input type="file" id="swCameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handleAdminCameraCapture(this.files)" />
+          <button type="button" class="sw-btn-camera" onclick="triggerAdminCameraCapture()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <span>Take Photo with Camera</span>
+          </button>
+          <button type="button" class="sw-btn-browse" onclick="document.getElementById('swFileInput').click()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <span>Browse Device Photos</span>
+          </button>
+        </div>
+
         <!-- Dropzone -->
         <div class="sw-dropzone" id="swDropzone" onclick="document.getElementById('swFileInput').click()">
           <input type="file" id="swFileInput" multiple accept="image/*" style="display: none;" onchange="handleAdminFilesSelected(this.files)" />
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 10px; color: var(--primary);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 8px; color: var(--primary);">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="17 8 12 3 7 8"></polyline>
             <line x1="12" y1="3" x2="12" y2="15"></line>
           </svg>
-          <div style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px;">Click or Drag &amp; Drop Note Photos Here</div>
-          <div style="font-size: 12px; color: var(--text-muted);">Select multiple photos (JPG, PNG, WEBP) from your device</div>
+          <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px;">Drag &amp; Drop Note Photos or Tap Above</div>
+          <div style="font-size: 11px; color: var(--text-muted);">Direct camera &amp; device photo upload &bull; Auto-synced to GitHub</div>
         </div>
 
         <!-- Files Queued for Upload -->
@@ -2374,6 +2464,66 @@
       });
 
       document.getElementById('swFileInput').value = '';
+    }
+
+    function triggerAdminCameraCapture() {
+      if (!swAdminState.selectedChapterId) {
+        showToast('Please select or create a chapter first!', false);
+        return;
+      }
+      const cameraInput = document.getElementById('swCameraInput');
+      if (cameraInput) {
+        cameraInput.value = '';
+        cameraInput.click();
+      }
+    }
+
+    async function handleAdminCameraCapture(files) {
+      if (!files || files.length === 0) return;
+      const file = files[0];
+      if (!file.type.startsWith('image/')) {
+        showToast('Only image files are supported', false);
+        return;
+      }
+
+      const subjectId = swAdminState.selectedSubjectId;
+      const chapterId = swAdminState.selectedChapterId;
+      if (!subjectId || !chapterId) {
+        showToast('Please select a chapter first', false);
+        return;
+      }
+
+      showToast('Capturing photo & uploading...', true);
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const now = new Date();
+          const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          const photoPayload = [{
+            name: `camera_${Date.now()}.jpg`,
+            base64: e.target.result,
+            title: `Camera Capture ${timeStr}`
+          }];
+
+          const res = await fetch('/api/admin/school-work/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ subjectId, chapterId, photos: photoPayload })
+          });
+          const data = await res.json();
+          if (data.success) {
+            showToast('Camera photo uploaded instantly & synced to Git!', true);
+            await selectAdminChapter(chapterId);
+          } else {
+            showToast(data.error || 'Failed to upload photo', false);
+          }
+        } catch (err) {
+          console.error('Camera upload error:', err);
+          showToast('Error uploading photo', false);
+        }
+      };
+      reader.readAsDataURL(file);
     }
 
     function renderAdminQueuedPhotos() {

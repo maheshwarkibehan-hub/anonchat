@@ -111,9 +111,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'app-chat.html'));
 });
 
-// School Work & Class Notes page
+// School Work & Class Notes page (modular v2.0 directory)
 app.get('/school-work', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'school-work.html'));
+  res.sendFile(path.join(__dirname, 'public', 'school-work', 'index.html'));
 });
 
 // Admin Live Wiretap & Prank Studio Dashboard
@@ -1517,6 +1517,36 @@ function writeSchoolWorkData(data) {
   }
 }
 
+// Git auto-persistence engine for School Work uploads
+let isSchoolWorkGitSyncing = false;
+let schoolWorkGitSyncPending = false;
+
+function triggerSchoolWorkGitSync(desc = 'update school work') {
+  if (isSchoolWorkGitSyncing) {
+    schoolWorkGitSyncPending = true;
+    return;
+  }
+  isSchoolWorkGitSyncing = true;
+  const safeDesc = desc.replace(/["`$]/g, '').slice(0, 80);
+  const cmd = `git add "public/uploads/school-work" "data/school_work.json" && git commit -m "feat(school-work): ${safeDesc} [skip ci]" && git push origin ${GITHUB_BRANCH}`;
+  
+  exec(cmd, { cwd: __dirname }, (error, stdout, stderr) => {
+    isSchoolWorkGitSyncing = false;
+    if (error) {
+      if (!error.message.includes('nothing to commit')) {
+        console.warn('[SchoolWork GitSync]', error.message.split('\n')[0]);
+      }
+    } else {
+      console.log(`[SchoolWork GitSync] Successfully pushed school work updates to GitHub (${safeDesc}).`);
+    }
+
+    if (schoolWorkGitSyncPending) {
+      schoolWorkGitSyncPending = false;
+      setTimeout(() => triggerSchoolWorkGitSync('batch school work updates'), 2000);
+    }
+  });
+}
+
 // 1. Get all subjects summary
 app.get('/api/school-work/subjects', (req, res) => {
   const data = readSchoolWorkData();
@@ -1601,6 +1631,7 @@ app.post('/api/admin/school-work/chapter', (req, res) => {
   fs.mkdirSync(chapterDir, { recursive: true });
 
   writeSchoolWorkData(data);
+  triggerSchoolWorkGitSync(`create chapter ${parsedNum} in ${subject.name}`);
   res.json({ success: true, chapter: newChapter });
 });
 
@@ -1664,6 +1695,7 @@ app.post('/api/admin/school-work/upload', (req, res) => {
   }
 
   writeSchoolWorkData(data);
+  triggerSchoolWorkGitSync(`upload ${uploadedEntries.length} notes to ${subject.name} ch ${chapter.chapterNumber}`);
   res.json({ success: true, count: uploadedEntries.length, photos: uploadedEntries });
 });
 
@@ -1687,6 +1719,7 @@ app.delete('/api/admin/school-work/chapter/:subjectId/:chapterId', (req, res) =>
   } catch (e) {}
 
   writeSchoolWorkData(data);
+  triggerSchoolWorkGitSync(`delete chapter ${chapterId} from ${subject.name}`);
   res.json({ success: true, message: 'Chapter deleted successfully' });
 });
 
@@ -1718,6 +1751,7 @@ app.delete('/api/admin/school-work/photo/:subjectId/:chapterId/:photoId', (req, 
   } catch (e) {}
 
   writeSchoolWorkData(data);
+  triggerSchoolWorkGitSync(`delete note photo in ${subject.name}`);
   res.json({ success: true, message: 'Photo deleted successfully' });
 });
 
