@@ -1475,15 +1475,14 @@ const SCHOOL_WORK_FILE = path.join(__dirname, 'data', 'school_work.json');
 const SCHOOL_WORK_UPLOADS_DIR = path.join(__dirname, 'public', 'uploads', 'school-work');
 
 const DEFAULT_SUBJECTS = [
-  { id: 'physics', name: 'Physics', code: 'PHY', category: 'Science', description: 'Mechanics, Electromagnetism, Optics & Modern Physics', chapters: [] },
-  { id: 'chemistry', name: 'Chemistry', code: 'CHE', category: 'Science', description: 'Physical, Inorganic & Organic Chemistry', chapters: [] },
-  { id: 'biology', name: 'Biology', code: 'BIO', category: 'Science', description: 'Botany, Zoology, Genetics & Physiology', chapters: [] },
-  { id: 'mathematics', name: 'Mathematics', code: 'MAT', category: 'Core', description: 'Algebra, Calculus, Geometry & Statistics', chapters: [] },
-  { id: 'social-science', name: 'Social Science', code: 'SOC', category: 'Humanities', description: 'History, Geography, Political Science & Economics', chapters: [] },
-  { id: 'english', name: 'English', code: 'ENG', category: 'Languages', description: 'Literature, Grammar, Reading Comprehension & Composition', chapters: [] },
-  { id: 'hindi', name: 'Hindi', code: 'HIN', category: 'Languages', description: 'Vyakaran, Sahitya, Nibandh & Bhasha Gyan', chapters: [] },
-  { id: 'computer', name: 'Computer', code: 'COM', category: 'Technology', description: 'Computer Science, Programming, Databases & Web Fundamentals', chapters: [] },
-  { id: 'moral-science', name: 'Moral Science', code: 'MOR', category: 'Ethics', description: 'Value Education, Character Development & Ethics', chapters: [] }
+  { id: 'physics', name: 'Physics', code: 'PHY', category: 'Science', description: 'Optics, Electricity, Magnetism & Energy Sources (NCERT Class 10)', chapters: [] },
+  { id: 'chemistry', name: 'Chemistry', code: 'CHE', category: 'Science', description: 'Chemical Reactions, Acids, Bases, Metals & Carbon (NCERT Class 10)', chapters: [] },
+  { id: 'biology', name: 'Biology', code: 'BIO', category: 'Science', description: 'Life Processes, Control, Reproduction, Heredity & Environment (NCERT Class 10)', chapters: [] },
+  { id: 'mathematics', name: 'Mathematics', code: 'MAT', category: 'Core', description: 'Real Numbers, Polynomials, Linear Equations, Triangles, Trig, Stats & Probability', chapters: [] },
+  { id: 'social-science', name: 'Social Science', code: 'SOC', category: 'Humanities', description: 'History, Contemporary Geography, Democratic Politics & Economic Development', chapters: [] },
+  { id: 'english', name: 'English', code: 'ENG', category: 'Languages', description: 'First Flight (Prose & Poems) and Footprints Without Feet Supplementary Reader', chapters: [] },
+  { id: 'hindi', name: 'Hindi', code: 'HIN', category: 'Languages', description: 'Kshitij Part-2 (Kavya & Gadya) and Kritika Part-2 (NCERT Class 10)', chapters: [] },
+  { id: 'computer', name: 'Computer Applications', code: 'COM', category: 'Technology', description: 'Networking, HTML, Cyber Ethics & Digital Tools (CBSE/NCERT Class 10)', chapters: [] }
 ];
 
 function readSchoolWorkData() {

@@ -85,12 +85,13 @@ async function runTests() {
   assert(resSubjects.status === 200, 'GET /api/school-work/subjects returns 200 OK');
   const subjectsData = JSON.parse(resSubjects.data);
   assert(subjectsData.success === true, 'GET /api/school-work/subjects response has success: true');
-  assert(Array.isArray(subjectsData.subjects) && subjectsData.subjects.length === 9, 'All 9 distinct subjects present');
+  assert(Array.isArray(subjectsData.subjects) && subjectsData.subjects.length === 8, 'All 8 NCERT subjects present (moral science omitted)');
 
   const names = subjectsData.subjects.map(s => s.name);
   assert(names.includes('Physics') && names.includes('Chemistry') && names.includes('Biology'), 'Science is cleanly split into Physics, Chemistry, and Biology');
   assert(names.includes('Mathematics') && names.includes('Social Science') && names.includes('English'), 'Core subjects present (Mathematics, Social Science, English)');
-  assert(names.includes('Hindi') && names.includes('Computer') && names.includes('Moral Science'), 'Elective & Language subjects present (Hindi, Computer, Moral Science)');
+  assert(names.includes('Hindi') && (names.includes('Computer') || names.includes('Computer Applications')), 'Elective & Language subjects present (Hindi, Computer)');
+  assert(!names.includes('Moral Science'), 'Moral Science is excluded per NCERT curriculum specification');
 
   // GET /api/school-work/subject/physics
   const resSubjectPhysics = await fetchUrl('/api/school-work/subject/physics');

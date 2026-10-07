@@ -5,72 +5,606 @@
       "name": "Physics",
       "code": "PHY",
       "category": "Science",
-      "description": "Mechanics, Electromagnetism, Optics & Modern Physics",
-      "chapters": []
+      "description": "Optics, Electricity, Magnetism & Energy Sources (NCERT Class 10)",
+      "chapters": [
+        {
+          "id": "phy-ch-09",
+          "chapterNumber": 9,
+          "title": "Light – Reflection and Refraction",
+          "photos": []
+        },
+        {
+          "id": "phy-ch-10",
+          "chapterNumber": 10,
+          "title": "The Human Eye and the Colourful World",
+          "photos": []
+        },
+        {
+          "id": "phy-ch-11",
+          "chapterNumber": 11,
+          "title": "Electricity",
+          "photos": []
+        },
+        {
+          "id": "phy-ch-12",
+          "chapterNumber": 12,
+          "title": "Magnetic Effects of Electric Current",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "chemistry",
       "name": "Chemistry",
       "code": "CHE",
       "category": "Science",
-      "description": "Physical, Inorganic & Organic Chemistry",
-      "chapters": []
+      "description": "Chemical Reactions, Acids, Bases, Metals & Carbon (NCERT Class 10)",
+      "chapters": [
+        {
+          "id": "che-ch-01",
+          "chapterNumber": 1,
+          "title": "Chemical Reactions and Equations",
+          "photos": []
+        },
+        {
+          "id": "che-ch-02",
+          "chapterNumber": 2,
+          "title": "Acids, Bases and Salts",
+          "photos": []
+        },
+        {
+          "id": "che-ch-03",
+          "chapterNumber": 3,
+          "title": "Metals and Non-metals",
+          "photos": []
+        },
+        {
+          "id": "che-ch-04",
+          "chapterNumber": 4,
+          "title": "Carbon and Its Compounds",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "biology",
       "name": "Biology",
       "code": "BIO",
       "category": "Science",
-      "description": "Botany, Zoology, Genetics & Physiology",
-      "chapters": []
+      "description": "Life Processes, Control, Reproduction, Heredity & Environment (NCERT Class 10)",
+      "chapters": [
+        {
+          "id": "bio-ch-05",
+          "chapterNumber": 5,
+          "title": "Life Processes",
+          "photos": []
+        },
+        {
+          "id": "bio-ch-06",
+          "chapterNumber": 6,
+          "title": "Control and Coordination",
+          "photos": []
+        },
+        {
+          "id": "bio-ch-07",
+          "chapterNumber": 7,
+          "title": "How do Organisms Reproduce?",
+          "photos": []
+        },
+        {
+          "id": "bio-ch-08",
+          "chapterNumber": 8,
+          "title": "Heredity",
+          "photos": []
+        },
+        {
+          "id": "bio-ch-13",
+          "chapterNumber": 13,
+          "title": "Our Environment",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "mathematics",
       "name": "Mathematics",
       "code": "MAT",
       "category": "Core",
-      "description": "Algebra, Calculus, Geometry & Statistics",
-      "chapters": []
+      "description": "Real Numbers, Polynomials, Linear Equations, Triangles, Trig, Stats & Probability",
+      "chapters": [
+        {
+          "id": "mat-ch-01",
+          "chapterNumber": 1,
+          "title": "Real Numbers",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-02",
+          "chapterNumber": 2,
+          "title": "Polynomials",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-03",
+          "chapterNumber": 3,
+          "title": "Pair of Linear Equations in Two Variables",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-04",
+          "chapterNumber": 4,
+          "title": "Quadratic Equations",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-05",
+          "chapterNumber": 5,
+          "title": "Arithmetic Progressions",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-06",
+          "chapterNumber": 6,
+          "title": "Triangles",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-07",
+          "chapterNumber": 7,
+          "title": "Coordinate Geometry",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-08",
+          "chapterNumber": 8,
+          "title": "Introduction to Trigonometry",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-09",
+          "chapterNumber": 9,
+          "title": "Some Applications of Trigonometry",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-10",
+          "chapterNumber": 10,
+          "title": "Circles",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-11",
+          "chapterNumber": 11,
+          "title": "Areas Related to Circles",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-12",
+          "chapterNumber": 12,
+          "title": "Surface Areas and Volumes",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-13",
+          "chapterNumber": 13,
+          "title": "Statistics",
+          "photos": []
+        },
+        {
+          "id": "mat-ch-14",
+          "chapterNumber": 14,
+          "title": "Probability",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "social-science",
       "name": "Social Science",
       "code": "SOC",
       "category": "Humanities",
-      "description": "History, Geography, Political Science & Economics",
-      "chapters": []
+      "description": "History, Contemporary Geography, Democratic Politics & Economic Development",
+      "chapters": [
+        {
+          "id": "soc-his-01",
+          "chapterNumber": 1,
+          "title": "History: The Rise of Nationalism in Europe",
+          "photos": []
+        },
+        {
+          "id": "soc-his-02",
+          "chapterNumber": 2,
+          "title": "History: Nationalism in India",
+          "photos": []
+        },
+        {
+          "id": "soc-his-03",
+          "chapterNumber": 3,
+          "title": "History: The Making of a Global World",
+          "photos": []
+        },
+        {
+          "id": "soc-his-04",
+          "chapterNumber": 4,
+          "title": "History: The Age of Industrialisation",
+          "photos": []
+        },
+        {
+          "id": "soc-his-05",
+          "chapterNumber": 5,
+          "title": "History: Print Culture and the Modern World",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-01",
+          "chapterNumber": 6,
+          "title": "Geography: Resources and Development",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-02",
+          "chapterNumber": 7,
+          "title": "Geography: Forest and Wildlife Resources",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-03",
+          "chapterNumber": 8,
+          "title": "Geography: Water Resources",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-04",
+          "chapterNumber": 9,
+          "title": "Geography: Agriculture",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-05",
+          "chapterNumber": 10,
+          "title": "Geography: Minerals and Energy Resources",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-06",
+          "chapterNumber": 11,
+          "title": "Geography: Manufacturing Industries",
+          "photos": []
+        },
+        {
+          "id": "soc-geo-07",
+          "chapterNumber": 12,
+          "title": "Geography: Lifelines of National Economy",
+          "photos": []
+        },
+        {
+          "id": "soc-pol-01",
+          "chapterNumber": 13,
+          "title": "Civics: Power-sharing",
+          "photos": []
+        },
+        {
+          "id": "soc-pol-02",
+          "chapterNumber": 14,
+          "title": "Civics: Federalism",
+          "photos": []
+        },
+        {
+          "id": "soc-pol-03",
+          "chapterNumber": 15,
+          "title": "Civics: Gender, Religion and Caste",
+          "photos": []
+        },
+        {
+          "id": "soc-pol-04",
+          "chapterNumber": 16,
+          "title": "Civics: Political Parties",
+          "photos": []
+        },
+        {
+          "id": "soc-pol-05",
+          "chapterNumber": 17,
+          "title": "Civics: Outcomes of Democracy",
+          "photos": []
+        },
+        {
+          "id": "soc-eco-01",
+          "chapterNumber": 18,
+          "title": "Economics: Development",
+          "photos": []
+        },
+        {
+          "id": "soc-eco-02",
+          "chapterNumber": 19,
+          "title": "Economics: Sectors of the Indian Economy",
+          "photos": []
+        },
+        {
+          "id": "soc-eco-03",
+          "chapterNumber": 20,
+          "title": "Economics: Money and Credit",
+          "photos": []
+        },
+        {
+          "id": "soc-eco-04",
+          "chapterNumber": 21,
+          "title": "Economics: Globalisation and the Indian Economy",
+          "photos": []
+        },
+        {
+          "id": "soc-eco-05",
+          "chapterNumber": 22,
+          "title": "Economics: Consumer Rights",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "english",
       "name": "English",
       "code": "ENG",
       "category": "Languages",
-      "description": "Literature, Grammar, Reading Comprehension & Composition",
-      "chapters": []
+      "description": "First Flight (Prose & Poems) and Footprints Without Feet Supplementary Reader",
+      "chapters": [
+        {
+          "id": "eng-ff-01",
+          "chapterNumber": 1,
+          "title": "First Flight: A Letter to God",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-02",
+          "chapterNumber": 2,
+          "title": "First Flight: Nelson Mandela – Long Walk to Freedom",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-03",
+          "chapterNumber": 3,
+          "title": "First Flight: Two Stories about Flying",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-04",
+          "chapterNumber": 4,
+          "title": "First Flight: From the Diary of Anne Frank",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-05",
+          "chapterNumber": 5,
+          "title": "First Flight: Glimpses of India",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-06",
+          "chapterNumber": 6,
+          "title": "First Flight: Mijbil the Otter",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-07",
+          "chapterNumber": 7,
+          "title": "First Flight: Madam Rides the Bus",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-08",
+          "chapterNumber": 8,
+          "title": "First Flight: The Sermon at Benares",
+          "photos": []
+        },
+        {
+          "id": "eng-ff-09",
+          "chapterNumber": 9,
+          "title": "First Flight: The Proposal (Play)",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-01",
+          "chapterNumber": 10,
+          "title": "Footprints: A Triumph of Surgery",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-02",
+          "chapterNumber": 11,
+          "title": "Footprints: The Thief’s Story",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-03",
+          "chapterNumber": 12,
+          "title": "Footprints: The Midnight Visitor",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-04",
+          "chapterNumber": 13,
+          "title": "Footprints: A Question of Trust",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-05",
+          "chapterNumber": 14,
+          "title": "Footprints: Footprints without Feet",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-06",
+          "chapterNumber": 15,
+          "title": "Footprints: The Making of a Scientist",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-07",
+          "chapterNumber": 16,
+          "title": "Footprints: The Necklace",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-08",
+          "chapterNumber": 17,
+          "title": "Footprints: Bholi",
+          "photos": []
+        },
+        {
+          "id": "eng-fw-09",
+          "chapterNumber": 18,
+          "title": "Footprints: The Book That Saved the Earth",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "hindi",
       "name": "Hindi",
       "code": "HIN",
       "category": "Languages",
-      "description": "Vyakaran, Sahitya, Nibandh & Bhasha Gyan",
-      "chapters": []
+      "description": "Kshitij Part-2 (Kavya & Gadya) and Kritika Part-2 (NCERT Class 10)",
+      "chapters": [
+        {
+          "id": "hin-ksh-k-01",
+          "chapterNumber": 1,
+          "title": "क्षितिज: पद (सूरदास)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-k-02",
+          "chapterNumber": 2,
+          "title": "क्षितिज: राम-लक्ष्मण-परशुराम संवाद (तुलसीदास)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-k-03",
+          "chapterNumber": 3,
+          "title": "क्षितिज: आत्मकथ्य (जयशंकर प्रसाद)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-k-04",
+          "chapterNumber": 4,
+          "title": "क्षितिज: उत्साह व अट नहीं रही है (सूर्यकांत त्रिपाठी निराला)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-k-05",
+          "chapterNumber": 5,
+          "title": "क्षितिज: यह दंतुरित मुस्कान व फसल (नागार्जुन)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-k-06",
+          "chapterNumber": 6,
+          "title": "क्षितिज: संगतकार (मंगलेश डबराल)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-g-07",
+          "chapterNumber": 7,
+          "title": "क्षितिज: नेताजी का चश्मा (स्वयं प्रकाश)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-g-08",
+          "chapterNumber": 8,
+          "title": "क्षितिज: बालगोबिन भगत (रामवृक्ष बेनीपुरी)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-g-09",
+          "chapterNumber": 9,
+          "title": "क्षितिज: लखनवी अंदाज़ (यशपाल)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-g-10",
+          "chapterNumber": 10,
+          "title": "क्षितिज: एक कहानी यह भी (मन्नू भंडारी)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-g-11",
+          "chapterNumber": 11,
+          "title": "क्षितिज: नौबतखाने में इबादत (यतींद्र मिश्र)",
+          "photos": []
+        },
+        {
+          "id": "hin-ksh-g-12",
+          "chapterNumber": 12,
+          "title": "क्षितिज: संस्कृति (भदंत आनंद कौसल्यायन)",
+          "photos": []
+        },
+        {
+          "id": "hin-kri-01",
+          "chapterNumber": 13,
+          "title": "कृतिका: माता का आँचल (शिवपूजन सहाय)",
+          "photos": []
+        },
+        {
+          "id": "hin-kri-02",
+          "chapterNumber": 14,
+          "title": "कृतिका: साना-साना हाथ जोड़ि (मधु कांकरिया)",
+          "photos": []
+        },
+        {
+          "id": "hin-kri-03",
+          "chapterNumber": 15,
+          "title": "कृतिका: मैं क्यों लिखता हूँ? (अज्ञेय)",
+          "photos": []
+        }
+      ]
     },
     {
       "id": "computer",
-      "name": "Computer",
+      "name": "Computer Applications",
       "code": "COM",
       "category": "Technology",
-      "description": "Computer Science, Programming, Databases & Web Fundamentals",
-      "chapters": []
-    },
-    {
-      "id": "moral-science",
-      "name": "Moral Science",
-      "code": "MOR",
-      "category": "Ethics",
-      "description": "Value Education, Character Development & Ethics",
-      "chapters": []
+      "description": "Networking, HTML, Cyber Ethics & Digital Tools (CBSE/NCERT Class 10)",
+      "chapters": [
+        {
+          "id": "com-ch-01",
+          "chapterNumber": 1,
+          "title": "Internet Basics and Web Services",
+          "photos": []
+        },
+        {
+          "id": "com-ch-02",
+          "chapterNumber": 2,
+          "title": "Internet Protocols & Mobile Technologies",
+          "photos": []
+        },
+        {
+          "id": "com-ch-03",
+          "chapterNumber": 3,
+          "title": "HTML: Basic Tags, Lists & Tables",
+          "photos": []
+        },
+        {
+          "id": "com-ch-04",
+          "chapterNumber": 4,
+          "title": "HTML: Images, Hyperlinks & Audio/Video",
+          "photos": []
+        },
+        {
+          "id": "com-ch-05",
+          "chapterNumber": 5,
+          "title": "Cascading Style Sheets (CSS)",
+          "photos": []
+        },
+        {
+          "id": "com-ch-06",
+          "chapterNumber": 6,
+          "title": "Cyber Ethics, Netiquette & Software Licenses",
+          "photos": []
+        },
+        {
+          "id": "com-ch-07",
+          "chapterNumber": 7,
+          "title": "Information Security & Digital Footprints",
+          "photos": []
+        }
+      ]
     }
   ]
 }
