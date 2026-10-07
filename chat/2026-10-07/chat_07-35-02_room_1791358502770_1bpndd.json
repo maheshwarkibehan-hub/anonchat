@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "roomId": "room_1791358502770_1bpndd",
+    "vibe": "Direct",
+    "date": "2026-10-07",
+    "startTime": "2026-10-07T07:35:02.770Z",
+    "endTime": "2026-10-07T07:35:57.781Z",
+    "durationSeconds": 55,
+    "totalMessages": 3,
+    "aiTrainingReady": true
+  },
+  "messages": [
+    {
+      "turn": 1,
+      "msgId": "msg_1791358511329_c6pe5o",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791358511546,
+      "isoTime": "2026-10-07T07:35:11.546Z",
+      "type": "text",
+      "text": "hi",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 2,
+      "msgId": "msg_1791358527857_t2wd88",
+      "sender": "Student_2",
+      "role": "assistant",
+      "timestamp": 1791358528073,
+      "isoTime": "2026-10-07T07:35:28.073Z",
+      "type": "text",
+      "text": "bsdk",
+      "ephemeral": false,
+      "replyTo": null
+    },
+    {
+      "turn": 3,
+      "msgId": "event_1791358529275",
+      "sender": "System",
+      "role": "system",
+      "timestamp": 1791358529275,
+      "isoTime": "2026-10-07T07:35:29.275Z",
+      "type": "teacher_intervention",
+      "text": "Joby Sir: i told you beta gali nahi dene ka meet tommarow"
+    }
+  ],
+  "ai_dataset": {
+    "openai_format": [
+      {
+        "role": "assistant",
+        "content": "hi"
+      },
+      {
+        "role": "assistant",
+        "content": "bsdk"
+      }
+    ],
+    "sharegpt_format": [
+      {
+        "from": "gpt",
+        "value": "hi"
+      },
+      {
+        "from": "gpt",
+        "value": "bsdk"
+      }
+    ]
+  }
+}
