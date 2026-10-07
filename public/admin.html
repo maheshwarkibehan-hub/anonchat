@@ -178,6 +178,7 @@
       grid-template-columns: 320px 1fr 380px;
       height: calc(100vh - 65px);
       overflow: hidden;
+      position: relative;
     }
 
     @media (max-width: 1280px) {
@@ -186,16 +187,242 @@
       }
     }
 
+    /* Mobile Segmented Slide-Bar (Low Entropy / Focused Single-Pane View) */
+    .mobile-slide-tabs {
+      display: none;
+    }
+
     @media (max-width: 1024px) {
+      body {
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Compact single-row mobile header */
+      header {
+        padding: 8px 12px;
+        gap: 8px;
+        flex-wrap: nowrap;
+      }
+
+      .logo-title, .logo-subtitle {
+        display: none;
+      }
+
+      .logo-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+      }
+
+      .kpi-bar {
+        gap: 6px;
+        flex: 1;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .kpi-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .kpi-chip {
+        padding: 4px 8px;
+        font-size: 11px;
+      }
+
+      .header-actions .btn-secondary span {
+        display: none;
+      }
+
+      .header-actions .btn-secondary {
+        padding: 6px 8px;
+      }
+
+      .admin-view-switcher {
+        display: none; /* Relocated to persistent mobile bottom bar for thumb zone access */
+      }
+
+      /* Single-pane slider layout */
       .dashboard-layout {
         display: flex;
-        flex-direction: column;
-        height: auto;
-        overflow: visible;
+        flex-direction: row;
+        width: 100vw;
+        height: calc(100vh - 54px - 58px);
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 0;
       }
+
       .panel {
-        height: auto !important;
-        max-height: 550px;
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100% !important;
+        max-height: none !important;
+        border-right: none;
+        display: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .panel.mobile-active-pane {
+        display: flex !important;
+      }
+
+      /* High-affordance mobile slide switcher bar */
+      .mobile-slide-tabs {
+        display: flex;
+        align-items: center;
+        background: rgba(13, 17, 26, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 6px 10px;
+        gap: 6px;
+        position: sticky;
+        top: 0;
+        z-index: 45;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-slide-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-slide-tab-btn {
+        flex: 1;
+        min-width: 90px;
+        padding: 7px 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border-subtle);
+        border-radius: 999px;
+        color: var(--text-muted);
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .mobile-slide-tab-btn.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+        box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+      }
+
+      /* Mobile Bottom Navigation Bar (Thumb Zone) */
+      .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: calc(56px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: rgba(13, 17, 26, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border-subtle);
+        z-index: 60;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .mobile-nav-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 6px 0;
+        border-radius: 8px;
+        transition: color 0.15s ease;
+      }
+
+      .mobile-nav-item.active {
+        color: var(--primary);
+      }
+
+      .mobile-nav-item svg {
+        transition: transform 0.15s ease;
+      }
+
+      .mobile-nav-item.active svg {
+        transform: scale(1.1);
+        stroke: var(--primary);
+      }
+
+      /* Inspector back button on mobile */
+      .btn-mobile-back-rooms {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 4px;
+        padding: 5px 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border-subtle);
+        border-radius: 6px;
+        color: var(--text-main);
+        font-size: 12px;
+        cursor: pointer;
+        margin-right: 6px;
+      }
+
+      .schoolwork-dashboard {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: calc(100vh - 54px - 58px);
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .schoolwork-dashboard .sw-admin-card {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        height: 100% !important;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .schoolwork-dashboard .sw-admin-card:first-child {
+        display: flex;
+      }
+      .schoolwork-dashboard .sw-admin-card:last-child {
+        display: none;
+      }
+
+      .schoolwork-dashboard.mobile-showing-studio .sw-admin-card:first-child {
+        display: none;
+      }
+      .schoolwork-dashboard.mobile-showing-studio .sw-admin-card:last-child {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .mobile-slide-tabs,
+      .mobile-bottom-nav,
+      .btn-mobile-back-rooms,
+      .btn-mobile-back-chapters {
+        display: none !important;
       }
     }
 
@@ -1359,11 +1586,24 @@
     </div>
   </header>
 
-  <!-- Three-Column Layout -->
+  <!-- Three-Column Layout (Wiretap Studio) -->
+  <div class="mobile-slide-tabs" id="wiretapMobileTabs">
+    <button type="button" class="mobile-slide-tab-btn active" id="tabRooms" onclick="switchWiretapMobilePane('rooms')">
+      <span>📡 Rooms</span>
+      <span id="tabRoomsBadge" style="font-family:var(--font-mono); font-size:10px; background:rgba(255,255,255,0.1); padding:1px 6px; border-radius:999px;">0</span>
+    </button>
+    <button type="button" class="mobile-slide-tab-btn" id="tabInspector" onclick="switchWiretapMobilePane('inspector')">
+      <span>👀 Live Chat</span>
+    </button>
+    <button type="button" class="mobile-slide-tab-btn" id="tabPrank" onclick="switchWiretapMobilePane('prank')">
+      <span>🚨 Prank Studio</span>
+    </button>
+  </div>
+
   <main class="dashboard-layout" id="wiretapView">
     
     <!-- Left Column: Active Rooms -->
-    <section class="panel">
+    <section class="panel mobile-active-pane" id="paneRooms">
       <div class="panel-header">
         <div class="panel-title">
           <span>Active Rooms</span>
@@ -1386,14 +1626,18 @@
     </section>
 
     <!-- Center Column: Live Chat Inspector -->
-    <section class="panel inspector-panel">
+    <section class="panel inspector-panel" id="paneInspector">
       <div class="panel-header">
-        <div class="inspector-header-info">
+        <div class="inspector-header-info" style="display:flex; align-items:center;">
+          <button type="button" class="btn-mobile-back-rooms" onclick="switchWiretapMobilePane('rooms')" title="Back to Rooms list">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Rooms</span>
+          </button>
           <div class="panel-title" id="inspectorTitle">
             <span>Inspector:</span>
             <span id="selectedRoomIdText" style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 12px;">Select a room</span>
           </div>
-          <span id="roomVibeBadge" style="display:none; font-size: 10px; background: rgba(99,102,241,0.2); color: #a5b4fc; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Direct</span>
+          <span id="roomVibeBadge" style="display:none; font-size: 10px; background: rgba(99,102,241,0.2); color: #a5b4fc; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left:6px;">Direct</span>
         </div>
 
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1421,7 +1665,7 @@
     </section>
 
     <!-- Right Column: Prank & Intervention Studio -->
-    <section class="panel studio-panel">
+    <section class="panel studio-panel" id="panePrank">
       <div class="panel-header">
         <div class="panel-title">
           <span>Prank & Intervention Studio</span>
@@ -1565,9 +1809,19 @@
   </main>
 
   <!-- School Work Manager Dashboard -->
+  <div class="mobile-slide-tabs" id="schoolWorkMobileTabs" style="display:none;">
+    <button type="button" class="mobile-slide-tab-btn active" id="tabSwChapters" onclick="switchSwMobilePane('chapters')">
+      <span>📚 Chapters</span>
+      <span id="tabSwChaptersBadge" style="font-family:var(--font-mono); font-size:10px; background:rgba(255,255,255,0.1); padding:1px 6px; border-radius:999px;">0</span>
+    </button>
+    <button type="button" class="mobile-slide-tab-btn" id="tabSwStudio" onclick="switchSwMobilePane('studio')">
+      <span>📸 Upload Studio</span>
+    </button>
+  </div>
+
   <section class="schoolwork-dashboard" id="schoolWorkView" style="display:none;">
     <!-- Left Column: Subjects & Chapters -->
-    <div class="sw-admin-card">
+    <div class="sw-admin-card" id="swCardChapters">
       <div class="panel-header" style="margin-bottom:0;">
         <div class="panel-title">
           <span>Subjects &amp; Chapters</span>
@@ -1614,14 +1868,22 @@
         </svg>
         <p style="font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px;">Select or Create a Chapter</p>
         <p style="font-size: 13px; color: var(--text-muted); max-width: 380px; margin: 0 auto;">Select an existing chapter on the left or create a new one to upload and manage classroom notes and photo pages.</p>
+        <button type="button" class="btn-secondary" style="margin: 16px auto 0; display: inline-flex;" onclick="switchSwMobilePane('chapters')">
+          <span>← Back to Chapters List</span>
+        </button>
       </div>
 
       <div id="swStudioActiveState" style="display:none; flex-direction: column; gap: 16px;">
         <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px;">
-          <div>
-            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--primary); background: rgba(99, 102, 241, 0.1); padding: 3px 8px; border-radius: 4px;" id="swActiveChapterBadge">CH.01</span>
-            <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-top: 6px;" id="swActiveChapterTitle">Chapter Title</h3>
-            <span style="font-size: 12px; color: var(--text-muted);" id="swActiveSubjectTitle">Physics</span>
+          <div style="display:flex; align-items:flex-start; gap:8px;">
+            <button type="button" class="btn-mobile-back-chapters" onclick="switchSwMobilePane('chapters')" style="margin-top:2px; padding:6px 10px; background:rgba(255,255,255,0.06); border:1px solid var(--border-subtle); border-radius:6px; color:#fff; cursor:pointer;" title="Back to chapters">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--primary); background: rgba(99, 102, 241, 0.1); padding: 3px 8px; border-radius: 4px;" id="swActiveChapterBadge">CH.01</span>
+              <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-top: 6px;" id="swActiveChapterTitle">Chapter Title</h3>
+              <span style="font-size: 12px; color: var(--text-muted);" id="swActiveSubjectTitle">Physics</span>
+            </div>
           </div>
           <button type="button" class="btn-danger" style="padding: 6px 12px; font-size: 12px;" onclick="deleteCurrentAdminChapter()">
             <span>Delete Chapter</span>
@@ -1683,6 +1945,22 @@
       </div>
     </div>
   </section>
+
+  <!-- Mobile Bottom Navigation Bar (Thumb Zone) -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav">
+    <button type="button" class="mobile-nav-item active" id="mNavWiretap" onclick="switchAdminView('wiretap')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+      <span>Wiretap</span>
+    </button>
+    <button type="button" class="mobile-nav-item" id="mNavSchoolWork" onclick="switchAdminView('schoolwork')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span>School Work</span>
+    </button>
+    <button type="button" class="mobile-nav-item" onclick="window.open('/', '_blank')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+      <span>Open App</span>
+    </button>
+  </nav>
 
   <!-- Notification Toast -->
   <div id="adminToast" class="admin-toast">
@@ -1922,6 +2200,8 @@
       if (stats.activeRoomsCount !== undefined) {
         document.getElementById('kpiRooms').textContent = stats.activeRoomsCount;
         document.getElementById('roomCountPill').textContent = `${stats.activeRoomsCount} LIVE`;
+        const tabRoomsBadge = document.getElementById('tabRoomsBadge');
+        if (tabRoomsBadge) tabRoomsBadge.textContent = `${stats.activeRoomsCount}`;
       }
       if (stats.waitingCount !== undefined) document.getElementById('kpiQueue').textContent = stats.waitingCount;
     }
@@ -2012,6 +2292,11 @@
 
       // Fetch full transcript from server
       socket.emit('admin_get_room_history', { roomId });
+
+      // On mobile viewports, auto-slide to live inspector
+      if (window.innerWidth <= 1024) {
+        switchWiretapMobilePane('inspector');
+      }
     };
 
     // Render Chat Feed
@@ -2230,23 +2515,79 @@
       activeChapter: null
     };
 
+    // --- Mobile Single-Pane / Slide Bar Navigation (Entropy Reduction Architecture) ---
+    let currentWiretapMobilePane = 'rooms'; // 'rooms', 'inspector', 'prank'
+    let currentSwMobilePane = 'chapters';   // 'chapters', 'studio'
+
+    function switchWiretapMobilePane(pane) {
+      currentWiretapMobilePane = pane;
+      const paneRooms = document.getElementById('paneRooms');
+      const paneInspector = document.getElementById('paneInspector');
+      const panePrank = document.getElementById('panePrank');
+
+      const tabRooms = document.getElementById('tabRooms');
+      const tabInspector = document.getElementById('tabInspector');
+      const tabPrank = document.getElementById('tabPrank');
+
+      if (paneRooms) paneRooms.classList.toggle('mobile-active-pane', pane === 'rooms');
+      if (paneInspector) paneInspector.classList.toggle('mobile-active-pane', pane === 'inspector');
+      if (panePrank) panePrank.classList.toggle('mobile-active-pane', pane === 'prank');
+
+      if (tabRooms) tabRooms.classList.toggle('active', pane === 'rooms');
+      if (tabInspector) tabInspector.classList.toggle('active', pane === 'inspector');
+      if (tabPrank) tabPrank.classList.toggle('active', pane === 'prank');
+
+      if (pane === 'inspector') {
+        const feed = document.getElementById('chatFeed');
+        if (feed) feed.scrollTop = feed.scrollHeight;
+      }
+    }
+
+    function switchSwMobilePane(pane) {
+      currentSwMobilePane = pane;
+      const swDashboard = document.getElementById('schoolWorkView');
+      const tabChapters = document.getElementById('tabSwChapters');
+      const tabStudio = document.getElementById('tabSwStudio');
+
+      if (swDashboard) {
+        swDashboard.classList.toggle('mobile-showing-studio', pane === 'studio');
+      }
+      if (tabChapters) tabChapters.classList.toggle('active', pane === 'chapters');
+      if (tabStudio) tabStudio.classList.toggle('active', pane === 'studio');
+    }
+
     function switchAdminView(view) {
       const wiretapView = document.getElementById('wiretapView');
       const schoolWorkView = document.getElementById('schoolWorkView');
       const btnWiretap = document.getElementById('btnViewWiretap');
       const btnSchoolWork = document.getElementById('btnViewSchoolWork');
+      const wiretapTabs = document.getElementById('wiretapMobileTabs');
+      const swTabs = document.getElementById('schoolWorkMobileTabs');
+      const mNavWiretap = document.getElementById('mNavWiretap');
+      const mNavSchoolWork = document.getElementById('mNavSchoolWork');
 
       if (view === 'schoolwork') {
         wiretapView.style.display = 'none';
         schoolWorkView.style.display = 'grid';
-        btnWiretap.classList.remove('active');
-        btnSchoolWork.classList.add('active');
+        if (wiretapTabs) wiretapTabs.style.display = 'none';
+        if (swTabs) swTabs.style.display = 'flex';
+
+        if (btnWiretap) btnWiretap.classList.remove('active');
+        if (btnSchoolWork) btnSchoolWork.classList.add('active');
+        if (mNavWiretap) mNavWiretap.classList.remove('active');
+        if (mNavSchoolWork) mNavSchoolWork.classList.add('active');
+
         initSchoolWorkAdmin();
       } else {
         wiretapView.style.display = 'grid';
         schoolWorkView.style.display = 'none';
-        btnWiretap.classList.add('active');
-        btnSchoolWork.classList.remove('active');
+        if (wiretapTabs) wiretapTabs.style.display = 'flex';
+        if (swTabs) swTabs.style.display = 'none';
+
+        if (btnWiretap) btnWiretap.classList.add('active');
+        if (btnSchoolWork) btnSchoolWork.classList.remove('active');
+        if (mNavWiretap) mNavWiretap.classList.add('active');
+        if (mNavSchoolWork) mNavSchoolWork.classList.remove('active');
       }
     }
 
@@ -2292,6 +2633,8 @@
         if (data.success && data.subject) {
           const chapters = data.subject.chapters || [];
           document.getElementById('swAdminChapterCount').textContent = `${chapters.length}`;
+          const badge = document.getElementById('tabSwChaptersBadge');
+          if (badge) badge.textContent = `${chapters.length}`;
           renderAdminChaptersList(chapters);
 
           if (swAdminState.selectedChapterId) {
@@ -2405,6 +2748,11 @@
           const items = document.querySelectorAll('.sw-admin-chapter-item');
           items.forEach(el => el.classList.remove('active'));
           loadAdminSubjectChapters(subjectId);
+
+          // On mobile viewports, auto-slide to upload studio pane
+          if (window.innerWidth <= 1024) {
+            switchSwMobilePane('studio');
+          }
         }
       } catch (err) {
         console.error('Error selecting chapter:', err);
